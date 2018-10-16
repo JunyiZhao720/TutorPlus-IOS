@@ -2,16 +2,15 @@
 //  ViewController.swift
 //  Tutor+
 //
-//  Created by MacOS-1.14 on 10/10/18.
+//  Created by MacOS-1.14 on 10/15/18.
 //  Copyright © 2018 JunyiZhao. All rights reserved.
 //
 
 import UIKit
-import Firebase
 import GoogleSignIn
 
-class ViewController: UITableViewController, GIDSignInUIDelegate {
-
+class ViewController: UIViewController, GIDSignInUIDelegate{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +20,5 @@ class ViewController: UITableViewController, GIDSignInUIDelegate {
         // TODO(developer) Configure the sign-in button look/feel
         // ...
     }
-
-
+    
 }
-
