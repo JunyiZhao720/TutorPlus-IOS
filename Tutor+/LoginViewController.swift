@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 
-class ViewController: UIViewController, GIDSignInUIDelegate{
+class LoginViewController: UIViewController, GIDSignInUIDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()

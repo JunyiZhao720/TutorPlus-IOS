@@ -67,12 +67,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         // ...
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                // ...
+                return
+            }
+            // User is signed in
+            // ...
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.makeKeyAndVisible()
+            
+            let searchVC = SearchViewController()
+            let navController = UINavigationController(rootViewController: searchVC)
+            
+            self.window?.rootViewController = navController
+        }
+        
+        
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
+        
     
-}
 
+}
