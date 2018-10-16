@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
         
+        // Check for CURRENT LOGIN TOKEN
+        
+        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         return true
@@ -74,13 +77,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             }
             // User is signed in
             // ...
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.makeKeyAndVisible()
-            
-            let searchVC = SearchViewController()
-            let navController = UINavigationController(rootViewController: searchVC)
-            
-            self.window?.rootViewController = navController
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//            self.window?.makeKeyAndVisible()
+//
+//            let searchVC = SearchViewController()
+//            let navController = UINavigationController(rootViewController: searchVC)
+//
+//            self.window?.rootViewController = navController
         }
         
         
@@ -90,7 +93,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // Perform any operations when the user disconnects from app here.
         // ...
     }
-        
-    
 
 }
