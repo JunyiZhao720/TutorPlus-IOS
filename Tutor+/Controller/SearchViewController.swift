@@ -27,4 +27,8 @@ class SearchViewController: UIViewController {
     }
     */
 
+    @IBAction func LogOutButtonOnCliked(_ sender: Any) {
+        FirebaseUser.shared.logOut()
+        moveToLoginPage()
+    }
 }

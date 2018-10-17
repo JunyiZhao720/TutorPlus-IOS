@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="oYV-lv-Q5f">
             <objects>
-                <viewController id="nIf-8v-hcl" customClass="LoginViewController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="nIf-8v-hcl" customClass="LoginViewController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RsV-m8-ijh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +47,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="LogOutButtonOnCliked:" destination="B5t-vE-fJC" eventType="touchUpInside" id="NSC-5G-dQk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

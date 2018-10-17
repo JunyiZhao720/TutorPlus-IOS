@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import GoogleSignIn
 
 class FirebaseUser{
     
@@ -30,7 +31,7 @@ class FirebaseUser{
                 self.userId = ""
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     if loggedIn{
-                        moeveToSearchPage()
+                        moveToSearchPage()
                     } else {
                         
                     }
@@ -45,7 +46,7 @@ class FirebaseUser{
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                     // Do something if logged in
-                    moeveToSearchPage()
+                    moveToSearchPage()
                 }
             }
         }
@@ -64,5 +65,6 @@ class FirebaseUser{
     
     func logOut(){
         try! Auth.auth().signOut()
+        GIDSignIn.sharedInstance()?.signOut()
     }
 }
