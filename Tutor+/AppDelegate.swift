@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         
         // Check for CURRENT LOGIN TOKEN
         
+        FirebaseUser.shared.addUserListener(loggedIn: false)
+//        if !FirebaseUser.shared.isLoggedIn(){
+//            print("Delegate: Logged In")
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+//        }
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -49,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        FirebaseUser.shared.removeUserListener()
     }
 
     @available(iOS 9.0, *)
@@ -63,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // ...
         if let error = error {
             // ...
+            print(error)
             return
         }
         
@@ -73,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 // ...
+                print(error)
                 return
             }
             // User is signed in

@@ -37,13 +37,13 @@
         <!--Search View Controller-->
         <scene sceneID="XNV-DD-raz">
             <objects>
-                <viewController id="B5t-vE-fJC" customClass="SearchViewController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="B5t-vE-fJC" customClass="SearchViewController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j9B-CW-Pv4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nY-yM-Ukx">
-                                <rect key="frame" x="136" y="391" width="107" height="48"/>
+                                <rect key="frame" x="133.79912663759205" y="309" width="107.00000000000006" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Log Out"/>
