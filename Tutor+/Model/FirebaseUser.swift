@@ -32,7 +32,7 @@ class FirebaseUser{
                 self.userId = ""
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn{
-                        ViewSwitch.moveToSearchPage()
+                        //ViewSwitch.moveToSearchPage()
                     } else {
                         
                     }
