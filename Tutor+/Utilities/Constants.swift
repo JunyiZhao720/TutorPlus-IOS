@@ -11,8 +11,9 @@ import Foundation
 public enum ClassType{
     case AppDelegate
     
-    case loginViewController
-    case searchViewController
+    case LoginViewController
+    case SearchViewController
+    case SignUpViewController
     
     case FirebaseUser
 }
