@@ -29,16 +29,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
     @IBAction func SignInButtonOnClicked(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text{
             Auth.auth().signIn(withEmail: email, password: password){(user, error) in
-                if FirebaseUser.shared.isLoggedIn(){
-                    debugPrint("LoginPage: Firebase Signed In")
-                }else{
-                    debugPrint("LoginPage: Firebase Not signed In")
-                }
                 
-                if let u = user{
-                    debugPrint("LoginPage: User Signed In")
+                if error != nil{
+                    debugHelpPrint(type: ClassType.LoginViewController, str: error.debugDescription)
                 }else{
-                    debugPrint("LoginPage: User Not signed In")
+                    debugHelpPrint(type: ClassType.LoginViewController, str: "Signed In")
                 }
             }
         }

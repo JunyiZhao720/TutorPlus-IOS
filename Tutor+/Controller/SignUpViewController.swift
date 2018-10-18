@@ -41,6 +41,14 @@ class SignUpViewController: UIViewController {
                     debugHelpPrint(type: ClassType.SignUpViewController, str: error.debugDescription)
                     return
                 }
+                Auth.auth().currentUser?.sendEmailVerification { (error) in
+                    // ...
+                    if error != nil{
+                        debugHelpPrint(type: ClassType.FirebaseUser, str: error.debugDescription)
+                    }
+                    
+                    return
+                }
             }
         }
         

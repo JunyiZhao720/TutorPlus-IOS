@@ -17,3 +17,17 @@ public enum ClassType{
     
     case FirebaseUser
 }
+
+public enum ProviderType{
+    case google
+    case password
+    
+    var description : String {
+        switch self {
+            // Use Internationalization, as appropriate.
+            case .google: return "google.com"
+            case .password: return "password"
+        }
+    }
+    
+}
