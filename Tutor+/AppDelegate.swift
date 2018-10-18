@@ -86,13 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             }
             // User is signed in
             // ...
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//            self.window?.makeKeyAndVisible()
-//
-//            let searchVC = SearchViewController()
-//            let navController = UINavigationController(rootViewController: searchVC)
-//
-//            self.window?.rootViewController = navController
+
         }
         
         

@@ -34,17 +34,30 @@ class SignUpViewController: UIViewController {
     */
 
     @IBAction func SignUpButtonOnClicked(_ sender: Any) {
+        
         if let email = emailTextField.text, let password = passwordTextField.text{
             Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                // ...
-                guard let user = authResult?.user else {
+
+                guard (authResult?.user) != nil else {
                     debugHelpPrint(type: ClassType.SignUpViewController, str: error.debugDescription)
+                    AlertHelper.showAlert(fromController: self, message: error.debugDescription, buttonTitle: "OK")
+                    
                     return
                 }
+                
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
-                    // ...
+
                     if error != nil{
                         debugHelpPrint(type: ClassType.FirebaseUser, str: error.debugDescription)
+                        AlertHelper.showAlert(fromController: self, message: error.debugDescription, buttonTitle: "OK")
+                    
+                    }else{
+                        // logout before doing anything
+                        FirebaseUser.shared.logOut()
+                        
+                        // switch back to login
+                        self.performSegue(withIdentifier: "SignUpToSignIn", sender: self)
+                    
                     }
                     
                     return
