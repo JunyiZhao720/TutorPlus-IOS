@@ -22,23 +22,23 @@ class FirebaseUser{
     private init(){}
     
     func addUserListener(loggedIn: Bool){
-        print("Add listener")
+        debugHelpPrint(type: ClassType.AppDelegate, str: "Add listener")
         listenHandler = Auth.auth().addStateDidChangeListener{(auth,user) in
             if user == nil{
                 // This means we are logged out
-                print("FirebaseUser: Logged Out")
+                debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged Out")
                 self.currentUser = nil
                 self.userId = ""
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     if loggedIn{
-                        moveToSearchPage()
+                        ViewSwitch.moveToSearchPage()
                     } else {
                         
                     }
                 }
             }
             else{
-                print("FirebaseUser: Logged In")
+                debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged In")
                 
                 self.currentUser = user
                 self.userId = (user?.uid)
@@ -46,7 +46,7 @@ class FirebaseUser{
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                     // Do something if logged in
-                    moveToSearchPage()
+                    ViewSwitch.moveToSearchPage()
                 }
             }
         }
