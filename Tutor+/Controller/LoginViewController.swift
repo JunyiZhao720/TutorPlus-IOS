@@ -31,14 +31,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
             Auth.auth().signIn(withEmail: email, password: password){(user, error) in
                 if FirebaseUser.shared.isLoggedIn(){
                     debugPrint("LoginPage: Firebase Signed In")
-                    self.performSegue(withIdentifier: "SearchViewController", sender: self)
                 }else{
                     debugPrint("LoginPage: Firebase Not signed In")
                 }
                 
                 if let u = user{
                     debugPrint("LoginPage: User Signed In")
-                    self.performSegue(withIdentifier: "SearchViewController", sender: self)
                 }else{
                     debugPrint("LoginPage: User Not signed In")
                 }

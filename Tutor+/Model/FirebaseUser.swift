@@ -29,7 +29,7 @@ class FirebaseUser{
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged Out")
                 self.currentUser = nil
                 self.userId = ""
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn{
                         ViewSwitch.moveToSearchPage()
                     } else {
@@ -44,7 +44,7 @@ class FirebaseUser{
                 self.userId = (user?.uid)
                 // LOAD DATA HERE
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                DispatchQueue.main.asyncAfter(deadline: .now()){
                     // Do something if logged in
                     ViewSwitch.moveToSearchPage()
                 }
