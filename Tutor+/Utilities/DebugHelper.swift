@@ -8,6 +8,8 @@
 
 import Foundation
 
-func debugHelpPrint(type: ClassType, str: String){
-    print("DebugInfo-\(Date())- \(type): \(str)")
+// debug print function
+// parameters: ClassType, string for the messages, id for the user
+func debugHelpPrint(type: ClassType, str: String, id: String? = ""){
+    print("DebugInfo-\(Date())- \(type)-\(id ?? ""): \(str)")
 }

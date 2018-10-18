@@ -8,6 +8,8 @@
 
 import Foundation
 
+public let ProdcutName = "Tutor+"
+
 public enum ClassType{
     case AppDelegate
     

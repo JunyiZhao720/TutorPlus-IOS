@@ -44,7 +44,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="nIf-8v-hcl" kind="presentation" id="aW2-RD-evB"/>
+                                    <segue destination="nIf-8v-hcl" kind="presentation" identifier="SignUpToSignIn" id="aW2-RD-evB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,7 +93,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="hkG-cf-qct" kind="presentation" id="zhk-n3-QNG"/>
+                                    <segue destination="hkG-cf-qct" kind="presentation" identifier="SignInToSignUp" id="zhk-n3-QNG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aw3-9l-VH0">
@@ -112,12 +112,12 @@
                     <connections>
                         <outlet property="emailTextField" destination="xZ2-bH-fq2" id="69n-tl-lJQ"/>
                         <outlet property="passwordTextField" destination="sEb-nS-Cy6" id="9hD-gu-fhz"/>
-                        <segue destination="B5t-vE-fJC" kind="presentation" id="0I0-1Z-nZN"/>
+                        <segue destination="B5t-vE-fJC" kind="presentation" identifier="SignInToSearch" id="0I0-1Z-nZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oa-Bq-Uwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-274" y="27"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="XNV-DD-raz">

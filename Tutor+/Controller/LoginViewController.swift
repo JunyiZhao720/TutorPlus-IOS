@@ -23,8 +23,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
         
         // TODO(developer) Configure the sign-in button look/feel
         // ...
+        
+        
     }
     
+   
     
     @IBAction func SignInButtonOnClicked(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text{
