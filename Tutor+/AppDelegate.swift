@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // ...
         if let error = error {
             // ...
-            print(error)
+            debugHelpPrint(type: .AppDelegate, str: error.localizedDescription)
             return
         }
         
@@ -81,11 +81,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 // ...
-                print(error)
+                debugHelpPrint(type: .AppDelegate, str: error.localizedDescription)
                 return
             }
             // User is signed in
-            // ...
+            
+            // Move to Search Page
+            ViewSwitch.moveToSearchPage()
 
         }
         
