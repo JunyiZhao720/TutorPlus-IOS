@@ -18,6 +18,7 @@ public enum ClassType{
     case SignUpViewController
     
     case FirebaseUser
+    case FirebaseTrans
 }
 
 public enum ProviderType{

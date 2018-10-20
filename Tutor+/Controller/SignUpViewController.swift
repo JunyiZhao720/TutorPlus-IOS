@@ -36,6 +36,7 @@ class SignUpViewController: UIViewController {
     @IBAction func SignUpButtonOnClicked(_ sender: Any) {
         
         if let email = emailTextField.text, let password = passwordTextField.text{
+            // start to create a user
             Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
 
                 guard (authResult?.user) != nil else {
@@ -45,6 +46,10 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
+                // Sign up in datastore
+                FirebaseTrans.shared.createDoc(collection: "need to change", id: (Auth.auth().currentUser?.uid)!)
+                
+                // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
 
                     if error != nil{
@@ -62,6 +67,8 @@ class SignUpViewController: UIViewController {
                     
                     return
                 }
+                
+                
             }
         }
         
