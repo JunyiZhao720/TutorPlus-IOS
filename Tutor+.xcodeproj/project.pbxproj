@@ -17,6 +17,7 @@
 		42866EC3216EA63700D29698 /* Tutor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42866EC2216EA63700D29698 /* Tutor_Tests.swift */; };
 		42866ECE216EA63700D29698 /* Tutor_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42866ECD216EA63700D29698 /* Tutor_UITests.swift */; };
 		429D63EB2174D5F6006EC97F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */; };
+		42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A63B9F217ABCD4002A6EFE /* FirebaseTrans.swift */; };
 		42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 42D9CA612174E139005C307A /* Tutor+.xcworkspace */; };
 		74BF8E58423110C7B6CACCD0 /* Pods_Tutor_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
@@ -60,6 +61,7 @@
 		42866ECD216EA63700D29698 /* Tutor_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_UITests.swift; sourceTree = "<group>"; };
 		42866ECF216EA63700D29698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42A63B9F217ABCD4002A6EFE /* FirebaseTrans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTrans.swift; sourceTree = "<group>"; };
 		42D9CA612174E139005C307A /* Tutor+.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = "Tutor+.xcworkspace"; sourceTree = "<group>"; };
 		491E6320B62899F69A5A1CFC /* Pods_Tutor_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FB6A65C81B8534117A8A58 /* Pods-Tutor+Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */,
+				42A63B9F217ABCD4002A6EFE /* FirebaseTrans.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
+				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,
 				AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */,
 				AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */,
