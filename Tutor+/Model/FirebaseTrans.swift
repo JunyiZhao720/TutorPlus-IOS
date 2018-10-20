@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
-class FirebaseTrans: NSObject {
 
+class FirebaseTrans: NSObject {
+    override init() {
+        FirebaseApp.configure()
+        var db = Firestore.firestore()
+    }
 }
