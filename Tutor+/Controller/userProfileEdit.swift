@@ -12,6 +12,7 @@ class userProfileEdit: UIViewController{
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var genderTextBox: UITextField!
     @IBOutlet weak var genderDropDown: UIPickerView!
+    @IBOutlet weak var switchForTutor: UISwitch!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
@@ -27,7 +28,7 @@ class userProfileEdit: UIViewController{
         //calling gender dropdown
         createGenderPicker()
         createToolbar()
-        
+        switchForTutor.isOn = false
     }
     
     //gender dropdown Picker
