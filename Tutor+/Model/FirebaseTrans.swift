@@ -28,13 +28,15 @@ class FirebaseTrans: NSObject {
         
         db.collection(USER_COLLECTIONS).document(id).setData([
             "name": "wo",
-            "age": 15
+            "age": 15,
+            "time":Date()
         ]){ err in
-            if err == nil {
-                debugHelpPrint(type: .FirebaseTrans, str: "Creating a new document", id: id)
+            if let error = err{
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
             } else {
-                debugHelpPrint(type: .FirebaseTrans, str: err.debugDescription, id: id)
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Creating a new document", id: id)
             }
+
         }
     }
 }
