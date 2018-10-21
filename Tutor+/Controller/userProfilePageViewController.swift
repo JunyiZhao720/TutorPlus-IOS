@@ -11,6 +11,13 @@ import UIKit
 class userProfilePageViewController: UIViewController {
 
     @IBOutlet weak var theImage: UIImageView!
+    @IBOutlet weak var nameView: UILabel!
+    @IBOutlet weak var emailView: UILabel!
+    @IBOutlet weak var genderView: UILabel!
+    @IBOutlet weak var majorView: UILabel!
+    @IBOutlet weak var universityVIew: UILabel!
+    // TODO : need to be desided in one text or split into two
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

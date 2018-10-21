@@ -10,8 +10,15 @@ import UIKit
 
 class userProfileEdit: UIViewController{
     @IBOutlet weak var theImage: UIImageView!
+    @IBOutlet weak var nameEditor: UITextField!
+    @IBOutlet weak var emailEditor: UITextField!
     @IBOutlet weak var genderTextBox: UITextField!
     @IBOutlet weak var genderDropDown: UIPickerView!
+    @IBOutlet weak var majorEditor: UITextField!
+    @IBOutlet weak var universityEditor: UITextField!
+    @IBAction func tutorButton(_ sender: Any) {
+        
+    }
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
@@ -30,6 +37,12 @@ class userProfileEdit: UIViewController{
         
     }
     
+    @IBAction func cancleEditProfile(_ sender: Any) {
+        
+    }
+    @IBAction func saveProfile(_ sender: Any) {
+        
+    }
     //gender dropdown Picker
     func createGenderPicker(){
         let genderPicker = UIPickerView()
