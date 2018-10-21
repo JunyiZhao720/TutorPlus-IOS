@@ -13,14 +13,22 @@ class userProfilePageViewController: UIViewController {
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameView: UILabel!
     @IBOutlet weak var emailView: UILabel!
+    //@IBOutlet weak var genderView: UILabel!
     @IBOutlet weak var genderView: UILabel!
     @IBOutlet weak var majorView: UILabel!
-    @IBOutlet weak var universityVIew: UILabel!
+    @IBOutlet weak var universityView: UILabel!
     // TODO : need to be desided in one text or split into two
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        nameView.text = FirebaseUser.shared.name
+        emailView.text = FirebaseUser.shared.email
+        genderView.text = FirebaseUser.shared.gender
+        majorView.text = FirebaseUser.shared.major
+        universityView.text = FirebaseUser.shared.university
+        
         //set image to circle
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true

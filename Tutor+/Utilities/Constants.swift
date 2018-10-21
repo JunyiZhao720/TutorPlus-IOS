@@ -16,6 +16,7 @@ public enum ClassType{
     case LoginViewController
     case SearchViewController
     case SignUpViewController
+    case UserProfileEditController
     
     case FirebaseUser
 }

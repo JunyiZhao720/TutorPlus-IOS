@@ -29,6 +29,13 @@ class UserProfileEditController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        nameEditor.text = FirebaseUser.shared.name
+        emailEditor.text = FirebaseUser.shared.email
+        genderTextBox.text = FirebaseUser.shared.gender
+        majorEditor.text = FirebaseUser.shared.major
+        universityEditor.text = FirebaseUser.shared.university
+
         //set image to circle
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true
@@ -45,12 +52,18 @@ class UserProfileEditController: UIViewController{
     }
     
     @IBAction func saveProfile(_ sender: Any) {
+        //FirebaseUser.shared.image = theImage.UIImage
         FirebaseUser.shared.name = nameEditor.text
         FirebaseUser.shared.email = emailEditor.text
         FirebaseUser.shared.gender = genderTextBox.text
         FirebaseUser.shared.major = majorEditor.text
         FirebaseUser.shared.university = universityEditor.text
         
+        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.name!)
+        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.email!)
+        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.gender!)
+        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.major!)
+        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.university!)
     }
     //gender dropdown Picker
     func createGenderPicker(){

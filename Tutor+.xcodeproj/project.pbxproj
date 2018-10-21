@@ -19,19 +19,16 @@
 		429D63EB2174D5F6006EC97F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */; };
 		42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 42D9CA612174E139005C307A /* Tutor+.xcworkspace */; };
 		74BF8E58423110C7B6CACCD0 /* Pods_Tutor_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */; };
+		9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
 		AB624480217806A800B3605E /* DebugHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62447F217806A800B3605E /* DebugHelper.swift */; };
 		AB624482217806DA00B3605E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB624481217806DA00B3605E /* Constants.swift */; };
 		AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62448321780CE900B3605E /* SignUpViewController.swift */; };
 		AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB92C154217668CB0030B5F7 /* SearchViewController.swift */; };
-
-		C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */; };
-		C8BE92A12176D9D000A0E896 /* userProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE929F2176D9CF00A0E896 /* userProfileEdit.swift */; };
-		C8BE92A22176D9D000A0E896 /* userProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */; };
-
 		ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6AA4A217930980073C03D /* AlertHelper.swift */; };
-
+		C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */; };
+		C8BE92A22176D9D000A0E896 /* userProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +69,7 @@
 		4E888C74EE34DA055629DCFB /* Pods-Tutor+UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+UITests/Pods-Tutor+UITests.release.xcconfig"; sourceTree = "<group>"; };
 		6326285A70DF40A834B7C179 /* Pods-Tutor+UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+UITests/Pods-Tutor+UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AEF0D76E01A2179A88E69D8 /* Pods-Tutor+Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditController.swift; sourceTree = "<group>"; };
 		A6F2D0D71EE790B91B463655 /* Pods-Tutor+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.debug.xcconfig"; sourceTree = "<group>"; };
 		AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 		AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCEE6AD4F5BFAD5AE740591 /* Pods-Tutor+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.release.xcconfig"; sourceTree = "<group>"; };
 		C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileEdit.swift; sourceTree = "<group>"; };
-		C8BE929F2176D9CF00A0E896 /* userProfileEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userProfileEdit.swift; sourceTree = "<group>"; };
 		C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userProfilePageViewController.swift; sourceTree = "<group>"; };
 		F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -207,8 +204,8 @@
 		AB26A46C21768D8E00FEE377 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */,
 				C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */,
-				C8BE929F2176D9CF00A0E896 /* userProfileEdit.swift */,
 				C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */,
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
@@ -487,22 +484,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-				C8BE92A12176D9D000A0E896 /* userProfileEdit.swift in Sources */,
 				C8BE92A22176D9D000A0E896 /* userProfilePageViewController.swift in Sources */,
-
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
-
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,
 				AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */,
 				AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */,
 				AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */,
+				9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */,
 				426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */,
-
 				C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */,
-
 				AB624482217806DA00B3605E /* Constants.swift in Sources */,
-
 				42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */,
 				AB624480217806A800B3605E /* DebugHelper.swift in Sources */,
 			);
