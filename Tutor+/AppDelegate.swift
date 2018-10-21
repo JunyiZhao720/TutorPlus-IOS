@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // ...
         if let error = error {
             // ...
-            print(error)
+            debugHelpPrint(type: .AppDelegate, str: error.localizedDescription)
             return
         }
         
@@ -81,18 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 // ...
-                print(error)
+                debugHelpPrint(type: .AppDelegate, str: error.localizedDescription)
                 return
             }
             // User is signed in
-            // ...
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//            self.window?.makeKeyAndVisible()
-//
-//            let searchVC = SearchViewController()
-//            let navController = UINavigationController(rootViewController: searchVC)
-//
-//            self.window?.rootViewController = navController
+            
+            // Move to Search Page
+            ViewSwitch.moveToSearchPage()
+
         }
         
         
