@@ -19,6 +19,9 @@ class userProfileEdit: UIViewController{
     @IBAction func tutorButton(_ sender: Any) {
         
     }
+
+    @IBOutlet weak var switchForTutor: UISwitch!
+
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
@@ -34,7 +37,7 @@ class userProfileEdit: UIViewController{
         //calling gender dropdown
         createGenderPicker()
         createToolbar()
-        
+        switchForTutor.isOn = false
     }
     
     @IBAction func cancleEditProfile(_ sender: Any) {
