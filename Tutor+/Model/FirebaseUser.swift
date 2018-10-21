@@ -20,6 +20,13 @@ class FirebaseUser{
     
     private var listenHandler: AuthStateDidChangeListenerHandle?
     
+    //var image: UIImage!
+    var name: String? = ""
+    var email: String? = ""
+    var gender: String? = ""
+    var major: String? = ""
+    var university: String? = ""
+    
     private init(){}
     
     func addUserListener(loggedIn: Bool){
@@ -85,5 +92,30 @@ class FirebaseUser{
     func logOut(){
         try! Auth.auth().signOut()
         GIDSignIn.sharedInstance()?.signOut()
+    }
+    
+    private func makeDict()->[String: Any]{
+        var dictionary: [String: Any] = [
+            // use as Any to avoid warning
+            "name" :self.name as Any,
+            "email" : self.email as Any,
+            "gender" : self.gender as Any,
+            "major" : self.gender as Any,
+            "university" : self.university as Any
+        ]
+        return dictionary
+    }
+    
+    func createDoc(){
+        
+        
+    }
+    
+    func downloadDoc(){
+        
+    }
+    
+    func uploadDoc(){
+        
     }
 }
