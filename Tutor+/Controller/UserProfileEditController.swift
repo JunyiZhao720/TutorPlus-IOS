@@ -8,7 +8,7 @@
 
 import UIKit
 
-class userProfileEdit: UIViewController{
+class UserProfileEditController: UIViewController{
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameEditor: UITextField!
     @IBOutlet weak var emailEditor: UITextField!
@@ -35,15 +35,21 @@ class userProfileEdit: UIViewController{
         theImage.layer.borderColor = UIColor.white.cgColor
         
         //calling gender dropdown
-        createGenderPicker()
-        createToolbar()
-        switchForTutor.isOn = false
+//        createGenderPicker()
+//        createToolbar()
+//        switchForTutor.isOn = false
     }
     
     @IBAction func cancleEditProfile(_ sender: Any) {
-        
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func saveProfile(_ sender: Any) {
+        FirebaseUser.shared.name = nameEditor.text
+        FirebaseUser.shared.email = emailEditor.text
+        FirebaseUser.shared.gender = genderTextBox.text
+        FirebaseUser.shared.major = majorEditor.text
+        FirebaseUser.shared.university = universityEditor.text
         
     }
     //gender dropdown Picker
@@ -58,7 +64,7 @@ class userProfileEdit: UIViewController{
     func createToolbar(){
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(userProfileEdit.dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(UserProfileEditController.dismissKeyboard))
         
         toolBar.setItems([doneButton],animated:false)
         toolBar.isUserInteractionEnabled = true
@@ -76,7 +82,7 @@ class userProfileEdit: UIViewController{
 }
 
 //gender Dropdown
-extension userProfileEdit: UIPickerViewDelegate, UIPickerViewDataSource{
+extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
