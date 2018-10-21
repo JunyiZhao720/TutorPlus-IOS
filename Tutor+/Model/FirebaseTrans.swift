@@ -49,10 +49,17 @@ class FirebaseTrans: NSObject {
     }
     
     // general download functions
-    // para1: completion handler
-    // para2: collection
-    // para3: document Id
-    func downloadDoc(completion:@escaping(Dictionary<String, Any>?)->Void, collection: String, id:String){
+    
+    // para1: collection
+    // para2: document Id
+    // para3: completion handler -> anonymous class
+        //    FirebaseTrans.shared.downloadDoc(collection: collection_name, id: id, completion: { (data) in
+        //        if let data = data{
+        //        /... do your stuff
+        //        }
+        //    })
+    
+    func downloadDoc(collection: String, id:String, completion:@escaping(Dictionary<String, Any>?)->Void){
         let theDoc = db.collection(USER_COLLECTIONS).document(id)
         theDoc.getDocument{(document, error) in
             if let err = error{
