@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FKT-eM-dlR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yf-dD-9JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-849" y="784"/>
+            <point key="canvasLocation" x="-198" y="981"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="oYV-lv-Q5f">
@@ -117,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oa-Bq-Uwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="27"/>
+            <point key="canvasLocation" x="777" y="27"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="XNV-DD-raz">
@@ -136,6 +136,15 @@
                                     <action selector="LogOutButtonOnCliked:" destination="B5t-vE-fJC" eventType="touchUpInside" id="NSC-5G-dQk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-uS-OWh">
+                                <rect key="frame" x="131" y="228" width="83" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="to profile"/>
+                                <connections>
+                                    <segue destination="FKT-eM-dlR" kind="presentation" id="p3Y-Xp-dSS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3h8-BX-yu0"/>
@@ -143,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDl-xE-OoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821.60000000000002" y="26.53673163418291"/>
+            <point key="canvasLocation" x="1441" y="27"/>
         </scene>
         <!--User Profile Page View Controller-->
         <scene sceneID="Wlr-N7-Ajg">
@@ -285,8 +294,7 @@
                         <outlet property="majorView" destination="Ghj-0A-kp3" id="f2Q-2s-obP"/>
                         <outlet property="nameView" destination="wT7-i6-iwt" id="DMN-FN-Q6g"/>
                         <outlet property="theImage" destination="EXR-Br-uB4" id="MUh-pT-u9G"/>
-                        <outlet property="universityVIew" destination="oFz-Ge-C9P" id="X9m-Dt-kdM"/>
-                        <outlet property="universityView" destination="oFz-Ge-C9P" id="QXU-cW-mbB"/>
+                        <outlet property="universityView" destination="oFz-Ge-C9P" id="rYO-IH-dWx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAs-Fn-skH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -474,6 +482,6 @@
         <image name="landscape" width="1200" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zhk-n3-QNG"/>
+        <segue reference="xPg-AI-j58"/>
     </inferredMetricsTieBreakers>
 </document>

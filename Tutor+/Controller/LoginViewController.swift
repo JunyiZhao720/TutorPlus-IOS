@@ -40,12 +40,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 }else{
                     debugHelpPrint(type: ClassType.LoginViewController, str: "Signed In")
                     
-                    FirebaseTrans.shared.downloadDoc(collection: "Need to Change", id: FirebaseUser.shared.userId!, completion: { (data) in
-                        if let data = data{
-                            debugHelpPrint(type: ClassType.LoginViewController, str: "\(data["name"] ?? "")")
-                        }
-                    })
-                    
+                                        
                     // Check if it needs to do email verification
                     if FirebaseUser.shared.checkEmailVerified(){
                         self.performSegue(withIdentifier: "SignInToSearch", sender: self)

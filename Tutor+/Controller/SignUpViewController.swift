@@ -47,7 +47,8 @@ class SignUpViewController: UIViewController {
                 }
                 
                 // Sign up in datastore
-                //FirebaseTrans.shared.createDoc(collection: "need to change", id: (Auth.auth().currentUser?.uid)!)
+                FirebaseUser.shared.createDoc()
+                
                 
                 // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
