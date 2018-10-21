@@ -15,8 +15,13 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginButton.layer.cornerRadius = 5.0
+        loginButton.layer.masksToBounds = true
         
         GIDSignIn.sharedInstance().uiDelegate = self
         // GIDSignIn.sharedInstance().signIn()
