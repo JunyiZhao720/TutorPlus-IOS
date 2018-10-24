@@ -85,8 +85,6 @@ class SignUpViewController: UIViewController {
                     
                     return
                 }
-                
-                
             }
         }
         
