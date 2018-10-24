@@ -106,22 +106,37 @@ class FirebaseUser{
         return dictionary
     }
     
+    private func makeInitialDict()->[String: Any]{
+        let dictionary: [String: Any] = [
+            // use as Any to avoid warning
+            "name" :"",
+            "email" : "",
+            "gender" : "",
+            "major" : "",
+            "university" : ""
+        ]
+        return dictionary
+    }
+
+    // Create an intial empty doc for the user
     func createDoc(){
         if isLoggedIn(){
-            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId!, dict: self.makeDict())
+            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId!, dict: self.makeInitialDict())
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to createDoc() while user is not logged in")
         }
     }
     
+    // Create or Override an existing doc
     func uploadDoc(){
         if isLoggedIn(){
-            trans.uploadDoc(collection: trans.USER_COLLECTIONS, id: self.userId ?? "", dict: self.makeDict())
+            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId ?? "", dict: self.makeDict())
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to uploadDoc() while user is not logged in")
         }
     }
     
+    // Download an existing doc
     func downloadDoc(completion:@escaping(Bool)->Void){
         if isLoggedIn(){
             trans.downloadDoc(collection: trans.USER_COLLECTIONS, id: self.userId ?? "", completion: {(data) in

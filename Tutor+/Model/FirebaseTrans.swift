@@ -24,6 +24,12 @@ class FirebaseTrans: NSObject {
         db.settings = settings
     }
     
+    // general create, override, and upload method
+    
+    // para1: collection id
+    // para2: document id
+    // para3: data
+    
     func createDoc(collection: String, id: String, dict: Dictionary<String, Any>){
         
         db.collection(collection).document(id).setData(dict){ err in
@@ -36,17 +42,19 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    func uploadDoc(collection: String, id:String, dict: Dictionary<String, Any>){
-        let theDoc = db.collection(collection).document(id)
-        
-        theDoc.updateData(dict){ err in
-            if let err = err{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: err.localizedDescription, id: id)
-            }else{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str:"Successfully upload the doc!", id: id)
-            }
-        }
-    }
+    
+    // Not used for now because we will use createDoc for both creating and upload process
+//    func uploadDoc(collection: String, id:String, dict: Dictionary<String, Any>){
+//        let theDoc = db.collection(collection).document(id)
+//
+//        theDoc.updateData(dict){ err in
+//            if let err = err{
+//                debugHelpPrint(type: ClassType.FirebaseTrans, str: err.localizedDescription, id: id)
+//            }else{
+//                debugHelpPrint(type: ClassType.FirebaseTrans, str:"Successfully upload the doc!", id: id)
+//            }
+//        }
+//    }
     
     // general download functions
     
