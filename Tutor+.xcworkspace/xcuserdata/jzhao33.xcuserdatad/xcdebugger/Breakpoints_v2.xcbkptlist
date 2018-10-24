@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tutor+/Controller/SignUpViewController.swift"
+            timestampString = "562115799.8319941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "SignUpButtonOnClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tutor_.SignUpViewController.SignUpButtonOnClicked(Any) -&gt; ()"
+                  moduleName = "Tutor+"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/labuser/Desktop/TutorPlus-IOS/Tutor+/Controller/SignUpViewController.swift"
+                  timestampString = "562115799.994661"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "2346">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Tutor_.SignUpViewController.SignUpButtonOnClicked(Any) -&gt; ()"
+                  moduleName = "Tutor+"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/labuser/Desktop/TutorPlus-IOS/Tutor+/Controller/SignUpViewController.swift"
+                  timestampString = "562115799.998058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
