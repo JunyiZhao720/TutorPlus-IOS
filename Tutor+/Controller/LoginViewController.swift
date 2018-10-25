@@ -44,7 +44,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate{
                 }else{
                     debugHelpPrint(type: ClassType.LoginViewController, str: "Signed In")
                     
-                                        
                     // Check if it needs to do email verification
                     if FirebaseUser.shared.checkEmailVerified(){
                         self.performSegue(withIdentifier: "SignInToSearch", sender: self)

@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yf-dD-9JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850.39999999999998" y="783.95802098950526"/>
+            <point key="canvasLocation" x="-1529" y="906"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="oYV-lv-Q5f">
@@ -205,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oa-Bq-Uwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="12"/>
+            <point key="canvasLocation" x="-2489" y="921"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="XNV-DD-raz">
@@ -229,6 +229,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="to profile"/>
+                                <connections>
+                                    <segue destination="on7-OB-A3A" kind="presentation" id="mRI-Mo-VKf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -237,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDl-xE-OoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760.8" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-1529" y="1690"/>
         </scene>
         <!--Tutor Profile Edit-->
         <scene sceneID="L3y-ev-hDY">
@@ -341,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fG-3D-ewm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1183.2" y="40.479760119940032"/>
+            <point key="canvasLocation" x="1244" y="147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wTb-nX-aBi">
@@ -359,12 +362,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOh-FM-Qud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1874.4000000000001" y="40.929535232383813"/>
+            <point key="canvasLocation" x="340" y="129"/>
         </scene>
         <!--User Profile Page View Controller-->
         <scene sceneID="cEU-ji-rfO">
             <objects>
-                <viewController storyboardIdentifier="userProfilePageViewController" id="on7-OB-A3A" customClass="userProfilePageViewController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userProfilePageViewController" id="on7-OB-A3A" customClass="UserProfilePageViewController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ju4-ot-o0T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,7 +389,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Edit"/>
                                                 <connections>
-                                                    <segue destination="sTV-CK-1Tm" kind="presentation" modalTransitionStyle="flipHorizontal" id="uj8-84-GRf"/>
+                                                    <segue destination="sTV-CK-1Tm" kind="presentation" id="0Fq-3M-cfw"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue_background" translatesAutoresizingMaskIntoConstraints="NO" id="Y5g-sB-Czd">
@@ -527,17 +530,22 @@
                     </view>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
+                        <outlet property="emailView" destination="uAE-Kj-6M1" id="SWG-a0-EQx"/>
+                        <outlet property="genderView" destination="RVJ-dd-Fec" id="7iJ-Ho-eEr"/>
+                        <outlet property="majorView" destination="ZkH-Io-2lg" id="Chx-pj-oH2"/>
+                        <outlet property="nameView" destination="nZZ-AP-rh0" id="SKf-Zm-gVM"/>
                         <outlet property="theImage" destination="BhF-kY-qaZ" id="ogM-yt-4qD"/>
+                        <outlet property="universityView" destination="oTn-Am-U2k" id="lre-02-wHk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKp-ar-4YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="178" y="784"/>
+            <point key="canvasLocation" x="-697" y="921"/>
         </scene>
-        <!--User Profile Edit-->
+        <!--User Profile Edit Controller-->
         <scene sceneID="57z-2z-fgA">
             <objects>
-                <viewController storyboardIdentifier="userProfileEdit" id="sTV-CK-1Tm" customClass="userProfileEdit" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userProfileEdit" id="sTV-CK-1Tm" customClass="UserProfileEditController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUC-Vi-a4t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -563,7 +571,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="on7-OB-A3A" kind="presentation" modalTransitionStyle="flipHorizontal" id="ED1-pJ-ao3"/>
+                                                    <segue destination="on7-OB-A3A" kind="presentation" identifier="ProfileEditToProfile" modalTransitionStyle="flipHorizontal" id="ED1-pJ-ao3"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-St-7zm">
@@ -652,10 +660,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cb-a0-3L8">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3cb-a0-3L8">
                                                 <rect key="frame" x="285" y="553" width="49" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
+                                                    <action selector="tutorButton:" destination="sTV-CK-1Tm" eventType="valueChanged" id="0oe-qg-vxr"/>
                                                     <segue destination="mJN-SO-v3Y" kind="presentation" modalTransitionStyle="flipHorizontal" id="wEy-3q-bwg"/>
                                                 </connections>
                                             </switch>
@@ -680,6 +689,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveProfile:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="HOS-li-A0U"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -713,15 +725,19 @@
                     </view>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
+                        <outlet property="emailEditor" destination="eEW-zV-b4n" id="b1w-H8-hb0"/>
                         <outlet property="genderDropDown" destination="eEu-K3-cfL" id="bEd-1v-rSM"/>
                         <outlet property="genderTextBox" destination="1yZ-ue-Ucu" id="znv-N9-xly"/>
+                        <outlet property="majorEditor" destination="aQs-V6-gXk" id="7CF-eI-NbP"/>
+                        <outlet property="nameEditor" destination="hkW-5I-nIb" id="qMG-9d-p8L"/>
                         <outlet property="switchForTutor" destination="3cb-a0-3L8" id="En3-48-Ezy"/>
                         <outlet property="theImage" destination="Hgs-gL-Jjv" id="KJk-Zh-BC9"/>
+                        <outlet property="universityEditor" destination="9Az-ZN-Xga" id="23D-sG-Php"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1084" y="27"/>
+            <point key="canvasLocation" x="274" y="921"/>
         </scene>
     </scenes>
     <resources>
@@ -729,7 +745,8 @@
         <image name="landscape" width="1200" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uj8-84-GRf"/>
+        <segue reference="ewp-3O-bCZ"/>
+        <segue reference="ED1-pJ-ao3"/>
         <segue reference="wEy-3q-bwg"/>
     </inferredMetricsTieBreakers>
 </document>

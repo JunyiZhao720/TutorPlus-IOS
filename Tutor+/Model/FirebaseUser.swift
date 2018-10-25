@@ -57,10 +57,9 @@ class FirebaseUser{
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()){
                     // Do something if logged in
-                    
-                    
-                    // Other login methods
-                    //ViewSwitch.moveToSearchPage()
+                    if self.checkEmailVerified(){
+                        ViewSwitch.moveToSearchPage()
+                    }
                 }
             }
         }
@@ -100,32 +99,32 @@ class FirebaseUser{
             "name" :self.name as Any,
             "email" : self.email as Any,
             "gender" : self.gender as Any,
-            "major" : self.gender as Any,
+            "major" : self.major as Any,
             "university" : self.university as Any
         ]
         return dictionary
     }
     
-    private func makeInitialDict()->[String: Any]{
-        let dictionary: [String: Any] = [
-            // use as Any to avoid warning
-            "name" :"",
-            "email" : "",
-            "gender" : "",
-            "major" : "",
-            "university" : ""
-        ]
-        return dictionary
-    }
+//    private func makeInitialDict()->[String: Any]{
+//        let dictionary: [String: Any] = [
+//            // use as Any to avoid warning
+//            "name" :"",
+//            "email" : "",
+//            "gender" : "",
+//            "major" : "",
+//            "university" : ""
+//        ]
+//        return dictionary
+//    }
 
     // Create an intial empty doc for the user
-    func createDoc(){
-        if isLoggedIn(){
-            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId!, dict: self.makeInitialDict())
-        }else{
-            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to createDoc() while user is not logged in")
-        }
-    }
+//    func createDoc(){
+//        if isLoggedIn(){
+//            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId!, dict: self.makeInitialDict())
+//        }else{
+//            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to createDoc() while user is not logged in")
+//        }
+//    }
     
     // Create or Override an existing doc
     func uploadDoc(){

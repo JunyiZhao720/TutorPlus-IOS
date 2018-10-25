@@ -29,7 +29,7 @@
 		AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB92C154217668CB0030B5F7 /* SearchViewController.swift */; };
 		ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6AA4A217930980073C03D /* AlertHelper.swift */; };
 		C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */; };
-		C8BE92A22176D9D000A0E896 /* userProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */; };
+		C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 		AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCEE6AD4F5BFAD5AE740591 /* Pods-Tutor+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.release.xcconfig"; sourceTree = "<group>"; };
 		C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileEdit.swift; sourceTree = "<group>"; };
-		C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userProfilePageViewController.swift; sourceTree = "<group>"; };
+		C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePageViewController.swift; sourceTree = "<group>"; };
 		F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -209,7 +209,7 @@
 			children = (
 				9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */,
 				C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */,
-				C8BE92A02176D9D000A0E896 /* userProfilePageViewController.swift */,
+				C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */,
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
@@ -503,7 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8BE92A22176D9D000A0E896 /* userProfilePageViewController.swift in Sources */,
+				C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
 				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,

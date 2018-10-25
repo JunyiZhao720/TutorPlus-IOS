@@ -47,9 +47,6 @@ class UserProfileEditController: UIViewController{
 //        switchForTutor.isOn = false
     }
     
-    @IBAction func cancleEditProfile(_ sender: Any) {
-        presentingViewController?.dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func saveProfile(_ sender: Any) {
         //FirebaseUser.shared.image = theImage.UIImage
@@ -66,6 +63,9 @@ class UserProfileEditController: UIViewController{
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.gender!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.major!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.university!)
+        
+        // Go back to previous page
+        self.performSegue(withIdentifier: "ProfileEditToProfile", sender: self)
     }
     //gender dropdown Picker
     func createGenderPicker(){

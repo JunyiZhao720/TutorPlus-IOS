@@ -8,22 +8,21 @@
 
 import UIKit
 
-class userProfilePageViewController: UIViewController {
+class UserProfilePageViewController: UIViewController {
 
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameView: UILabel!
     @IBOutlet weak var emailView: UILabel!
-    //@IBOutlet weak var genderView: UILabel!
     @IBOutlet weak var genderView: UILabel!
     @IBOutlet weak var majorView: UILabel!
-
-
     @IBOutlet weak var universityView: UILabel!
     // TODO : need to be desided in one text or split into two
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        // Download user data
         FirebaseUser.shared.downloadDoc(completion: {(success) in
             self.nameView.text = FirebaseUser.shared.name
             self.emailView.text = FirebaseUser.shared.email
