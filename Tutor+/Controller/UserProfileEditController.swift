@@ -17,11 +17,12 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var majorEditor: UITextField!
     @IBOutlet weak var universityEditor: UITextField!
     @IBOutlet weak var tutorSwitch: UISwitch!
-    
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var saveButton: UIButton!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
+    var bottomOffset = CGPoint(x: 0, y: 533)
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,10 @@ class UserProfileEditController: UIViewController{
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true
         theImage.layer.borderColor = UIColor.white.cgColor
+        
+        // initialize bottomOffset for tutor switch
+//        self.bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+//        debugHelpPrint(type: ClassType.UserProfileEditController, str: "bottomOffest loaded: \(bottomOffset.debugDescription)")
         
         //calling gender dropdown
 //        createGenderPicker()
@@ -64,11 +69,24 @@ class UserProfileEditController: UIViewController{
         // Go back to previous page
         self.performSegue(withIdentifier: "ProfileEditToProfile", sender: self)
     }
+    
+    
+    
     // Tutor Swtich
     @IBAction func tutorSwitchValueChanged(_ sender: Any) {
-        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
-        scrollView.setContentOffset(bottomOffset, animated: true)
+       
+        if tutorSwitch.isOn{
+            scrollView.setContentOffset(bottomOffset, animated: true)
+            saveButton.frame.origin.y += bottomOffset.y
+            scrollView.isScrollEnabled = true
+        } else{
+            scrollView.setContentOffset(CGPoint(x:0, y: 0), animated: true)
+            saveButton.frame.origin.y -= bottomOffset.y
+            scrollView.isScrollEnabled = false
+        }
     }
+    
+    
     
     //gender dropdown Picker
     func createGenderPicker(){
@@ -77,6 +95,9 @@ class UserProfileEditController: UIViewController{
         
         genderTextBox.inputView = genderPicker
     }
+    
+    
+    
     
     //gender dropdown-- adding "Done" button
     func createToolbar(){
@@ -101,22 +122,22 @@ class UserProfileEditController: UIViewController{
 
 //gender Dropdown
 extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSource{
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return genderList.count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return genderList[row]
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedGender = genderList[row]
         genderTextBox.text = selectedGender
     }
-    
+
 }

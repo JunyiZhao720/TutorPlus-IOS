@@ -576,14 +576,14 @@
             <objects>
                 <viewController storyboardIdentifier="userProfileEdit" id="sTV-CK-1Tm" customClass="UserProfileEditController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUC-Vi-a4t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQo-Cb-u79" userLabel="ProfileEditContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue_background" translatesAutoresizingMaskIntoConstraints="NO" id="lxq-he-bi5">
                                                 <rect key="frame" x="0.0" y="58" width="375" height="241"/>
@@ -718,34 +718,35 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="700" id="baS-Wg-IHc"/>
+                                            <constraint firstAttribute="height" constant="1200" id="RrX-GJ-IAr"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="UPi-m7-HrE"/>
-                                    <constraint firstAttribute="trailing" secondItem="NQo-Cb-u79" secondAttribute="trailing" id="XX0-v9-gJy"/>
-                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" id="rG2-KI-BH3"/>
-                                    <constraint firstAttribute="bottom" secondItem="NQo-Cb-u79" secondAttribute="bottom" id="uYi-S4-Gac"/>
+                                    <constraint firstAttribute="trailing" secondItem="NQo-Cb-u79" secondAttribute="trailing" id="1Yy-iJ-HYg"/>
+                                    <constraint firstAttribute="bottom" secondItem="NQo-Cb-u79" secondAttribute="bottom" id="Pa9-M1-MX8"/>
+                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="gcl-vE-IMC"/>
+                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" id="rQD-XT-klm"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EhN-pf-4aW" firstAttribute="bottom" secondItem="TCV-oV-yfs" secondAttribute="bottom" id="EnY-je-jpo"/>
-                            <constraint firstItem="NQo-Cb-u79" firstAttribute="width" secondItem="BUC-Vi-a4t" secondAttribute="width" id="OgL-43-5MR"/>
+                            <constraint firstItem="NQo-Cb-u79" firstAttribute="width" secondItem="BUC-Vi-a4t" secondAttribute="width" id="HNa-w8-1BT"/>
                             <constraint firstItem="EhN-pf-4aW" firstAttribute="top" secondItem="BUC-Vi-a4t" secondAttribute="top" id="Skh-ao-eEK"/>
                             <constraint firstItem="EhN-pf-4aW" firstAttribute="leading" secondItem="TCV-oV-yfs" secondAttribute="leading" id="X2q-to-CDI"/>
                             <constraint firstItem="EhN-pf-4aW" firstAttribute="trailing" secondItem="TCV-oV-yfs" secondAttribute="trailing" id="hp8-7n-S5u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TCV-oV-yfs"/>
                     </view>
-                    <size key="freeformSize" width="375" height="1000"/>
+                    <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="emailEditor" destination="eEW-zV-b4n" id="b1w-H8-hb0"/>
                         <outlet property="genderTextBox" destination="1yZ-ue-Ucu" id="znv-N9-xly"/>
                         <outlet property="majorEditor" destination="aQs-V6-gXk" id="7CF-eI-NbP"/>
                         <outlet property="nameEditor" destination="hkW-5I-nIb" id="qMG-9d-p8L"/>
+                        <outlet property="saveButton" destination="AmU-jE-gNG" id="KFt-3Z-ic5"/>
                         <outlet property="scrollView" destination="EhN-pf-4aW" id="Vbd-sp-Pe8"/>
                         <outlet property="theImage" destination="Hgs-gL-Jjv" id="KJk-Zh-BC9"/>
                         <outlet property="tutorSwitch" destination="3cb-a0-3L8" id="wvz-P6-cH4"/>
