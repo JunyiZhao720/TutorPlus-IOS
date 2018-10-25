@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sTV-CK-1Tm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="on7-OB-A3A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -251,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwf-ds-9op">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="756"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYH-wb-suf" userLabel="TutorProfileEditView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -579,7 +579,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQo-Cb-u79" userLabel="ProfileEditContentView">
@@ -693,18 +693,9 @@
                                                 <rect key="frame" x="285" y="553" width="49" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
-                                                    <action selector="tutorButton:" destination="sTV-CK-1Tm" eventType="valueChanged" id="0oe-qg-vxr"/>
-                                                    <segue destination="mJN-SO-v3Y" kind="presentation" modalTransitionStyle="flipHorizontal" id="wEy-3q-bwg"/>
+                                                    <action selector="tutorSwitchValueChanged:" destination="sTV-CK-1Tm" eventType="valueChanged" id="bcs-ei-CYc"/>
                                                 </connections>
                                             </switch>
-                                            <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-K3-cfL">
-                                                <rect key="frame" x="0.0" y="538" width="375" height="162"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="sTV-CK-1Tm" id="M3Q-y2-0rr"/>
-                                                    <outlet property="delegate" destination="sTV-CK-1Tm" id="vXB-oo-wju"/>
-                                                </connections>
-                                            </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-jB-d4B">
                                                 <rect key="frame" x="114" y="254" width="146" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -713,7 +704,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmU-jE-gNG">
-                                                <rect key="frame" x="160" y="602" width="54" height="35"/>
+                                                <rect key="frame" x="160" y="644" width="54" height="35"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -755,18 +746,18 @@
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
                         <outlet property="emailEditor" destination="eEW-zV-b4n" id="b1w-H8-hb0"/>
-                        <outlet property="genderDropDown" destination="eEu-K3-cfL" id="bEd-1v-rSM"/>
                         <outlet property="genderTextBox" destination="1yZ-ue-Ucu" id="znv-N9-xly"/>
                         <outlet property="majorEditor" destination="aQs-V6-gXk" id="7CF-eI-NbP"/>
                         <outlet property="nameEditor" destination="hkW-5I-nIb" id="qMG-9d-p8L"/>
-                        <outlet property="switchForTutor" destination="3cb-a0-3L8" id="En3-48-Ezy"/>
+                        <outlet property="scrollView" destination="EhN-pf-4aW" id="Vbd-sp-Pe8"/>
                         <outlet property="theImage" destination="Hgs-gL-Jjv" id="KJk-Zh-BC9"/>
+                        <outlet property="tutorSwitch" destination="3cb-a0-3L8" id="wvz-P6-cH4"/>
                         <outlet property="universityEditor" destination="9Az-ZN-Xga" id="23D-sG-Php"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="274" y="921"/>
+            <point key="canvasLocation" x="272.80000000000001" y="920.23988005997012"/>
         </scene>
     </scenes>
     <resources>
@@ -775,8 +766,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zhk-n3-QNG"/>
-        <segue reference="ewp-3O-bCZ"/>
+        <segue reference="0Fq-3M-cfw"/>
         <segue reference="ED1-pJ-ao3"/>
-        <segue reference="wEy-3q-bwg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,12 +16,9 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var genderDropDown: UIPickerView!
     @IBOutlet weak var majorEditor: UITextField!
     @IBOutlet weak var universityEditor: UITextField!
-    @IBAction func tutorButton(_ sender: Any) {
-        
-    }
-
-    @IBOutlet weak var switchForTutor: UISwitch!
-
+    @IBOutlet weak var tutorSwitch: UISwitch!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
@@ -47,7 +44,7 @@ class UserProfileEditController: UIViewController{
 //        switchForTutor.isOn = false
     }
     
-    
+    // Save Button
     @IBAction func saveProfile(_ sender: Any) {
         //FirebaseUser.shared.image = theImage.UIImage
         FirebaseUser.shared.name = nameEditor.text
@@ -67,6 +64,12 @@ class UserProfileEditController: UIViewController{
         // Go back to previous page
         self.performSegue(withIdentifier: "ProfileEditToProfile", sender: self)
     }
+    // Tutor Swtich
+    @IBAction func tutorSwitchValueChanged(_ sender: Any) {
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
     //gender dropdown Picker
     func createGenderPicker(){
         let genderPicker = UIPickerView()
