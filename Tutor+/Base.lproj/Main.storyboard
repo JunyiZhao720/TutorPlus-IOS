@@ -576,13 +576,13 @@
             <objects>
                 <viewController storyboardIdentifier="userProfileEdit" id="sTV-CK-1Tm" customClass="UserProfileEditController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUC-Vi-a4t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQo-Cb-u79" userLabel="ProfileEditContentView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQo-Cb-u79" userLabel="ProfileEditContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue_background" translatesAutoresizingMaskIntoConstraints="NO" id="lxq-he-bi5">
@@ -603,8 +603,9 @@
                                                     <segue destination="on7-OB-A3A" kind="presentation" identifier="ProfileEditToProfile" modalTransitionStyle="flipHorizontal" id="ED1-pJ-ao3"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-St-7zm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-St-7zm">
                                                 <rect key="frame" x="141" y="23" width="93" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -703,8 +704,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmU-jE-gNG">
-                                                <rect key="frame" x="160" y="644" width="54" height="35"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmU-jE-gNG">
+                                                <rect key="frame" x="155" y="596" width="54" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -716,34 +718,29 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="AmU-jE-gNG" firstAttribute="centerX" secondItem="NQo-Cb-u79" secondAttribute="centerX" id="2Dl-8g-ErW"/>
-                                            <constraint firstAttribute="bottom" secondItem="AmU-jE-gNG" secondAttribute="bottom" constant="93" id="FqU-lH-4tw"/>
-                                            <constraint firstItem="Ue1-St-7zm" firstAttribute="top" secondItem="NQo-Cb-u79" secondAttribute="top" constant="23" id="ZUN-px-x0u"/>
-                                            <constraint firstItem="AmU-jE-gNG" firstAttribute="top" secondItem="Ue1-St-7zm" secondAttribute="bottom" constant="703" id="rON-d9-kh9"/>
-                                            <constraint firstItem="Ue1-St-7zm" firstAttribute="centerX" secondItem="NQo-Cb-u79" secondAttribute="centerX" id="xyp-C6-VgA"/>
+                                            <constraint firstAttribute="height" constant="700" id="baS-Wg-IHc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="NQo-Cb-u79" secondAttribute="trailing" id="CNK-az-gq6"/>
-                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="height" secondItem="EhN-pf-4aW" secondAttribute="height" priority="250" id="LBv-Be-iES"/>
-                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="PBw-jD-rHU"/>
-                                    <constraint firstAttribute="bottom" secondItem="NQo-Cb-u79" secondAttribute="bottom" id="Qkz-aP-w3W"/>
-                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" id="YlF-rX-Ndw"/>
-                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="width" secondItem="EhN-pf-4aW" secondAttribute="width" id="mSR-I2-kBx"/>
+                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="UPi-m7-HrE"/>
+                                    <constraint firstAttribute="trailing" secondItem="NQo-Cb-u79" secondAttribute="trailing" id="XX0-v9-gJy"/>
+                                    <constraint firstItem="NQo-Cb-u79" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" id="rG2-KI-BH3"/>
+                                    <constraint firstAttribute="bottom" secondItem="NQo-Cb-u79" secondAttribute="bottom" id="uYi-S4-Gac"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="leading" secondItem="BUC-Vi-a4t" secondAttribute="leading" id="gXV-RR-BlX"/>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="bottom" secondItem="TCV-oV-yfs" secondAttribute="bottom" id="gww-9m-gIb"/>
-                            <constraint firstAttribute="trailing" secondItem="EhN-pf-4aW" secondAttribute="trailing" id="nFn-hx-NQB"/>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="top" secondItem="BUC-Vi-a4t" secondAttribute="top" id="nLn-jy-mYn"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="bottom" secondItem="TCV-oV-yfs" secondAttribute="bottom" id="EnY-je-jpo"/>
+                            <constraint firstItem="NQo-Cb-u79" firstAttribute="width" secondItem="BUC-Vi-a4t" secondAttribute="width" id="OgL-43-5MR"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="top" secondItem="BUC-Vi-a4t" secondAttribute="top" id="Skh-ao-eEK"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="leading" secondItem="TCV-oV-yfs" secondAttribute="leading" id="X2q-to-CDI"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="trailing" secondItem="TCV-oV-yfs" secondAttribute="trailing" id="hp8-7n-S5u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TCV-oV-yfs"/>
                     </view>
-                    <size key="freeformSize" width="375" height="700"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="emailEditor" destination="eEW-zV-b4n" id="b1w-H8-hb0"/>
                         <outlet property="genderTextBox" destination="1yZ-ue-Ucu" id="znv-N9-xly"/>
