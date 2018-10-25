@@ -24,11 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // Check for CURRENT LOGIN TOKEN
         
         FirebaseUser.shared.addUserListener(loggedIn: false)
-//        if !FirebaseUser.shared.isLoggedIn(){
-//            print("Delegate: Logged In")
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
-//        }
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -97,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
+        FirebaseUser.shared.logOut()
     }
 
 }

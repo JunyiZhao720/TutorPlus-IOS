@@ -7,6 +7,7 @@ target 'Tutor+' do
 
   # Pods for Tutor+
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   

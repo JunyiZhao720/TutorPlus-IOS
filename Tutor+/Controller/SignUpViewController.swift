@@ -12,10 +12,16 @@ import Firebase
 class SignUpViewController: UIViewController {
     
     
+
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var passwordConfirmTextField: UITextField!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var schoolTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +41,15 @@ class SignUpViewController: UIViewController {
 
     @IBAction func SignUpButtonOnClicked(_ sender: Any) {
         
+        if let password1 = passwordTextField.text, let password2 = passwordConfirmTextField.text{
+            if password1 != password2{
+                AlertHelper.showAlert(fromController: self, message: "The passwords you typed are inconsistent!", buttonTitle: "OK")
+                return
+            }
+        }
+        
         if let email = emailTextField.text, let password = passwordTextField.text{
+            // start to create a user
             Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
 
                 guard (authResult?.user) != nil else {
@@ -45,6 +59,15 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
+                // Intialize sign up information
+                FirebaseUser.shared.email = self.emailTextField.text
+                FirebaseUser.shared.name = self.nameTextField.text
+                FirebaseUser.shared.university = self.schoolTextField.text
+                
+                // create initialized information
+                FirebaseUser.shared.uploadDoc()
+                
+                // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
 
                     if error != nil{
