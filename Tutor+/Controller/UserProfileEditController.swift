@@ -44,8 +44,8 @@ class UserProfileEditController: UIViewController{
 //        debugHelpPrint(type: ClassType.UserProfileEditController, str: "bottomOffest loaded: \(bottomOffset.debugDescription)")
         
         //calling gender dropdown
-//        createGenderPicker()
-//        createToolbar()
+        createGenderPicker()
+        createToolbar()
 //        switchForTutor.isOn = false
     }
     
@@ -92,7 +92,6 @@ class UserProfileEditController: UIViewController{
     func createGenderPicker(){
         let genderPicker = UIPickerView()
         genderPicker.delegate = self
-        
         genderTextBox.inputView = genderPicker
     }
     
@@ -104,12 +103,9 @@ class UserProfileEditController: UIViewController{
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(UserProfileEditController.dismissKeyboard))
-        
         toolBar.setItems([doneButton],animated:false)
         toolBar.isUserInteractionEnabled = true
-        
         genderTextBox.inputAccessoryView = toolBar
-        
     }
     
     //gender dropdown function

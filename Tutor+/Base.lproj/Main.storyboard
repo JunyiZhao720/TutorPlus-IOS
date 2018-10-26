@@ -391,7 +391,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOh-FM-Qud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="129"/>
+            <point key="canvasLocation" x="977" y="36"/>
         </scene>
         <!--User Profile Page View Controller-->
         <scene sceneID="cEU-ji-rfO">
@@ -715,6 +715,10 @@
                                                     <action selector="saveProfile:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="HOS-li-A0U"/>
                                                 </connections>
                                             </button>
+                                            <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FhB-i0-0y6">
+                                                <rect key="frame" x="0.0" y="318" width="375" height="216"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -743,6 +747,7 @@
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
                         <outlet property="emailEditor" destination="eEW-zV-b4n" id="b1w-H8-hb0"/>
+                        <outlet property="genderDropDown" destination="FhB-i0-0y6" id="nWD-RT-zqo"/>
                         <outlet property="genderTextBox" destination="1yZ-ue-Ucu" id="znv-N9-xly"/>
                         <outlet property="majorEditor" destination="aQs-V6-gXk" id="7CF-eI-NbP"/>
                         <outlet property="nameEditor" destination="hkW-5I-nIb" id="qMG-9d-p8L"/>
@@ -764,7 +769,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zhk-n3-QNG"/>
-        <segue reference="0Fq-3M-cfw"/>
+        <segue reference="ewp-3O-bCZ"/>
         <segue reference="ED1-pJ-ao3"/>
     </inferredMetricsTieBreakers>
 </document>
