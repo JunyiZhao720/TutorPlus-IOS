@@ -21,6 +21,7 @@
 		42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 42D9CA612174E139005C307A /* Tutor+.xcworkspace */; };
 		74BF8E58423110C7B6CACCD0 /* Pods_Tutor_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */; };
 		9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */; };
+		9C5A319C2185014F006E8823 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A319B2185014F006E8823 /* NewTableViewCell.swift */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
 		AB624480217806A800B3605E /* DebugHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62447F217806A800B3605E /* DebugHelper.swift */; };
@@ -72,6 +73,7 @@
 		6326285A70DF40A834B7C179 /* Pods-Tutor+UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+UITests/Pods-Tutor+UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AEF0D76E01A2179A88E69D8 /* Pods-Tutor+Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditController.swift; sourceTree = "<group>"; };
+		9C5A319B2185014F006E8823 /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		A6F2D0D71EE790B91B463655 /* Pods-Tutor+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.debug.xcconfig"; sourceTree = "<group>"; };
 		AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
+				9C5A319B2185014F006E8823 /* NewTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
 				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,
+				9C5A319C2185014F006E8823 /* NewTableViewCell.swift in Sources */,
 				AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */,
 				AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */,
 				AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */,
@@ -692,7 +696,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB73V9RVAY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tutor+/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -711,7 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB73V9RVAY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tutor+/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

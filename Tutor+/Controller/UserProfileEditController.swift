@@ -9,6 +9,9 @@
 import UIKit
 
 class UserProfileEditController: UIViewController{
+    
+    
+    @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameEditor: UITextField!
     @IBOutlet weak var emailEditor: UITextField!
@@ -17,13 +20,17 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var majorEditor: UITextField!
     @IBOutlet weak var universityEditor: UITextField!
     @IBOutlet weak var tutorSwitch: UISwitch!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIButton!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
     var bottomOffset = CGPoint(x: 0, y: 533)
-        
+    
+    var classData = ["CMPS115", "CMPS101", "CMPE110"]
+    var gradeData = ["A", "A", "B"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,7 +39,8 @@ class UserProfileEditController: UIViewController{
         emailEditor.text = FirebaseUser.shared.email
         genderTextBox.text = FirebaseUser.shared.gender
         majorEditor.text = FirebaseUser.shared.major
-        universityEditor.text = FirebaseUser.shared.university
+        universityEditor.text =
+            FirebaseUser.shared.university
 
         //set image to circle
         theImage.layer.cornerRadius = theImage.frame.size.width/2
@@ -47,6 +55,7 @@ class UserProfileEditController: UIViewController{
         createGenderPicker()
         createToolbar()
 //        switchForTutor.isOn = false
+        courseTableView.reloadData()
     }
     
     // Save Button
@@ -72,10 +81,12 @@ class UserProfileEditController: UIViewController{
     
     
     
+    @IBOutlet weak var output: UILabel!
+    
     // Tutor Swtich
     @IBAction func tutorSwitchValueChanged(_ sender: Any) {
        
-        if tutorSwitch.isOn{
+        if tutorSwitch.isOn {
             scrollView.setContentOffset(bottomOffset, animated: true)
             saveButton.frame.origin.y += bottomOffset.y
             scrollView.isScrollEnabled = true
@@ -83,10 +94,9 @@ class UserProfileEditController: UIViewController{
             scrollView.setContentOffset(CGPoint(x:0, y: 0), animated: true)
             saveButton.frame.origin.y -= bottomOffset.y
             scrollView.isScrollEnabled = false
+            
         }
     }
-    
-    
     
     //gender dropdown Picker
     func createGenderPicker(){
@@ -94,8 +104,6 @@ class UserProfileEditController: UIViewController{
         genderPicker.delegate = self
         genderTextBox.inputView = genderPicker
     }
-    
-    
     
     
     //gender dropdown-- adding "Done" button
@@ -125,6 +133,7 @@ extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSourc
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return genderList.count
+       
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -136,4 +145,33 @@ extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSourc
         genderTextBox.text = selectedGender
     }
 
+}
+
+extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate {
+    
+    
+    // For tableView
+//    tableView.delegate = self
+//    tableView.dataSource = self
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return classData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NewTableViewCell
+        cell?.classLabel.text = classData[indexPath.row]
+        cell?.gradeLabel.text = gradeData[indexPath.row]
+        cell?.cellDelegate = self
+        cell?.index = indexPath
+        return cell!
+    }
+}
+
+extension UIViewController: TableViewNew {
+    func onClick(index: Int) {
+    
+        print("\(index) is clicked")
+    }
 }
