@@ -30,6 +30,7 @@
 		ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6AA4A217930980073C03D /* AlertHelper.swift */; };
 		C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */; };
 		C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */; };
+		C8D051DB218421B700DA1383 /* TutorResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D051DA218421B700DA1383 /* TutorResultListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		BBCEE6AD4F5BFAD5AE740591 /* Pods-Tutor+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.release.xcconfig"; sourceTree = "<group>"; };
 		C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileEdit.swift; sourceTree = "<group>"; };
 		C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePageViewController.swift; sourceTree = "<group>"; };
+		C8D051DA218421B700DA1383 /* TutorResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorResultListView.swift; sourceTree = "<group>"; };
 		F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
+				C8D051DA218421B700DA1383 /* TutorResultListView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */,
 				426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */,
 				C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */,
+				C8D051DB218421B700DA1383 /* TutorResultListView.swift in Sources */,
 				AB624482217806DA00B3605E /* Constants.swift in Sources */,
 				42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */,
 				AB624480217806A800B3605E /* DebugHelper.swift in Sources */,
