@@ -20,6 +20,7 @@
 		42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A63B9F217ABCD4002A6EFE /* FirebaseTrans.swift */; };
 		42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 42D9CA612174E139005C307A /* Tutor+.xcworkspace */; };
 		74BF8E58423110C7B6CACCD0 /* Pods_Tutor_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */; };
+		94788D9C21863AB0003E3224 /* SearchResultTutorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94788D9B21863AB0003E3224 /* SearchResultTutorProfile.swift */; };
 		9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
@@ -70,6 +71,7 @@
 		49FB6A65C81B8534117A8A58 /* Pods-Tutor+Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4E888C74EE34DA055629DCFB /* Pods-Tutor+UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+UITests/Pods-Tutor+UITests.release.xcconfig"; sourceTree = "<group>"; };
 		6326285A70DF40A834B7C179 /* Pods-Tutor+UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+UITests/Pods-Tutor+UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		94788D9B21863AB0003E3224 /* SearchResultTutorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfile.swift; sourceTree = "<group>"; };
 		9AEF0D76E01A2179A88E69D8 /* Pods-Tutor+Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditController.swift; sourceTree = "<group>"; };
 		A6F2D0D71EE790B91B463655 /* Pods-Tutor+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
+				94788D9B21863AB0003E3224 /* SearchResultTutorProfile.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */,
+				94788D9C21863AB0003E3224 /* SearchResultTutorProfile.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
 				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,
