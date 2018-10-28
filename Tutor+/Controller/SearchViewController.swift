@@ -10,6 +10,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +30,11 @@ class SearchViewController: UIViewController {
     }
     */
 
-    @IBAction func LogOutButtonOnCliked(_ sender: Any) {
+    @IBAction func searchButtonOnClicked(_ sender: Any) {
+        FirebaseTrans.shared.query(collection: "courses", normalElementField: ["name"], arrayElementField: ["feature"], words: "programming")
+    }
+    
+    @IBAction func logOutButtonOnClicked(_ sender: Any) {
         FirebaseUser.shared.logOut()
         ViewSwitch.moveToLoginPage()
     }

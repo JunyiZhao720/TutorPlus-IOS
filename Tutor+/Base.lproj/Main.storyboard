@@ -221,7 +221,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
-                                    <action selector="LogOutButtonOnCliked:" destination="B5t-vE-fJC" eventType="touchUpInside" id="NSC-5G-dQk"/>
+                                    <action selector="logOutButtonOnClicked:" destination="B5t-vE-fJC" eventType="touchUpInside" id="NSC-5G-dQk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-uS-OWh">
@@ -233,25 +233,38 @@
                                     <segue destination="on7-OB-A3A" kind="presentation" id="mRI-Mo-VKf"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3iQ-SJ-mmG">
-                                <rect key="frame" x="55" y="123" width="260" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agc-oq-0F0">
+                                <rect key="frame" x="163" y="267" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLU-UI-No2">
-                                <rect key="frame" x="148" y="253" width="74" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButtonOnClicked:" destination="B5t-vE-fJC" eventType="touchUpInside" id="qUo-CE-UAk"/>
+                                </connections>
                             </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iHb-Ob-Gnh">
+                                <rect key="frame" x="0.0" y="115" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3h8-BX-yu0"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="iHb-Ob-Gnh" id="lqe-eo-w8V"/>
+                        <outlet property="searchButton" destination="agc-oq-0F0" id="lnO-3f-mb5"/>
+                        <outlet property="searchDisplayController" destination="Zva-Cv-oQk" id="StX-UF-dSQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDl-xE-OoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Zva-Cv-oQk">
+                    <connections>
+                        <outlet property="delegate" destination="B5t-vE-fJC" id="3Ex-lv-PI3"/>
+                        <outlet property="searchContentsController" destination="B5t-vE-fJC" id="6co-rK-QYu"/>
+                        <outlet property="searchResultsDataSource" destination="B5t-vE-fJC" id="mUS-i0-noj"/>
+                        <outlet property="searchResultsDelegate" destination="B5t-vE-fJC" id="EoR-8n-don"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-1530.4000000000001" y="1689.8050974512746"/>
         </scene>
