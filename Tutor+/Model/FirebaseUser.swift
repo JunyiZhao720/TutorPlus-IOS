@@ -129,7 +129,7 @@ class FirebaseUser{
     // Create or Override an existing doc
     func uploadDoc(){
         if isLoggedIn(){
-            trans.createDoc(collection: trans.USER_COLLECTION, id: self.userId ?? "", dict: self.makeDict())
+            trans.createDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.userId ?? "", dict: self.makeDict())
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to uploadDoc() while user is not logged in")
         }
@@ -138,7 +138,7 @@ class FirebaseUser{
     // Download an existing doc
     func downloadDoc(completion:@escaping(Bool)->Void){
         if isLoggedIn(){
-            trans.downloadDoc(collection: trans.USER_COLLECTION, id: self.userId ?? "", completion: {(data) in
+            trans.downloadDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.userId ?? "", completion: {(data) in
                 if let data=data{
                     self.name = data["name"] as? String
                     self.email = data["email"] as? String
@@ -155,9 +155,4 @@ class FirebaseUser{
         }
     }
     
-    // doSeardh
-    
-    func doSearch(word:String, completion:@escaping(Dictionary<String, Any>?)->Void){
-        // 
-    }
 }

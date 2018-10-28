@@ -31,8 +31,15 @@ class SearchViewController: UIViewController {
     */
 
     @IBAction func searchButtonOnClicked(_ sender: Any) {
-        FirebaseTrans.shared.queryField(collection: "schools", word: "ucsc", field: "name", type: FirebaseTrans.QueryType.IsEqualTo, completion: {(data) in
-            debugHelpPrint(type: ClassType.SearchViewController, str: "Done searching")
+        let theList = searchBar.text?.split(separator: " ")
+        var theStrList:[String] = [String]()
+        
+        theList?.forEach{(item) in
+            theStrList.append(String(item))
+        }
+        
+        FirebaseTrans.shared.queryField(collection: "users", words: theStrList, field: "tag", completion: {(data) in
+            
         })
     }
     

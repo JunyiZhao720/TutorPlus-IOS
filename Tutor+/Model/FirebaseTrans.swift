@@ -14,9 +14,12 @@ class FirebaseTrans: NSObject {
     
     static let shared = FirebaseTrans()
     
-    let USER_COLLECTION = "users"
-    let SCHOOL_COLLECTION = "schools"
-    let COURSE_COLLECTION = "courses"
+    static let USER_COLLECTION = "users"
+    static let SCHOOL_COLLECTION = "schools"
+    static let COURSE_COLLECTION = "courses"
+    
+    static let NAME_FIELD = "name"
+    
     
     private let db = Firestore.firestore()
     
@@ -80,6 +83,23 @@ class FirebaseTrans: NSObject {
                 completion(document.data())
             }else{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: "Trying to download a nonexistent document", id:id)
+                completion(nil)
+            }
+        }
+    }
+    func downloadDoc(documentRef: DocumentReference, completion:@escaping(Dictionary<String, Any>?)->Void){
+
+        documentRef.getDocument{(document, error) in
+            if let err = error{
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: err.localizedDescription)
+                completion(nil)
+            }
+            
+            if let document = document, document.exists{
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Successfully download the document!");
+                completion(document.data())
+            }else{
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Trying to download a nonexistent document")
                 completion(nil)
             }
         }
@@ -153,62 +173,100 @@ class FirebaseTrans: NSObject {
             find tutors based on returned school name and course name
                 this field is array
      
-     
+     Method 5:
+        no course or school
+        user would have an independent field called tag
+        every key words would be in that tag
      */
     
     public enum QueryType{
-        case IsEqualTo
-        case IsGreaterThanOrEqualTo
+        case isEqualTo
+        case isGreaterThanOrEqualTo
         case arrayContains
     }
     
-    public func queryField(collection:String, word:String, field:String, type:QueryType, preDocumentRef: DocumentReference? = nil ,completion:@escaping(Dictionary<String, Any>?)->Void){
+    public func queryField(collection:String, words:[String], field:String,completion:@escaping([String:Any]?)->Void
+        ){
         
-        var collectionRef: CollectionReference
+        let collectionRef = db.collection(collection)
         
-        if let preDocumentRef = preDocumentRef{
-            collectionRef = preDocumentRef.collection(word)
-        }else{
-            collectionRef = db.collection(collection)
-        }
-        
-        
-        // normal element field search
-        
-        var results: Query
-        // filter
-        switch type{
-        case .IsEqualTo:
-            results = collectionRef.whereField(field, isEqualTo: word)
-        case .IsGreaterThanOrEqualTo:
-            results = collectionRef.whereField(field, isGreaterThanOrEqualTo: word)
-        case .arrayContains:
-            results = collectionRef.whereField(field, arrayContains: word)
+        // get the query
+        var theQuery = collectionRef.whereField(field, arrayContains: words[0])
+        for i in 1..<words.count{
+            theQuery = theQuery.whereField(field, arrayContains: words[i])
         }
         
         // query data
-        results.getDocuments() { (querySnapshot, err) in
+        theQuery.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting documents: \(err)")
                 completion(nil)
             } else {
                 // no such document
                 if querySnapshot?.count == 0{
-                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "queryField: No fields contain \(word)")
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "queryField: No result was found in \(collection) - \(field)")
                     completion(nil)
                     return
                 }
                 
                 // querySnapshot contains documents
-                var theDic = Dictionary<String,Any>()
+                var back = [String:Any]()
                 for document in querySnapshot!.documents {
                     
-                    theDic[document.documentID] = document.reference
+                    back[document.documentID] = document.data()
                     debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
                 }
-                completion(theDic)
+                completion(back)
             }
         }
+        
     }
+    
+//    public func queryField(collection:String, word:String, field:String, type:QueryType, preDocumentRef: DocumentReference? = nil ,completion:@escaping([DocumentReference]?)->Void){
+//
+//        var collectionRef: CollectionReference
+//
+//        if let preDocumentRef = preDocumentRef{
+//            collectionRef = preDocumentRef.collection(collection)
+//        }else{
+//            collectionRef = db.collection(collection)
+//        }
+//
+//
+//        var theQuery: Query
+//        // filter
+//        switch type{
+//        case .isEqualTo:
+//            theQuery = collectionRef.whereField(field, isEqualTo: word)
+//        case .isGreaterThanOrEqualTo:
+//            theQuery = collectionRef.whereField(field, isGreaterThanOrEqualTo: word)
+//        case .arrayContains:
+//            theQuery = collectionRef.whereField(field, arrayContains: word)
+//        }
+//
+//        // query data
+//        theQuery.getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting documents: \(err)")
+//                completion(nil)
+//            } else {
+//                // no such document
+//                if querySnapshot?.count == 0{
+//                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "queryField: No fields contains \(word) in \(collection) - \(field)")
+//                    completion(nil)
+//                    return
+//                }
+//
+//                // querySnapshot contains documents
+//                var back = [DocumentReference]()
+//                for document in querySnapshot!.documents {
+//
+//                    back.append(document.reference)
+//                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
+//                }
+//                completion(back)
+//            }
+//        }
+//    }
     
 }
