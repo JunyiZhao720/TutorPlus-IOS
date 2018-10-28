@@ -108,6 +108,7 @@
                         <outlet property="passwordConfirmTextField" destination="3nI-PQ-jw9" id="934-jN-I1F"/>
                         <outlet property="passwordTextField" destination="cAQ-7R-CkB" id="saR-zG-fFb"/>
                         <outlet property="schoolTextField" destination="8i2-FN-a8y" id="2Pv-5w-Pmu"/>
+                        <outlet property="signUpButton" destination="tw2-Iq-5hy" id="jJI-rZ-oPZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yf-dD-9JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
