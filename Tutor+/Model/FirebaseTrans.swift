@@ -131,6 +131,26 @@ class FirebaseTrans: NSObject {
         restrict input
         school course feature
      
+     -----------------------------------------------
+     Method 4:
+            like method 3, course is based on school
+        only two input fields
+        school course/feature
+        the first one must be school
+        word[0] school
+        word[1] other
+        steps
+            find school document -> course
+                if not found report error
+                if found
+                    get into its subcollection: courses
+                        found related names
+                        found related features
+                        return school name + course name
+            find tutors based on returned school name and course name
+                this field is array
+     
+     
      */
     
     func query(collection:String, words:[String], normalFields:[String], arrayFields:[String] = [], completion:@escaping(Dictionary<String, Any>?)->Void){
@@ -152,7 +172,7 @@ class FirebaseTrans: NSObject {
     
     private func queryNormalFields(collectionRef:CollectionReference, words:String, normalElementField:[String], completion:@escaping(Dictionary<String, Any>?)->Void){
         // normal element field search
-        for field in normalElementField{
+        for field in normalElementField{    
             // filter
             let results = collectionRef.whereField(field, isGreaterThanOrEqualTo: words)
 
