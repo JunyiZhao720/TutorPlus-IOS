@@ -31,7 +31,9 @@ class SearchViewController: UIViewController {
     */
 
     @IBAction func searchButtonOnClicked(_ sender: Any) {
-        FirebaseTrans.shared.query(collection: "courses", normalElementField: ["name"], arrayElementField: ["feature"], words: "programming")
+        FirebaseTrans.shared.queryField(collection: "schools", word: "ucsc", field: "name", type: FirebaseTrans.QueryType.IsEqualTo, completion: {(data) in
+            debugHelpPrint(type: ClassType.SearchViewController, str: "Done searching")
+        })
     }
     
     @IBAction func logOutButtonOnClicked(_ sender: Any) {

@@ -162,8 +162,7 @@ class FirebaseTrans: NSObject {
         case arrayContains
     }
     
-    
-    private func queryField(collection:String, word:String, field:String, type:QueryType, preDocumentRef: DocumentReference? = nil ,completion:@escaping(Dictionary<String, Any>?)->Void){
+    public func queryField(collection:String, word:String, field:String, type:QueryType, preDocumentRef: DocumentReference? = nil ,completion:@escaping(Dictionary<String, Any>?)->Void){
         
         var collectionRef: CollectionReference
         
