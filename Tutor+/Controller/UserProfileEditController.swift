@@ -11,7 +11,7 @@ import UIKit
 class UserProfileEditController: UIViewController{
     
     
-    @IBOutlet weak var courseTableView: UITableView!
+    
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameEditor: UITextField!
     @IBOutlet weak var emailEditor: UITextField!
@@ -21,13 +21,17 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var universityEditor: UITextField!
     @IBOutlet weak var tutorSwitch: UISwitch!
     
+    @IBOutlet weak var tutorStatus: UILabel!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var courseTableView: UITableView!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
     var bottomOffset = CGPoint(x: 0, y: 533)
     
+    var schoolData = ["UCSC", "UCSC", "beijing university"]
     var classData = ["CMPS115", "CMPS101", "CMPE110"]
     var gradeData = ["A", "A", "B"]
     
@@ -81,20 +85,19 @@ class UserProfileEditController: UIViewController{
     
     
     
-    @IBOutlet weak var output: UILabel!
-    
     // Tutor Swtich
     @IBAction func tutorSwitchValueChanged(_ sender: Any) {
        
-        if tutorSwitch.isOn {
+        if (tutorSwitch.isOn == true) {
             scrollView.setContentOffset(bottomOffset, animated: true)
             saveButton.frame.origin.y += bottomOffset.y
             scrollView.isScrollEnabled = true
+            self.tutorStatus.text = "Yes!  I'm a great tutor"
         } else{
             scrollView.setContentOffset(CGPoint(x:0, y: 0), animated: true)
             saveButton.frame.origin.y -= bottomOffset.y
             scrollView.isScrollEnabled = false
-            
+            self.tutorStatus.text = "Sorry, not now"
         }
     }
     
@@ -161,11 +164,22 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NewTableViewCell
+        cell?.schoolLabel.text = schoolData[indexPath.row]
         cell?.classLabel.text = classData[indexPath.row]
         cell?.gradeLabel.text = gradeData[indexPath.row]
         cell?.cellDelegate = self
         cell?.index = indexPath
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+            self.schoolData.remove(at: indexPath.row)
+            self.classData.remove(at: indexPath.row)
+            self.gradeData.remove(at: indexPath.row)
+                self.courseTableView.reloadData()
+        }
     }
 }
 
@@ -175,3 +189,12 @@ extension UIViewController: TableViewNew {
         print("\(index) is clicked")
     }
 }
+
+// already done in the func, dont need to call this func
+//extension UIImageView {
+//    func setRounded() {
+//        let radius = CGGectGetWidth(self.frame) / 2
+//        self.layer.cornerRadius = radius
+//        self.layer.masksToBounds = true;
+//    }
+//}

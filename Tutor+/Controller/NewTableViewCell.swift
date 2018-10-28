@@ -15,6 +15,7 @@ protocol TableViewNew {
 
 class NewTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     
@@ -33,10 +34,7 @@ class NewTableViewCell: UITableViewCell {
     }
 
     
-    @IBAction func addCell(_ sender: Any) {
-    }
-    
-    @IBAction func delCell(_ sender: Any) {
-        cellDelegate?.onClick(index: ((index?.row)!))
-    }
+//    @IBAction func addCell(_ sender: Any) {
+//    }
+
 }
