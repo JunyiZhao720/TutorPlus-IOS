@@ -13,11 +13,18 @@ class SearchResultTutorProfile: UIViewController {
     
     @IBOutlet weak var toolbarRequestButton: UIButton!
     
+    @IBOutlet weak var tutorIcon: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         toolbarRequestButton.layer.cornerRadius = 5.0
         toolbarRequestButton.layer.masksToBounds = true
+        
+        tutorIcon.layer.cornerRadius = 5.0
+        tutorIcon.layer.masksToBounds = true
+
         
         // Do any additional setup after loading the view.
     }
