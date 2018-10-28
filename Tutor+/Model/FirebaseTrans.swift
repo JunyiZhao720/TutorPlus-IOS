@@ -14,7 +14,9 @@ class FirebaseTrans: NSObject {
     
     static let shared = FirebaseTrans()
     
-    let USER_COLLECTIONS = "users"
+    let USER_COLLECTION = "users"
+    let SCHOOL_COLLECTION = "schools"
+    let COURSE_COLLECTION = "courses"
     
     private let db = Firestore.firestore()
     
@@ -23,6 +25,7 @@ class FirebaseTrans: NSObject {
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
     }
+    
     
     
     
@@ -65,7 +68,7 @@ class FirebaseTrans: NSObject {
         //    })
     
     func downloadDoc(collection:String, id:String, completion:@escaping(Dictionary<String, Any>?)->Void){
-        let theDoc = db.collection(USER_COLLECTIONS).document(id)
+        let theDoc = db.collection(collection).document(id)
         theDoc.getDocument{(document, error) in
             if let err = error{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: err.localizedDescription, id:id)
@@ -153,68 +156,60 @@ class FirebaseTrans: NSObject {
      
      */
     
-    func query(collection:String, words:[String], normalFields:[String], arrayFields:[String] = [], completion:@escaping(Dictionary<String, Any>?)->Void){
-        let collectionRef = db.collection(collection)
-        var theDic = Dictionary<String, Any>()
-        
-        if normalFields.count > 0{
-            queryNormalFields(collectionRef: collectionRef, words: words, normalElementField: normalFields, completion: {(data) in
-                
-                data!.forEach(<#T##body: ((key: String, value: Any)) throws -> Void##((key: String, value: Any)) throws -> Void#>)
-                
-                if arrayFields.count > 0{
-                    
-                }
-            })
-        }
-        
+    public enum QueryType{
+        case IsEqualTo
+        case IsGreaterThanOrEqualTo
+        case arrayContains
     }
     
-    private func queryNormalFields(collectionRef:CollectionReference, words:String, normalElementField:[String], completion:@escaping(Dictionary<String, Any>?)->Void){
+    
+    private func queryField(collection:String, word:String, field:String, type:QueryType, preDocumentRef: DocumentReference? = nil ,completion:@escaping(Dictionary<String, Any>?)->Void){
+        
+        var collectionRef: CollectionReference
+        
+        if let preDocumentRef = preDocumentRef{
+            collectionRef = preDocumentRef.collection(word)
+        }else{
+            collectionRef = db.collection(collection)
+        }
+        
+        
         // normal element field search
-        for field in normalElementField{    
-            // filter
-            let results = collectionRef.whereField(field, isGreaterThanOrEqualTo: words)
-
-            
-            // query data
-            results.getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting documents: \(err)")
+        
+        var results: Query
+        // filter
+        switch type{
+        case .IsEqualTo:
+            results = collectionRef.whereField(field, isEqualTo: word)
+        case .IsGreaterThanOrEqualTo:
+            results = collectionRef.whereField(field, isGreaterThanOrEqualTo: word)
+        case .arrayContains:
+            results = collectionRef.whereField(field, arrayContains: word)
+        }
+        
+        // query data
+        results.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting documents: \(err)")
+                completion(nil)
+            } else {
+                // no such document
+                if querySnapshot?.count == 0{
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "queryField: No fields contain \(word)")
                     completion(nil)
-                } else {
-                    var theDic = Dictionary<String,Any>()
-                    for document in querySnapshot!.documents {
-                        theDic[document.documentID] = document.data()
-                        debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
-                    }
-                    completion(theDic)
+                    return
                 }
+                
+                // querySnapshot contains documents
+                var theDic = Dictionary<String,Any>()
+                for document in querySnapshot!.documents {
+                    
+                    theDic[document.documentID] = document.reference
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
+                }
+                completion(theDic)
             }
         }
     }
     
-    private func queryArrayFields(collectionRef:CollectionReference, words:String, arrayElementField:[String], completion:@escaping(Dictionary<String, Any>?)->Void){
-        // array element field search
-        for field in arrayElementField{
-            // filter
-            let results = collectionRef.whereField(field, arrayContains: words)
-            
-            // query data
-            results.getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting normal field documents: \(err)")
-                    completion(nil)
-                } else {
-                    var theDic = Dictionary<String,Any>()
-                    for document in querySnapshot!.documents {
-                        theDic[document.documentID] = document.data()
-                        // prompt
-                        debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
-                    }
-                    completion(theDic)
-                }
-            }
-        }
-    }
 }
