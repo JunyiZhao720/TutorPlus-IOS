@@ -38,9 +38,15 @@ class SearchViewController: UIViewController {
             theStrList.append(String(item))
         }
         
-        FirebaseTrans.shared.queryField(collection: "users", words: theStrList, field: "tag", completion: {(data) in
-            
-        })
+        if let theList = theList, theList.count != 0{
+            FirebaseTrans.shared.queryField(collection: "users", words: theStrList, field: "tag", completion: {(data) in
+                
+            })
+        }
+        
+
+        
+
     }
     
     @IBAction func logOutButtonOnClicked(_ sender: Any) {
