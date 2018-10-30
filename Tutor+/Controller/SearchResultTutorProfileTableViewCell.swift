@@ -8,15 +8,21 @@
 
 import UIKit
 
-class SearchResultTutorProfileTableViewCell: UITableViewCell {
+class SearchResultTutorProfileTableViewCell: UITableViewCell{
 
     
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var tutorName: UILabel!
     @IBOutlet weak var className: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //set image to circle
+        img.layer.cornerRadius = img.frame.size.width/2
+        img.clipsToBounds = true
+        img.layer.borderColor = UIColor.white.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,3 +32,4 @@ class SearchResultTutorProfileTableViewCell: UITableViewCell {
     }
 
 }
+

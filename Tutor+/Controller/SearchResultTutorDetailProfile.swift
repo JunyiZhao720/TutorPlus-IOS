@@ -26,6 +26,7 @@ class SearchResultTutorDetailProfile: UIViewController {
         className.text = cName
         img.image = image1
         
+        
         // Do any additional setup after loading the view.
     }
     
