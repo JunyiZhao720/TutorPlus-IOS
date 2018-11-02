@@ -10,13 +10,21 @@ import UIKit
 
 class SearchBoxViewController: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
     
-
+    
+       /* image.layer.borderWidth = 0
+        image.layer.masksToBounds = false
+        image.layer.borderColor = UIColor.black.cgColor
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true*/
+        
+    }
     /*
     // MARK: - Navigation
 
