@@ -8,45 +8,47 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var table: UITableView!
     
+    // Main data source for search Table
+    var suggestionTableArray = [String]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        table.dataSource = self
+        
+        setUpTexts()
+        table.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    // Buttons
+    
+    
+    
     @IBAction func searchButtonOnClicked(_ sender: Any) {
-        let theList = searchBar.text?.split(separator: " ")
-        var theStrList:[String] = [String]()
-        
-        theList?.forEach{(item) in
-            theStrList.append(String(item))
-        }
-        
-        if let theList = theList, theList.count != 0{
-            FirebaseTrans.shared.queryField(collection: "users", words: theStrList, field: "tag", completion: {(data) in
-                
-            })
-        }
-        
-
-        
+//        let theList = searchBar.text?.split(separator: " ")
+//        var theStrList:[String] = [String]()
+//
+//        theList?.forEach{(item) in
+//            theStrList.append(String(item))
+//        }
+//
+//        if let theList = theList, theList.count != 0{
+//            FirebaseTrans.shared.queryField(collection: "users", words: theStrList, field: "tag", completion: {(data) in
+//
+//            })
+//        }
+        debugHelpPrint(type: .SearchViewController, str: suggestionTableArray.description)
+        table.reloadData()
 
     }
     
@@ -54,4 +56,30 @@ class SearchViewController: UIViewController {
         FirebaseUser.shared.logOut()
         ViewSwitch.moveToLoginPage()
     }
+    
+    
+    
+    // Suggestion Table View
+
+    
+    
+    private func setUpTexts(){
+        suggestionTableArray.append("test")
+        suggestionTableArray.append("test2")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return suggestionTableArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? SearchViewTableViewCell else {
+            debugHelpPrint(type: .SearchViewController, str: "Empty")
+            return UITableViewCell()
+        }
+        cell.suggestionLabel.text = suggestionTableArray[indexPath.row]
+        debugHelpPrint(type: .SearchViewController, str: "\(String(describing: cell.suggestionLabel.text))")
+        return cell
+    }
+    
 }
