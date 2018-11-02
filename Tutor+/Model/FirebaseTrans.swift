@@ -119,64 +119,17 @@ class FirebaseTrans: NSObject {
 
     
     /**
-        For each keyword, there must be two possibilities
-            1. it is a singleton field
-            2. it is an array field
-     
-     Method 1:
-        Make courses and schools independent collections
-            treat each search as both singleton and array fields
-            check singleton field
-                return all results
-            check array fields
-                return all results
-            Merge two results
-                return results
-     
-            -school                         -> good -all information about the school
-            -course                         -> good -all related information
-            -feature                        -> good -all related information
-            -school course ... other        -> bad  -how to merge?
-     
-     
-     Method 2:
-        Make courses based on schools
-            check from school collections
-                if it is there, return the collection
-                if not there linearly search every course in every schoool
-                    return all relavant information
-                - school course -good
-                - course - ok
-                - course school - problem
-                - school course feature - problem
-     
-     Method 3:
-        restrict input
-        school course feature
-     
-     -----------------------------------------------
-     Method 4:
-            like method 3, course is based on school
-        only two input fields
-        school course/feature
-        the first one must be school
-        word[0] school
-        word[1] other
+        Two Searchboxes
+             SearchBox-1: scool
+             SearchBox-2: couse
         steps
-            find school document -> course
-                if not found report error
-                if found
-                    get into its subcollection: courses
-                        found related names
-                        found related features
-                        return school name + course name
-            find tutors based on returned school name and course name
-                this field is array
+            1. Enter the page download all school information
+                get all the information by pair <name, id>
+            2. user starts typing stuff in search bar
+                autocomplete based on typing
+                user has to click one item
+                    once clicked, download all the schools <name>
      
-     Method 5:
-        no course or school
-        user would have an independent field called tag
-        every key words would be in that tag
      */
     
     public enum QueryType{
