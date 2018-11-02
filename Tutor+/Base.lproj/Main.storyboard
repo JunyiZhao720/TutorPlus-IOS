@@ -233,6 +233,15 @@
                                     <segue destination="on7-OB-A3A" kind="presentation" id="mRI-Mo-VKf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Il1-ee-aUx">
+                                <rect key="frame" x="133" y="382" width="170" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="to searchBar"/>
+                                <connections>
+                                    <action selector="searchBar:" destination="B5t-vE-fJC" eventType="touchUpInside" id="Ouv-Ii-IuC"/>
+                                    <segue destination="Dan-Py-8kW" kind="show" id="KPs-5B-PVr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3h8-BX-yu0"/>
@@ -240,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDl-xE-OoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1529" y="1690"/>
+            <point key="canvasLocation" x="-1530.4000000000001" y="1689.8050974512746"/>
         </scene>
         <!--Tutor Profile Edit-->
         <scene sceneID="L3y-ev-hDY">
@@ -383,16 +392,15 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eL-xE-3RE">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.46027791499999998" green="0.53647512200000003" blue="0.59491181370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Tutor +" id="wjo-sD-7Xm">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="bnU-PP-XBs">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Bi-WZ-kts">
-                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Po9-eF-Joi">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bdv-Pe-qqW">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <state key="normal" title="Back">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Log Out">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                             </button>
                                         </barButtonItem>
@@ -407,7 +415,7 @@
                             <searchBar alpha="0.94999999999999996" contentMode="center" fixedFrame="YES" text="" placeholder="Search : ucsc , cs101" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SLN-nb-ouV">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.84623795749999997" green="0.8702147603" blue="0.89929944279999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.75"/>
                                 <color key="barTintColor" red="0.85398441553115845" green="0.88207119703292847" blue="0.90703123807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <offsetWrapper key="searchTextPositionAdjustment" horizontal="1" vertical="0.0"/>
@@ -418,21 +426,28 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c07-iJ-Xoq">
+                                <rect key="frame" x="97" y="574" width="54" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fiF-aa-nNk">
                                 <rect key="frame" x="0.0" y="574" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.84623795747756958" green="0.87021476030349731" blue="0.89929944276809692" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <tabBarItem title="Search" image="search.png" landscapeImage="search.png" selectedImage="search.png" id="W5C-Ip-RkY">
+                                    <tabBarItem systemItem="search" id="W5C-Ip-RkY">
                                         <inset key="imageInsets" minX="1" minY="9" maxX="0.0" maxY="1"/>
                                     </tabBarItem>
-                                    <tabBarItem title="Chat" image="chat.png" selectedImage="chat.png" id="Uzp-gL-eKE">
+                                    <tabBarItem systemItem="contacts" id="Uzp-gL-eKE">
                                         <inset key="imageInsets" minX="0.0" minY="23" maxX="0.0" maxY="16"/>
                                         <inset key="landscapeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
                                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                                     </tabBarItem>
-                                    <tabBarItem title="Me" image="user.png" id="QIH-aS-ykO">
-                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-8"/>
+                                    <tabBarItem title="Profile" image="customer" id="QIH-aS-ykO">
+                                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="3"/>
                                     </tabBarItem>
                                 </items>
                             </tabBar>
@@ -448,7 +463,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djz-n6-Rlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.5999999999999" y="828.93553223388312"/>
+            <point key="canvasLocation" x="-636" y="1700.5997001499252"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="2BT-d9-APK">
+            <objects>
+                <viewController id="yzd-MQ-MrR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GgK-A5-7ls">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xPD-Xy-01F"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="jQd-pl-Jgp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k0b-MH-pSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896" y="2425"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="ged-Ht-rhd">
+            <objects>
+                <viewController id="HO5-Nw-mFf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vo5-mi-fRE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Hzy-1Y-dLP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="Ki2-US-cOe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YK3-qT-6HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896" y="1760"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="cd5-hQ-lKS">
+            <objects>
+                <tabBarController id="NOh-Es-7la" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FWS-p5-6Qm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="HO5-Nw-mFf" kind="relationship" relationship="viewControllers" id="gYq-hj-76k"/>
+                        <segue destination="yzd-MQ-MrR" kind="relationship" relationship="viewControllers" id="cHh-CD-nso"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vli-6W-ZdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950" y="2093"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wTb-nX-aBi">
@@ -835,15 +900,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272.80000000000001" y="920.23988005997012"/>
+            <point key="canvasLocation" x="247" y="776"/>
         </scene>
     </scenes>
     <resources>
         <image name="blue_background" width="825" height="550"/>
-        <image name="chat.png" width="32" height="32"/>
+        <image name="customer" width="37.5" height="37.5"/>
         <image name="landscape" width="1200" height="630"/>
-        <image name="search.png" width="50" height="50"/>
-        <image name="user.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ED1-pJ-ao3"/>

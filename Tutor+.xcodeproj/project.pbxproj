@@ -10,9 +10,6 @@
 		14A51B7F1D25FB8030AD1F58 /* Pods_Tutor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491E6320B62899F69A5A1CFC /* Pods_Tutor_Tests.framework */; };
 		14A63A8E24CE91D6A154BA5D /* Pods_Tutor_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */; };
 		188C0DE221865B0000BC10A9 /* SearchBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C0DE121865B0000BC10A9 /* SearchBoxViewController.swift */; };
-		188C0DE421866E2600BC10A9 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C0DE321866E2600BC10A9 /* search.png */; };
-		188C0DE821869D8600BC10A9 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C0DE721869D8600BC10A9 /* chat.png */; };
-		188C0DEA21869E2600BC10A9 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 188C0DE921869E2500BC10A9 /* user.png */; };
 		426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426098222175B30E00A2C1B8 /* LoginViewController.swift */; };
 		42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42866EAD216EA63400D29698 /* AppDelegate.swift */; };
 		42866EB3216EA63400D29698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42866EB1216EA63400D29698 /* Main.storyboard */; };
@@ -55,9 +52,6 @@
 
 /* Begin PBXFileReference section */
 		188C0DE121865B0000BC10A9 /* SearchBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBoxViewController.swift; sourceTree = "<group>"; };
-		188C0DE321866E2600BC10A9 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = ../../../Downloads/search.png; sourceTree = "<group>"; };
-		188C0DE721869D8600BC10A9 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = ../../../Downloads/chat.png; sourceTree = "<group>"; };
-		188C0DE921869E2500BC10A9 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = ../../../Downloads/user.png; sourceTree = "<group>"; };
 		426098222175B30E00A2C1B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		42866EAA216EA63400D29698 /* Tutor+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tutor+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42866EAD216EA63400D29698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,9 +150,6 @@
 				42866EAD216EA63400D29698 /* AppDelegate.swift */,
 				42866EB1216EA63400D29698 /* Main.storyboard */,
 				42866EB4216EA63700D29698 /* Assets.xcassets */,
-				188C0DE921869E2500BC10A9 /* user.png */,
-				188C0DE721869D8600BC10A9 /* chat.png */,
-				188C0DE321866E2600BC10A9 /* search.png */,
 				42866EB6216EA63700D29698 /* LaunchScreen.storyboard */,
 				42866EB9216EA63700D29698 /* Info.plist */,
 			);
@@ -350,10 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */,
-				188C0DE421866E2600BC10A9 /* search.png in Resources */,
-				188C0DEA21869E2600BC10A9 /* user.png in Resources */,
 				42866EB8216EA63700D29698 /* LaunchScreen.storyboard in Resources */,
-				188C0DE821869D8600BC10A9 /* chat.png in Resources */,
 				429D63EB2174D5F6006EC97F /* GoogleService-Info.plist in Resources */,
 				42866EB5216EA63700D29698 /* Assets.xcassets in Resources */,
 				42866EB3216EA63400D29698 /* Main.storyboard in Resources */,

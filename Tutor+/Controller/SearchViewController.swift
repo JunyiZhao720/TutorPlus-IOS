@@ -10,6 +10,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBAction func searchBar(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
