@@ -10,8 +10,6 @@ import UIKit
 
 class UserProfileEditController: UIViewController{
     
-    
-    
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameEditor: UITextField!
     @IBOutlet weak var emailEditor: UITextField!
@@ -26,6 +24,7 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var courseTableView: UITableView!
+    @IBOutlet weak var personalState: UITextView!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
@@ -60,8 +59,35 @@ class UserProfileEditController: UIViewController{
         createToolbar()
 //        switchForTutor.isOn = false
         courseTableView.reloadData()
+        
+        super.viewDidLoad()
+        courseTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        personalState.text = "Personal Statement. Watch my video here: www.baidu.com"
+        
+        personalState.backgroundColor = UIColor(hue: 0.5333, saturation: 0.02, brightness: 0.94, alpha: 1.0)
+        
+        personalState.font = UIFont.systemFont(ofSize: 20)
+        personalState.textColor = UIColor.black
+
+        personalState.font = UIFont.boldSystemFont(ofSize: 20)
+        personalState.font = UIFont(name:"Verdana", size: 17)
+
+        personalState.isEditable = true
+        personalState.autocapitalizationType = UITextAutocapitalizationType.allCharacters
+
+        personalState.isSelectable = true
+        personalState.isEditable = false
+        personalState.dataDetectorTypes = UIDataDetectorTypes.link
+        
+        personalState.isEditable = true
+        personalState.autocorrectionType = UITextAutocorrectionType.yes
+        personalState.spellCheckingType = UITextSpellCheckingType.yes
+        personalState.autocapitalizationType = UITextAutocapitalizationType.none
+        
     }
     
+
     // Save Button
     @IBAction func saveProfile(_ sender: Any) {
         //FirebaseUser.shared.image = theImage.UIImage
@@ -125,6 +151,31 @@ class UserProfileEditController: UIViewController{
     }
     
     
+    
+    @IBOutlet weak var addSchool: UITextField!
+    @IBOutlet weak var addClass: UITextField!
+    @IBOutlet weak var addGradeText: UITextField!
+    
+    @IBAction func addCell(_ sender: Any) {
+        insert()
+    }
+    func insert(){
+        schoolData.append(addSchool.text!)
+        classData.append(addClass.text!)
+        gradeData.append(addGradeText.text!)
+        
+        let indexPath = IndexPath(row: schoolData.count - 1, section: 0)
+//        let indexPath = IndexPath(row: classData.count - 1, section: 0)
+//        let indexPath = IndexPath(row: gradeData.count - 1, section: 0)
+        
+        courseTableView.beginUpdates()
+        courseTableView.insertRows(at: [indexPath], with: .automatic)
+        courseTableView.endUpdates()
+        
+        addSchool.text = ""
+        view.endEditing(true)
+    }
+
 }
 
 //gender Dropdown
@@ -181,6 +232,7 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
                 self.courseTableView.reloadData()
         }
     }
+
 }
 
 extension UIViewController: TableViewNew {
