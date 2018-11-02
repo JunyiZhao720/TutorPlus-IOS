@@ -16,21 +16,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var table: UITableView!
     
-    let node = FirebaseTrans.node.self
     
     // Main data source for search Table
-    var suggestionTableArray = [node]()
-    var currentSuggestionTableArray = [node]()
+    var suggestionTableArray = [FirebaseTrans.node]()
+    var currentSuggestionTableArray = [FirebaseTrans.node]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         table.dataSource = self
         
-        
-        setUpSearchBar()
-        setUpTableView()
-        table.reloadData()
+        // downalod school collection documents
+        FirebaseTrans.shared.downloadAllDocuments(collection: FirebaseTrans.SCHOOL_COLLECTION, completion: {(data)in
+            if let data = data{
+                self.suggestionTableArray = data
+            }
+            
+            self.setUpSearchBar()
+            self.setUpTableView()
+            self.table.reloadData()
+        })
     }
     
     

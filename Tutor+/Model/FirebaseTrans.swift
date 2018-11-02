@@ -20,7 +20,7 @@ class FirebaseTrans: NSObject {
     
     static let NAME_FIELD = "name"
     
-    struct node{
+    public class node{
         let name: String
         let id: String
         
@@ -152,8 +152,9 @@ class FirebaseTrans: NSObject {
                 var back = [node]()
                 for document in querySnapshot!.documents{
                     let data = document.data()
-                    back.append(node(name: data["name"] as! String, id: document.documentID))
+                    back.append(node(name: data[FirebaseTrans.NAME_FIELD] as! String, id: document.documentID))
                 }
+                debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocuments: done downloading collection documents")
                 completion(back)
             }
         }
