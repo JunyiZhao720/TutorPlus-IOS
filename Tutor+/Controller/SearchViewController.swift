@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     
 
@@ -18,20 +18,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Main data source for search Table
     var suggestionTableArray = [String]()
+    var currentSuggestionTableArray = [String]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
         
-        setUpTexts()
+        
+        setUpSearchBar()
+        setUpTableView()
         table.reloadData()
     }
     
     
-    
     // Buttons
-    
     
     
     @IBAction func searchButtonOnClicked(_ sender: Any) {
@@ -49,7 +50,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 //        }
         debugHelpPrint(type: .SearchViewController, str: suggestionTableArray.description)
         table.reloadData()
-
+        
     }
     
     @IBAction func logOutButtonOnClicked(_ sender: Any) {
@@ -58,18 +59,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    
     // Suggestion Table View
 
     
-    
-    private func setUpTexts(){
+    private func setUpTableView(){
         suggestionTableArray.append("test")
         suggestionTableArray.append("test2")
+        
+        currentSuggestionTableArray = suggestionTableArray
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return suggestionTableArray.count
+        return currentSuggestionTableArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,9 +78,32 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             debugHelpPrint(type: .SearchViewController, str: "Empty")
             return UITableViewCell()
         }
-        cell.suggestionLabel.text = suggestionTableArray[indexPath.row]
+        cell.suggestionLabel.text = currentSuggestionTableArray[indexPath.row]
         debugHelpPrint(type: .SearchViewController, str: "\(String(describing: cell.suggestionLabel.text))")
         return cell
     }
     
+    
+    // Search boxes
+    
+   
+    private func setUpSearchBar(){
+        searchBar.delegate = self
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        guard !searchText.isEmpty else {
+            table.isHidden = true
+            currentSuggestionTableArray = suggestionTableArray
+            return
+        }
+        
+        table.isHidden = false
+        currentSuggestionTableArray = suggestionTableArray.filter({ suggestion -> Bool in
+            suggestion.lowercased().contains(searchText.lowercased())
+        })
+        table.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){}
 }
