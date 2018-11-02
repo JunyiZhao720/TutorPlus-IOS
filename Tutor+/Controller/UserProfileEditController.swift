@@ -39,9 +39,6 @@ class UserProfileEditController: UIViewController{
         theImage.clipsToBounds = true
         theImage.layer.borderColor = UIColor.white.cgColor
         
-        // initialize bottomOffset for tutor switch
-//        self.bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
-//        debugHelpPrint(type: ClassType.UserProfileEditController, str: "bottomOffest loaded: \(bottomOffset.debugDescription)")
         
         //calling gender dropdown
         createGenderPicker()
@@ -114,6 +111,9 @@ class UserProfileEditController: UIViewController{
     }
     
     
+    @IBAction func backButonOnclicked(_ sender: Any) {
+        ViewSwitch.moveToTabPage()
+    }
 }
 
 //gender Dropdown

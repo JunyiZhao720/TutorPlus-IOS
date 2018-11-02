@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		14A51B7F1D25FB8030AD1F58 /* Pods_Tutor_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491E6320B62899F69A5A1CFC /* Pods_Tutor_Tests.framework */; };
 		14A63A8E24CE91D6A154BA5D /* Pods_Tutor_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */; };
+		188C0DE221865B0000BC10A9 /* SearchBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C0DE121865B0000BC10A9 /* SearchBoxViewController.swift */; };
 		426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426098222175B30E00A2C1B8 /* LoginViewController.swift */; };
 		42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42866EAD216EA63400D29698 /* AppDelegate.swift */; };
 		42866EB3216EA63400D29698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42866EB1216EA63400D29698 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		188C0DE121865B0000BC10A9 /* SearchBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBoxViewController.swift; sourceTree = "<group>"; };
 		426098222175B30E00A2C1B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		42866EAA216EA63400D29698 /* Tutor+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tutor+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42866EAD216EA63400D29698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
+				188C0DE121865B0000BC10A9 /* SearchBoxViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188C0DE221865B0000BC10A9 /* SearchBoxViewController.swift in Sources */,
 				C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
 				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,

@@ -58,7 +58,7 @@ class FirebaseUser{
                 DispatchQueue.main.asyncAfter(deadline: .now()){
                     // Do something if logged in
                     if self.checkEmailVerified(){
-                        ViewSwitch.moveToSearchPage()
+                        ViewSwitch.moveToTabPage()
                     }
                 }
             }

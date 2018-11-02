@@ -10,18 +10,24 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
+
     
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var table: UITableView!
     
+    @IBAction func searchBar(_ sender: Any) {
+    }
     
     // Main data source for search Table
     var suggestionTableArray = [FirebaseTrans.node]()
     var currentSuggestionTableArray = [FirebaseTrans.node]()
     
     
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -108,6 +108,7 @@
                         <outlet property="passwordConfirmTextField" destination="3nI-PQ-jw9" id="934-jN-I1F"/>
                         <outlet property="passwordTextField" destination="cAQ-7R-CkB" id="saR-zG-fFb"/>
                         <outlet property="schoolTextField" destination="8i2-FN-a8y" id="2Pv-5w-Pmu"/>
+                        <segue destination="Y38-Pq-K1H" kind="presentation" identifier="SignUpToTab" id="HGv-dD-LAE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yf-dD-9JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,7 +201,7 @@
                         <outlet property="emailTextField" destination="xZ2-bH-fq2" id="lec-HC-g9v"/>
                         <outlet property="loginButton" destination="Aw3-9l-VH0" id="2hf-2Q-X2N"/>
                         <outlet property="passwordTextField" destination="sEb-nS-Cy6" id="KPE-Cn-WFw"/>
-                        <segue destination="B5t-vE-fJC" kind="presentation" identifier="SignInToSearch" id="0I0-1Z-nZN"/>
+                        <segue destination="Y38-Pq-K1H" kind="presentation" identifier="SignInToTab" id="Zak-3F-4Hb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oa-Bq-Uwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,15 +223,6 @@
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="logOutButtonOnClicked:" destination="B5t-vE-fJC" eventType="touchUpInside" id="NSC-5G-dQk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-uS-OWh">
-                                <rect key="frame" x="27" y="608" width="83" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="to profile"/>
-                                <connections>
-                                    <segue destination="on7-OB-A3A" kind="presentation" id="mRI-Mo-VKf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agc-oq-0F0">
@@ -281,6 +273,17 @@
                                     <outlet property="delegate" destination="B5t-vE-fJC" id="qhi-8n-DQj"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Il1-ee-aUx">
+                                <rect key="frame" x="133" y="382" width="170" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="to searchBar"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-uS-OWh">
+                                <rect key="frame" x="16" y="566" width="83" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="to profile"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3h8-BX-yu0"/>
@@ -302,7 +305,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1530.4000000000001" y="1689.8050974512746"/>
+            <point key="canvasLocation" x="-2935" y="2174"/>
         </scene>
         <!--Tutor Profile Edit-->
         <scene sceneID="L3y-ev-hDY">
@@ -434,6 +437,101 @@
             </objects>
             <point key="canvasLocation" x="1668" y="81.859070464767626"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="dWN-lN-oG2">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jBn-pO-XAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="YkH-Ai-VXF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WKt-cw-1Oo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tutor+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9D-lM-6bU" userLabel="Tutor+ Icon">
+                                <rect key="frame" x="76" y="147" width="223" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="51"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GvX-qb-3ZY">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Tutor +" id="QV0-6S-qa9">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="abR-Ig-k1R">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ihE-Ro-p6V">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Profile"/>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="0bn-ng-1yB">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0ye-sr-D03">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Log Out"/>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar alpha="0.94999998807907104" contentMode="center" fixedFrame="YES" searchBarStyle="minimal" text="" placeholder="Search : ucsc , cs101" translatesAutoresizingMaskIntoConstraints="NO" id="7rK-gS-Mbn">
+                                <rect key="frame" x="28" y="242" width="318" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.75"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes" smartInsertDeleteType="yes"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="ZQp-el-Rxb">
+                                <rect key="frame" x="55" y="326" width="123" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="NWh-Xe-Dmw">
+                                <rect key="frame" x="55" y="416" width="123" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="WpI-d6-DsA">
+                                <rect key="frame" x="196" y="416" width="123" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="MoG-LI-o6M">
+                                <rect key="frame" x="196" y="326" width="123" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7Yf-iq-Kch"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="akU-kM-EWa"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-630" y="1937"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="iNb-F4-ArU">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarController" id="Y38-Pq-K1H" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BZQ-XN-9Xb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YkH-Ai-VXF" kind="relationship" relationship="viewControllers" id="HkS-Wg-7jj"/>
+                        <segue destination="on7-OB-A3A" kind="relationship" relationship="viewControllers" id="a14-qu-M7r"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Li0-zm-GTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1530" y="1938"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wTb-nX-aBi">
             <objects>
@@ -461,7 +559,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfh-pM-otx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="651"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJR-jj-jP3" userLabel="UserProfileContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
@@ -616,6 +714,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yNo-ma-1jb"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="tHc-gS-Jpg"/>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
                         <outlet property="emailView" destination="uAE-Kj-6M1" id="SWG-a0-EQx"/>
@@ -659,7 +758,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="on7-OB-A3A" kind="presentation" identifier="ProfileEditToProfile" modalTransitionStyle="flipHorizontal" id="ED1-pJ-ao3"/>
+                                                    <action selector="backButonOnclicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="PA5-aQ-qbI"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue1-St-7zm">
@@ -819,7 +918,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272.80000000000001" y="920.23988005997012"/>
+            <point key="canvasLocation" x="247" y="776"/>
         </scene>
     </scenes>
     <resources>
@@ -827,6 +926,6 @@
         <image name="landscape" width="1200" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mRI-Mo-VKf"/>
+        <segue reference="Zak-3F-4Hb"/>
     </inferredMetricsTieBreakers>
 </document>
