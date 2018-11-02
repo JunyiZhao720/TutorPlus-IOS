@@ -20,6 +20,15 @@ class FirebaseTrans: NSObject {
     
     static let NAME_FIELD = "name"
     
+    struct node{
+        let name: String
+        let id: String
+        
+        init(name: String, id:String){
+            self.name = name
+            self.id = id
+        }
+    }
     
     private let db = Firestore.firestore()
     
@@ -129,8 +138,26 @@ class FirebaseTrans: NSObject {
                 autocomplete based on typing
                 user has to click one item
                     once clicked, download all the schools <name>
+                    if not clicked, school textfield would pop up a warning prompt
+            3.
      
      */
+    
+    public func downloadAllDocuments(collection:String, completion:@escaping([node]?)->Void){
+        db.collection(collection).getDocuments{(querySnapshot, err)in
+            if let err = err{
+                debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
+                completion(nil)
+            } else {
+                var back = [node]()
+                for document in querySnapshot!.documents{
+                    let data = document.data()
+                    back.append(node(name: data["name"] as! String, id: document.documentID))
+                }
+                completion(back)
+            }
+        }
+    }
     
     public enum QueryType{
         case isEqualTo

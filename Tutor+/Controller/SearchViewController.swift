@@ -16,9 +16,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var table: UITableView!
     
+    let node = FirebaseTrans.node.self
+    
     // Main data source for search Table
-    var suggestionTableArray = [String]()
-    var currentSuggestionTableArray = [String]()
+    var suggestionTableArray = [node]()
+    var currentSuggestionTableArray = [node]()
     
     
     override func viewDidLoad() {
@@ -60,12 +62,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     // Suggestion Table View
-
     
+     
     private func setUpTableView(){
-        suggestionTableArray.append("test")
-        suggestionTableArray.append("test2")
-        
         currentSuggestionTableArray = suggestionTableArray
     }
     
@@ -78,7 +77,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             debugHelpPrint(type: .SearchViewController, str: "Empty")
             return UITableViewCell()
         }
-        cell.suggestionLabel.text = currentSuggestionTableArray[indexPath.row]
+        cell.suggestionLabel.text = currentSuggestionTableArray[indexPath.row].name
         debugHelpPrint(type: .SearchViewController, str: "\(String(describing: cell.suggestionLabel.text))")
         return cell
     }
@@ -100,7 +99,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         table.isHidden = false
         currentSuggestionTableArray = suggestionTableArray.filter({ suggestion -> Bool in
-            suggestion.lowercased().contains(searchText.lowercased())
+            suggestion.name.lowercased().contains(searchText.lowercased())
         })
         table.reloadData()
     }
