@@ -13,72 +13,49 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
     
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var table: UITableView!
-    
-    @IBAction func searchBar(_ sender: Any) {
-    }
+    @IBOutlet weak var schoolSearchBar: UISearchBar!
+    @IBOutlet weak var courseSearchBar: UISearchBar!
+    @IBOutlet weak var resultTableView: UITableView!
     
     // Main data source for search Table
     var suggestionTableArray = [FirebaseTrans.node]()
     var currentSuggestionTableArray = [FirebaseTrans.node]()
     
     
-
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.dataSource = self
+        resultTableView.dataSource = self
+        setUpSearchBar()
         
-        // downalod school collection documents
+        downloadSchoolInfo()
+    }
+    
+    
+    // Firebase Transmission and overral array manipulation
+    
+    
+    func downloadSchoolInfo(){
         FirebaseTrans.shared.downloadAllDocuments(collection: FirebaseTrans.SCHOOL_COLLECTION, completion: {(data)in
             if let data = data{
                 self.suggestionTableArray = data
+                self.updateSuggestionArray()
             }
-            
-            self.setUpSearchBar()
-            self.setUpTableView()
-            self.table.reloadData()
         })
     }
     
-    
-    // Buttons
-    
-    
-    @IBAction func searchButtonOnClicked(_ sender: Any) {
-//        let theList = searchBar.text?.split(separator: " ")
-//        var theStrList:[String] = [String]()
-//
-//        theList?.forEach{(item) in
-//            theStrList.append(String(item))
-//        }
-//
-//        if let theList = theList, theList.count != 0{
-//            FirebaseTrans.shared.queryField(collection: "users", words: theStrList, field: "tag", completion: {(data) in
-//
-//            })
-//        }
-        debugHelpPrint(type: .SearchViewController, str: suggestionTableArray.description)
-        table.reloadData()
+    func downloadCourseInfo(){
         
     }
     
-    @IBAction func logOutButtonOnClicked(_ sender: Any) {
-        FirebaseUser.shared.logOut()
-        ViewSwitch.moveToLoginPage()
+    private func updateSuggestionArray(){
+        currentSuggestionTableArray = suggestionTableArray
+        resultTableView.reloadData()
     }
     
     
     // Suggestion Table View
     
-     
-    private func setUpTableView(){
-        currentSuggestionTableArray = suggestionTableArray
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentSuggestionTableArray.count
@@ -95,26 +72,25 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    // Search boxes
+    // Search Bars
     
    
     private func setUpSearchBar(){
-        searchBar.delegate = self
+        schoolSearchBar.delegate = self
+        courseSearchBar.delegate = self
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
-            table.isHidden = true
+            resultTableView.isHidden = true
             currentSuggestionTableArray = suggestionTableArray
             return
         }
         
-        table.isHidden = false
+        resultTableView.isHidden = false
         currentSuggestionTableArray = suggestionTableArray.filter({ suggestion -> Bool in
             suggestion.name.lowercased().contains(searchText.lowercased())
         })
-        table.reloadData()
+        resultTableView.reloadData()
     }
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){}
 }
