@@ -11,8 +11,6 @@ import UIKit
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
 
-    
-
     @IBOutlet weak var schoolSearchBar: UISearchBar!
     @IBOutlet weak var courseSearchBar: UISearchBar!
     @IBOutlet weak var resultTableView: UITableView!
@@ -20,13 +18,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // Main data source for search Table
     var suggestionTableArray = [FirebaseTrans.node]()
     var currentSuggestionTableArray = [FirebaseTrans.node]()
-    
+    var isLastEditedBoxSchool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         resultTableView.dataSource = self
-        setUpSearchBar()
+        resultTableView.delegate = self
+        schoolSearchBar.delegate = self
+        courseSearchBar.delegate = self
         
         downloadSchoolInfo()
     }
@@ -71,14 +71,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let currentCell = tableView.cellForRow(at: indexPath) as? SearchViewTableViewCell
+        debugHelpPrint(type: .SearchViewController, str: "\(String(describing: currentCell?.suggestionLabel.text))")
+        
+        if isLastEditedBoxSchool{
+            schoolSearchBar.text = currentCell?.suggestionLabel.text
+        } else {
+            courseSearchBar.text = currentCell?.suggestionLabel.text
+        }
+        
+        resultTableView.isHidden = true
+    }
+    
     
     // Search Bars
     
-   
-    private func setUpSearchBar(){
-        schoolSearchBar.delegate = self
-        courseSearchBar.delegate = self
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
@@ -86,6 +95,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             currentSuggestionTableArray = suggestionTableArray
             return
         }
+        
+        isLastEditedBoxSchool = searchBar == schoolSearchBar ? true : false
         
         resultTableView.isHidden = false
         currentSuggestionTableArray = suggestionTableArray.filter({ suggestion -> Bool in

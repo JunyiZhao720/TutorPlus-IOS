@@ -18,6 +18,8 @@ public enum ClassType{
     case SignUpViewController
     case UserProfileEditController
     
+    case SearchViewTableViewCell
+    
     case FirebaseUser
     case FirebaseTrans
 }

@@ -20,6 +20,7 @@ class FirebaseTrans: NSObject {
     
     static let NAME_FIELD = "name"
     
+    
     public class node{
         let name: String
         let id: String

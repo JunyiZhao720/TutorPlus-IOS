@@ -490,7 +490,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="52" id="IFi-TR-gek" customClass="SearchViewTableViewCell" customModule="Tutor_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="332" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IFi-TR-gek" id="R2y-WT-xnB">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IFi-TR-gek" id="R2y-WT-xnB">
                                             <rect key="frame" x="0.0" y="0.0" width="332" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
