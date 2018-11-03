@@ -20,6 +20,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var currentSuggestionTableArray = [FirebaseTrans.node]()
     var isLastEditedBoxSchool = false
     
+    // school and course stores
+    var currentSchoolId: String?
+    var currentCourseId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,8 +82,17 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         if isLastEditedBoxSchool{
             schoolSearchBar.text = currentCell?.suggestionLabel.text
+            
+            // setup datastore
+            currentSchoolId = String(currentSuggestionTableArray[indexPath.row].id)
+            currentCourseId = nil
+            
+            downloadCourseInfo()
+            
         } else {
+            // setup datastore
             courseSearchBar.text = currentCell?.suggestionLabel.text
+            currentSchoolId = nil
         }
         
         resultTableView.isHidden = true
