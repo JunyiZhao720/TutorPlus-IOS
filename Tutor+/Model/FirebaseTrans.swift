@@ -144,8 +144,30 @@ class FirebaseTrans: NSObject {
      
      */
     
-    public func downloadAllDocuments(collection:String, completion:@escaping([node]?)->Void){
-        db.collection(collection).getDocuments{(querySnapshot, err)in
+    // general collection documents downloader
+    // para1: collections
+    //      collection.documentid.collection....
+    public func downloadAllDocuments(collections:[String], completion:@escaping([node]?)->Void){
+        
+        
+        // check parameters
+        if(collections.count <= 0 || collections.count % 3 == 2) {
+            debugHelpPrint(type: .FirebaseTrans, str: "Input collections parameters are not with format collection-documentid-collection")
+            completion(nil)
+            return
+        }
+        
+        // initialize collections
+        var theCollection = db.collection(collections[0])
+        var i = 1
+        
+        while(i < collections.count){
+            theCollection = theCollection.document(collections[i]).collection(collections[i+1])
+            i += 2
+        }
+        
+        // download data
+        theCollection.getDocuments{(querySnapshot, err)in
             if let err = err{
                 debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                 completion(nil)
@@ -160,6 +182,8 @@ class FirebaseTrans: NSObject {
             }
         }
     }
+    
+    
     
     public enum QueryType{
         case isEqualTo

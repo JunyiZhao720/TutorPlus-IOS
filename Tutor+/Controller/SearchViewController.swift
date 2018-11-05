@@ -32,15 +32,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         schoolSearchBar.delegate = self
         courseSearchBar.delegate = self
         
-        downloadSchoolInfo()
+        downloadCollectionInfo()
     }
     
     
-    // Firebase Transmission and overral array manipulation
+    // Firebase Transmission and overall array manipulation
     
     
-    func downloadSchoolInfo(){
-        FirebaseTrans.shared.downloadAllDocuments(collection: FirebaseTrans.SCHOOL_COLLECTION, completion: {(data)in
+    func downloadCollectionInfo(collectionId: String?  = nil){
+        var theId = [FirebaseTrans.SCHOOL_COLLECTION]
+        
+        // if it is to download course collection
+        if let id = collectionId{
+            theId.append(id)
+            theId.append(FirebaseTrans.COURSE_COLLECTION)
+        }
+        
+        // clean current array
+        suggestionTableArray = [FirebaseTrans.node]()
+        updateSuggestionArray()
+        
+        FirebaseTrans.shared.downloadAllDocuments(collections: theId, completion: {(data)in
             if let data = data{
                 self.suggestionTableArray = data
                 self.updateSuggestionArray()
@@ -48,9 +60,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    func downloadCourseInfo(){
-        
-    }
     
     private func updateSuggestionArray(){
         currentSuggestionTableArray = suggestionTableArray
@@ -87,7 +96,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             currentSchoolId = String(currentSuggestionTableArray[indexPath.row].id)
             currentCourseId = nil
             
-            downloadCourseInfo()
+            downloadCollectionInfo(collectionId: currentSchoolId)
             
         } else {
             // setup datastore
@@ -104,6 +113,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
+            if (searchBar == schoolSearchBar){downloadCollectionInfo()}
+            
             resultTableView.isHidden = true
             currentSuggestionTableArray = suggestionTableArray
             return
