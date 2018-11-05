@@ -24,6 +24,10 @@
 		9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
+		AB33B03B2191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0372191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift */; };
+		AB33B03C2191042600D5C2C9 /* TutorResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0382191042600D5C2C9 /* TutorResultListView.swift */; };
+		AB33B03D2191042600D5C2C9 /* SearchResultTutorDetailProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0392191042600D5C2C9 /* SearchResultTutorDetailProfile.swift */; };
+		AB33B03E2191042600D5C2C9 /* SearchResultTutorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B03A2191042600D5C2C9 /* SearchResultTutorProfile.swift */; };
 		AB624480217806A800B3605E /* DebugHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62447F217806A800B3605E /* DebugHelper.swift */; };
 		AB624482217806DA00B3605E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB624481217806DA00B3605E /* Constants.swift */; };
 		AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62448321780CE900B3605E /* SignUpViewController.swift */; };
@@ -78,6 +82,10 @@
 		A6F2D0D71EE790B91B463655 /* Pods-Tutor+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.debug.xcconfig"; sourceTree = "<group>"; };
 		AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
+		AB33B0372191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfileTableViewCell.swift; sourceTree = "<group>"; };
+		AB33B0382191042600D5C2C9 /* TutorResultListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorResultListView.swift; sourceTree = "<group>"; };
+		AB33B0392191042600D5C2C9 /* SearchResultTutorDetailProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorDetailProfile.swift; sourceTree = "<group>"; };
+		AB33B03A2191042600D5C2C9 /* SearchResultTutorProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfile.swift; sourceTree = "<group>"; };
 		AB62447F217806A800B3605E /* DebugHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelper.swift; sourceTree = "<group>"; };
 		AB624481217806DA00B3605E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB62448321780CE900B3605E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +153,7 @@
 		42866EAC216EA63400D29698 /* Tutor+ */ = {
 			isa = PBXGroup;
 			children = (
-				ABE8788D218BC2F9000C83F1 /* View */,
+				ABE8788D218BC2F9000C83F1 /* Cell */,
 				AB26A46D21769FC300FEE377 /* Utilities */,
 				AB26A46C21768D8E00FEE377 /* Controller */,
 				AB26A46921768C5200FEE377 /* Model */,
@@ -212,6 +220,10 @@
 		AB26A46C21768D8E00FEE377 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AB33B0392191042600D5C2C9 /* SearchResultTutorDetailProfile.swift */,
+				AB33B03A2191042600D5C2C9 /* SearchResultTutorProfile.swift */,
+				AB33B0372191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift */,
+				AB33B0382191042600D5C2C9 /* TutorResultListView.swift */,
 				9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */,
 				C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */,
 				C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */,
@@ -234,12 +246,12 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		ABE8788D218BC2F9000C83F1 /* View */ = {
+		ABE8788D218BC2F9000C83F1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */,
 			);
-			path = View;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,8 +542,12 @@
 				426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */,
 				C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */,
 				AB624482217806DA00B3605E /* Constants.swift in Sources */,
+				AB33B03E2191042600D5C2C9 /* SearchResultTutorProfile.swift in Sources */,
+				AB33B03B2191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift in Sources */,
 				42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */,
 				AB624480217806A800B3605E /* DebugHelper.swift in Sources */,
+				AB33B03D2191042600D5C2C9 /* SearchResultTutorDetailProfile.swift in Sources */,
+				AB33B03C2191042600D5C2C9 /* TutorResultListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
