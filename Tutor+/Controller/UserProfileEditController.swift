@@ -9,6 +9,9 @@
 import UIKit
 
 class UserProfileEditController: UIViewController{
+    @IBAction func back(_ sender: UIButton) {
+        print("clicked")
+    }
     
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameEditor: UITextField!
