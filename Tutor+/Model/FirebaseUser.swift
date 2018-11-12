@@ -13,6 +13,14 @@ import GoogleSignIn
 class FirebaseUser{
     
     static let shared = FirebaseUser()
+    struct UserStructure{
+        var name: String? = ""
+        var email: String? = ""
+        var gender: String? = ""
+        var major: String? = ""
+        var university: String? = ""
+        //var image
+    }
     
     var currentUser: User?
     var userId: String? = ""
@@ -20,13 +28,31 @@ class FirebaseUser{
     
     private var listenHandler: AuthStateDidChangeListenerHandle?
     private let trans = FirebaseTrans.shared
+    private var data = UserStructure()
+    
+    
     
     //var image: UIImage!
-    var name: String? = ""
-    var email: String? = ""
-    var gender: String? = ""
-    var major: String? = ""
-    var university: String? = ""
+    var name: String?{
+        get{ return data.name }
+        set(value){ data.name = value}
+    }
+    var email: String? {
+        get{ return data.email }
+        set(value){ data.email = value}
+    }
+    var gender: String? {
+        get{ return data.gender }
+        set(value){ data.gender = value}
+    }
+    var major: String? {
+        get{ return data.major }
+        set(value){ data.major = value}
+    }
+    var university: String? {
+        get{ return data.university }
+        set(value){ data.university = value}
+    }
     
     private init(){}
     

@@ -20,7 +20,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse?["school"]) \(schoolCourse?["course"])")
+        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse?["school"] ?? "") \(schoolCourse?["course"] ?? "")")
     }
     
     override func didReceiveMemoryWarning() {

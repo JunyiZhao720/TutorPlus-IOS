@@ -19,6 +19,8 @@ class FirebaseTrans: NSObject {
     static let COURSE_COLLECTION = "courses"
     
     static let NAME_FIELD = "name"
+    static let UNIVERSITY_FIELD = "university"
+    static let TAG_FIELD = "tag"
     
     
     public class node{
@@ -183,6 +185,11 @@ class FirebaseTrans: NSObject {
         }
     }
     
+    public func downloadSelectedUserDocuments(school:String, course:String, completion:@escaping([node]?)->Void){
+        var theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
+        
+        
+    }
     
     
     public enum QueryType{
