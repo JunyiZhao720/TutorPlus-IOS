@@ -13,14 +13,28 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     var name = ["blue_background", "landscape","ppp","square"]
     var classes = ["CMPS115", "CMPS121 CMPS122 CMPS123 CMPS124 CMPS125","CMPS126","CMPS127"]
     
-    var schoolCourse:[String:String]?
+    var schoolCourse:[String:String] = [:]
+    var tutorArray: [FirebaseUser.UserStructure] = []
     
     @IBOutlet weak var TutorListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse?["school"] ?? "") \(schoolCourse?["course"] ?? "")")
+        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse["school"] ?? "") \(schoolCourse["course"] ?? "")")
+        downloadTutorData()
+    }
+    
+    private func downloadTutorData(){
+        if let school = schoolCourse["school"], let course = schoolCourse["course"]{
+            FirebaseTrans.shared.downloadSelectedUserDocuments(school: school, course: course, completion: {(data) in
+                if let data = data{
+                    self.tutorArray = data
+                }
+            })
+        }else{
+            AlertHelper.showAlert(fromController: self, message: "Downloading tutor data goes problems", buttonTitle: "OK")
+        }
     }
     
     override func didReceiveMemoryWarning() {

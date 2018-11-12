@@ -13,6 +13,7 @@ import GoogleSignIn
 class FirebaseUser{
     
     static let shared = FirebaseUser()
+    
     struct UserStructure{
         var name: String? = ""
         var email: String? = ""
@@ -20,6 +21,16 @@ class FirebaseUser{
         var major: String? = ""
         var university: String? = ""
         //var image
+        
+        init(){}
+        init(name:String?, email:String?, gender:String?, major:String?, university:String?){
+            self.name = name
+            self.email = email
+            self.gender = gender
+            self.major = major
+            self.university = university
+        }
+        
     }
     
     var currentUser: User?
@@ -179,6 +190,12 @@ class FirebaseUser{
                 }
             })
         }
+    }
+    
+    // Parse data to UserStructure
+    static func parseData(data:[String:Any?])->UserStructure{
+        let back = UserStructure(name: data["name"] as? String, email: data["email"] as? String, gender: data["gender"] as? String, major: data["major"] as? String, university: data["university"] as? String)
+        return back
     }
     
 }

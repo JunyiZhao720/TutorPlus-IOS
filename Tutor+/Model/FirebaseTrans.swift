@@ -185,9 +185,24 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    public func downloadSelectedUserDocuments(school:String, course:String, completion:@escaping([node]?)->Void){
-        var theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
+    public func downloadSelectedUserDocuments(school:String, course:String, completion:@escaping([FirebaseUser.UserStructure]?)->Void){
+        let theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
+        theQuery.getDocuments{(querySnapshot, err) in
+            if let err = err{
+                debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
+                completion(nil)
+            } else {
+                var back = [FirebaseUser.UserStructure]()
+                for document in querySnapshot!.documents{
+                    let data = document.data()
+                    debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")
+                    back.append(FirebaseUser.parseData(data: data))
+                }
+                debugHelpPrint(type: .FirebaseTrans, str: "downloadSelectedUserDocuments: done downloading selected user documents")
+                completion(back)
+            }
+        }
         
     }
     
