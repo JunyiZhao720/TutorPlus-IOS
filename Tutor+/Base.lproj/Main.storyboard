@@ -308,6 +308,7 @@
                         <outlet property="courseSearchBar" destination="lGp-JV-QzG" id="HZy-V5-SgD"/>
                         <outlet property="resultTableView" destination="m8L-Dl-JMC" id="iE3-Mp-kJI"/>
                         <outlet property="schoolSearchBar" destination="7rK-gS-Mbn" id="R9I-8S-a9a"/>
+                        <segue destination="YHF-ys-oWW" kind="presentation" identifier="SearchToResult" id="0wt-Gf-ODb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBn-pO-XAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -729,7 +730,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="edP-7H-eyd" customClass="SearchResultTutorProfile" customModule="Tutor_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="edP-7H-eyd" customClass="SearchResultTutorProfileTableViewCell" customModule="Tutor_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="edP-7H-eyd" id="dQe-5P-7Us">
@@ -802,7 +803,11 @@
                         <viewLayoutGuide key="safeArea" id="l4i-2x-ucV"/>
                     </view>
                     <navigationItem key="navigationItem" id="IEI-33-CNX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9Dg-uL-0bX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9Dg-uL-0bX">
+                            <connections>
+                                <segue destination="YkH-Ai-VXF" kind="presentation" id="4pi-tb-d0W"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="TutorListView" destination="7Ly-Cw-4hE" id="Uha-gL-wlh"/>
@@ -878,5 +883,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="zhk-n3-QNG"/>
         <segue reference="Zak-3F-4Hb"/>
+        <segue reference="4pi-tb-d0W"/>
     </inferredMetricsTieBreakers>
 </document>

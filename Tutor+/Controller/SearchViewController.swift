@@ -21,8 +21,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var isLastEditedBoxSchool = false
     
     // school and course stores
-    var currentSchoolId: String?
-    var currentCourseId: String?
+    var currentSchoolName: String?
+    var currentCourseName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,24 +84,32 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    // User click the item
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let currentCell = tableView.cellForRow(at: indexPath) as? SearchViewTableViewCell
         debugHelpPrint(type: .SearchViewController, str: "\(String(describing: currentCell?.suggestionLabel.text))")
         
+        
         if isLastEditedBoxSchool{
+            // are we choosing school?
+            
             schoolSearchBar.text = currentCell?.suggestionLabel.text
-            
             // setup datastore
-            currentSchoolId = String(currentSuggestionTableArray[indexPath.row].id)
-            currentCourseId = nil
-            
-            downloadCollectionInfo(collectionId: currentSchoolId)
+            currentSchoolName = currentCell?.suggestionLabel.text
+            currentCourseName = nil
+            downloadCollectionInfo(collectionId: String(currentSuggestionTableArray[indexPath.row].id))
+            debugHelpPrint(type: .SearchViewController, str: "Selected school:\(currentSchoolName ?? "null")")
             
         } else {
-            // setup datastore
+            // are we choosing course?
+            
             courseSearchBar.text = currentCell?.suggestionLabel.text
-            currentSchoolId = nil
+            currentCourseName = currentCell?.suggestionLabel.text
+            debugHelpPrint(type: .SearchViewController, str: "Selected course:\(currentCourseName ?? "null")")
+            
+            // here we got both school name and course name
+            self.performSegue(withIdentifier: "SearchToResult", sender: self)
         }
         
         resultTableView.isHidden = true
