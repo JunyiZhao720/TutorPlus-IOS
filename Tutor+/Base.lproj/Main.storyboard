@@ -810,7 +810,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="TutorListView" destination="7Ly-Cw-4hE" id="Uha-gL-wlh"/>
+                        <outlet property="tutorListView" destination="7Ly-Cw-4hE" id="Uha-gL-wlh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spb-A3-QfE" userLabel="First Responder" sceneMemberID="firstResponder"/>

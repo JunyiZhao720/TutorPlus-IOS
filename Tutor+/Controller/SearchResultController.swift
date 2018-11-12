@@ -16,7 +16,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     var schoolCourse:[String:String] = [:]
     var tutorArray: [FirebaseUser.UserStructure] = []
     
-    @IBOutlet weak var TutorListView: UITableView!
+    @IBOutlet weak var tutorListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
             FirebaseTrans.shared.downloadSelectedUserDocuments(school: school, course: course, completion: {(data) in
                 if let data = data{
                     self.tutorArray = data
+                    self.tutorListView.reloadData()
                 }
             })
         }else{
@@ -46,12 +47,12 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return name.count
+        return tutorArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SearchResultTutorProfileTableViewCell
-        cell?.tutorName.text = name[indexPath.row]
+        cell?.tutorName.text = tutorArray[indexPath.row].name
         cell?.className.text = classes[indexPath.row]
         cell?.img.image = UIImage(named: name[indexPath.row])
         
