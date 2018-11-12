@@ -706,7 +706,7 @@
         <!--TutorResultListView-->
         <scene sceneID="NQa-xc-MrE">
             <objects>
-                <viewController id="hWd-Z0-7wY" userLabel="TutorResultListView" customClass="TutorResultListView" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hWd-Z0-7wY" userLabel="TutorResultListView" customClass="SearchResultController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wOl-vw-6tn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -882,6 +882,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zhk-n3-QNG"/>
+        <segue reference="0wt-Gf-ODb"/>
         <segue reference="Zak-3F-4Hb"/>
         <segue reference="4pi-tb-d0W"/>
     </inferredMetricsTieBreakers>

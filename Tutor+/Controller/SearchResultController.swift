@@ -8,22 +8,24 @@
 
 import UIKit
 
-class TutorResultListView: UIViewController {
+class SearchResultController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var name = ["blue_background", "landscape","ppp","square"]
     var classes = ["CMPS115", "CMPS121 CMPS122 CMPS123 CMPS124 CMPS125","CMPS126","CMPS127"]
+    
+    var schoolCourse:[String:String]?
+    
     @IBOutlet weak var TutorListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse?["school"]) \(schoolCourse?["course"])")
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-}
-extension TutorResultListView: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
@@ -50,5 +52,5 @@ extension TutorResultListView: UITableViewDelegate, UITableViewDataSource{
         vc?.cName = classes[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-    
+
 }

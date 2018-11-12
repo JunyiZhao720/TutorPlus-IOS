@@ -25,7 +25,6 @@
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
 		AB33B03B2191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0372191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift */; };
-		AB33B03C2191042600D5C2C9 /* TutorResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0382191042600D5C2C9 /* TutorResultListView.swift */; };
 		AB33B03D2191042600D5C2C9 /* SearchResultTutorDetailProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0392191042600D5C2C9 /* SearchResultTutorDetailProfile.swift */; };
 		AB33B03E2191042600D5C2C9 /* SearchResultTutorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B03A2191042600D5C2C9 /* SearchResultTutorProfile.swift */; };
 		AB624480217806A800B3605E /* DebugHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62447F217806A800B3605E /* DebugHelper.swift */; };
@@ -34,6 +33,7 @@
 		AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB92C154217668CB0030B5F7 /* SearchViewController.swift */; };
 		ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6AA4A217930980073C03D /* AlertHelper.swift */; };
 		ABE87891218BC866000C83F1 /* SearchViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */; };
+		ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFADC1A219935E500097922 /* SearchResultController.swift */; };
 		C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */; };
 		C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */; };
 /* End PBXBuildFile section */
@@ -83,7 +83,6 @@
 		AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
 		AB33B0372191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfileTableViewCell.swift; sourceTree = "<group>"; };
-		AB33B0382191042600D5C2C9 /* TutorResultListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorResultListView.swift; sourceTree = "<group>"; };
 		AB33B0392191042600D5C2C9 /* SearchResultTutorDetailProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorDetailProfile.swift; sourceTree = "<group>"; };
 		AB33B03A2191042600D5C2C9 /* SearchResultTutorProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfile.swift; sourceTree = "<group>"; };
 		AB62447F217806A800B3605E /* DebugHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelper.swift; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		AB92C154217668CB0030B5F7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ABA6AA4A217930980073C03D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewTableViewCell.swift; sourceTree = "<group>"; };
+		ABFADC1A219935E500097922 /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCEE6AD4F5BFAD5AE740591 /* Pods-Tutor+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.release.xcconfig"; sourceTree = "<group>"; };
 		C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileEdit.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				AB33B0392191042600D5C2C9 /* SearchResultTutorDetailProfile.swift */,
 				AB33B03A2191042600D5C2C9 /* SearchResultTutorProfile.swift */,
 				AB33B0372191042600D5C2C9 /* SearchResultTutorProfileTableViewCell.swift */,
-				AB33B0382191042600D5C2C9 /* TutorResultListView.swift */,
+				ABFADC1A219935E500097922 /* SearchResultController.swift */,
 				9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */,
 				C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */,
 				C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */,
@@ -529,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */,
 				188C0DE221865B0000BC10A9 /* SearchBoxViewController.swift in Sources */,
 				C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
@@ -547,7 +548,6 @@
 				42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */,
 				AB624480217806A800B3605E /* DebugHelper.swift in Sources */,
 				AB33B03D2191042600D5C2C9 /* SearchResultTutorDetailProfile.swift in Sources */,
-				AB33B03C2191042600D5C2C9 /* TutorResultListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,7 +66,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         resultTableView.reloadData()
     }
     
-    
+    // ------------------------------------------------------------------------------------
     // Suggestion Table View
     
     
@@ -84,7 +84,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    // User click the item
+    // user click the item
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let currentCell = tableView.cellForRow(at: indexPath) as? SearchViewTableViewCell
@@ -108,14 +108,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             currentCourseName = currentCell?.suggestionLabel.text
             debugHelpPrint(type: .SearchViewController, str: "Selected course:\(currentCourseName ?? "null")")
             
+            // data for transfer
+            var data = Dictionary<String, String>()
+            data["school"] = currentSchoolName
+            data["course"] = currentCourseName
+            
             // here we got both school name and course name
-            self.performSegue(withIdentifier: "SearchToResult", sender: self)
+            self.performSegue(withIdentifier: "SearchToResult", sender: data)
         }
         
         resultTableView.isHidden = true
     }
     
-    
+    // ------------------------------------------------------------------------------------
     // Search Bars
     
     
@@ -135,5 +140,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             suggestion.name.lowercased().contains(searchText.lowercased())
         })
         resultTableView.reloadData()
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // Other
+    
+    // override segue to pass data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "SearchToResult"){
+            let nav = segue.destination as! UINavigationController
+            let dest = nav.viewControllers.first as! SearchResultController
+            let schoolCourse = sender as! [String:String]
+            dest.schoolCourse = schoolCourse
+        }
     }
 }
