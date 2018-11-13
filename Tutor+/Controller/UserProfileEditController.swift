@@ -57,10 +57,13 @@ class UserProfileEditController: UIViewController{
     }
     //end of schedule
     
-    @IBAction func back(_ sender: UIButton) {
-        print("clicked")
+//    @IBAction func back(_ sender: UIButton) {
+//        print("clicked")
+//    }
+//
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        print("clicked back buttom")
     }
-    
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameEditor: UITextField!
     @IBOutlet weak var emailEditor: UITextField!
@@ -115,7 +118,7 @@ class UserProfileEditController: UIViewController{
         super.viewDidLoad()
         courseTableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        personalState.text = "Personal Statement. Watch my video here: www.baidu.com"
+        personalState.text = "Personal Statement. Watch my video here: www.youtube.com"
         
         personalState.backgroundColor = UIColor(hue: 0.5333, saturation: 0.02, brightness: 0.94, alpha: 1.0)
         
