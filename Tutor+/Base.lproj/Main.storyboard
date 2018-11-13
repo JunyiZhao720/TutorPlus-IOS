@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="on7-OB-A3A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -331,7 +331,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Li0-zm-GTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1530" y="1938"/>
+            <point key="canvasLocation" x="-1423" y="1936"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="cEU-ji-rfO">
@@ -345,10 +345,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJR-jj-jP3" userLabel="UserProfileContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="651"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Want To Be A Tutor/Student? Edit Your Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaB-YA-Ysf">
-                                                <rect key="frame" x="14" y="610" width="347" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want To Be A Tutor/Student? Edit Your Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaB-YA-Ysf">
+                                                <rect key="frame" x="14" y="660" width="347" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -701,9 +701,6 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="addGradeText:" destination="sTV-CK-1Tm" eventType="editingDidEnd" id="umm-ql-ZFT"/>
-                                                </connections>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="226-ED-ldc">
                                                 <rect key="frame" x="35" y="1074" width="297" height="149"/>
@@ -1287,7 +1284,7 @@
                     <navigationItem key="navigationItem" id="IEI-33-CNX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9Dg-uL-0bX">
                             <connections>
-                                <segue destination="YkH-Ai-VXF" kind="presentation" id="4pi-tb-d0W"/>
+                                <segue destination="Y38-Pq-K1H" kind="presentation" id="Azm-Lh-Zc2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1362,9 +1359,7 @@
         <image name="landscape" width="1200" height="630"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zhk-n3-QNG"/>
-        <segue reference="a14-qu-M7r"/>
-        <segue reference="Zak-3F-4Hb"/>
-        <segue reference="4pi-tb-d0W"/>
+        <segue reference="1CX-Lk-6dI"/>
+        <segue reference="Azm-Lh-Zc2"/>
     </inferredMetricsTieBreakers>
 </document>

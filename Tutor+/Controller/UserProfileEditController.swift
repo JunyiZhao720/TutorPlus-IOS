@@ -281,7 +281,7 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
             self.schoolData.remove(at: indexPath.row)
             self.classData.remove(at: indexPath.row)
             self.gradeData.remove(at: indexPath.row)
-                self.courseTableView.reloadData()
+            self.courseTableView.reloadData()
         }
     }
 
