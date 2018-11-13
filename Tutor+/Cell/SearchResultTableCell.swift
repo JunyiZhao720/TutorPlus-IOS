@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultTutorProfileTableViewCell: UITableViewCell{
+class SearchResultTableCell: UITableViewCell{
 
     
     @IBOutlet weak var img: UIImageView!

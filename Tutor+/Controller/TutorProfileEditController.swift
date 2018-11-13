@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorProfileEdit: UIViewController {
+class TutorProfileEditController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -57,7 +57,7 @@ class TutorProfileEdit: UIViewController {
     
 }
 
-extension TutorProfileEdit: UITableViewDataSource{
+extension TutorProfileEditController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

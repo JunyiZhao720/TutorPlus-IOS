@@ -51,7 +51,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SearchResultTutorProfileTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SearchResultTableCell
         cell?.tutorName.text = tutorArray[indexPath.row].name
         cell?.className.text = classes[indexPath.row]
         cell?.img.image = UIImage(named: name[indexPath.row])
@@ -61,7 +61,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchResultTutorDetailProfile") as? SearchResultTutorDetailProfile
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchResultTutorDetailProfile") as? SearchResultTutorProfileController
         vc?.image1 = UIImage(named: name[indexPath.row])!
         vc?.tName = name[indexPath.row]
         vc?.cName = classes[indexPath.row]

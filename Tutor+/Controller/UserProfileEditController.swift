@@ -266,7 +266,7 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? UserProfileEditCourseCell
         cell?.schoolLabel.text = schoolData[indexPath.row]
         cell?.classLabel.text = classData[indexPath.row]
         cell?.gradeLabel.text = gradeData[indexPath.row]

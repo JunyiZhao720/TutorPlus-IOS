@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultTutorDetailProfile: UIViewController {
+class SearchResultTutorProfileController: UIViewController {
 
     @IBOutlet weak var tutorName: UILabel!
     @IBOutlet weak var className: UILabel!

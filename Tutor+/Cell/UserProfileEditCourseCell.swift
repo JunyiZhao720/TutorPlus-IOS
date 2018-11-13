@@ -13,7 +13,7 @@ protocol TableViewNew {
     
 }
 
-class NewTableViewCell: UITableViewCell {
+class UserProfileEditCourseCell: UITableViewCell {
 
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
