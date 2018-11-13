@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             // User is signed in
             
             // Move to Search Page
-            ViewSwitch.moveToSearchPage()
+            ViewSwitch.moveToTabPage()
 
         }
         
