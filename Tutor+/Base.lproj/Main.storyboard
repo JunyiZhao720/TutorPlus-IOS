@@ -495,7 +495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="1600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="1572"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQo-Cb-u79" userLabel="ProfileEditContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="1600"/>
@@ -1419,7 +1419,7 @@ CMPS 111 A</string>
                     <navigationItem key="navigationItem" id="rvx-1Z-Zsw">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="ERF-wM-qbi">
                             <connections>
-                                <segue destination="hWd-Z0-7wY" kind="presentation" id="ZLs-js-vc7"/>
+                                <segue destination="YHF-ys-oWW" kind="presentation" id="tEV-K8-679"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1461,8 +1461,7 @@ CMPS 111 A</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zhk-n3-QNG"/>
-        <segue reference="XvG-0t-l1t"/>
-        <segue reference="ZLs-js-vc7"/>
+        <segue reference="tEV-K8-679"/>
         <segue reference="a14-qu-M7r"/>
         <segue reference="Azm-Lh-Zc2"/>
     </inferredMetricsTieBreakers>
