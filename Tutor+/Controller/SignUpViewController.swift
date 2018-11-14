@@ -85,7 +85,7 @@ class SignUpViewController: UIViewController {
                         FirebaseUser.shared.logOut()
                         
                         // switch back to login
-                        self.performSegue(withIdentifier: "SignUpToSignIn", sender: self)
+                        self.performSegue(withIdentifier: "SignUpToTab", sender: self)
                     
                     }
                     

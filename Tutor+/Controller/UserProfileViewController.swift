@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfilePageViewController: UIViewController {
+class UserProfileViewController: UIViewController {
 
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameView: UILabel!

@@ -14,19 +14,56 @@ class FirebaseUser{
     
     static let shared = FirebaseUser()
     
+    struct UserStructure{
+        var name: String? = ""
+        var email: String? = ""
+        var gender: String? = ""
+        var major: String? = ""
+        var university: String? = ""
+        //var image
+        
+        init(){}
+        init(name:String?, email:String?, gender:String?, major:String?, university:String?){
+            self.name = name
+            self.email = email
+            self.gender = gender
+            self.major = major
+            self.university = university
+        }
+        
+    }
+    
     var currentUser: User?
     var userId: String? = ""
     var userProvider: String? = ""
     
     private var listenHandler: AuthStateDidChangeListenerHandle?
     private let trans = FirebaseTrans.shared
+    private var data = UserStructure()
+    
+    
     
     //var image: UIImage!
-    var name: String? = ""
-    var email: String? = ""
-    var gender: String? = ""
-    var major: String? = ""
-    var university: String? = ""
+    var name: String?{
+        get{ return data.name }
+        set(value){ data.name = value}
+    }
+    var email: String? {
+        get{ return data.email }
+        set(value){ data.email = value}
+    }
+    var gender: String? {
+        get{ return data.gender }
+        set(value){ data.gender = value}
+    }
+    var major: String? {
+        get{ return data.major }
+        set(value){ data.major = value}
+    }
+    var university: String? {
+        get{ return data.university }
+        set(value){ data.university = value}
+    }
     
     private init(){}
     
@@ -58,7 +95,7 @@ class FirebaseUser{
                 DispatchQueue.main.asyncAfter(deadline: .now()){
                     // Do something if logged in
                     if self.checkEmailVerified(){
-                        ViewSwitch.moveToSearchPage()
+                        ViewSwitch.moveToTabPage()
                     }
                 }
             }
@@ -129,7 +166,7 @@ class FirebaseUser{
     // Create or Override an existing doc
     func uploadDoc(){
         if isLoggedIn(){
-            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId ?? "", dict: self.makeDict())
+            trans.createDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.userId ?? "", dict: self.makeDict())
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to uploadDoc() while user is not logged in")
         }
@@ -138,7 +175,7 @@ class FirebaseUser{
     // Download an existing doc
     func downloadDoc(completion:@escaping(Bool)->Void){
         if isLoggedIn(){
-            trans.downloadDoc(collection: trans.USER_COLLECTIONS, id: self.userId ?? "", completion: {(data) in
+            trans.downloadDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.userId ?? "", completion: {(data) in
                 if let data=data{
                     self.name = data["name"] as? String
                     self.email = data["email"] as? String
@@ -154,4 +191,11 @@ class FirebaseUser{
             })
         }
     }
+    
+    // Parse data to UserStructure
+    static func parseData(data:[String:Any?])->UserStructure{
+        let back = UserStructure(name: data["name"] as? String, email: data["email"] as? String, gender: data["gender"] as? String, major: data["major"] as? String, university: data["university"] as? String)
+        return back
+    }
+    
 }
