@@ -61,11 +61,26 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchResultTutorDetailProfile") as? SearchResultTutorProfileController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchResultTutorProfileController") as? SearchResultTutorProfileController
         vc?.image1 = UIImage(named: name[indexPath.row])!
         vc?.tName = name[indexPath.row]
-        vc?.cName = classes[indexPath.row]
-        self.navigationController?.pushViewController(vc!, animated: true)
+        //vc?.cName = classes[indexPath.row]
+        var data = Dictionary<String, String>()
+        self.performSegue(withIdentifier: "SearchResultToTutorNav", sender: data)
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // Other
+    
+    // override segue to pass data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "SearchResultToTutorNav"){
+            let nav = segue.destination as! UINavigationController
+            let dest = nav.viewControllers.first as! SearchResultTutorProfileController
+            let data = sender as! [String:Any]
+            dest.data = data
+            
+        }
     }
 
 }
