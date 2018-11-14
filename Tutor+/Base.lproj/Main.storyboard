@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sTV-CK-1Tm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -495,7 +495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="1572"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="1600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQo-Cb-u79" userLabel="ProfileEditContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="1600"/>
@@ -663,9 +663,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bom-iT-jx2">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bom-iT-jx2">
                                                 <rect key="frame" x="319" y="683" width="22" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="addCell:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="PaQ-ho-4Kx"/>
                                                 </connections>
@@ -1082,14 +1081,24 @@
                                                     </navigationItem>
                                                 </items>
                                             </navigationBar>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ER-pT-RV6">
+                                                <rect key="frame" x="172" y="72" width="30" height="30"/>
+                                                <state key="normal" title="top"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwy-Q1-kYH">
+                                                <rect key="frame" x="179" y="1548" width="30" height="30"/>
+                                                <state key="normal" title="bot"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="2rw-lJ-Hky" secondAttribute="bottom" constant="-214" id="09u-ME-6DS"/>
                                             <constraint firstItem="226-ED-ldc" firstAttribute="top" secondItem="LXH-ky-7Ma" secondAttribute="bottom" constant="43" id="15S-s9-F41"/>
                                             <constraint firstItem="2rw-lJ-Hky" firstAttribute="top" secondItem="226-ED-ldc" secondAttribute="bottom" constant="8" id="4oW-2l-P9A"/>
+                                            <constraint firstItem="4ER-pT-RV6" firstAttribute="top" secondItem="NQo-Cb-u79" secondAttribute="top" constant="72" id="8vT-Pa-FEL"/>
                                             <constraint firstItem="Ue1-St-7zm" firstAttribute="top" secondItem="NQo-Cb-u79" secondAttribute="top" constant="23" id="A68-Qa-WAs"/>
                                             <constraint firstItem="226-ED-ldc" firstAttribute="width" secondItem="NQo-Cb-u79" secondAttribute="height" multiplier="99:400" id="CSy-Z4-qvr"/>
+                                            <constraint firstItem="bom-iT-jx2" firstAttribute="top" secondItem="4ER-pT-RV6" secondAttribute="bottom" constant="581" id="ML6-qG-l22"/>
                                             <constraint firstItem="2rw-lJ-Hky" firstAttribute="top" secondItem="226-ED-ldc" secondAttribute="bottom" constant="8" id="MlV-hw-vhu"/>
                                             <constraint firstItem="226-ED-ldc" firstAttribute="top" secondItem="LXH-ky-7Ma" secondAttribute="bottom" constant="43" id="N8M-bX-ITb"/>
                                             <constraint firstItem="2rw-lJ-Hky" firstAttribute="leading" secondItem="NQo-Cb-u79" secondAttribute="leading" constant="-12" id="Qbc-15-ERH"/>
@@ -1099,6 +1108,7 @@
                                             <constraint firstItem="2rw-lJ-Hky" firstAttribute="top" secondItem="226-ED-ldc" secondAttribute="bottom" constant="8" id="fwL-nx-BMg"/>
                                             <constraint firstAttribute="trailing" secondItem="226-ED-ldc" secondAttribute="trailing" constant="56" id="fwQ-Rg-Sxj"/>
                                             <constraint firstItem="226-ED-ldc" firstAttribute="leading" secondItem="NQo-Cb-u79" secondAttribute="leading" constant="35" id="mnL-iR-53W"/>
+                                            <constraint firstItem="dwy-Q1-kYH" firstAttribute="top" secondItem="bom-iT-jx2" secondAttribute="bottom" constant="843" id="oQa-aC-Mfz"/>
                                             <constraint firstAttribute="trailing" secondItem="226-ED-ldc" secondAttribute="trailing" constant="43" id="piT-HG-JDs"/>
                                         </constraints>
                                     </view>
