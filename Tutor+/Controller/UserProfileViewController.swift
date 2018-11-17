@@ -38,6 +38,7 @@ class UserProfileViewController: UIViewController {
         theImage.layer.borderColor = UIColor.white.cgColor
         
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "Profile"
     }
     
 
