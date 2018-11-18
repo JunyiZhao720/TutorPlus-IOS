@@ -10,12 +10,6 @@ import UIKit
 
 class UserProfileEditController: UIViewController{
     
-    
-    
-
-    @IBAction func back(_ sender: UIBarButtonItem) {
-        print("clicked back buttom")
-    }
 
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var nameEditor: UITextField!
@@ -30,6 +24,8 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var personalState: UITextView!
+    
+    var imagePicker: UIImagePickerController!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
@@ -140,9 +136,27 @@ class UserProfileEditController: UIViewController{
         }
     }
     
-    // image picker
+    // image button choose images
+    @IBAction func choosePhoto(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let photoLibraryAction = UIAlertAction(title: "Use Photo Library", style: .default){(action) in
+            self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.allowsEditing = true
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(photoLibraryAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
     
-
     // End buttons
     // ------------------------------------------------------------------------------------
     
@@ -321,9 +335,20 @@ extension UIViewController: TableViewNew {
     }
 }
 
-// photo library delegates
 extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        imageButton.imageView?.contentMode = .scaleAspectFill
+        imageButton.setImage(chosenImage, for: .normal)
+        
+        //TODO: cache or upload the image
+        dismiss(animated: true, completion: nil)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 // End Delegates

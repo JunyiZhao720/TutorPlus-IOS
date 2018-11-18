@@ -719,6 +719,9 @@
                                                 <rect key="frame" x="119" y="-16" width="150" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="landscape"/>
+                                                <connections>
+                                                    <action selector="choosePhoto:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="6sG-YW-FPG"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
