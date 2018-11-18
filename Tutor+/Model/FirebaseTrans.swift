@@ -70,6 +70,79 @@ class FirebaseTrans: NSObject {
         }
     }
     
+    func deleteDoc(collection: String, id: String, dict: Dictionary<String, Any>){
+        db.collection(collection).document(id).delete() { err in
+            if let err = err {
+                //print("Error removing document: \(err)")
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error removing document: \(err)", id: id)
+            } else {
+                //print("Document successfully removed!")
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Document successfully removed!", id: id)
+            }
+        }
+    }
+    
+    //create doc to tutor_id's student, set the state to pending
+    func request(collection: String, id: String, dict: Dictionary<String, Any>){
+        
+    }
+    
+    //delete student_id within my student
+    func reject(collection: String, id:(String) ->Void){
+        
+    }
+    
+
+    
+    //defining firebase reference var
+    //    var refStudents: FIRDatabaseReference!
+    //    var someList = [AritistModel]()
+    //
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //
+    //        let student = someList[indexPath.row]
+    //
+    //        let alertController = UIAlertController(title: "Example", message: "example", preferredStyle: .alert)
+    //
+    //        let updateAction = UIAlertAction(title: "Update", style: .default){(_) in
+    //            let id = student.id
+    //            let name = alertController.textFields?[0].text
+    //            let xxx = alertController.textFields?[1].text
+    //
+    //            self.update(id: id!, name: name!, xxx: xxx!)
+    //
+    //        }
+    //        let deleteAction = UIAlertAction(title: "Delete", style: .default){(_) in
+    //            self.delete(id: student.id!)
+    //        }
+    //
+    //        alertController.addTextField{(textField) in
+    //            textField.text = student.name
+    //        }
+    //        alertController.addTextField{(textField) in
+    //            textField.text = student.xxx
+    //        }
+    //
+    //        alertController.addAction(updateAction)
+    //        alertController.addAction(deleteAction)
+    //
+    //        present(alertController, animated:true, completion: nil)
+    //    }
+    //
+    //    // update student'id ,name, and something else
+    //    func update(id: String, name: String, xxx: String){
+    //        let student = [
+    //            "id": id,
+    //            "studentName": name,
+    //            "studentXXX": xxx
+    //        ]
+    //        refStudents.child(id).setValue(student)
+    //        labelMessage.text = "Student updated"
+    //    }
+    //
+    //    func delete(id:String){
+    //        refStudents.child(id).setValue(nil)
+    //    }
     
     // general download functions
     
