@@ -16,7 +16,8 @@ class UserProfileEditController: UIViewController{
     @IBAction func back(_ sender: UIBarButtonItem) {
         print("clicked back buttom")
     }
-    @IBOutlet weak var theImage: UIImageView!
+
+    @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var nameEditor: UITextField!
     @IBOutlet weak var emailEditor: UITextField!
     @IBOutlet weak var genderTextBox: UITextField!
@@ -24,9 +25,7 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var majorEditor: UITextField!
     @IBOutlet weak var universityEditor: UITextField!
     @IBOutlet weak var tutorSwitch: UISwitch!
-    
     @IBOutlet weak var tutorStatus: UILabel!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var courseTableView: UITableView!
@@ -92,9 +91,9 @@ class UserProfileEditController: UIViewController{
     }
     
     private func initializeImage(){
-        theImage.layer.cornerRadius = theImage.frame.size.width/2
-        theImage.clipsToBounds = true
-        theImage.layer.borderColor = UIColor.white.cgColor
+        imageButton.layer.cornerRadius = imageButton.frame.size.width/2
+        imageButton.clipsToBounds = true
+        imageButton.layer.borderColor = UIColor.white.cgColor
     }
     
     // End initialization functions
@@ -140,6 +139,9 @@ class UserProfileEditController: UIViewController{
             self.tutorStatus.text = "Sorry, not now"
         }
     }
+    
+    // image picker
+    
 
     // End buttons
     // ------------------------------------------------------------------------------------
@@ -258,7 +260,7 @@ class UserProfileEditController: UIViewController{
 // ------------------------------------------------------------------------------------
 // Delegates
 
-//gender Dropdown
+// gender dropdown menu delegates
 extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSource{
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -281,6 +283,7 @@ extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSourc
 
 }
 
+// course tableview delegates
 extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -310,11 +313,17 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
 
 }
 
+// cell delegates
 extension UIViewController: TableViewNew {
     func onClick(index: Int) {
 
         print("\(index) is clicked")
     }
+}
+
+// photo library delegates
+extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
 }
 
 // End Delegates

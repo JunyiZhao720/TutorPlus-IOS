@@ -518,10 +518,6 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Nu-Ay-LcR" userLabel="ProfileEditContentView">
                                         <rect key="frame" x="0.0" y="8" width="388" height="1102"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="BoQ-gi-wIw">
-                                                <rect key="frame" x="119" y="0.0" width="150" height="150"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tux-oO-hDO">
                                                 <rect key="frame" x="39" y="195" width="120" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -719,6 +715,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMZ-Ls-AZo">
+                                                <rect key="frame" x="119" y="-16" width="150" height="150"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="landscape"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1110,12 +1111,12 @@
                         <outlet property="emailEditor" destination="vFy-Q3-QOj" id="fTs-o1-fBd"/>
                         <outlet property="genderDropDown" destination="Cld-gv-Ahi" id="26b-it-cqx"/>
                         <outlet property="genderTextBox" destination="BJ1-as-CJF" id="0F2-H6-S9i"/>
+                        <outlet property="imageButton" destination="ZMZ-Ls-AZo" id="B3P-nK-gZe"/>
                         <outlet property="majorEditor" destination="EEA-o3-WwG" id="uN4-OG-2JQ"/>
                         <outlet property="nameEditor" destination="bJ9-6G-1A7" id="f5K-LB-ned"/>
                         <outlet property="personalState" destination="ZXN-Pi-DpF" id="Fwf-CS-hBa"/>
                         <outlet property="saveButton" destination="Zo5-pa-LQI" id="gVl-48-a8d"/>
                         <outlet property="scrollView" destination="EhN-pf-4aW" id="Vbd-sp-Pe8"/>
-                        <outlet property="theImage" destination="BoQ-gi-wIw" id="SA4-qA-ffU"/>
                         <outlet property="tutorStatus" destination="Jkw-Mp-ZZk" id="uDC-ox-G25"/>
                         <outlet property="tutorSwitch" destination="Aaj-7H-YBK" id="ntg-tp-3Lp"/>
                         <outlet property="universityEditor" destination="QeO-Ts-J4V" id="iHp-wg-FfO"/>
@@ -1291,11 +1292,11 @@
             <objects>
                 <viewController title="Tutor Profile" id="263-rL-hE7" customClass="SearchResultTutorProfileController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NjZ-9Y-Y1v">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="jVC-JC-ecf" customClass="Search">
-                                <rect key="frame" x="16" y="20" width="90" height="100"/>
+                                <rect key="frame" x="16" y="20" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
