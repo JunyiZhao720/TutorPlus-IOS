@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y38-Pq-K1H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y38-Pq-K1H">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1042,21 +1042,33 @@
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <connections>
+                                                            <action selector="dateClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="bcV-KQ-BPz"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="25" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-sk-scr">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <connections>
+                                                            <action selector="dateClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="xBR-hv-qQa"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="26" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKg-lb-J5g">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <connections>
+                                                            <action selector="dateClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="mDU-xC-nt6"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="27" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snj-Bh-Knf">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <connections>
+                                                            <action selector="dateClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="fNp-Pm-IT0"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1108,6 +1120,34 @@
                         <outlet property="tutorStatus" destination="Jkw-Mp-ZZk" id="uDC-ox-G25"/>
                         <outlet property="tutorSwitch" destination="Aaj-7H-YBK" id="ntg-tp-3Lp"/>
                         <outlet property="universityEditor" destination="QeO-Ts-J4V" id="iHp-wg-FfO"/>
+                        <outletCollection property="dataBtn" destination="yQJ-wV-zR5" collectionClass="NSMutableArray" id="nwb-C7-QvU"/>
+                        <outletCollection property="dataBtn" destination="Ywv-fL-EwV" collectionClass="NSMutableArray" id="ZWn-5U-KhT"/>
+                        <outletCollection property="dataBtn" destination="Aio-7z-fkM" collectionClass="NSMutableArray" id="5a9-Z7-RVe"/>
+                        <outletCollection property="dataBtn" destination="oa2-kV-Aul" collectionClass="NSMutableArray" id="yIt-nq-qbD"/>
+                        <outletCollection property="dataBtn" destination="p16-aG-QkM" collectionClass="NSMutableArray" id="H1M-18-wVE"/>
+                        <outletCollection property="dataBtn" destination="IMs-vN-zvx" collectionClass="NSMutableArray" id="B39-AE-d83"/>
+                        <outletCollection property="dataBtn" destination="UuH-td-SE3" collectionClass="NSMutableArray" id="6s8-Qn-AdD"/>
+                        <outletCollection property="dataBtn" destination="0Ek-8X-oTS" collectionClass="NSMutableArray" id="Jj6-t4-vfH"/>
+                        <outletCollection property="dataBtn" destination="HjA-pX-2i4" collectionClass="NSMutableArray" id="OKp-Xg-Siy"/>
+                        <outletCollection property="dataBtn" destination="jWJ-CJ-byr" collectionClass="NSMutableArray" id="bBv-kt-dWb"/>
+                        <outletCollection property="dataBtn" destination="85E-fx-ZEz" collectionClass="NSMutableArray" id="4oZ-Bx-gwy"/>
+                        <outletCollection property="dataBtn" destination="7QY-ZE-RYA" collectionClass="NSMutableArray" id="8mB-XX-Jho"/>
+                        <outletCollection property="dataBtn" destination="l39-fg-T9X" collectionClass="NSMutableArray" id="H31-iO-4Wq"/>
+                        <outletCollection property="dataBtn" destination="rMQ-d2-uWB" collectionClass="NSMutableArray" id="2bF-O6-9eb"/>
+                        <outletCollection property="dataBtn" destination="Hd9-pz-MLJ" collectionClass="NSMutableArray" id="52J-28-t1u"/>
+                        <outletCollection property="dataBtn" destination="XED-a9-vjp" collectionClass="NSMutableArray" id="GFp-E3-NQM"/>
+                        <outletCollection property="dataBtn" destination="kmd-Rw-a6A" collectionClass="NSMutableArray" id="6uE-Hf-2IG"/>
+                        <outletCollection property="dataBtn" destination="DnC-dk-O3o" collectionClass="NSMutableArray" id="l7E-de-2CT"/>
+                        <outletCollection property="dataBtn" destination="DsV-3R-uk3" collectionClass="NSMutableArray" id="qF1-jS-Kb4"/>
+                        <outletCollection property="dataBtn" destination="l1S-bJ-btS" collectionClass="NSMutableArray" id="NyO-2c-mjg"/>
+                        <outletCollection property="dataBtn" destination="5cU-TX-9wa" collectionClass="NSMutableArray" id="4g9-0y-Zyg"/>
+                        <outletCollection property="dataBtn" destination="B7R-wK-Swg" collectionClass="NSMutableArray" id="84S-nB-RpD"/>
+                        <outletCollection property="dataBtn" destination="LwB-KB-7Jg" collectionClass="NSMutableArray" id="IGK-hO-M6O"/>
+                        <outletCollection property="dataBtn" destination="ACr-cf-vnm" collectionClass="NSMutableArray" id="mH7-w8-OR7"/>
+                        <outletCollection property="dataBtn" destination="0cJ-Rt-Rvd" collectionClass="NSMutableArray" id="zlu-Ww-gjr"/>
+                        <outletCollection property="dataBtn" destination="ux0-sk-scr" collectionClass="NSMutableArray" id="hea-Jh-c0D"/>
+                        <outletCollection property="dataBtn" destination="LKg-lb-J5g" collectionClass="NSMutableArray" id="9er-rQ-XYg"/>
+                        <outletCollection property="dataBtn" destination="snj-Bh-Knf" collectionClass="NSMutableArray" id="zH9-0t-tkP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1817,7 +1857,7 @@ CMPS 111 A</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aW2-RD-evB"/>
-        <segue reference="0wt-Gf-ODb"/>
+        <segue reference="tEV-K8-679"/>
         <segue reference="esm-UM-aGy"/>
         <segue reference="Azm-Lh-Zc2"/>
     </inferredMetricsTieBreakers>

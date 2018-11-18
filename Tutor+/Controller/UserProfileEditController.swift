@@ -10,51 +10,51 @@ import UIKit
 
 class UserProfileEditController: UIViewController{
     
-//    //schedule
-//    var date: Array<Character> = Array(repeating: "0", count: 28)
-//
-//    @IBOutlet var dataBtn: [UIButton]!
-//
-//    @IBAction func dateClicked(_ sender: UIButton) {
-//        if dataBtn[sender.tag].backgroundColor == UIColor.gray{
-//            dataBtn[sender.tag].backgroundColor = UIColor.green
-//            date[sender.tag] = "1"
-//            print(("string: "), getDate())
-//        }else{
-//            dataBtn[sender.tag].backgroundColor = UIColor.gray
-//            date[sender.tag] = "0"
-//            print(("string: "), getDate())
-//        }
-//    }
-//
-//    func getDate()-> String{
-//        return toString()
-//    }
-//
-//    //这下面写个setter，
-//
-//    func setDate(){   //<--假设你pass个string下来叫 dateDownloade
-//        var dateDownloade = "0010100010111101010010010101"
-//        let update = Array(dateDownloade)
-//        for i in 0...27{
-//            date[i] = update[i]
-//        }
-//    }
+// schedule
+    var date: Array<Character> = Array(repeating: "0", count: 28)
+
+    @IBOutlet var dataBtn: [UIButton]!
+
+    @IBAction func dateClicked(_ sender: UIButton) {
+        if dataBtn[sender.tag].backgroundColor == UIColor.gray{
+            dataBtn[sender.tag].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)
+            date[sender.tag] = "1"
+            print(("string: "), getDate())
+        }else{
+            dataBtn[sender.tag].backgroundColor = UIColor.gray
+            date[sender.tag] = "0"
+            print(("string: "), getDate())
+        }
+    }
+
+    func getDate()-> String{
+        return toString()
+    }
+
+    //这下面写个setter，
+
+    func setDate(){   //<--假设你pass个string下来叫 dateDownloade
+        var dateDownloade = "0010100010111101010010010101"
+        let update = Array(dateDownloade)
+        for i in 0...27{
+            date[i] = update[i]
+        }
+    }
     
     func updateDate (){
-//        //这里call setter
-//        setDate()
-//        for i in 0...27{
-//            if date[i] == "1"{dataBtn[i].backgroundColor = UIColor.green}
-//            else{dataBtn[i].backgroundColor = UIColor.gray}
-//        }
+        //这里call setter
+        setDate()
+        for i in 0...27{
+            if date[i] == "1"{dataBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
+            else{dataBtn[i].backgroundColor = UIColor.gray}
+        }
     }
     
     //tostring
-//    func toString()-> String{
-//        let stringDate = String(date)
-//        return stringDate
-//    }
+    func toString()-> String{
+        let stringDate = String(date)
+        return stringDate
+    }
     //end of schedule
     
 //    @IBAction func back(_ sender: UIButton) {
