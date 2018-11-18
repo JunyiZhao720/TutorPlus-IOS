@@ -82,19 +82,62 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    //create doc to tutor_id's student, set the state to pending
-    func request(collection: String, id: String, dict: Dictionary<String, Any>){
-        
+// create doc to tutor_id's student, set the state to pending
+    func request(collection: String, id: String, dict: Dictionary<String, Any>, state: String){
+//================================================================================================
+// this is set documents to some new data
+//        let studentDocInTutor: [String: Any] = [
+//            "Name": uname,
+//            "id": id,
+//            "state": "pending"
+//        ]
+//
+//                db.collection("student").document("your_student").setData(studentDocInTutor){
+//        err in
+//        if let err = err {
+//            debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request fails.Error writing document: \(err)", id: id)
+//        } else {
+//            debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request has been sent.Document successfully written!", id: id)
+//        }
+//    }
+//================================================================================================
+            
+// this is add a new document
+//================================================================================================
+        var ref: DocumentReference? = nil
+        ref = db.collection("student").addDocument(data: [
+            "name": uname,
+            "country": id,
+            state: "pending"
+        ]) {err in
+                if let err = err {
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request fails.Error writing document: \(err)", id: id)
+            } else {
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request has been sent.Document successfully written!", id: id)
+            }
+        }
     }
+//================================================================================================
     
-    //delete student_id within my student
-    func reject(collection: String, id:(String) ->Void){
-        
+    
+    // delete student_id within tutor's student
+    // collection is student
+    func reject(collection: String, id:String, dict: Dictionary<String, Any>){
+        db.collection("student").document("your_student").delete() { err in
+            if let err = err {
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error removing document: \(err)", id: id)
+            } else {
+                //print("Document successfully removed!")
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Reject has been processde. Document successfully removed!", id: id)
+            }
+        }
     }
     
 
     
-    //defining firebase reference var
+    // This can be used in tableView. It implements update and delete
+    // https://www.youtube.com/watch?v=Q5s0dvVM3HE
+    //    defining firebase reference var
     //    var refStudents: FIRDatabaseReference!
     //    var someList = [AritistModel]()
     //
@@ -143,6 +186,10 @@ class FirebaseTrans: NSObject {
     //    func delete(id:String){
     //        refStudents.child(id).setValue(nil)
     //    }
+    
+    
+    
+    
     
     // general download functions
     
