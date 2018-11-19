@@ -142,31 +142,13 @@ class FirebaseUser{
         return dictionary
     }
     
-//    private func makeInitialDict()->[String: Any]{
-//        let dictionary: [String: Any] = [
-//            // use as Any to avoid warning
-//            "name" :"",
-//            "email" : "",
-//            "gender" : "",
-//            "major" : "",
-//            "university" : ""
-//        ]
-//        return dictionary
-//    }
-
-    // Create an intial empty doc for the user
-//    func createDoc(){
-//        if isLoggedIn(){
-//            trans.createDoc(collection: trans.USER_COLLECTIONS, id: self.userId!, dict: self.makeInitialDict())
-//        }else{
-//            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to createDoc() while user is not logged in")
-//        }
-//    }
+    // ------------------------------------------------------------------------------------
+    // Single document methods
     
     // Create or Override an existing doc
     func uploadDoc(){
         if isLoggedIn(){
-            trans.createDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.userId ?? "", dict: self.makeDict())
+            trans.createDoc(collection: [FirebaseTrans.USER_COLLECTION], id: self.userId ?? "", dict: self.makeDict())
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to uploadDoc() while user is not logged in")
         }
@@ -192,9 +174,82 @@ class FirebaseUser{
         }
     }
     
+    // ------------------------------------------------------------------------------------
+    // FriendList
+    private enum FriendState{
+        case pending
+        case accept
+    }
+    
+    private func friendDictGenerator(state: FriendState)->[String: String]{
+        switch state {
+        case .pending:
+            return ["state":"pending"]
+        case .accept:
+            return ["state":"accept"]
+        }
+    }
+    
+    func request(tutorId: String){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "request() not logged in")
+        }
+        //users->tutorId->student->new document
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(tutorId)
+        path.append(FirebaseTrans.STUDENT_COLLECTION)
+        
+        trans.createDoc(collection: path, id: self.userId!, dict: friendDictGenerator(state: .pending))
+    }
+    
+    func reject(studentId: String){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "reject() not logged in")
+        }
+        //users->myId->student->delete
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(userId!)
+        path.append(FirebaseTrans.STUDENT_COLLECTION)
+        
+        trans.deleteDoc(collection: path, id: studentId)
+    }
+    
+    func accept(studentId: String){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "request() not logged in")
+        }
+        // create a document under student's tutor collection
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(studentId)
+        path.append(FirebaseTrans.TUTOR_COLLECTION)
+        
+        trans.createDoc(collection: path, id: self.userId!, dict: friendDictGenerator(state: .accept))
+        
+        // change my document under student's to accept
+        path.removeAll()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(userId!)
+        path.append(FirebaseTrans.STUDENT_COLLECTION)
+        
+        trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
+    }
+    
+    
+    // ------------------------------------------------------------------------------------
+    // Other
+    
     // Parse data to UserStructure
     static func parseData(data:[String:Any?])->UserStructure{
-        let back = UserStructure(name: data["name"] as? String, email: data["email"] as? String, gender: data["gender"] as? String, major: data["major"] as? String, university: data["university"] as? String)
+        let back = UserStructure(
+            name: data["name"] as? String,
+            email: data["email"] as? String,
+            gender: data["gender"] as? String,
+            major: data["major"] as? String,
+            university: data["university"] as? String
+        )
         return back
     }
     

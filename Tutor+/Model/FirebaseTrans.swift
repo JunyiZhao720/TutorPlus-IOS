@@ -16,6 +16,8 @@ class FirebaseTrans: NSObject {
     static let USER_COLLECTION = "users"
     static let SCHOOL_COLLECTION = "schools"
     static let COURSE_COLLECTION = "courses"
+    static let STUDENT_COLLECTION = "students"
+    static let TUTOR_COLLECTION = "tutors"
     
     static let NAME_FIELD = "name"
     static let UNIVERSITY_FIELD = "university"
@@ -54,9 +56,18 @@ class FirebaseTrans: NSObject {
     // para2: document id
     // para3: data
     
-    func createDoc(collection: String, id: String, dict: Dictionary<String, Any>){
+    func createDoc(collection: [String], id: String, dict: Dictionary<String, Any>){
+        if collection.count<=0 || collection.count % 2 == 0{
+            debugHelpPrint(type: .FirebaseTrans, str: "createDoc() collection wrong parameters")
+            return
+        }
+        var collec = db.collection(collection[0])
+        // get chain result
+        for i in 1..<collection.count{
+            collec = collec.document(collection[i]).collection(collection[i+1])
+        }
         
-        db.collection(collection).document(id).setData(dict){ err in
+        collec.document(id).setData(dict){ err in
             if let error = err{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
             } else {
@@ -66,14 +77,24 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    func deleteDoc(collection: String, id: String, dict: Dictionary<String, Any>){
-        db.collection(collection).document(id).delete() { err in
+    func deleteDoc(collection: [String], id: String){
+        if collection.count<=0 || collection.count % 2 == 0{
+            debugHelpPrint(type: .FirebaseTrans, str: "deleteDoc() collection wrong parameters")
+            return
+        }
+        var collec = db.collection(collection[0])
+        // get chain result
+        for i in 1..<collection.count{
+            collec = collec.document(collection[i]).collection(collection[i+1])
+        }
+        
+        collec.document(id).delete() { err in
             if let err = err {
                 //print("Error removing document: \(err)")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error removing document: \(err)", id: id)
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Error removing document: \(err)", id: id)
             } else {
                 //print("Document successfully removed!")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Document successfully removed!", id: id)
+                debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Document successfully removed!", id: id)
             }
         }
     }
