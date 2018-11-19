@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 
-
 class FirebaseTrans: NSObject {
     
     static let shared = FirebaseTrans()
@@ -34,6 +33,7 @@ class FirebaseTrans: NSObject {
     }
     
     private let db = Firestore.firestore()
+    private let storage = Storage.storage()
     
     private override init() {
         let settings = db.settings

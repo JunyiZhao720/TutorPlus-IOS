@@ -6,6 +6,7 @@ target 'Tutor+' do
   use_frameworks!
 
   # Pods for Tutor+
+  pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
