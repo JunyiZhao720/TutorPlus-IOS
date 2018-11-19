@@ -9,7 +9,9 @@ target 'Tutor+' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'GoogleSignIn'
+  
   
   target 'Tutor+Tests' do
     inherit! :search_paths
