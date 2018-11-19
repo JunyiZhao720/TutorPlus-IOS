@@ -22,7 +22,7 @@ class FirebaseTrans: NSObject {
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
     
-    
+    // used for search structure
     public class node{
         let name: String
         let id: String
@@ -43,12 +43,8 @@ class FirebaseTrans: NSObject {
     
     
     
-    
-    
-    /***
-     single-document transmission functions---------------------
-     ***/
-    
+    // ------------------------------------------------------------------------------------
+    // Single document downloading methods
     
     
     
@@ -82,113 +78,6 @@ class FirebaseTrans: NSObject {
         }
     }
     
-// create doc to tutor_id's student, set the state to pending
-    func request(collection: String, id: String, dict: Dictionary<String, Any>, state: String){
-//================================================================================================
-// this is set documents to some new data
-//        let studentDocInTutor: [String: Any] = [
-//            "Name": uname,
-//            "id": id,
-//            "state": "pending"
-//        ]
-//
-//                db.collection("student").document("your_student").setData(studentDocInTutor){
-//        err in
-//        if let err = err {
-//            debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request fails.Error writing document: \(err)", id: id)
-//        } else {
-//            debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request has been sent.Document successfully written!", id: id)
-//        }
-//    }
-//================================================================================================
-            
-// this is add a new document
-//================================================================================================
-        var ref: DocumentReference? = nil
-        ref = db.collection("student").addDocument(data: [
-            "name": uname,
-            "country": id,
-            state: "pending"
-        ]) {err in
-                if let err = err {
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request fails.Error writing document: \(err)", id: id)
-            } else {
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Request has been sent.Document successfully written!", id: id)
-            }
-        }
-    }
-//================================================================================================
-    
-    
-    // delete student_id within tutor's student
-    // collection is student
-    func reject(collection: String, id:String, dict: Dictionary<String, Any>){
-        db.collection("student").document("your_student").delete() { err in
-            if let err = err {
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error removing document: \(err)", id: id)
-            } else {
-                //print("Document successfully removed!")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Reject has been processde. Document successfully removed!", id: id)
-            }
-        }
-    }
-    
-
-    
-    // This can be used in tableView. It implements update and delete
-    // https://www.youtube.com/watch?v=Q5s0dvVM3HE
-    //    defining firebase reference var
-    //    var refStudents: FIRDatabaseReference!
-    //    var someList = [AritistModel]()
-    //
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //        let student = someList[indexPath.row]
-    //
-    //        let alertController = UIAlertController(title: "Example", message: "example", preferredStyle: .alert)
-    //
-    //        let updateAction = UIAlertAction(title: "Update", style: .default){(_) in
-    //            let id = student.id
-    //            let name = alertController.textFields?[0].text
-    //            let xxx = alertController.textFields?[1].text
-    //
-    //            self.update(id: id!, name: name!, xxx: xxx!)
-    //
-    //        }
-    //        let deleteAction = UIAlertAction(title: "Delete", style: .default){(_) in
-    //            self.delete(id: student.id!)
-    //        }
-    //
-    //        alertController.addTextField{(textField) in
-    //            textField.text = student.name
-    //        }
-    //        alertController.addTextField{(textField) in
-    //            textField.text = student.xxx
-    //        }
-    //
-    //        alertController.addAction(updateAction)
-    //        alertController.addAction(deleteAction)
-    //
-    //        present(alertController, animated:true, completion: nil)
-    //    }
-    //
-    //    // update student'id ,name, and something else
-    //    func update(id: String, name: String, xxx: String){
-    //        let student = [
-    //            "id": id,
-    //            "studentName": name,
-    //            "studentXXX": xxx
-    //        ]
-    //        refStudents.child(id).setValue(student)
-    //        labelMessage.text = "Student updated"
-    //    }
-    //
-    //    func delete(id:String){
-    //        refStudents.child(id).setValue(nil)
-    //    }
-    
-    
-    
     
     
     // general download functions
@@ -219,6 +108,7 @@ class FirebaseTrans: NSObject {
             }
         }
     }
+    
     func downloadDoc(documentRef: DocumentReference, completion:@escaping(Dictionary<String, Any>?)->Void){
 
         documentRef.getDocument{(document, error) in
@@ -237,40 +127,17 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    /***
-        query transmission functions-----------------------
-     ***/
     
     
-    // general query functions
+    // ------------------------------------------------------------------------------------
+    // Collection downloading methods
     
-    // para1: collection
-    // para2: keywords you want to query by
-    // para3: normal element fields, which are types like string, int, bool
-    // para4 (optional): array element fields, which contains array elements such as [string], [int]
-
     
-    /**
-        Two Searchboxes
-             SearchBox-1: scool
-             SearchBox-2: couse
-        steps
-            1. Enter the page download all school information
-                get all the information by pair <name, id>
-            2. user starts typing stuff in search bar
-                autocomplete based on typing
-                user has to click one item
-                    once clicked, download all the schools <name>
-                    if not clicked, school textfield would pop up a warning prompt
-            3.
-     
-     */
     
     // general collection documents downloader
     // para1: collections
     //      collection.documentid.collection....
-    public func downloadAllDocuments(collections:[String], completion:@escaping([node]?)->Void){
-        
+    public func downloadAllDocumentsByCollection(collections:[String], completion:@escaping([node]?)->Void){
         
         // check parameters
         if(collections.count <= 0 || collections.count % 3 == 2) {
@@ -305,7 +172,7 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    public func downloadSelectedUserDocuments(school:String, course:String, completion:@escaping([FirebaseUser.UserStructure]?)->Void){
+    public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.UserStructure]?)->Void){
         let theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
         theQuery.getDocuments{(querySnapshot, err) in
@@ -323,98 +190,10 @@ class FirebaseTrans: NSObject {
                 completion(back)
             }
         }
-        
     }
     
+    // ------------------------------------------------------------------------------------
+    // Image methods
     
-    public enum QueryType{
-        case isEqualTo
-        case isGreaterThanOrEqualTo
-        case arrayContains
-    }
-    
-    public func queryField(collection:String, words:[String], field:String,completion:@escaping([String:Any]?)->Void
-        ){
-        
-        let collectionRef = db.collection(collection)
-        
-        // get the query
-        var theQuery = collectionRef.whereField(field, arrayContains: words[0])
-        for i in 1..<words.count{
-            theQuery = theQuery.whereField(field, arrayContains: words[i])
-        }
-        
-        // query data
-        theQuery.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting documents: \(err)")
-                completion(nil)
-            } else {
-                // no such document
-                if querySnapshot?.count == 0{
-                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "queryField: No result was found in \(collection) - \(field)")
-                    completion(nil)
-                    return
-                }
-                
-                // querySnapshot contains documents
-                var back = [String:Any]()
-                for document in querySnapshot!.documents {
-                    
-                    back[document.documentID] = document.data()
-                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
-                }
-                completion(back)
-            }
-        }
-        
-    }
-    
-//    public func queryField(collection:String, word:String, field:String, type:QueryType, preDocumentRef: DocumentReference? = nil ,completion:@escaping([DocumentReference]?)->Void){
-//
-//        var collectionRef: CollectionReference
-//
-//        if let preDocumentRef = preDocumentRef{
-//            collectionRef = preDocumentRef.collection(collection)
-//        }else{
-//            collectionRef = db.collection(collection)
-//        }
-//
-//
-//        var theQuery: Query
-//        // filter
-//        switch type{
-//        case .isEqualTo:
-//            theQuery = collectionRef.whereField(field, isEqualTo: word)
-//        case .isGreaterThanOrEqualTo:
-//            theQuery = collectionRef.whereField(field, isGreaterThanOrEqualTo: word)
-//        case .arrayContains:
-//            theQuery = collectionRef.whereField(field, arrayContains: word)
-//        }
-//
-//        // query data
-//        theQuery.getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Error getting documents: \(err)")
-//                completion(nil)
-//            } else {
-//                // no such document
-//                if querySnapshot?.count == 0{
-//                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "queryField: No fields contains \(word) in \(collection) - \(field)")
-//                    completion(nil)
-//                    return
-//                }
-//
-//                // querySnapshot contains documents
-//                var back = [DocumentReference]()
-//                for document in querySnapshot!.documents {
-//
-//                    back.append(document.reference)
-//                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "\(document.documentID) => \(document.data())")
-//                }
-//                completion(back)
-//            }
-//        }
-//    }
     
 }

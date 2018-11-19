@@ -52,7 +52,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         suggestionTableArray = [FirebaseTrans.node]()
         updateSuggestionArray()
         
-        FirebaseTrans.shared.downloadAllDocuments(collections: theId, completion: {(data)in
+        FirebaseTrans.shared.downloadAllDocumentsByCollection(collections: theId, completion: {(data)in
             if let data = data{
                 self.suggestionTableArray = data
                 self.updateSuggestionArray()
