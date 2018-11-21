@@ -248,6 +248,7 @@ class FirebaseUser{
     func accept(studentId: String){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "request() not logged in")
+            return
         }
         // create a document under student's tutor collection
         var path = [String]()
@@ -264,5 +265,22 @@ class FirebaseUser{
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // Image methods
+    func uploadImage(data: Data){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "uploadImage() not logged in")
+            return
+        }
+        
+        trans.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: userId!, fileExtension: FirebaseTrans.IMAGE_EXTENSION, data: data, completion: {(url) in
+            if let url = url{
+                debugHelpPrint(type: .FirebaseUser, str: "uploadImage(): url: \(url)")
+                self.imageURL = url
+            }
+        })
+
     }
 }

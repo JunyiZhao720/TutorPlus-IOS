@@ -101,7 +101,8 @@ class UserProfileEditController: UIViewController{
     
     // save button
     @IBAction func saveProfile(_ sender: Any) {
-        //FirebaseUser.shared.image = theImage.UIImage
+        
+        //Profile
         FirebaseUser.shared.name = nameEditor.text
         FirebaseUser.shared.email = emailEditor.text
         FirebaseUser.shared.gender = genderTextBox.text
@@ -116,8 +117,14 @@ class UserProfileEditController: UIViewController{
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.major!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.university!)
         
+        //Image
+        if let _chosenImage = chosenImage{
+            FirebaseUser.shared.uploadImage(data: _chosenImage.pngData()!)
+            chosenImage = nil
+        }
+        
         // Go back to previous page
-        self.performSegue(withIdentifier: "ProfileEditToProfile", sender: self)
+        self.performSegue(withIdentifier: "ProfileEditToTabBar", sender: self)
     }
     
     // tutor swtich
@@ -157,10 +164,6 @@ class UserProfileEditController: UIViewController{
         present(alertController, animated: true, completion: nil)
     }
     
-    // End buttons
-    // ------------------------------------------------------------------------------------
-    
-    
     // ------------------------------------------------------------------------------------
     // Dropdown menu
     
@@ -186,9 +189,6 @@ class UserProfileEditController: UIViewController{
         view.endEditing(true)
     }
     
-    // End Dropdown menu
-    // ------------------------------------------------------------------------------------
-    
     
     // ------------------------------------------------------------------------------------
     // Course Listview
@@ -212,12 +212,6 @@ class UserProfileEditController: UIViewController{
         view.endEditing(true)
     }
     
-    // End Course Listview
-    // ------------------------------------------------------------------------------------
-    
-    
-    
-
     // ------------------------------------------------------------------------------------
     // Schedule
     
@@ -265,9 +259,7 @@ class UserProfileEditController: UIViewController{
         let stringDate = String(date)
         return stringDate
     }
-    
-    // End Schedule
-    // ------------------------------------------------------------------------------------
+
 
 }
 
@@ -336,20 +328,15 @@ extension UIViewController: TableViewNew {
 }
 
 // image delegates
+var chosenImage : UIImage?
+
 extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         imageButton.imageView?.contentMode = .scaleAspectFill
         imageButton.setImage(chosenImage, for: .normal)
-        
-        // upload the image
-        FirebaseTrans.shared.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: "1122", fileExtension: ".png", data: chosenImage.pngData()!, completion: {(data) in
-            if let data = data{
-                debugHelpPrint(type: .UserProfileEditController, str: "\(data)" )
-            }
-        })
-        
+
         dismiss(animated: true, completion: nil)
     }
     
@@ -358,7 +345,5 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
     }
 }
 
-// End Delegates
-// ------------------------------------------------------------------------------------
 
 

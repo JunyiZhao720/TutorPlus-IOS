@@ -21,6 +21,8 @@ class FirebaseTrans: NSObject {
     
     static let IMAGE_FOLDER = "images/"
     
+    static let IMAGE_EXTENSION = ".png"
+    
     static let NAME_FIELD = "name"
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
