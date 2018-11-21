@@ -335,6 +335,7 @@ extension UIViewController: TableViewNew {
     }
 }
 
+// image delegates
 extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -342,7 +343,8 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
         imageButton.imageView?.contentMode = .scaleAspectFill
         imageButton.setImage(chosenImage, for: .normal)
         
-        //TODO: cache or upload the image
+        FirebaseTrans.shared.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: "1122", fileExtension: ".png", data: chosenImage.pngData()!)
+        
         dismiss(animated: true, completion: nil)
     }
     

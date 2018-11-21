@@ -67,6 +67,9 @@ class FirebaseUser{
     
     private init(){}
     
+    // ------------------------------------------------------------------------------------
+    // Auth methods
+    
     func addUserListener(loggedIn: Bool){
         debugHelpPrint(type: ClassType.AppDelegate, str: "Add listener")
         listenHandler = Auth.auth().addStateDidChangeListener{(auth,user) in
@@ -142,10 +145,22 @@ class FirebaseUser{
         return dictionary
     }
     
-    // ------------------------------------------------------------------------------------
-    // Single document methods
+    // Parse data to UserStructure
+    static func parseData(data:[String:Any?])->UserStructure{
+        let back = UserStructure(
+            name: data["name"] as? String,
+            email: data["email"] as? String,
+            gender: data["gender"] as? String,
+            major: data["major"] as? String,
+            university: data["university"] as? String
+        )
+        return back
+    }
     
-    // Create or Override an existing doc
+    // ------------------------------------------------------------------------------------
+    // Profile methods
+    
+    // create or override an existing doc
     func uploadDoc(){
         if isLoggedIn(){
             trans.createDoc(collection: [FirebaseTrans.USER_COLLECTION], id: self.userId ?? "", dict: self.makeDict())
@@ -175,7 +190,8 @@ class FirebaseUser{
     }
     
     // ------------------------------------------------------------------------------------
-    // FriendList
+    // FriendList methods
+    
     private enum FriendState{
         case pending
         case accept
@@ -241,16 +257,6 @@ class FirebaseUser{
     // ------------------------------------------------------------------------------------
     // Other
     
-    // Parse data to UserStructure
-    static func parseData(data:[String:Any?])->UserStructure{
-        let back = UserStructure(
-            name: data["name"] as? String,
-            email: data["email"] as? String,
-            gender: data["gender"] as? String,
-            major: data["major"] as? String,
-            university: data["university"] as? String
-        )
-        return back
-    }
+
     
 }

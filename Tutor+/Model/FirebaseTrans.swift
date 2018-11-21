@@ -19,6 +19,8 @@ class FirebaseTrans: NSObject {
     static let STUDENT_COLLECTION = "students"
     static let TUTOR_COLLECTION = "tutors"
     
+    static let IMAGE_FOLDER = "images/"
+    
     static let NAME_FIELD = "name"
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
@@ -35,7 +37,7 @@ class FirebaseTrans: NSObject {
     }
     
     private let db = Firestore.firestore()
-    private let storage = Storage.storage()
+    private let storageRef = Storage.storage().reference()
     
     private override init() {
         let settings = db.settings
@@ -216,5 +218,9 @@ class FirebaseTrans: NSObject {
     // ------------------------------------------------------------------------------------
     // Image methods
     
-    
+    public func uploadFile(folder: String, id: String, fileExtension: String, data: Data, completion: @escaping(String?)->Void){
+        let path = folder + id + fileExtension
+        debugHelpPrint(type: .FirebaseTrans, str: "uploadFile(): \(path)")
+        
+    }
 }
