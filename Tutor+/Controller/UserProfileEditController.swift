@@ -108,7 +108,7 @@ class UserProfileEditController: UIViewController{
         FirebaseUser.shared.major = majorEditor.text
         FirebaseUser.shared.university = universityEditor.text
         
-        FirebaseUser.shared.uploadDoc()
+        FirebaseUser.shared.uploadProfile()
         
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.name!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.email!)

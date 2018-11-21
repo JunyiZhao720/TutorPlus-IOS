@@ -258,7 +258,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="52" id="IFi-TR-gek" customClass="SearchViewTableViewCell" customModule="Tutor_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="52" id="IFi-TR-gek" customClass="SearchViewTableViewCell" customModule="Tutor_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="332" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IFi-TR-gek" id="R2y-WT-xnB">
@@ -266,7 +266,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyP-4M-ZmM">
-                                                    <rect key="frame" x="17" y="13" width="302" height="26"/>
+                                                    <rect key="frame" x="17" y="13" width="77" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1184,7 +1184,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="edP-7H-eyd" customClass="SearchResultTableCell" customModule="Tutor_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="edP-7H-eyd" customClass="SearchResultTableCell" customModule="Tutor_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="edP-7H-eyd" id="dQe-5P-7Us">
@@ -1192,7 +1192,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classes is CMPS121 CMPS122 CMPS123" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxD-bg-LDU">
-                                                    <rect key="frame" x="126" y="47" width="218" height="62"/>
+                                                    <rect key="frame" x="-99" y="47" width="218" height="62"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="62" id="A8H-BJ-flc"/>
                                                         <constraint firstAttribute="width" constant="218" id="L6H-cv-pxa"/>
@@ -1202,7 +1202,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHn-Yz-x5G">
-                                                    <rect key="frame" x="126" y="11" width="152" height="26"/>
+                                                    <rect key="frame" x="-99" y="11" width="152" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="J8E-YU-iT4"/>
                                                         <constraint firstAttribute="width" constant="152" id="zwt-tw-0Mp"/>
@@ -1212,7 +1212,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UCSC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVx-jw-naG">
-                                                    <rect key="frame" x="286" y="11" width="46.5" height="26"/>
+                                                    <rect key="frame" x="61" y="11" width="46.5" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26" id="X1Y-7O-c3A"/>
                                                         <constraint firstAttribute="width" constant="46.5" id="eQC-5y-OcG"/>
@@ -1299,7 +1299,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="jVC-JC-ecf" customClass="Search">
-                                <rect key="frame" x="16" y="20" width="90" height="90"/>
+                                <rect key="frame" x="16" y="19" width="90" height="91"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
@@ -1861,7 +1861,7 @@ CMPS 111 A</string>
     <inferredMetricsTieBreakers>
         <segue reference="zhk-n3-QNG"/>
         <segue reference="tEV-K8-679"/>
-        <segue reference="esm-UM-aGy"/>
+        <segue reference="hiJ-pd-nRZ"/>
         <segue reference="Zak-3F-4Hb"/>
     </inferredMetricsTieBreakers>
 </document>

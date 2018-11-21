@@ -195,7 +195,7 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.UserStructure]?)->Void){
+    public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
         let theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
         theQuery.getDocuments{(querySnapshot, err) in
@@ -203,7 +203,7 @@ class FirebaseTrans: NSObject {
                 debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                 completion(nil)
             } else {
-                var back = [FirebaseUser.UserStructure]()
+                var back = [FirebaseUser.ProfileStruct]()
                 for document in querySnapshot!.documents{
                     let data = document.data()
                     debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")

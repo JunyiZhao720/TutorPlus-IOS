@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController {
                 FirebaseUser.shared.university = self.schoolTextField.text
                 
                 // create initialized information
-                FirebaseUser.shared.uploadDoc()
+                FirebaseUser.shared.uploadProfile()
                 
                 // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in

@@ -14,7 +14,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     var classes = ["CMPS115", "CMPS121 CMPS122 CMPS123 CMPS124 CMPS125","CMPS126","CMPS127"]
     
     var schoolCourse:[String:String] = [:]
-    var tutorArray: [FirebaseUser.UserStructure] = []
+    var tutorArray: [FirebaseUser.ProfileStruct] = []
     
     @IBOutlet weak var tutorListView: UITableView!
     

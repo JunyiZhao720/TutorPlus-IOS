@@ -19,37 +19,31 @@ class UserProfileViewController: UIViewController {
     // TODO : need to be desided in one text or split into two
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        // Download user data
-        FirebaseUser.shared.downloadDoc(completion: {(success) in
-            self.nameView.text = FirebaseUser.shared.name
-            self.emailView.text = FirebaseUser.shared.email
-            self.genderView.text = FirebaseUser.shared.gender
-            self.majorView.text = FirebaseUser.shared.major
-            self.universityView.text = FirebaseUser.shared.university
-        })
+        initializeProfile()
+        initializeImage()
         
-        
+        // set up navigation bar title
+        self.navigationItem.title = "Profile"
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // FirebaseUser Profile
+    
+    private func initializeProfile(){
+        // initialize data
+        self.nameView.text = FirebaseUser.shared.name
+        self.emailView.text = FirebaseUser.shared.email
+        self.genderView.text = FirebaseUser.shared.gender
+        self.majorView.text = FirebaseUser.shared.major
+        self.universityView.text = FirebaseUser.shared.university
+    }
+    
+    private func initializeImage(){
         //set image to circle
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true
         theImage.layer.borderColor = UIColor.white.cgColor
-        
-        // Do any additional setup after loading the view.
-        self.navigationItem.title = "Profile"
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
