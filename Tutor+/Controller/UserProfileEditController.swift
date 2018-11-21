@@ -343,7 +343,12 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
         imageButton.imageView?.contentMode = .scaleAspectFill
         imageButton.setImage(chosenImage, for: .normal)
         
-        FirebaseTrans.shared.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: "1122", fileExtension: ".png", data: chosenImage.pngData()!)
+        // upload the image
+        FirebaseTrans.shared.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: "1122", fileExtension: ".png", data: chosenImage.pngData()!, completion: {(data) in
+            if let data = data{
+                debugHelpPrint(type: .UserProfileEditController, str: "\(data)" )
+            }
+        })
         
         dismiss(animated: true, completion: nil)
     }

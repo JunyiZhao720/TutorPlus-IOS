@@ -222,5 +222,28 @@ class FirebaseTrans: NSObject {
         let path = folder + id + fileExtension
         debugHelpPrint(type: .FirebaseTrans, str: "uploadFile(): \(path)")
         
+        let fileRef = storageRef.child(path)
+        
+        // Upload the file
+        fileRef.putData(data, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                debugHelpPrint(type: .FirebaseTrans, str: "uploadFile(): \(error.debugDescription)")
+                
+                completion(nil)
+                return
+            }
+            // Metadata contains file metadata such as size, content-type.
+            let size = metadata.size
+            // You can also access to download URL after upload.
+            fileRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "uploadFile(): \(error.debugDescription)")
+                    completion(nil)
+                    return
+                }
+                completion(downloadURL.absoluteString)
+                return
+            }
+        }
     }
 }
