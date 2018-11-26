@@ -40,6 +40,7 @@ class FirebaseTrans: NSObject {
     
     private let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
+    private let imageCache = NSCache<NSString, UIImage>()
     
     private override init() {
         let settings = db.settings
@@ -241,7 +242,7 @@ class FirebaseTrans: NSObject {
     }
     
     // ------------------------------------------------------------------------------------
-    // Image methods
+    // File methods
     
     public func uploadFile(folder: String, id: String, fileExtension: String, data: Data, completion: @escaping(String?)->Void){
         let path = folder + id + fileExtension
@@ -251,14 +252,13 @@ class FirebaseTrans: NSObject {
         
         // Upload the file
         fileRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
+            guard metadata != nil else {
                 debugHelpPrint(type: .FirebaseTrans, str: "uploadFile(): \(error.debugDescription)")
-                
                 completion(nil)
                 return
             }
             // Metadata contains file metadata such as size, content-type.
-            let size = metadata.size
+            //let size = metadata.size
             // You can also access to download URL after upload.
             fileRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
@@ -268,6 +268,27 @@ class FirebaseTrans: NSObject {
                 }
                 completion(downloadURL.absoluteString)
                 return
+            }
+        }
+    }
+    
+   public func downloadFileAndCache(url: String, completion: @escaping (UIImage?) -> Void) {
+        if let cachedImage = imageCache.object(forKey: url as NSString) {
+            completion(cachedImage)
+        } else {
+            // Create a reference to the file you want to download
+            let httpsReference = Storage.storage().reference(forURL: url)
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    debugHelpPrint(type: .FirebaseTrans, str: "downloadFileAndCach():\(error)")
+                    completion(nil)
+                } else {
+                    let image = UIImage(data: data!)
+                    self.imageCache.setObject(image!, forKey: url as NSString)
+                    completion(image)
+                }
             }
         }
     }
