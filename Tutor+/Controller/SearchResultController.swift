@@ -16,12 +16,13 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     var schoolCourse:[String:String] = [:]
     var tutorArray: [FirebaseUser.ProfileStruct] = []
     
+    @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var tutorListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse["school"] ?? "") \(schoolCourse["course"] ?? "")")
+        debugHelpPrint(type: .SearchResultController, str: "school:\(schoolCourse["school"] ?? "") course:\(schoolCourse["course"] ?? "")")
         downloadTutorData()
     }
     
@@ -30,6 +31,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
             FirebaseTrans.shared.downloadAllDocumentsBySchoolAndCourse(school: school, course: course, completion: {(data) in
                 if let data = data{
                     self.tutorArray = data
+                    debugHelpPrint(type: .SearchResultController, str: data.description)
                     self.tutorListView.reloadData()
                 }
             })

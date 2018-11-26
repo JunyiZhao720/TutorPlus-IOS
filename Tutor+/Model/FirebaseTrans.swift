@@ -195,6 +195,8 @@ class FirebaseTrans: NSObject {
     public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
         let theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
+        debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsBySchoolAndCourse(): \(school,course)")
+        
         theQuery.getDocuments{(querySnapshot, err) in
             if let err = err{
                 debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
@@ -206,7 +208,7 @@ class FirebaseTrans: NSObject {
                     debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")
                     back.append(FirebaseUser.parseData(data: data))
                 }
-                debugHelpPrint(type: .FirebaseTrans, str: "downloadSelectedUserDocuments: done downloading selected user documents")
+                debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsBySchoolAndCourse: done downloading selected user documents")
                 completion(back)
             }
         }
