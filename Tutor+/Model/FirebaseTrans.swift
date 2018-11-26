@@ -272,7 +272,7 @@ class FirebaseTrans: NSObject {
         }
     }
     
-   public func downloadFileAndCache(url: String, completion: @escaping (UIImage?) -> Void) {
+   public func downloadImageAndCache(url: String, completion: @escaping (UIImage?) -> Void) {
         if let cachedImage = imageCache.object(forKey: url as NSString) {
             completion(cachedImage)
         } else {

@@ -60,7 +60,7 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Button functions
     @IBAction func requestButtonOnClicked(_ sender: UIButton) {
-        FirebaseUser.shared.addStudentListListener()
+        tutorIcon.image = FirebaseUser.shared.imageProfile
     }
     
     

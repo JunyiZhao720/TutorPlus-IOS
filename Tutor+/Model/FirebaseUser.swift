@@ -76,6 +76,9 @@ class FirebaseUser{
         set(value){ data?.imageURL = value}
     }
     
+    //Extra fields
+    var imageProfile: UIImage?
+    
     private init(){}
     
     // ------------------------------------------------------------------------------------
@@ -106,14 +109,17 @@ class FirebaseUser{
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged in", id: self.userId)
                 
                 self.downloadProfile(completion: {(success) in
-                    // move to tab page
-                    DispatchQueue.main.asyncAfter(deadline: .now()){
-                        // Do something if logged in
-                        if self.checkEmailVerified(){
-                            //ViewSwitch.moveToTabPage()
+                    // download image
+                    self.downloadImage(completion: {
+                        // move to tab page
+                        DispatchQueue.main.asyncAfter(deadline: .now()){
+                            if self.checkEmailVerified(){
+                                //ViewSwitch.moveToTabPage()
+                            }
                         }
-                    }
+                    })
                 })
+                
             }
         }
     }
@@ -283,18 +289,36 @@ class FirebaseUser{
     
     // ------------------------------------------------------------------------------------
     // Image methods
-    func uploadImage(data: Data){
+    func uploadImage(data: Data,completion: @escaping (Bool) -> Void){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "uploadImage() not logged in")
-            return
+            completion(false)
         }
         
         trans.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: userId!, fileExtension: FirebaseTrans.IMAGE_EXTENSION, data: data, completion: {(url) in
             if let url = url{
                 debugHelpPrint(type: .FirebaseUser, str: "uploadImage(): url: \(url)")
                 self.imageURL = url
+                completion(true)
             }
         })
 
+    }
+    
+    func downloadImage(completion: @escaping () -> Void){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "downloadImage(): not logged in")
+            completion()
+            return
+        }
+        if let url = imageURL{
+            trans.downloadImageAndCache(url: url, completion: {(theUIImage) in
+                self.imageProfile = theUIImage
+                completion()
+            })
+        }else{
+            debugHelpPrint(type: .FirebaseUser, str: "downloadImage(): \(self.userId!) doesn't have an uploaded image")
+            completion()
+        }
     }
 }

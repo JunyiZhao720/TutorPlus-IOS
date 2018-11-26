@@ -109,7 +109,20 @@ class UserProfileEditController: UIViewController{
         FirebaseUser.shared.major = majorEditor.text
         FirebaseUser.shared.university = universityEditor.text
         
-        FirebaseUser.shared.uploadProfile()
+        
+        if let _chosenImage = chosenImage{
+            //It has a new image
+            FirebaseUser.shared.uploadImage(data: _chosenImage.pngData()!, completion: {(success) in
+                if success{
+                    FirebaseUser.shared.uploadProfile()
+                }
+            })
+        }else{
+            // It doesn't have a new image
+            FirebaseUser.shared.uploadProfile()
+        }
+        
+        
         
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.name!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.email!)
@@ -117,11 +130,7 @@ class UserProfileEditController: UIViewController{
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.major!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.university!)
         
-        //Image
-        if let _chosenImage = chosenImage{
-            FirebaseUser.shared.uploadImage(data: _chosenImage.pngData()!)
-            chosenImage = nil
-        }
+        
         
         // Go back to previous page
         self.performSegue(withIdentifier: "ProfileEditToTabBar", sender: self)
