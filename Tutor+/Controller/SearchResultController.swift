@@ -72,10 +72,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
         cell.className.text = classes[indexPath.row]
         if let url = tutorArray[indexPath.row].imageURL{
             if let image = tutorImageDict[url]{
-                cell.imageView!.image = image
-                cell.imageView!.layer.cornerRadius = cell.imageView!.frame.size.width
-                cell.imageView!.clipsToBounds = true
-                cell.imageView!.layer.borderColor = UIColor.white.cgColor
+                cell.img.image = image
             }
         }
         return cell
@@ -102,6 +99,6 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
             dest.data = data
             
         }
+    
     }
-
 }
