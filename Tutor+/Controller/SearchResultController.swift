@@ -44,6 +44,9 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
             FirebaseTrans.shared.downloadAllDocumentsBySchoolAndCourse(school: school, course: course, completion: {(data) in
                 if let data = data{
                     self.tutorArray = data
+                    self.tutorListView.reloadData()
+                    
+                    // Image downloading
                     debugHelpPrint(type: .SearchResultController, str: data.description)
                     self.downloadTutorImage()
                 }

@@ -22,16 +22,18 @@ class FirebaseUser{
         var major: String? = ""
         var university: String? = ""
         var imageURL: String? = ""
+        var tag: [String]? = []
         //var image
         
         init(){}
-        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?){
+        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?){
             self.name = name
             self.email = email
             self.gender = gender
             self.major = major
             self.university = university
             self.imageURL = imageURL
+            self.tag = tag
         }
     }
     
@@ -74,6 +76,10 @@ class FirebaseUser{
     var imageURL: String?{
         get{ return data?.imageURL}
         set(value){ data?.imageURL = value}
+    }
+    var tag: [String]?{
+        get{ return data?.tag}
+        set(value){ data?.tag = value}
     }
     
     //Extra fields
@@ -160,7 +166,8 @@ class FirebaseUser{
             "gender" : self.gender as Any,
             "major" : self.major as Any,
             "university" : self.university as Any,
-            "imageURL" : self.imageURL as Any
+            "imageURL" : self.imageURL as Any,
+            "tag" : self.tag as Any
         ]
         return dictionary
     }
@@ -173,7 +180,8 @@ class FirebaseUser{
             gender: data["gender"] as? String,
             major: data["major"] as? String,
             university: data["university"] as? String,
-            imageURL: data["imageURL"] as? String
+            imageURL: data["imageURL"] as? String,
+            tag: data["tag"] as? [String]
         )
         return back
     }

@@ -24,6 +24,7 @@ class FirebaseTrans: NSObject {
     static let IMAGE_EXTENSION = ".png"
     
     static let NAME_FIELD = "name"
+    static let COURSE_FIELD = "course"
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
     
@@ -193,16 +194,18 @@ class FirebaseTrans: NSObject {
     }
     
     public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
-        let theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
+        
+        let query = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
         debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsBySchoolAndCourse(): \(school,course)")
-        
-        theQuery.getDocuments{(querySnapshot, err) in
+
+        query.getDocuments{(querySnapshot, err) in
             if let err = err{
                 debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                 completion(nil)
             } else {
                 var back = [FirebaseUser.ProfileStruct]()
+                
                 for document in querySnapshot!.documents{
                     let data = document.data()
                     debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")

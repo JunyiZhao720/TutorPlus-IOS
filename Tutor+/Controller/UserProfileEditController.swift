@@ -115,6 +115,7 @@ class UserProfileEditController: UIViewController{
             //It has a new image
             FirebaseUser.shared.uploadImage(data: _chosenImage.pngData()!, completion: {(success) in
                 if success{
+                    FirebaseUser.shared.imageProfile = _chosenImage
                     FirebaseUser.shared.uploadProfile()
                 }
             })
