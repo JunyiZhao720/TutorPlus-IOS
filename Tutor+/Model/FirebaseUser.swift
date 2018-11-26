@@ -110,7 +110,7 @@ class FirebaseUser{
                     DispatchQueue.main.asyncAfter(deadline: .now()){
                         // Do something if logged in
                         if self.checkEmailVerified(){
-                            ViewSwitch.moveToTabPage()
+                            //ViewSwitch.moveToTabPage()
                         }
                     }
                 })
@@ -247,7 +247,7 @@ class FirebaseUser{
     
     func accept(studentId: String){
         if !isLoggedIn(){
-            debugHelpPrint(type: .FirebaseUser, str: "request() not logged in")
+            debugHelpPrint(type: .FirebaseUser, str: "accept() not logged in")
             return
         }
         // create a document under student's tutor collection
@@ -265,6 +265,20 @@ class FirebaseUser{
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
+    }
+    
+    func addStudentListListener(){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() not logged in")
+            return
+        }
+        
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(self.userId!)
+        path.append(FirebaseTrans.STUDENT_COLLECTION)
+        
+        FirebaseTrans.shared.addCollectionListener(collections: path)
     }
     
     // ------------------------------------------------------------------------------------

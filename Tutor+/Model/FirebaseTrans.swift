@@ -47,7 +47,26 @@ class FirebaseTrans: NSObject {
         db.settings = settings
     }
     
+    // ------------------------------------------------------------------------------------
+    // Helper methods
     
+    private func parseCollection(collections:[String])->CollectionReference?{
+        // check parameters
+        if(collections.count <= 0 || collections.count % 3 == 2) {
+            
+            return nil
+        }
+        
+        // initialize collections
+        var theCollection = db.collection(collections[0])
+        var i = 1
+        
+        while(i < collections.count){
+            theCollection = theCollection.document(collections[i]).collection(collections[i+1])
+            i += 2
+        }
+        return theCollection
+    }
     
     // ------------------------------------------------------------------------------------
     // Single document downloading methods
@@ -61,45 +80,33 @@ class FirebaseTrans: NSObject {
     // para3: data
     
     func createDoc(collection: [String], id: String, dict: Dictionary<String, Any>){
-        if collection.count<=0 || collection.count % 2 == 0{
-            debugHelpPrint(type: .FirebaseTrans, str: "createDoc() collection wrong parameters")
-            return
-        }
-        var collec = db.collection(collection[0])
-        // get chain result
-        for i in 1..<collection.count{
-            collec = collec.document(collection[i]).collection(collection[i+1])
-        }
-        
-        collec.document(id).setData(dict){ err in
-            if let error = err{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
-            } else {
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Creating a new document", id: id)
+        if let collection = parseCollection(collections: collection) {
+            collection.document(id).setData(dict){ err in
+                if let error = err{
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
+                } else {
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "Creating a new document", id: id)
+                }
             }
             
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
+
     }
     
     func deleteDoc(collection: [String], id: String){
-        if collection.count<=0 || collection.count % 2 == 0{
-            debugHelpPrint(type: .FirebaseTrans, str: "deleteDoc() collection wrong parameters")
-            return
-        }
-        var collec = db.collection(collection[0])
-        // get chain result
-        for i in 1..<collection.count{
-            collec = collec.document(collection[i]).collection(collection[i+1])
-        }
-        
-        collec.document(id).delete() { err in
-            if let err = err {
-                //print("Error removing document: \(err)")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Error removing document: \(err)", id: id)
-            } else {
-                //print("Document successfully removed!")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Document successfully removed!", id: id)
+        if let collection = parseCollection(collections: collection) {
+            collection.document(id).delete() { err in
+                if let err = err {
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Error removing document: \(err)", id: id)
+                } else {
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Document successfully removed!", id: id)
+                }
             }
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
     }
     
@@ -157,23 +164,6 @@ class FirebaseTrans: NSObject {
     // ------------------------------------------------------------------------------------
     // Collection downloading methods
     
-    private func parseCollection(collections:[String])->CollectionReference?{
-        // check parameters
-        if(collections.count <= 0 || collections.count % 3 == 2) {
-            
-            return nil
-        }
-        
-        // initialize collections
-        var theCollection = db.collection(collections[0])
-        var i = 1
-        
-        while(i < collections.count){
-            theCollection = theCollection.document(collections[i]).collection(collections[i+1])
-            i += 2
-        }
-        return theCollection
-    }
     
     // general collection documents downloader
     // para1: collections
@@ -225,7 +215,7 @@ class FirebaseTrans: NSObject {
     // ------------------------------------------------------------------------------------
     // Listener methods
     
-    public func collectionListener(collections: [String]){
+    public func addCollectionListener(collections: [String]){
         if let theCollection = parseCollection(collections: collections) {
             theCollection.addSnapshotListener{ querySnapshot, error in
                 guard let snapshot = querySnapshot else {
