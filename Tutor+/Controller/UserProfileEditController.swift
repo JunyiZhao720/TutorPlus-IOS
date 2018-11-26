@@ -90,6 +90,7 @@ class UserProfileEditController: UIViewController{
         imageButton.layer.cornerRadius = imageButton.frame.size.width/2
         imageButton.clipsToBounds = true
         imageButton.layer.borderColor = UIColor.white.cgColor
+        imageButton.setImage(FirebaseUser.shared.imageProfile, for: .normal)
     }
     
     // End initialization functions
