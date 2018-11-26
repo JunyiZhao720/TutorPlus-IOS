@@ -157,18 +157,11 @@ class FirebaseTrans: NSObject {
     // ------------------------------------------------------------------------------------
     // Collection downloading methods
     
-    
-    
-    // general collection documents downloader
-    // para1: collections
-    //      collection.documentid.collection....
-    public func downloadAllDocumentsByCollection(collections:[String], completion:@escaping([node]?)->Void){
-        
+    private func parseCollection(collections:[String])->CollectionReference?{
         // check parameters
         if(collections.count <= 0 || collections.count % 3 == 2) {
-            debugHelpPrint(type: .FirebaseTrans, str: "Input collections parameters are not with format collection-documentid-collection")
-            completion(nil)
-            return
+            
+            return nil
         }
         
         // initialize collections
@@ -179,21 +172,32 @@ class FirebaseTrans: NSObject {
             theCollection = theCollection.document(collections[i]).collection(collections[i+1])
             i += 2
         }
+        return theCollection
+    }
+    
+    // general collection documents downloader
+    // para1: collections
+    //      collection.documentid.collection....
+    public func downloadAllDocumentsByCollection(collections:[String], completion:@escaping([node]?)->Void){
         
-        // download data
-        theCollection.getDocuments{(querySnapshot, err)in
-            if let err = err{
-                debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
-                completion(nil)
-            } else {
-                var back = [node]()
-                for document in querySnapshot!.documents{
-                    let data = document.data()
-                    back.append(node(name: data[FirebaseTrans.NAME_FIELD] as! String, id: document.documentID))
+        if let theCollection = parseCollection(collections: collections) {
+            // download data
+            theCollection.getDocuments{(querySnapshot, err)in
+                if let err = err{
+                    debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
+                    completion(nil)
+                } else {
+                    var back = [node]()
+                    for document in querySnapshot!.documents{
+                        let data = document.data()
+                        back.append(node(name: data[FirebaseTrans.NAME_FIELD] as! String, id: document.documentID))
+                    }
+                    debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocuments: done downloading collection documents")
+                    completion(back)
                 }
-                debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocuments: done downloading collection documents")
-                completion(back)
             }
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): input parameters have problems")
         }
     }
     
@@ -214,6 +218,35 @@ class FirebaseTrans: NSObject {
                 debugHelpPrint(type: .FirebaseTrans, str: "downloadSelectedUserDocuments: done downloading selected user documents")
                 completion(back)
             }
+        }
+    }
+    
+    
+    // ------------------------------------------------------------------------------------
+    // Listener methods
+    
+    public func collectionListener(collections: [String]){
+        if let theCollection = parseCollection(collections: collections) {
+            theCollection.addSnapshotListener{ querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "collectionListener(): \(error.debugDescription)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        print("New city: \(diff.document.data())")
+                    }
+                    if (diff.type == .modified) {
+                        print("Modified city: \(diff.document.data())")
+                    }
+                    if (diff.type == .removed) {
+                        print("Removed city: \(diff.document.data())")
+                    }
+                }
+            }
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): input parameters have problems")
         }
     }
     
