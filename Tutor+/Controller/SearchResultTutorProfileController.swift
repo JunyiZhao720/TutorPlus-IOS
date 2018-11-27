@@ -41,19 +41,31 @@ class SearchResultTutorProfileController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateDate()
+        initializeItems()
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // Initialize functions
+    
+    private func initializeItems(){
+        tutorIcon.layer.cornerRadius = 5.0
+        tutorIcon.layer.masksToBounds = true
+        toolbarRequestButton.layer.cornerRadius = 5.0
+        toolbarRequestButton.layer.masksToBounds = true
         tutorName.text = tName
         //className.text = cName
         img.image = image1
-        
-        toolbarRequestButton.layer.cornerRadius = 5.0
-        toolbarRequestButton.layer.masksToBounds = true
-        
-        tutorIcon.layer.cornerRadius = 5.0
-        tutorIcon.layer.masksToBounds = true
-        
-        
-        // Do any additional setup after loading the view.
     }
+
+    // ------------------------------------------------------------------------------------
+    // Button functions
+    @IBAction func requestButtonOnClicked(_ sender: UIButton) {
+
+    }
+    
+    
+    // ------------------------------------------------------------------------------------
+    // Schedule functions
     
     func getDate()-> String{
         return toString()
@@ -62,7 +74,7 @@ class SearchResultTutorProfileController: UIViewController {
     //这下面写个setter，
     //schedule getter and setter function
     func setDate(){   //<--假设你pass个string下来叫 dateDownloade
-        var dateDownloade = "0010100010111101010010010101"
+        let dateDownloade = "0010100010111101010010010101"
         let update = Array(dateDownloade)
         for i in 0...27{
             date[i] = update[i]

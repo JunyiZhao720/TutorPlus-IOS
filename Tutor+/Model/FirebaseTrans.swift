@@ -21,7 +21,10 @@ class FirebaseTrans: NSObject {
     
     static let IMAGE_FOLDER = "images/"
     
+    static let IMAGE_EXTENSION = ".png"
+    
     static let NAME_FIELD = "name"
+    static let COURSE_FIELD = "course"
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
     
@@ -38,6 +41,7 @@ class FirebaseTrans: NSObject {
     
     private let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
+    private let imageCache = NSCache<NSString, UIImage>()
     
     private override init() {
         let settings = db.settings
@@ -45,7 +49,26 @@ class FirebaseTrans: NSObject {
         db.settings = settings
     }
     
+    // ------------------------------------------------------------------------------------
+    // Helper methods
     
+    private func parseCollection(collections:[String])->CollectionReference?{
+        // check parameters
+        if(collections.count <= 0 || collections.count % 3 == 2) {
+            
+            return nil
+        }
+        
+        // initialize collections
+        var theCollection = db.collection(collections[0])
+        var i = 1
+        
+        while(i < collections.count){
+            theCollection = theCollection.document(collections[i]).collection(collections[i+1])
+            i += 2
+        }
+        return theCollection
+    }
     
     // ------------------------------------------------------------------------------------
     // Single document downloading methods
@@ -59,45 +82,33 @@ class FirebaseTrans: NSObject {
     // para3: data
     
     func createDoc(collection: [String], id: String, dict: Dictionary<String, Any>){
-        if collection.count<=0 || collection.count % 2 == 0{
-            debugHelpPrint(type: .FirebaseTrans, str: "createDoc() collection wrong parameters")
-            return
-        }
-        var collec = db.collection(collection[0])
-        // get chain result
-        for i in 1..<collection.count{
-            collec = collec.document(collection[i]).collection(collection[i+1])
-        }
-        
-        collec.document(id).setData(dict){ err in
-            if let error = err{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
-            } else {
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Creating a new document", id: id)
+        if let collection = parseCollection(collections: collection) {
+            collection.document(id).setData(dict){ err in
+                if let error = err{
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
+                } else {
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "Creating a new document", id: id)
+                }
             }
             
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
+
     }
     
     func deleteDoc(collection: [String], id: String){
-        if collection.count<=0 || collection.count % 2 == 0{
-            debugHelpPrint(type: .FirebaseTrans, str: "deleteDoc() collection wrong parameters")
-            return
-        }
-        var collec = db.collection(collection[0])
-        // get chain result
-        for i in 1..<collection.count{
-            collec = collec.document(collection[i]).collection(collection[i+1])
-        }
-        
-        collec.document(id).delete() { err in
-            if let err = err {
-                //print("Error removing document: \(err)")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Error removing document: \(err)", id: id)
-            } else {
-                //print("Document successfully removed!")
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Document successfully removed!", id: id)
+        if let collection = parseCollection(collections: collection) {
+            collection.document(id).delete() { err in
+                if let err = err {
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Error removing document: \(err)", id: id)
+                } else {
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "deleteDoc() Document successfully removed!", id: id)
+                }
             }
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
     }
     
@@ -156,67 +167,87 @@ class FirebaseTrans: NSObject {
     // Collection downloading methods
     
     
-    
     // general collection documents downloader
     // para1: collections
     //      collection.documentid.collection....
     public func downloadAllDocumentsByCollection(collections:[String], completion:@escaping([node]?)->Void){
         
-        // check parameters
-        if(collections.count <= 0 || collections.count % 3 == 2) {
-            debugHelpPrint(type: .FirebaseTrans, str: "Input collections parameters are not with format collection-documentid-collection")
-            completion(nil)
-            return
-        }
-        
-        // initialize collections
-        var theCollection = db.collection(collections[0])
-        var i = 1
-        
-        while(i < collections.count){
-            theCollection = theCollection.document(collections[i]).collection(collections[i+1])
-            i += 2
-        }
-        
-        // download data
-        theCollection.getDocuments{(querySnapshot, err)in
-            if let err = err{
-                debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
-                completion(nil)
-            } else {
-                var back = [node]()
-                for document in querySnapshot!.documents{
-                    let data = document.data()
-                    back.append(node(name: data[FirebaseTrans.NAME_FIELD] as! String, id: document.documentID))
+        if let theCollection = parseCollection(collections: collections) {
+            // download data
+            theCollection.getDocuments{(querySnapshot, err)in
+                if let err = err{
+                    debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
+                    completion(nil)
+                } else {
+                    var back = [node]()
+                    for document in querySnapshot!.documents{
+                        let data = document.data()
+                        back.append(node(name: data[FirebaseTrans.NAME_FIELD] as! String, id: document.documentID))
+                    }
+                    debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocuments: done downloading collection documents")
+                    completion(back)
                 }
-                debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocuments: done downloading collection documents")
-                completion(back)
             }
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): input parameters have problems")
         }
     }
     
     public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
-        let theQuery = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
-        theQuery.getDocuments{(querySnapshot, err) in
+        let query = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
+        
+        debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsBySchoolAndCourse(): \(school,course)")
+
+        query.getDocuments{(querySnapshot, err) in
             if let err = err{
                 debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                 completion(nil)
             } else {
                 var back = [FirebaseUser.ProfileStruct]()
+                
                 for document in querySnapshot!.documents{
                     let data = document.data()
                     debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")
                     back.append(FirebaseUser.parseData(data: data))
                 }
-                debugHelpPrint(type: .FirebaseTrans, str: "downloadSelectedUserDocuments: done downloading selected user documents")
+                debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsBySchoolAndCourse: done downloading selected user documents")
                 completion(back)
             }
         }
     }
     
+    
     // ------------------------------------------------------------------------------------
-    // Image methods
+    // Listener methods
+    
+    public func addCollectionListener(collections: [String]){
+        if let theCollection = parseCollection(collections: collections) {
+            theCollection.addSnapshotListener{ querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "collectionListener(): \(error.debugDescription)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        print("New city: \(diff.document.data())")
+                    }
+                    if (diff.type == .modified) {
+                        print("Modified city: \(diff.document.data())")
+                    }
+                    if (diff.type == .removed) {
+                        print("Removed city: \(diff.document.data())")
+                    }
+                }
+            }
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): input parameters have problems")
+        }
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // File methods
     
     public func uploadFile(folder: String, id: String, fileExtension: String, data: Data, completion: @escaping(String?)->Void){
         let path = folder + id + fileExtension
@@ -226,14 +257,13 @@ class FirebaseTrans: NSObject {
         
         // Upload the file
         fileRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
+            guard metadata != nil else {
                 debugHelpPrint(type: .FirebaseTrans, str: "uploadFile(): \(error.debugDescription)")
-                
                 completion(nil)
                 return
             }
             // Metadata contains file metadata such as size, content-type.
-            let size = metadata.size
+            //let size = metadata.size
             // You can also access to download URL after upload.
             fileRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
@@ -243,6 +273,27 @@ class FirebaseTrans: NSObject {
                 }
                 completion(downloadURL.absoluteString)
                 return
+            }
+        }
+    }
+    
+   public func downloadImageAndCache(url: String, completion: @escaping (UIImage?) -> Void) {
+        if let cachedImage = imageCache.object(forKey: url as NSString) {
+            completion(cachedImage)
+        } else {
+            // Create a reference to the file you want to download
+            let httpsReference = Storage.storage().reference(forURL: url)
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    debugHelpPrint(type: .FirebaseTrans, str: "downloadFileAndCach():\(error)")
+                    completion(nil)
+                } else {
+                    let image = UIImage(data: data!)
+                    self.imageCache.setObject(image!, forKey: url as NSString)
+                    completion(image)
+                }
             }
         }
     }

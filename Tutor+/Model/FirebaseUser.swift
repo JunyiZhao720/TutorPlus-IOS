@@ -22,16 +22,22 @@ class FirebaseUser{
         var major: String? = ""
         var university: String? = ""
         var imageURL: String? = ""
+        var tag: [String]? = []
+        var schedule: String? = ""
+        var ps: String? = ""
         //var image
         
         init(){}
-        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?){
+        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
             self.name = name
             self.email = email
             self.gender = gender
             self.major = major
             self.university = university
             self.imageURL = imageURL
+            self.tag = tag
+            self.schedule = schedule
+            self.ps = ps
         }
     }
     
@@ -75,6 +81,22 @@ class FirebaseUser{
         get{ return data?.imageURL}
         set(value){ data?.imageURL = value}
     }
+    var tag: [String]?{
+        get{ return data?.tag}
+        set(value){ data?.tag = value}
+    }
+    var schedule: String?{
+        get{ return data?.schedule}
+        set(value){ data?.schedule = value}
+    }
+    var ps: String?{
+        get{ return data?.ps}
+        set(value){ data?.ps = value}
+    }
+    
+    
+    //Extra fields
+    var imageProfile: UIImage?
     
     private init(){}
     
@@ -106,14 +128,17 @@ class FirebaseUser{
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged in", id: self.userId)
                 
                 self.downloadProfile(completion: {(success) in
-                    // move to tab page
-                    DispatchQueue.main.asyncAfter(deadline: .now()){
-                        // Do something if logged in
-                        if self.checkEmailVerified(){
-                            ViewSwitch.moveToTabPage()
+                    // download image
+                    self.downloadImage(completion: {
+                        // move to tab page
+                        DispatchQueue.main.asyncAfter(deadline: .now()){
+                            if self.checkEmailVerified(){
+                                //ViewSwitch.moveToTabPage()
+                            }
                         }
-                    }
+                    })
                 })
+                
             }
         }
     }
@@ -154,20 +179,27 @@ class FirebaseUser{
             "gender" : self.gender as Any,
             "major" : self.major as Any,
             "university" : self.university as Any,
-            "imageURL" : self.imageURL as Any
+            "imageURL" : self.imageURL as Any,
+            "tag" : self.tag as Any,
+            "schedule" : self.schedule as Any,
+            "ps" : self.ps as Any,
         ]
         return dictionary
     }
     
     // Parse data to UserStructure
     static func parseData(data:[String:Any?])->ProfileStruct{
+        let schedule = data["schedule"] == nil ? "0000000000000000000000000000" : data["schedule"] as? String
         let back = ProfileStruct(
             name: data["name"] as? String,
             email: data["email"] as? String,
             gender: data["gender"] as? String,
             major: data["major"] as? String,
             university: data["university"] as? String,
-            imageURL: data["imageURL"] as? String
+            imageURL: data["imageURL"] as? String,
+            tag: data["tag"] as? [String],
+            schedule: schedule,
+            ps: data["ps"] as? String
         )
         return back
     }
@@ -247,7 +279,8 @@ class FirebaseUser{
     
     func accept(studentId: String){
         if !isLoggedIn(){
-            debugHelpPrint(type: .FirebaseUser, str: "request() not logged in")
+            debugHelpPrint(type: .FirebaseUser, str: "accept() not logged in")
+            return
         }
         // create a document under student's tutor collection
         var path = [String]()
@@ -264,5 +297,54 @@ class FirebaseUser{
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
+    }
+    
+    func addStudentListListener(){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() not logged in")
+            return
+        }
+        
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(self.userId!)
+        path.append(FirebaseTrans.STUDENT_COLLECTION)
+        
+        FirebaseTrans.shared.addCollectionListener(collections: path)
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // Image methods
+    func uploadImage(data: Data,completion: @escaping (Bool) -> Void){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "uploadImage() not logged in")
+            completion(false)
+        }
+        
+        trans.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: userId!, fileExtension: FirebaseTrans.IMAGE_EXTENSION, data: data, completion: {(url) in
+            if let url = url{
+                debugHelpPrint(type: .FirebaseUser, str: "uploadImage(): url: \(url)")
+                self.imageURL = url
+                completion(true)
+            }
+        })
+
+    }
+    
+    func downloadImage(completion: @escaping () -> Void){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "downloadImage(): not logged in")
+            completion()
+            return
+        }
+        if let url = imageURL{
+            trans.downloadImageAndCache(url: url, completion: {(theUIImage) in
+                self.imageProfile = theUIImage
+                completion()
+            })
+        }else{
+            debugHelpPrint(type: .FirebaseUser, str: "downloadImage(): \(self.userId!) doesn't have an uploaded image")
+            completion()
+        }
     }
 }

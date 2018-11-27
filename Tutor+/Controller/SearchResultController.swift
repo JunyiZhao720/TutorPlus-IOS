@@ -15,22 +15,40 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     
     var schoolCourse:[String:String] = [:]
     var tutorArray: [FirebaseUser.ProfileStruct] = []
+    var tutorImageDict = [String: UIImage]()
     
+    @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var tutorListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        debugHelpPrint(type: .SearchResultController, str: "school\(schoolCourse["school"] ?? "") \(schoolCourse["course"] ?? "")")
+        debugHelpPrint(type: .SearchResultController, str: "school:\(schoolCourse["school"] ?? "") course:\(schoolCourse["course"] ?? "")")
         downloadTutorData()
     }
-    
+    private func downloadTutorImage(){
+        for tutor in tutorArray{
+            if let imageURL = tutor.imageURL{
+                FirebaseTrans.shared.downloadImageAndCache(url: imageURL, completion: {(image) in
+                    if let image = image{
+                        self.tutorImageDict[imageURL] = image
+                        self.tutorListView.reloadData()
+                    }
+                })
+            }
+            
+        }
+    }
     private func downloadTutorData(){
         if let school = schoolCourse["school"], let course = schoolCourse["course"]{
             FirebaseTrans.shared.downloadAllDocumentsBySchoolAndCourse(school: school, course: course, completion: {(data) in
                 if let data = data{
                     self.tutorArray = data
                     self.tutorListView.reloadData()
+                    
+                    // Image downloading
+                    debugHelpPrint(type: .SearchResultController, str: data.description)
+                    self.downloadTutorImage()
                 }
             })
         }else{
@@ -51,13 +69,16 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SearchResultTableCell
-        cell?.tutorName.text = tutorArray[indexPath.row].name
-        cell?.className.text = classes[indexPath.row]
-        cell?.img.image = UIImage(named: name[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchResultTableCell
         
-        //cell?.img.image = [UIImage, imageNamed,:[name objectAtIndex:indexpath.row]]
-        return cell!
+        cell.tutorName.text = tutorArray[indexPath.row].name
+        cell.className.text = classes[indexPath.row]
+        if let url = tutorArray[indexPath.row].imageURL{
+            if let image = tutorImageDict[url]{
+                cell.img.image = image
+            }
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,6 +102,6 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
             dest.data = data
             
         }
+    
     }
-
 }
