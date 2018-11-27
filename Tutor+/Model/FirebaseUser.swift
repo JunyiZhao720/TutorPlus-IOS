@@ -23,10 +23,12 @@ class FirebaseUser{
         var university: String? = ""
         var imageURL: String? = ""
         var tag: [String]? = []
+        var schedule: String? = ""
+        var ps: String? = ""
         //var image
         
         init(){}
-        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?){
+        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
             self.name = name
             self.email = email
             self.gender = gender
@@ -34,6 +36,8 @@ class FirebaseUser{
             self.university = university
             self.imageURL = imageURL
             self.tag = tag
+            self.schedule = schedule
+            self.ps = ps
         }
     }
     
@@ -81,6 +85,15 @@ class FirebaseUser{
         get{ return data?.tag}
         set(value){ data?.tag = value}
     }
+    var schedule: String?{
+        get{ return data?.schedule}
+        set(value){ data?.schedule = value}
+    }
+    var ps: String?{
+        get{ return data?.ps}
+        set(value){ data?.ps = value}
+    }
+    
     
     //Extra fields
     var imageProfile: UIImage?
@@ -167,13 +180,16 @@ class FirebaseUser{
             "major" : self.major as Any,
             "university" : self.university as Any,
             "imageURL" : self.imageURL as Any,
-            "tag" : self.tag as Any
+            "tag" : self.tag as Any,
+            "schedule" : self.schedule as Any,
+            "ps" : self.ps as Any,
         ]
         return dictionary
     }
     
     // Parse data to UserStructure
     static func parseData(data:[String:Any?])->ProfileStruct{
+        let schedule = data["schedule"] == nil ? "0000000000000000000000000000" : data["schedule"] as? String
         let back = ProfileStruct(
             name: data["name"] as? String,
             email: data["email"] as? String,
@@ -181,7 +197,9 @@ class FirebaseUser{
             major: data["major"] as? String,
             university: data["university"] as? String,
             imageURL: data["imageURL"] as? String,
-            tag: data["tag"] as? [String]
+            tag: data["tag"] as? [String],
+            schedule: schedule,
+            ps: data["ps"] as? String
         )
         return back
     }

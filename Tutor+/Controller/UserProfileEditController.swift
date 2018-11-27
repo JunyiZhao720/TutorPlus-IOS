@@ -38,7 +38,7 @@ class UserProfileEditController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Update Schedule
-        updateDate()
+        updateSchedule(schedule: FirebaseUser.shared.schedule)
         
         // Initialize navigation bar titile
         self.navigationItem.title = "Profile Edit"
@@ -69,7 +69,7 @@ class UserProfileEditController: UIViewController{
     }
     
     private func initializePersonalStatementTextField(){
-        personalState.text = "Personal Statement. Watch my video here: www.youtube.com"
+        personalState.text = FirebaseUser.shared.ps
         personalState.backgroundColor = UIColor(hue: 0.5333, saturation: 0.02, brightness: 0.94, alpha: 1.0)
         personalState.font = UIFont.systemFont(ofSize: 20)
         personalState.textColor = UIColor.black
@@ -109,6 +109,8 @@ class UserProfileEditController: UIViewController{
         FirebaseUser.shared.gender = genderTextBox.text
         FirebaseUser.shared.major = majorEditor.text
         FirebaseUser.shared.university = universityEditor.text
+        FirebaseUser.shared.ps = personalState.text
+        FirebaseUser.shared.schedule = scheduleToString()
         
         
         if let _chosenImage = chosenImage{
@@ -226,52 +228,41 @@ class UserProfileEditController: UIViewController{
     // ------------------------------------------------------------------------------------
     // Schedule
     
-    var date: Array<Character> = Array(repeating: "0", count: 28)
+    var scheduleData: Array<Character> = Array(repeating: "0", count: 28)
     
-    @IBOutlet var dataBtn: [UIButton]!
+    @IBOutlet var scheduleBtn: [UIButton]!
     
-    @IBAction func dateClicked(_ sender: UIButton) {
-        if dataBtn[sender.tag].backgroundColor == UIColor.gray{
-            dataBtn[sender.tag].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)
-            date[sender.tag] = "1"
-            print(("string: "), getDate())
+    @IBAction func dataClicked(_ sender: UIButton) {
+        if scheduleBtn[sender.tag].backgroundColor == UIColor.gray{
+            scheduleBtn[sender.tag].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)
+            scheduleData[sender.tag] = "1"
+            debugHelpPrint(type: .UserProfileEditController, str: scheduleToString())
         }else{
-            dataBtn[sender.tag].backgroundColor = UIColor.gray
-            date[sender.tag] = "0"
-            print(("string: "), getDate())
+            scheduleBtn[sender.tag].backgroundColor = UIColor.gray
+            scheduleData[sender.tag] = "0"
+            debugHelpPrint(type: .UserProfileEditController, str: scheduleToString())
         }
     }
     
-    func getDate()-> String{
-        return toString()
-    }
     
-    //这下面写个setter，
-    
-    func setDate(){   //<--假设你pass个string下来叫 dateDownloade
-        let dateDownloade = "0010100010111101010010010101"
-        let update = Array(dateDownloade)
-        for i in 0...27{
-            date[i] = update[i]
-        }
-    }
-    
-    func updateDate (){
-        //这里call setter
-        setDate()
-        for i in 0...27{
-            if date[i] == "1"{dataBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
-            else{dataBtn[i].backgroundColor = UIColor.gray}
+    func updateSchedule (schedule: String?){
+        if let schedule = schedule{
+            let scheduleData = Array(schedule)
+            //        for i in 0...27{
+            //            scheduleData[i] = update[i]
+            //        }
+            for i in 0...27{
+                if scheduleData[i] == "1"{scheduleBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
+                else{scheduleBtn[i].backgroundColor = UIColor.gray}
+            }
         }
     }
     
     //tostring
-    func toString()-> String{
-        let stringDate = String(date)
+    func scheduleToString()-> String{
+        let stringDate = String(scheduleData)
         return stringDate
     }
-
-
 }
 
 // ------------------------------------------------------------------------------------
