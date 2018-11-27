@@ -27,16 +27,15 @@ class SearchResultTutorProfileController: UIViewController {
     //end of schedule
 
     @IBOutlet weak var tutorName: UILabel!
-    @IBOutlet weak var className: UILabel!
-    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var tutorPs: UITextView!
+    @IBOutlet weak var tutorCourse: UITextView!
+    @IBOutlet weak var tutorIcon: UIImageView!
+    @IBOutlet weak var tutorMajor: UILabel!
     @IBOutlet weak var toolbarRequestButton: UIButton!
     
-    @IBOutlet weak var tutorIcon: UIImageView!
-    var data = [String:Any]()
-    var image1 = UIImage()
-    var tName = ""
-    var cName = ""
     
+    var dataCache: FirebaseUser.ProfileStruct?
+    var imageCache: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +51,16 @@ class SearchResultTutorProfileController: UIViewController {
         tutorIcon.layer.masksToBounds = true
         toolbarRequestButton.layer.cornerRadius = 5.0
         toolbarRequestButton.layer.masksToBounds = true
-        tutorName.text = tName
-        //className.text = cName
-        img.image = image1
+        
+        if let dataCache = self.dataCache{
+            tutorName.text = dataCache.name
+            tutorPs.text = dataCache.ps
+            tutorMajor.text = dataCache.major
+            tutorIcon.image = imageCache
+        }else{
+            AlertHelper.showAlert(fromController: self, message: "Initialize tutor profile encounters unknown problems. Please go back and try again!", buttonTitle: "Error")
+        }
+
     }
 
     // ------------------------------------------------------------------------------------
