@@ -9,38 +9,21 @@
 import UIKit
 
 class SearchResultTutorProfileController: UIViewController {
-    //schedule
-    var date: Array<Character> = Array(repeating: "0", count: 28)
-    @IBOutlet var dateBtn: [UIButton]!
-    //btn manager
-    @IBAction func dateClicked(_ sender: UIButton) {
-        if dateBtn[sender.tag].backgroundColor == UIColor.gray{
-            dateBtn[sender.tag].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)
-            date[sender.tag] = "1"
-            print(("string: "), getDate())
-        }else{
-            dateBtn[sender.tag].backgroundColor = UIColor.gray
-            date[sender.tag] = "0"
-            print(("string: "), getDate())
-        }
-    }
-    //end of schedule
+
 
     @IBOutlet weak var tutorName: UILabel!
-    @IBOutlet weak var className: UILabel!
-    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var tutorPs: UITextView!
+    @IBOutlet weak var tutorCourse: UITextView!
+    @IBOutlet weak var tutorIcon: UIImageView!
+    @IBOutlet weak var tutorMajor: UILabel!
     @IBOutlet weak var toolbarRequestButton: UIButton!
     
-    @IBOutlet weak var tutorIcon: UIImageView!
-    var data = [String:Any]()
-    var image1 = UIImage()
-    var tName = ""
-    var cName = ""
     
+    var dataCache: FirebaseUser.ProfileStruct?
+    var imageCache: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateDate()
         initializeItems()
     }
     
@@ -52,27 +35,24 @@ class SearchResultTutorProfileController: UIViewController {
         tutorIcon.layer.masksToBounds = true
         toolbarRequestButton.layer.cornerRadius = 5.0
         toolbarRequestButton.layer.masksToBounds = true
-        tutorName.text = tName
-        //className.text = cName
-        img.image = image1
+        
+        if let dataCache = self.dataCache{
+            tutorName.text = dataCache.name
+            tutorPs.text = dataCache.ps
+            tutorMajor.text = dataCache.major
+            tutorIcon.image = imageCache
+            
+            updateSchedule(schedule: dataCache.schedule)
+        }else{
+            AlertHelper.showAlert(fromController: self, message: "Initialize tutor profile encounters unknown problems. Please go back and try again!", buttonTitle: "Error")
+        }
+
     }
 
     // ------------------------------------------------------------------------------------
     // Button functions
     @IBAction func requestButtonOnClicked(_ sender: UIButton) {
-        var str = ["47M3QdWhfkMbrSDvuTglpwz30Gn1", "8TyZ3sGCYYPA2p11wIGUPnxPW5A3", "Ipus0TpfCzXVABANUoE32Qb3V7A2"]
-        for s in str{
-            var ref = FirebaseTrans.shared.db.collection(FirebaseTrans.USER_COLLECTION).document(s)
-            ref.getDocument(source: .cache) { (document, error) in
-                if let document = document {
-                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                    print("11123 Cached document data: \(dataDescription)")
-                } else {
-                    print("11123 Document does not exist in cache")
-                }
-            }
-        }
-        print("11123 Helloworld")
+
     }
     
     @IBAction func backButtonOnClicked(_ sender: Any) {
@@ -89,31 +69,23 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Schedule functions
     
-    func getDate()-> String{
-        return toString()
+    var scheduleData: Array<Character> = Array(repeating: "0", count: 28)
+    @IBOutlet var scheduleBtn: [UIButton]!
+    //btn manager
+    
+    func updateSchedule (schedule: String?){
+        if let schedule = schedule{
+            let scheduleData = Array(schedule)
+            for i in 0...27{
+                if scheduleData[i] == "1"{scheduleBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
+                else{scheduleBtn[i].backgroundColor = UIColor.gray}
+            }
+        }
     }
     
-    //这下面写个setter，
-    //schedule getter and setter function
-    func setDate(){   //<--假设你pass个string下来叫 dateDownloade
-        let dateDownloade = "0010100010111101010010010101"
-        let update = Array(dateDownloade)
-        for i in 0...27{
-            date[i] = update[i]
-        }
-    }
-    func updateDate (){
-        //这里call setter
-        setDate()
-        for i in 0...27{
-            if date[i] == "1"{dateBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
-            else{dateBtn[i].backgroundColor = UIColor.gray}
-        }
-    }
     //tostring
-    func toString()-> String{
-        let stringDate = String(date)
+    func scheduleToString()-> String{
+        let stringDate = String(scheduleData)
         return stringDate
     }
-    //end of schedule
 }

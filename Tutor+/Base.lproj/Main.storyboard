@@ -471,6 +471,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="tHc-gS-Jpg"/>
                     <navigationItem key="navigationItem" id="MVG-oy-ZW7">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="FYw-jj-t35">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nQa-Yj-hx0">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Cen-HT-MMa">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hHT-y2-mdY">
                                 <rect key="frame" x="329" y="7" width="30" height="30"/>
@@ -1305,20 +1312,6 @@
                                 <color key="textColor" white="0.56870719179999996" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPY-fE-zhM">
-                                <rect key="frame" x="323" y="20" width="36" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.56870719179999996" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgB-iL-kjG">
-                                <rect key="frame" x="245" y="20" width="48" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.56870719179999996" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFo-eM-SIN">
                                 <rect key="frame" x="131" y="80" width="228" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1330,15 +1323,8 @@
                                     <action selector="requestButtonOnClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="Ber-ph-Mtl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sco-Xw-DD8" userLabel="Gender Field">
-                                <rect key="frame" x="245" y="50" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgu-vt-UdL" userLabel="Age Field">
-                                <rect key="frame" x="323" y="50" width="36" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="se" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgu-vt-UdL" userLabel="Age Field">
+                                <rect key="frame" x="227" y="50" width="132" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1383,7 +1369,7 @@ CMPS 111 A</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lay Guo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggC-oY-Bzq" userLabel="Name Field">
-                                <rect key="frame" x="131" y="51" width="106" height="21"/>
+                                <rect key="frame" x="131" y="51" width="88" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1450,37 +1436,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="NnU-kD-GPz"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="WPX-tn-jfI"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5I-2i-vpy">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="Kfv-ei-bGI"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="kWG-9p-jma"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXP-Ox-jbY">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="42z-j2-0t1"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="Z6d-XV-VvQ"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pke-Wh-iot">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="8Jn-Ge-Ssl"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="VUh-u4-AUh"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1497,37 +1467,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="n9d-Do-HD2"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="S80-us-zkI"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQ2-Qv-VfB">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="O54-zi-EOo"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="QfM-7u-27N"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxa-l7-di8">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="YGE-Qk-D1b"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="3iQ-Pw-3kl"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="7" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByH-zG-AIQ">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="1Dj-it-3zC"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="mco-UE-2SO"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1544,37 +1498,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="SBM-kF-fEJ"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="cKc-yk-oqv"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIq-zu-MKP">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="8MA-su-Yif"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="xay-4d-6Yv"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="10" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-RR-aZc">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="2w6-CA-QoB"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="9XI-vk-M2j"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="11" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7W-Kd-xhS">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="OE0-h4-Oqk"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="LgP-BY-Z4l"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1591,37 +1529,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="jWa-Ck-Fal"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="Y1V-Vd-8Cr"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="13" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Es-bv-xgu">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="lo1-6h-8or"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="ebp-KU-AjF"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="14" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66z-1I-Bj6">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="g55-rY-dQ5"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="0cg-Jn-Ck8"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="15" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09r-W0-Ua1">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="X0Z-xh-hnt"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="eUf-k0-6X0"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1638,37 +1560,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="pqo-xi-jZG"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="QyF-5P-CVJ"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="17" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCp-Zr-fk1">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="OiI-bW-O6z"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="qtG-a9-iwm"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="18" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG3-dY-Gqk">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="9zQ-bi-shE"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="bBM-gk-GMI"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="19" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPA-nC-e1v">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="hHI-qH-vex"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="vLJ-dg-HSO"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1685,37 +1591,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="3DK-hU-j6c"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="X69-HK-bmi"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="21" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAc-F5-Jxn">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="fOQ-YY-3Bk"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="wGC-wd-Pnn"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="22" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoe-to-usn">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="ESa-mc-Nbg"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="iqF-WQ-NEl"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="23" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMp-Y0-v9Y">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dataClicked:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="5ZN-Np-Lc5"/>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="nrF-fB-67a"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1732,33 +1622,21 @@ CMPS 111 A</string>
                                                         <rect key="frame" x="0.0" y="22" width="30" height="27"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="U9x-vh-rtr"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="25" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Quu-cf-8YQ">
                                                         <rect key="frame" x="0.0" y="54" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="Lt5-hm-Z4l"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="26" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZX-1Y-hiF">
                                                         <rect key="frame" x="0.0" y="85" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="enl-ex-a6p"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="27" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8M-qv-t8g">
                                                         <rect key="frame" x="0.0" y="116" width="30" height="26"/>
                                                         <color key="backgroundColor" red="0.62482190820000005" green="0.87005999190000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <connections>
-                                                            <action selector="dateClicked:" destination="263-rL-hE7" eventType="touchUpInside" id="AqP-2M-9Os"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1775,6 +1653,13 @@ CMPS 111 A</string>
                                     <constraint firstAttribute="width" constant="398.5" id="pqw-2L-Ol8"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPY-fE-zhM">
+                                <rect key="frame" x="225" y="20" width="123" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.56870719179999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1793,43 +1678,44 @@ CMPS 111 A</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="img" destination="jVC-JC-ecf" id="H8Z-5A-tA2"/>
                         <outlet property="toolbarRequestButton" destination="MFo-eM-SIN" id="o4t-zp-zOf"/>
                         <outlet property="tutorIcon" destination="jVC-JC-ecf" id="D2x-jV-GlV"/>
+                        <outlet property="tutorMajor" destination="bgu-vt-UdL" id="bKy-HU-qJn"/>
                         <outlet property="tutorName" destination="ggC-oY-Bzq" id="QnT-L8-7WP"/>
-                        <outletCollection property="dateBtn" destination="ctC-c1-AXd" collectionClass="NSMutableArray" id="SCh-lM-OLK"/>
-                        <outletCollection property="dateBtn" destination="S5I-2i-vpy" collectionClass="NSMutableArray" id="lJV-GN-gRq"/>
-                        <outletCollection property="dateBtn" destination="LXP-Ox-jbY" collectionClass="NSMutableArray" id="I7K-8E-coy"/>
-                        <outletCollection property="dateBtn" destination="pke-Wh-iot" collectionClass="NSMutableArray" id="mqu-tK-PnF"/>
-                        <outletCollection property="dateBtn" destination="kHo-BH-xXW" collectionClass="NSMutableArray" id="Pbb-wh-UzY"/>
-                        <outletCollection property="dateBtn" destination="zQ2-Qv-VfB" collectionClass="NSMutableArray" id="PdJ-87-KE6"/>
-                        <outletCollection property="dateBtn" destination="zxa-l7-di8" collectionClass="NSMutableArray" id="CvZ-Zf-jkB"/>
-                        <outletCollection property="dateBtn" destination="ByH-zG-AIQ" collectionClass="NSMutableArray" id="Slu-MC-Fmo"/>
-                        <outletCollection property="dateBtn" destination="1Rr-5v-SON" collectionClass="NSMutableArray" id="eAp-7z-JQy"/>
-                        <outletCollection property="dateBtn" destination="pIq-zu-MKP" collectionClass="NSMutableArray" id="gCL-K5-Wuf"/>
-                        <outletCollection property="dateBtn" destination="Zaa-RR-aZc" collectionClass="NSMutableArray" id="tYl-nx-65K"/>
-                        <outletCollection property="dateBtn" destination="K7W-Kd-xhS" collectionClass="NSMutableArray" id="yC3-xd-J6w"/>
-                        <outletCollection property="dateBtn" destination="xQf-rW-3Fa" collectionClass="NSMutableArray" id="tWV-qg-iL8"/>
-                        <outletCollection property="dateBtn" destination="4Es-bv-xgu" collectionClass="NSMutableArray" id="ghD-O5-csw"/>
-                        <outletCollection property="dateBtn" destination="66z-1I-Bj6" collectionClass="NSMutableArray" id="4OL-0p-69b"/>
-                        <outletCollection property="dateBtn" destination="09r-W0-Ua1" collectionClass="NSMutableArray" id="Ipi-x3-BWI"/>
-                        <outletCollection property="dateBtn" destination="yqE-hb-bUG" collectionClass="NSMutableArray" id="Pdg-F9-YTg"/>
-                        <outletCollection property="dateBtn" destination="sCp-Zr-fk1" collectionClass="NSMutableArray" id="lbi-KB-ggX"/>
-                        <outletCollection property="dateBtn" destination="hG3-dY-Gqk" collectionClass="NSMutableArray" id="Fo1-R7-98L"/>
-                        <outletCollection property="dateBtn" destination="ZPA-nC-e1v" collectionClass="NSMutableArray" id="R1D-gP-612"/>
-                        <outletCollection property="dateBtn" destination="I81-vT-ZiI" collectionClass="NSMutableArray" id="ZgB-g4-RRf"/>
-                        <outletCollection property="dateBtn" destination="RAc-F5-Jxn" collectionClass="NSMutableArray" id="yR3-7H-4gC"/>
-                        <outletCollection property="dateBtn" destination="zoe-to-usn" collectionClass="NSMutableArray" id="T19-7t-Fuv"/>
-                        <outletCollection property="dateBtn" destination="dMp-Y0-v9Y" collectionClass="NSMutableArray" id="NmC-7U-S1H"/>
-                        <outletCollection property="dateBtn" destination="sqj-GC-TlX" collectionClass="NSMutableArray" id="FUz-jA-7Xw"/>
-                        <outletCollection property="dateBtn" destination="Quu-cf-8YQ" collectionClass="NSMutableArray" id="PtA-M3-Yfj"/>
-                        <outletCollection property="dateBtn" destination="oZX-1Y-hiF" collectionClass="NSMutableArray" id="wLz-CI-tSj"/>
-                        <outletCollection property="dateBtn" destination="S8M-qv-t8g" collectionClass="NSMutableArray" id="C7R-jW-U0j"/>
+                        <outlet property="tutorPs" destination="qOk-Ww-kjo" id="BEr-7c-MUE"/>
+                        <outletCollection property="scheduleBtn" destination="ctC-c1-AXd" collectionClass="NSMutableArray" id="SCh-lM-OLK"/>
+                        <outletCollection property="scheduleBtn" destination="S5I-2i-vpy" collectionClass="NSMutableArray" id="lJV-GN-gRq"/>
+                        <outletCollection property="scheduleBtn" destination="LXP-Ox-jbY" collectionClass="NSMutableArray" id="I7K-8E-coy"/>
+                        <outletCollection property="scheduleBtn" destination="pke-Wh-iot" collectionClass="NSMutableArray" id="mqu-tK-PnF"/>
+                        <outletCollection property="scheduleBtn" destination="kHo-BH-xXW" collectionClass="NSMutableArray" id="Pbb-wh-UzY"/>
+                        <outletCollection property="scheduleBtn" destination="zQ2-Qv-VfB" collectionClass="NSMutableArray" id="PdJ-87-KE6"/>
+                        <outletCollection property="scheduleBtn" destination="zxa-l7-di8" collectionClass="NSMutableArray" id="CvZ-Zf-jkB"/>
+                        <outletCollection property="scheduleBtn" destination="ByH-zG-AIQ" collectionClass="NSMutableArray" id="Slu-MC-Fmo"/>
+                        <outletCollection property="scheduleBtn" destination="1Rr-5v-SON" collectionClass="NSMutableArray" id="eAp-7z-JQy"/>
+                        <outletCollection property="scheduleBtn" destination="pIq-zu-MKP" collectionClass="NSMutableArray" id="gCL-K5-Wuf"/>
+                        <outletCollection property="scheduleBtn" destination="Zaa-RR-aZc" collectionClass="NSMutableArray" id="tYl-nx-65K"/>
+                        <outletCollection property="scheduleBtn" destination="K7W-Kd-xhS" collectionClass="NSMutableArray" id="yC3-xd-J6w"/>
+                        <outletCollection property="scheduleBtn" destination="xQf-rW-3Fa" collectionClass="NSMutableArray" id="tWV-qg-iL8"/>
+                        <outletCollection property="scheduleBtn" destination="4Es-bv-xgu" collectionClass="NSMutableArray" id="ghD-O5-csw"/>
+                        <outletCollection property="scheduleBtn" destination="66z-1I-Bj6" collectionClass="NSMutableArray" id="4OL-0p-69b"/>
+                        <outletCollection property="scheduleBtn" destination="09r-W0-Ua1" collectionClass="NSMutableArray" id="Ipi-x3-BWI"/>
+                        <outletCollection property="scheduleBtn" destination="yqE-hb-bUG" collectionClass="NSMutableArray" id="Pdg-F9-YTg"/>
+                        <outletCollection property="scheduleBtn" destination="sCp-Zr-fk1" collectionClass="NSMutableArray" id="lbi-KB-ggX"/>
+                        <outletCollection property="scheduleBtn" destination="hG3-dY-Gqk" collectionClass="NSMutableArray" id="Fo1-R7-98L"/>
+                        <outletCollection property="scheduleBtn" destination="ZPA-nC-e1v" collectionClass="NSMutableArray" id="R1D-gP-612"/>
+                        <outletCollection property="scheduleBtn" destination="I81-vT-ZiI" collectionClass="NSMutableArray" id="ZgB-g4-RRf"/>
+                        <outletCollection property="scheduleBtn" destination="RAc-F5-Jxn" collectionClass="NSMutableArray" id="yR3-7H-4gC"/>
+                        <outletCollection property="scheduleBtn" destination="zoe-to-usn" collectionClass="NSMutableArray" id="T19-7t-Fuv"/>
+                        <outletCollection property="scheduleBtn" destination="dMp-Y0-v9Y" collectionClass="NSMutableArray" id="NmC-7U-S1H"/>
+                        <outletCollection property="scheduleBtn" destination="sqj-GC-TlX" collectionClass="NSMutableArray" id="FUz-jA-7Xw"/>
+                        <outletCollection property="scheduleBtn" destination="Quu-cf-8YQ" collectionClass="NSMutableArray" id="PtA-M3-Yfj"/>
+                        <outletCollection property="scheduleBtn" destination="oZX-1Y-hiF" collectionClass="NSMutableArray" id="wLz-CI-tSj"/>
+                        <outletCollection property="scheduleBtn" destination="S8M-qv-t8g" collectionClass="NSMutableArray" id="C7R-jW-U0j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PR-Hu-1KY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3257" y="1990"/>
+            <point key="canvasLocation" x="3256.8000000000002" y="1989.3553223388308"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u56-CJ-P8S">

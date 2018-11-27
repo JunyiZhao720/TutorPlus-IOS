@@ -93,11 +93,10 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchResultTutorProfileController") as? SearchResultTutorProfileController
-        vc?.image1 = UIImage(named: name[indexPath.row])!
-        vc?.tName = name[indexPath.row]
-        //vc?.cName = classes[indexPath.row]
-        var data = Dictionary<String, String>()
+        var data = [String:Any?]()
+        data["dataCache"] = self.tutorArray[indexPath.row]
+        data["imageCache"] = self.tutorImageDict[self.tutorArray[indexPath.row].imageURL ?? ""]
+        
         self.performSegue(withIdentifier: "SearchResultToTutorNav", sender: data)
     }
     
@@ -109,9 +108,10 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
         if(segue.identifier == "SearchResultToTutorNav"){
             let nav = segue.destination as! UINavigationController
             let dest = nav.viewControllers.first as! SearchResultTutorProfileController
-            let data = sender as! [String:Any]
-            dest.data = data
-            
+            let data = sender as! [String:Any?]
+            // send data
+            if let dataCache = data["dataCache"] {dest.dataCache = dataCache as? FirebaseUser.ProfileStruct}
+            if let imageCache = data["imageCache"] {dest.imageCache = imageCache as? UIImage}
         }
     }
 }

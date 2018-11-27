@@ -22,9 +22,8 @@ class UserProfileViewController: UIViewController {
         
         initializeProfile()
         initializeImage()
-        
-        // set up navigation bar title
-        self.navigationItem.title = "Profile"
+        initializeNav()
+
     }
     
     // ------------------------------------------------------------------------------------
@@ -45,4 +44,15 @@ class UserProfileViewController: UIViewController {
         theImage.layer.borderColor = UIColor.white.cgColor
         theImage.image = FirebaseUser.shared.imageProfile
     }
+    
+    private func initializeNav(){
+        self.navigationItem.title = "Profile"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonOnClicked))
+    }
+    
+
+    @objc func logoutButtonOnClicked(_ sender: UIBarButtonItem) {
+        FirebaseUser.shared.logOut()
+    }
+    
 }
