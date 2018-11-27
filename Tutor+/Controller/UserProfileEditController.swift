@@ -13,7 +13,6 @@ class UserProfileEditController: UIViewController{
 
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var nameEditor: UITextField!
-    @IBOutlet weak var emailEditor: UITextField!
     @IBOutlet weak var genderTextBox: UITextField!
     @IBOutlet weak var genderDropDown: UIPickerView!
     @IBOutlet weak var majorEditor: UITextField!
@@ -62,7 +61,6 @@ class UserProfileEditController: UIViewController{
     
     private func initializeFirebaseInfo(){
         nameEditor.text = FirebaseUser.shared.name
-        emailEditor.text = FirebaseUser.shared.email
         genderTextBox.text = FirebaseUser.shared.gender
         majorEditor.text = FirebaseUser.shared.major
         universityEditor.text = FirebaseUser.shared.university
@@ -105,7 +103,6 @@ class UserProfileEditController: UIViewController{
         
         //Profile
         FirebaseUser.shared.name = nameEditor.text
-        FirebaseUser.shared.email = emailEditor.text
         FirebaseUser.shared.gender = genderTextBox.text
         FirebaseUser.shared.major = majorEditor.text
         FirebaseUser.shared.university = universityEditor.text
@@ -129,7 +126,6 @@ class UserProfileEditController: UIViewController{
         
         
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.name!)
-        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.email!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.gender!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.major!)
         debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.university!)

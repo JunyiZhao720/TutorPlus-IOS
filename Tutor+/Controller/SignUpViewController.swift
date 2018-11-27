@@ -66,7 +66,6 @@ class SignUpViewController: UIViewController {
                 }
                 
                 // Intialize sign up information
-                FirebaseUser.shared.email = self.emailTextField.text
                 FirebaseUser.shared.name = self.nameTextField.text
                 FirebaseUser.shared.university = self.schoolTextField.text
                 

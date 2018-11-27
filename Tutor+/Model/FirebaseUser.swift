@@ -17,7 +17,6 @@ class FirebaseUser{
     
     struct ProfileStruct{
         var name: String? = ""
-        var email: String? = ""
         var gender: String? = ""
         var major: String? = ""
         var university: String? = ""
@@ -28,9 +27,8 @@ class FirebaseUser{
         //var image
         
         init(){}
-        init(name:String?, email:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
+        init(name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
             self.name = name
-            self.email = email
             self.gender = gender
             self.major = major
             self.university = university
@@ -60,10 +58,6 @@ class FirebaseUser{
     var name: String?{
         get{ return data?.name }
         set(value){ data?.name = value}
-    }
-    var email: String? {
-        get{ return data?.email }
-        set(value){ data?.email = value}
     }
     var gender: String? {
         get{ return data?.gender }
@@ -174,7 +168,6 @@ class FirebaseUser{
         let dictionary: [String: Any] = [
             // use as Any to avoid warning
             "name" :self.name as Any,
-            "email" : self.email as Any,
             "gender" : self.gender as Any,
             "major" : self.major as Any,
             "university" : self.university as Any,
@@ -191,7 +184,6 @@ class FirebaseUser{
         let schedule = data["schedule"] == nil ? "0000000000000000000000000000" : data["schedule"] as? String
         let back = ProfileStruct(
             name: data["name"] as? String,
-            email: data["email"] as? String,
             gender: data["gender"] as? String,
             major: data["major"] as? String,
             university: data["university"] as? String,

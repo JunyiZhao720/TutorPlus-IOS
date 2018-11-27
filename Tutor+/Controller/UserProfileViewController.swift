@@ -12,7 +12,6 @@ class UserProfileViewController: UIViewController {
 
     @IBOutlet weak var theImage: UIImageView!
     @IBOutlet weak var nameView: UILabel!
-    @IBOutlet weak var emailView: UILabel!
     @IBOutlet weak var genderView: UILabel!
     @IBOutlet weak var majorView: UILabel!
     @IBOutlet weak var universityView: UILabel!
@@ -34,7 +33,6 @@ class UserProfileViewController: UIViewController {
     private func initializeProfile(){
         // initialize data
         self.nameView.text = FirebaseUser.shared.name
-        self.emailView.text = FirebaseUser.shared.email
         self.genderView.text = FirebaseUser.shared.gender
         self.majorView.text = FirebaseUser.shared.major
         self.universityView.text = FirebaseUser.shared.university
