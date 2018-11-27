@@ -145,12 +145,12 @@ class UserProfileEditController: UIViewController{
        
         if (tutorSwitch.isOn == true) {
             scrollView.setContentOffset(bottomOffset, animated: true)
-            saveButton.frame.origin.y += bottomOffset.y
+            //saveButton.frame.origin.y += bottomOffset.y
             scrollView.isScrollEnabled = true
             self.tutorStatus.text = "Yes!  I'm a great tutor"
         } else{
             scrollView.setContentOffset(CGPoint(x:0, y: 0), animated: true)
-            saveButton.frame.origin.y -= bottomOffset.y
+            //saveButton.frame.origin.y -= bottomOffset.y
             scrollView.isScrollEnabled = false
             self.tutorStatus.text = "Sorry, not now"
         }
