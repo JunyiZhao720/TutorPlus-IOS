@@ -1679,6 +1679,7 @@ CMPS 111 A</string>
                     </navigationItem>
                     <connections>
                         <outlet property="toolbarRequestButton" destination="MFo-eM-SIN" id="o4t-zp-zOf"/>
+                        <outlet property="tutorCourse" destination="QjP-XK-nOC" id="X6u-pM-BrM"/>
                         <outlet property="tutorIcon" destination="jVC-JC-ecf" id="D2x-jV-GlV"/>
                         <outlet property="tutorMajor" destination="bgu-vt-UdL" id="bKy-HU-qJn"/>
                         <outlet property="tutorName" destination="ggC-oY-Bzq" id="QnT-L8-7WP"/>

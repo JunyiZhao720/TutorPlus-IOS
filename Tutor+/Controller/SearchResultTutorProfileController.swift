@@ -42,6 +42,14 @@ class SearchResultTutorProfileController: UIViewController {
             tutorMajor.text = dataCache.major
             tutorIcon.image = imageCache
             
+            var courses = ""
+            if let tag = dataCache.tag{
+                for course in tag{
+                    courses.append(course + "\n")
+                }
+            }
+            tutorCourse.text = courses
+            
             updateSchedule(schedule: dataCache.schedule)
         }else{
             AlertHelper.showAlert(fromController: self, message: "Initialize tutor profile encounters unknown problems. Please go back and try again!", buttonTitle: "Error")
