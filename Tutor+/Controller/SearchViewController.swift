@@ -10,6 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
+    var imageNumber = 0
+    
+    @IBOutlet var suggestionImageView: [UIImageView]!
+    
 
     @IBOutlet weak var schoolSearchBar: UISearchBar!
     @IBOutlet weak var courseSearchBar: UISearchBar!
@@ -25,6 +29,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var currentCourseName: String?
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
         resultTableView.dataSource = self
@@ -33,6 +38,59 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         courseSearchBar.delegate = self
         
         downloadCollectionInfo()
+        
+        //add gradient tutor name and tutor info on the image, reconize if the image tapped
+        for i in 0...3{
+            self.suggestionImageView[i].layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+            let width = self.suggestionImageView[i].bounds.width
+            let height = self.suggestionImageView[i].bounds.height
+            let sHeight:CGFloat = 50.0
+            let shadow = UIColor.black.withAlphaComponent(0.9).cgColor
+            let bottomImageGradient = CAGradientLayer()
+            bottomImageGradient.frame = CGRect(x: 0, y: height - sHeight, width: width, height: sHeight)
+            bottomImageGradient.colors = [UIColor.clear.cgColor, shadow]
+            suggestionImageView[i].layer.insertSublayer(bottomImageGradient, at: 0)
+            
+            let name = UILabel(frame: CGRect(x: 0, y: 0, width: self.suggestionImageView[i].frame.width - 0,
+                                             height: 260))
+            name.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+            name.textAlignment = NSTextAlignment.center;
+            name.textColor = UIColor.white
+            name.isUserInteractionEnabled = true
+            name.text = setName()
+            self.suggestionImageView[i].addSubview(name)
+            
+            let discription = UILabel(frame: CGRect(x: 0, y: 0, width: self.suggestionImageView[i].frame.width - 0, height: 300))
+            discription.textAlignment = NSTextAlignment.center;
+            discription.textColor = UIColor.white
+            discription.isUserInteractionEnabled = true
+            discription.text = setTutorInfo()
+            self.suggestionImageView[i].addSubview(discription)
+            
+            //image tapped
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.imageTapped(gesture:)))
+            suggestionImageView[i].addGestureRecognizer(tapGesture)
+            suggestionImageView[i].isUserInteractionEnabled = true
+        }
+    }
+    
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            //Here you can initiate your new ViewController
+        }
+    }
+    
+    //getter
+    func setName()->String{
+        let tutorName = "Vash Wang" + "🏅"
+        return tutorName
+    }
+    
+    func setTutorInfo()->String{
+        let tutorInfo = " UCSC Computer Science"
+        return tutorInfo
     }
     
     

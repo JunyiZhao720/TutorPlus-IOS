@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -216,27 +216,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tutor+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9D-lM-6bU" userLabel="Tutor+ Icon">
-                                <rect key="frame" x="76" y="94" width="243" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutor+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9D-lM-6bU" userLabel="Tutor+ Icon">
+                                <rect key="frame" x="77" y="37" width="242" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="242" id="Vql-fy-g6A"/>
+                                    <constraint firstAttribute="height" constant="129" id="fu4-gq-hnG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="51"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar alpha="0.94999998807907104" contentMode="center" fixedFrame="YES" searchBarStyle="minimal" text="" placeholder="Course" translatesAutoresizingMaskIntoConstraints="NO" id="lGp-JV-QzG">
-                                <rect key="frame" x="204" y="242" width="162" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.75"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="yes" smartInsertDeleteType="yes"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="ZQp-el-Rxb">
                                 <rect key="frame" x="55" y="351" width="123" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -265,19 +254,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="332" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyP-4M-ZmM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyP-4M-ZmM">
                                                     <rect key="frame" x="17" y="13" width="302" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="XyP-4M-ZmM" firstAttribute="trailing" secondItem="R2y-WT-xnB" secondAttribute="trailingMargin" constant="2" id="1Sv-Eb-Nwf"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="XyP-4M-ZmM" secondAttribute="bottom" constant="2" id="dRr-X9-GMi"/>
-                                                <constraint firstItem="XyP-4M-ZmM" firstAttribute="leading" secondItem="R2y-WT-xnB" secondAttribute="leadingMargin" constant="2" id="imK-8T-s5N"/>
-                                                <constraint firstItem="XyP-4M-ZmM" firstAttribute="top" secondItem="R2y-WT-xnB" secondAttribute="topMargin" constant="2" id="scb-lF-GKK"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="suggestionLabel" destination="XyP-4M-ZmM" id="pjR-bL-BDk"/>
@@ -285,22 +269,98 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar alpha="0.94999998807907104" contentMode="center" fixedFrame="YES" searchBarStyle="minimal" text="" placeholder="School" translatesAutoresizingMaskIntoConstraints="NO" id="7rK-gS-Mbn">
-                                <rect key="frame" x="5" y="242" width="199" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.75"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="yes" smartInsertDeleteType="yes"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01f-hG-2Pb">
+                                <rect key="frame" x="-7" y="229" width="389" height="388"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square" translatesAutoresizingMaskIntoConstraints="NO" id="ytZ-cz-INc">
+                                        <rect key="frame" x="20" y="20" width="170" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square" translatesAutoresizingMaskIntoConstraints="NO" id="L5a-qp-8pk">
+                                        <rect key="frame" x="199" y="20" width="170" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square" translatesAutoresizingMaskIntoConstraints="NO" id="TTb-IM-qLh">
+                                        <rect key="frame" x="199" y="198" width="170" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square" translatesAutoresizingMaskIntoConstraints="NO" id="r4F-GI-Omh">
+                                        <rect key="frame" x="20" y="198" width="170" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="388" id="A5e-gy-k4t"/>
+                                    <constraint firstAttribute="height" constant="388" id="K5J-ux-SzL"/>
+                                    <constraint firstAttribute="width" constant="389" id="ZL7-iM-t4M"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="389" id="u5s-Ah-6cY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgX-ft-X5W">
+                                <rect key="frame" x="-10" y="145" width="395" height="76"/>
+                                <subviews>
+                                    <searchBar alpha="0.94999998807907104" contentMode="center" fixedFrame="YES" searchBarStyle="minimal" text="" placeholder="Course" translatesAutoresizingMaskIntoConstraints="NO" id="lGp-JV-QzG">
+                                        <rect key="frame" x="213" y="20" width="162" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.75"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                        <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" smartInsertDeleteType="yes"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                    <searchBar alpha="0.94999998807907104" contentMode="center" fixedFrame="YES" searchBarStyle="minimal" text="" placeholder="School" translatesAutoresizingMaskIntoConstraints="NO" id="7rK-gS-Mbn">
+                                        <rect key="frame" x="20" y="20" width="199" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.75"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                        <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" smartInsertDeleteType="yes"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="5J0-kF-4XV"/>
+                                    <constraint firstAttribute="width" constant="395" id="OGa-RA-Gim"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="395" id="hlX-pG-hT2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="tvF-LW-Vzx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wgX-ft-X5W" secondAttribute="trailing" constant="-10" id="0ca-mh-0Om"/>
+                            <constraint firstItem="wgX-ft-X5W" firstAttribute="top" secondItem="ETx-Jd-uYI" secondAttribute="top" constant="125" id="4if-d9-ixc"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="leading" secondItem="WKt-cw-1Oo" secondAttribute="leading" constant="-7" id="DdI-gj-O9r"/>
+                            <constraint firstItem="wgX-ft-X5W" firstAttribute="top" secondItem="ETx-Jd-uYI" secondAttribute="top" constant="125" id="EkS-Qy-OL5"/>
+                            <constraint firstItem="ETx-Jd-uYI" firstAttribute="bottom" secondItem="01f-hG-2Pb" secondAttribute="bottom" constant="1" id="JeK-Is-dSY"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="leading" secondItem="WKt-cw-1Oo" secondAttribute="leading" constant="-7" id="P3M-BZ-Waq"/>
+                            <constraint firstItem="wgX-ft-X5W" firstAttribute="leading" secondItem="WKt-cw-1Oo" secondAttribute="leading" constant="-10" id="P7T-vh-xIh"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="top" secondItem="e9D-lM-6bU" secondAttribute="bottom" constant="63" id="Pj2-ro-EZp"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="top" secondItem="e9D-lM-6bU" secondAttribute="bottom" constant="58" id="Q72-Pl-j6F"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="top" secondItem="wgX-ft-X5W" secondAttribute="bottom" constant="8" id="Rq1-WV-JhQ"/>
+                            <constraint firstItem="e9D-lM-6bU" firstAttribute="top" secondItem="ETx-Jd-uYI" secondAttribute="top" constant="17" id="Twt-oB-nd7"/>
+                            <constraint firstItem="ETx-Jd-uYI" firstAttribute="bottom" secondItem="01f-hG-2Pb" secondAttribute="bottom" constant="1" id="UHp-g7-Qns"/>
+                            <constraint firstItem="wgX-ft-X5W" firstAttribute="leading" secondItem="WKt-cw-1Oo" secondAttribute="leading" constant="-13" id="Vj0-eo-D7w"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="top" secondItem="wgX-ft-X5W" secondAttribute="bottom" constant="8" id="XBM-co-rQt"/>
+                            <constraint firstItem="e9D-lM-6bU" firstAttribute="leading" secondItem="ETx-Jd-uYI" secondAttribute="leading" constant="77" id="cdP-G8-Uk4"/>
+                            <constraint firstAttribute="trailing" secondItem="01f-hG-2Pb" secondAttribute="trailing" constant="-7" id="m42-Gm-dPP"/>
+                            <constraint firstAttribute="trailing" secondItem="wgX-ft-X5W" secondAttribute="trailing" constant="-7" id="stA-f5-P0f"/>
+                            <constraint firstItem="01f-hG-2Pb" firstAttribute="top" secondItem="wgX-ft-X5W" secondAttribute="bottom" constant="8" id="u20-hv-lzZ"/>
+                            <constraint firstItem="ETx-Jd-uYI" firstAttribute="trailing" secondItem="e9D-lM-6bU" secondAttribute="trailing" constant="56" id="utk-j9-4Pc"/>
+                            <constraint firstAttribute="trailing" secondItem="01f-hG-2Pb" secondAttribute="trailing" constant="-7" id="vYh-GM-XwP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ETx-Jd-uYI"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="akU-kM-EWa"/>
@@ -308,6 +368,10 @@
                         <outlet property="courseSearchBar" destination="lGp-JV-QzG" id="HZy-V5-SgD"/>
                         <outlet property="resultTableView" destination="m8L-Dl-JMC" id="iE3-Mp-kJI"/>
                         <outlet property="schoolSearchBar" destination="7rK-gS-Mbn" id="R9I-8S-a9a"/>
+                        <outletCollection property="suggestionImageView" destination="ytZ-cz-INc" collectionClass="NSMutableArray" id="GG5-hf-vJy"/>
+                        <outletCollection property="suggestionImageView" destination="L5a-qp-8pk" collectionClass="NSMutableArray" id="1tQ-BU-eN8"/>
+                        <outletCollection property="suggestionImageView" destination="TTb-IM-qLh" collectionClass="NSMutableArray" id="BaD-3G-If1"/>
+                        <outletCollection property="suggestionImageView" destination="r4F-GI-Omh" collectionClass="NSMutableArray" id="7Kx-gz-Xhp"/>
                         <segue destination="YHF-ys-oWW" kind="presentation" identifier="SearchToResult" id="0wt-Gf-ODb"/>
                     </connections>
                 </viewController>
@@ -1846,9 +1910,10 @@ CMPS 111 A</string>
     </scenes>
     <resources>
         <image name="landscape" width="1200" height="630"/>
+        <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tEV-K8-679"/>
-        <segue reference="Zak-3F-4Hb"/>
+        <segue reference="0wt-Gf-ODb"/>
+        <segue reference="Azm-Lh-Zc2"/>
     </inferredMetricsTieBreakers>
 </document>
