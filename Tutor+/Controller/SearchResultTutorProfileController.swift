@@ -63,6 +63,16 @@ class SearchResultTutorProfileController: UIViewController {
 
     }
     
+    @IBAction func backButtonOnClicked(_ sender: Any) {
+        var targetVC = UIViewController()
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        targetVC = storyboard.instantiateViewController(withIdentifier: "SearchResultTutorProfileController") as! SearchResultController
+        let navController = UINavigationController(rootViewController: targetVC)
+        
+        
+        self.present(navController, animated: true, completion: nil)
+    }
     
     // ------------------------------------------------------------------------------------
     // Schedule functions

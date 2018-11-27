@@ -23,8 +23,19 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeSchoolCourse()
         debugHelpPrint(type: .SearchResultController, str: "school:\(schoolCourse["school"] ?? "") course:\(schoolCourse["course"] ?? "")")
         downloadTutorData()
+    }
+    
+    private func initializeSchoolCourse(){
+        if schoolCourse["course"] == nil || schoolCourse["school"] == nil{
+            if let schoolCourse = FirebaseTrans.shared.searchCache{
+                self.schoolCourse = schoolCourse
+            }
+        }else{
+            FirebaseTrans.shared.searchCache = self.schoolCourse
+        }
     }
     private func downloadTutorImage(){
         for tutor in tutorArray{
@@ -102,6 +113,5 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
             dest.data = data
             
         }
-    
     }
 }

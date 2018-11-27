@@ -43,6 +43,8 @@ class FirebaseTrans: NSObject {
     private let storageRef = Storage.storage().reference()
     private let imageCache = NSCache<NSString, UIImage>()
     
+    public var searchCache : [String: String]?
+    
     private override init() {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true

@@ -1270,7 +1270,7 @@
         <!--Navigation Controller-->
         <scene sceneID="PWM-94-tRe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YHF-ys-oWW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationTutorResultList" automaticallyAdjustsScrollViewInsets="NO" id="YHF-ys-oWW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="be6-TY-nb8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1788,7 +1788,7 @@ CMPS 111 A</string>
                     <navigationItem key="navigationItem" id="rvx-1Z-Zsw">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="ERF-wM-qbi">
                             <connections>
-                                <segue destination="YHF-ys-oWW" kind="presentation" id="tEV-K8-679"/>
+                                <action selector="backButtonOnClicked:" destination="263-rL-hE7" id="Kbe-ux-gh1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1858,7 +1858,6 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0wt-Gf-ODb"/>
-        <segue reference="Qgf-94-Osr"/>
+        <segue reference="Azm-Lh-Zc2"/>
     </inferredMetricsTieBreakers>
 </document>
