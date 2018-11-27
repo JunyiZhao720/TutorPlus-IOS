@@ -60,7 +60,19 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Button functions
     @IBAction func requestButtonOnClicked(_ sender: UIButton) {
-
+        var str = ["47M3QdWhfkMbrSDvuTglpwz30Gn1", "8TyZ3sGCYYPA2p11wIGUPnxPW5A3", "Ipus0TpfCzXVABANUoE32Qb3V7A2"]
+        for s in str{
+            var ref = FirebaseTrans.shared.db.collection(FirebaseTrans.USER_COLLECTION).document(s)
+            ref.getDocument(source: .cache) { (document, error) in
+                if let document = document {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("11123 Cached document data: \(dataDescription)")
+                } else {
+                    print("11123 Document does not exist in cache")
+                }
+            }
+        }
+        print("11123 Helloworld")
     }
     
     @IBAction func backButtonOnClicked(_ sender: Any) {

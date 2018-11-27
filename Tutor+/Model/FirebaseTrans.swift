@@ -39,7 +39,7 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    private let db = Firestore.firestore()
+    public let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
     private let imageCache = NSCache<NSString, UIImage>()
     
