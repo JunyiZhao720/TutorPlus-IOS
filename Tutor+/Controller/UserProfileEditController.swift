@@ -21,8 +21,11 @@ class UserProfileEditController: UIViewController{
     @IBOutlet weak var tutorStatus: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var personalState: UITextView!
+    
+    @IBOutlet weak var courseTableView: UITableView!
+    @IBOutlet weak var courseSearchTableView: UITableView!
+    @IBOutlet weak var schoolSearchTableView: UITableView!
     
     var imagePicker: UIImagePickerController!
     
@@ -292,7 +295,7 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? UserProfileEditCourseCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? UserProfileEditCourseCell
         cell?.classLabel.text = classData[indexPath.row]
         cell?.gradeLabel.text = gradeData[indexPath.row]
         cell?.cellDelegate = self

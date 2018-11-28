@@ -133,7 +133,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? SearchViewTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell") as? SearchViewTableViewCell else {
             debugHelpPrint(type: .SearchViewController, str: "Empty")
             return UITableViewCell()
         }
