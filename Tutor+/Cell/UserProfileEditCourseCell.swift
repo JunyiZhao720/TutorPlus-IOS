@@ -15,7 +15,6 @@ protocol TableViewNew {
 
 class UserProfileEditCourseCell: UITableViewCell {
 
-    @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     

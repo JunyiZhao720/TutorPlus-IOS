@@ -30,7 +30,6 @@ class UserProfileEditController: UIViewController{
     var selectedGender: String?
     var bottomOffset = CGPoint(x: 0, y: 800)
     
-    var schoolData = ["UCSC", "UCSC", "beijing university"]
     var classData = ["CMPS115", "CMPS101", "CMPE110"]
     var gradeData = ["A", "A", "B"]
     
@@ -202,22 +201,19 @@ class UserProfileEditController: UIViewController{
     // ------------------------------------------------------------------------------------
     // Course Listview
     
-    @IBOutlet weak var addSchool: UITextField!
     @IBOutlet weak var addClass: UITextField!
     @IBOutlet weak var addGradeText: UITextField!
     
     @IBAction func addCell(_ sender: Any) {
-        schoolData.append(addSchool.text!)
         classData.append(addClass.text!)
         gradeData.append(addGradeText.text!)
         
-        let indexPath = IndexPath(row: schoolData.count - 1, section: 0)
+        let indexPath = IndexPath(row: self.classData.count - 1, section: 0)
         
         courseTableView.beginUpdates()
         courseTableView.insertRows(at: [indexPath], with: .automatic)
         courseTableView.endUpdates()
         
-        addSchool.text = ""
         view.endEditing(true)
     }
     
@@ -297,7 +293,6 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? UserProfileEditCourseCell
-        cell?.schoolLabel.text = schoolData[indexPath.row]
         cell?.classLabel.text = classData[indexPath.row]
         cell?.gradeLabel.text = gradeData[indexPath.row]
         cell?.cellDelegate = self
@@ -308,7 +303,6 @@ extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print("delete")
-            self.schoolData.remove(at: indexPath.row)
             self.classData.remove(at: indexPath.row)
             self.gradeData.remove(at: indexPath.row)
             self.courseTableView.reloadData()
