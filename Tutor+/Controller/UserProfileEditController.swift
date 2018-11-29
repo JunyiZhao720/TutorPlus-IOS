@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileEditController: UIViewController{
+class UserProfileEditController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
     
 
     @IBOutlet weak var imageButton: UIButton!
@@ -93,8 +93,27 @@ class UserProfileEditController: UIViewController{
         imageButton.setImage(FirebaseUser.shared.imageProfile, for: .normal)
     }
     
-    // End initialization functions
-    // ------------------------------------------------------------------------------------
+//    func downloadCollectionInfo(collectionId: String?  = nil){
+//        var theId = [FirebaseTrans.SCHOOL_COLLECTION]
+//        
+//        // if it is to download course collection
+//        if let id = collectionId{
+//            theId.append(id)
+//            theId.append(FirebaseTrans.COURSE_COLLECTION)
+//        }
+//        
+//        // clean current array
+//        suggestionTableArray = [FirebaseTrans.node]()
+//        updateSuggestionArray()
+//        
+//        FirebaseTrans.shared.downloadAllDocumentsByCollection(collections: theId, completion: {(data)in
+//            if let data = data{
+//                self.suggestionTableArray = data
+//                self.updateSuggestionArray()
+//            }
+//        })
+//    }
+    
     
     
     // ------------------------------------------------------------------------------------
@@ -243,9 +262,6 @@ class UserProfileEditController: UIViewController{
     func updateSchedule (schedule: String?){
         if let schedule = schedule{
             let scheduleData = Array(schedule)
-            //        for i in 0...27{
-            //            scheduleData[i] = update[i]
-            //        }
             for i in 0...27{
                 if scheduleData[i] == "1"{scheduleBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
                 else{scheduleBtn[i].backgroundColor = UIColor.gray}
@@ -257,6 +273,31 @@ class UserProfileEditController: UIViewController{
     func scheduleToString()-> String{
         let stringDate = String(scheduleData)
         return stringDate
+    }
+    
+    // ------------------------------------------------------------------------------------
+    // TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return classData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? UserProfileEditCourseCell
+        cell?.classLabel.text = classData[indexPath.row]
+        cell?.gradeLabel.text = gradeData[indexPath.row]
+        cell?.index = indexPath
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+            self.classData.remove(at: indexPath.row)
+            self.gradeData.remove(at: indexPath.row)
+            self.courseTableView.reloadData()
+        }
     }
 }
 
@@ -286,41 +327,6 @@ extension UserProfileEditController: UIPickerViewDelegate, UIPickerViewDataSourc
 
 }
 
-// course tableview delegates
-extension UserProfileEditController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? UserProfileEditCourseCell
-        cell?.classLabel.text = classData[indexPath.row]
-        cell?.gradeLabel.text = gradeData[indexPath.row]
-        cell?.cellDelegate = self
-        cell?.index = indexPath
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("delete")
-            self.classData.remove(at: indexPath.row)
-            self.gradeData.remove(at: indexPath.row)
-            self.courseTableView.reloadData()
-        }
-    }
-
-}
-
-// cell delegates
-extension UIViewController: TableViewNew {
-    func onClick(index: Int) {
-
-        print("\(index) is clicked")
-    }
-}
 
 // image delegates
 var chosenImage : UIImage?

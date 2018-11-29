@@ -38,7 +38,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         courseSearchBar.delegate = self
         
         downloadCollectionInfo()
-        
+        initializeImages()
+    }
+    
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            //Here you can initiate your new ViewController
+        }
+    }
+    
+    private func initializeImages(){
         //add gradient tutor name and tutor info on the image, reconize if the image tapped
         for i in 0...3{
             self.suggestionImageView[i].layer.sublayers?.forEach { $0.removeFromSuperlayer() }
@@ -71,14 +82,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.imageTapped(gesture:)))
             suggestionImageView[i].addGestureRecognizer(tapGesture)
             suggestionImageView[i].isUserInteractionEnabled = true
-        }
-    }
-    
-    @objc func imageTapped(gesture: UIGestureRecognizer) {
-        // if the tapped view is a UIImageView then set it to imageview
-        if (gesture.view as? UIImageView) != nil {
-            print("Image Tapped")
-            //Here you can initiate your new ViewController
         }
     }
     
