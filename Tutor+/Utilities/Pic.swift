@@ -12,18 +12,13 @@ import UIKit
 public struct Pic {
     //var image: UIImage
     var title: String
-    var course: String
-    var message: String
-    
     //    init(image: UIImage, title: String) {
     //        self.image = image
     //        self.title = title
     //    }
     
-    init(title: String, course: String, message: String) {
+    init(title: String) {
         //self.image = image
         self.title = title
-        self.course = course
-        self.message = message
     }
 }
