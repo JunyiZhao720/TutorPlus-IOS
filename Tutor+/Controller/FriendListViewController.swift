@@ -27,7 +27,7 @@ class FriendListViewController: UIViewController {
         pics = createArray()
         
         tutorTableView.reloadData()
-        //tutorTableView.tableFooterView = UIView(frame: CGRect.zero)
+        tutorTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     func createArray() -> [Pic] {
         var tempPics: [Pic] = []
@@ -36,13 +36,15 @@ class FriendListViewController: UIViewController {
         //        let pic2 = Pic(image:    , title: "aaron ge")
         //        let pic3 = Pic(image: , title: "Gua", )
         
-        let pic1 = Pic(title: "vash", course: "cs101", message: "hello")
-        let pic2 = Pic(title: "aaron", course: "cs110", message: "hello")
-        let pic3 = Pic(title: "gua", course: "ce12", message: "hello")
+        let pic1 = Pic(title: "Vash Wang")
+        let pic2 = Pic(title: "Aaron Ge")
+        let pic3 = Pic(title: "Gua Zhao")
+        let pic4 = Pic(title: "Veronica Wuuuu")
         
         tempPics.append(pic1)
         tempPics.append(pic2)
         tempPics.append(pic3)
+        tempPics.append(pic4)
         
         return tempPics
     }

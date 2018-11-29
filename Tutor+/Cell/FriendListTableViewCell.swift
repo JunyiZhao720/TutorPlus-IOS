@@ -12,8 +12,7 @@ class FriendListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tutorImage: UIImageView!
     @IBOutlet weak var tutorName: UILabel!
-    @IBOutlet weak var tutorClass: UILabel!
-    @IBOutlet weak var tutorLastMess: UILabel!
+   
     
     @IBOutlet weak var outletAccept: UIButton!
     @IBOutlet weak var outletDecline: UIButton!
@@ -31,8 +30,6 @@ class FriendListTableViewCell: UITableViewCell {
     func setPic(pic: Pic) {
         //img.image = pic.image// that label name
         tutorName.text = pic.title
-        tutorClass.text = pic.course
-        tutorLastMess.text = pic.message
     }
     
     override func awakeFromNib() {
