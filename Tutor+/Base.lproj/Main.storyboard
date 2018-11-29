@@ -352,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBn-pO-XAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-631.20000000000005" y="1936.2818590704649"/>
+            <point key="canvasLocation" x="-823" y="1793"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iNb-F4-ArU">
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKp-ar-4YD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-551.20000000000005" y="919.34032983508257"/>
+            <point key="canvasLocation" x="-823" y="920"/>
         </scene>
         <!--Item-->
         <scene sceneID="dex-c8-e7W">
@@ -518,7 +518,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FU-9T-Gpl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1482" y="928"/>
+            <point key="canvasLocation" x="-1927" y="934"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rBu-aa-HCS">
@@ -1222,7 +1222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292.8" y="918.44077961019502"/>
+            <point key="canvasLocation" x="1208" y="505"/>
         </scene>
         <!--TutorResultListView-->
         <scene sceneID="NQa-xc-MrE">
@@ -1323,7 +1323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spb-A3-QfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="1935.3823088455774"/>
+            <point key="canvasLocation" x="1082" y="1793"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PWM-94-tRe">
@@ -1341,7 +1341,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hpu-1m-hxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="1937"/>
+            <point key="canvasLocation" x="241" y="1793"/>
         </scene>
         <!--Tutor Profile-->
         <scene sceneID="rYS-Rb-IMd">
@@ -1767,7 +1767,7 @@ CMPS 111 A</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PR-Hu-1KY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3256.8000000000002" y="1989.3553223388308"/>
+            <point key="canvasLocation" x="3012" y="1793"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u56-CJ-P8S">
@@ -1788,7 +1788,7 @@ CMPS 111 A</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mp9-HZ-kqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2262" y="1936"/>
+            <point key="canvasLocation" x="2055" y="1793"/>
         </scene>
         <!--Friend List View Controller-->
         <scene sceneID="wso-c7-9IZ">
@@ -1944,7 +1944,7 @@ CMPS 111 A</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkP-13-lnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-631" y="2745"/>
+            <point key="canvasLocation" x="-823" y="2687"/>
         </scene>
     </scenes>
     <resources>
@@ -1952,6 +1952,7 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zak-3F-4Hb"/>
+        <segue reference="WpY-Yw-XmU"/>
+        <segue reference="Qgf-94-Osr"/>
     </inferredMetricsTieBreakers>
 </document>

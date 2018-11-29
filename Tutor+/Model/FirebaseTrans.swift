@@ -28,17 +28,6 @@ class FirebaseTrans: NSObject {
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
     
-    // used for search structure
-    public class node{
-        let name: String
-        let id: String
-        
-        init(name: String, id:String){
-            self.name = name
-            self.id = id
-        }
-    }
-    
     public let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
     private let imageCache = NSCache<NSString, UIImage>()
@@ -172,7 +161,7 @@ class FirebaseTrans: NSObject {
     // general collection documents downloader
     // para1: collections
     //      collection.documentid.collection....
-    public func downloadAllDocumentsByCollection(collections:[String], completion:@escaping([node]?)->Void){
+    public func downloadAllDocumentIdByCollection(collections:[String], completion:@escaping([String]?)->Void){
         
         if let theCollection = parseCollection(collections: collections) {
             // download data
@@ -181,10 +170,9 @@ class FirebaseTrans: NSObject {
                     debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                     completion(nil)
                 } else {
-                    var back = [node]()
+                    var back = [String]()
                     for document in querySnapshot!.documents{
-                        let data = document.data()
-                        back.append(node(name: data[FirebaseTrans.NAME_FIELD] as! String, id: document.documentID))
+                        back.append(document.documentID)
                     }
                     debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocuments: done downloading collection documents")
                     completion(back)
