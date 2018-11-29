@@ -16,7 +16,7 @@ class FriendListViewController: UIViewController {
     
     @IBOutlet weak var tutorTableView: UITableView!
     var pics: [Pic] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +28,8 @@ class FriendListViewController: UIViewController {
         
         tutorTableView.reloadData()
         tutorTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        //self.roundedLabel(newMess)
     }
     func createArray() -> [Pic] {
         var tempPics: [Pic] = []
@@ -47,6 +49,11 @@ class FriendListViewController: UIViewController {
         tempPics.append(pic4)
         
         return tempPics
+    }
+    
+    func roundedLabel(_ object: AnyObject) {
+        object.layer?.cornerRadius = object.frame.size.width/2
+        object.layer?.masksToBounds = true
     }
 }
 

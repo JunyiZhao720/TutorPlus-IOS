@@ -1830,11 +1830,11 @@ CMPS 111 A</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="landscape" translatesAutoresizingMaskIntoConstraints="NO" id="IIf-fW-zk5">
-                                                                    <rect key="frame" x="15" y="9" width="70" height="70"/>
+                                                                    <rect key="frame" x="15" y="11" width="65" height="65"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goV-8U-sgx">
-                                                                    <rect key="frame" x="287" y="23" width="65" height="42"/>
+                                                                    <rect key="frame" x="287" y="23" width="65" height="38"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <state key="normal" title="Decline">
@@ -1851,14 +1851,28 @@ CMPS 111 A</string>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Veronica Wuuu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grf-8j-qN7">
-                                                                    <rect key="frame" x="93" y="19" width="126" height="50"/>
+                                                                    <rect key="frame" x="93" y="18" width="119" height="50"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ta0-DH-qXE">
+                                                                    <rect key="frame" x="72" y="5" width="13" height="13"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <color key="backgroundColor" red="1" green="0.1217202005" blue="0.12035088820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <integer key="value" value="0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvJ-rB-Qx9">
-                                                                    <rect key="frame" x="213" y="23" width="66" height="42"/>
+                                                                    <rect key="frame" x="213" y="25" width="66" height="38"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <state key="normal" title="Accept">
@@ -1879,6 +1893,7 @@ CMPS 111 A</string>
                                                         <connections>
                                                             <outlet property="outletAccept" destination="yvJ-rB-Qx9" id="5P5-ex-8n5"/>
                                                             <outlet property="outletDecline" destination="goV-8U-sgx" id="Zl3-BI-2Hf"/>
+                                                            <outlet property="redSpot" destination="Ta0-DH-qXE" id="vWg-Bz-NhI"/>
                                                             <outlet property="tutorImage" destination="IIf-fW-zk5" id="vo4-XZ-kN1"/>
                                                             <outlet property="tutorName" destination="grf-8j-qN7" id="RRI-L3-xJb"/>
                                                         </connections>
@@ -1930,7 +1945,7 @@ CMPS 111 A</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkP-13-lnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-631" y="2745"/>
+            <point key="canvasLocation" x="-631.20000000000005" y="2744.9775112443781"/>
         </scene>
     </scenes>
     <resources>
