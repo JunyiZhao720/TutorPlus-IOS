@@ -22,8 +22,8 @@
 		74BF8E58423110C7B6CACCD0 /* Pods_Tutor_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */; };
 		9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */; };
 		9C6585C021AE2C2A0044609E /* Pic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585BF21AE2C2A0044609E /* Pic.swift */; };
-		9C6585C221AE2C4F0044609E /* TutorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585C121AE2C4F0044609E /* TutorListTableViewCell.swift */; };
-		9C6585C421AE2E750044609E /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585C321AE2E750044609E /* TutorListViewController.swift */; };
+		9C6585C221AE2C4F0044609E /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585C121AE2C4F0044609E /* FriendListTableViewCell.swift */; };
+		9C6585C421AE2E750044609E /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585C321AE2E750044609E /* FriendListViewController.swift */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
 		AB33B03B2191042600D5C2C9 /* SearchResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0372191042600D5C2C9 /* SearchResultTableCell.swift */; };
@@ -81,8 +81,8 @@
 		9AEF0D76E01A2179A88E69D8 /* Pods-Tutor+Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditController.swift; sourceTree = "<group>"; };
 		9C6585BF21AE2C2A0044609E /* Pic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pic.swift; sourceTree = "<group>"; };
-		9C6585C121AE2C4F0044609E /* TutorListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorListTableViewCell.swift; sourceTree = "<group>"; };
-		9C6585C321AE2E750044609E /* TutorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
+		9C6585C121AE2C4F0044609E /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
+		9C6585C321AE2E750044609E /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		A6F2D0D71EE790B91B463655 /* Pods-Tutor+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.debug.xcconfig"; sourceTree = "<group>"; };
 		AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
-				9C6585C321AE2E750044609E /* TutorListViewController.swift */,
+				9C6585C321AE2E750044609E /* FriendListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 				DE24063E219A791E00120ED0 /* UserProfileEditCourseCell.swift */,
 				ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */,
 				AB33B0372191042600D5C2C9 /* SearchResultTableCell.swift */,
-				9C6585C121AE2C4F0044609E /* TutorListTableViewCell.swift */,
+				9C6585C121AE2C4F0044609E /* FriendListTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -539,7 +539,7 @@
 				ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */,
 				C8BE92A22176D9D000A0E896 /* UserProfileViewController.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
-				9C6585C421AE2E750044609E /* TutorListViewController.swift in Sources */,
+				9C6585C421AE2E750044609E /* FriendListViewController.swift in Sources */,
 				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,
 				AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */,
@@ -549,7 +549,7 @@
 				9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */,
 				426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */,
 				C82C1C1A217BDDBA00EE4660 /* TutorProfileEditController.swift in Sources */,
-				9C6585C221AE2C4F0044609E /* TutorListTableViewCell.swift in Sources */,
+				9C6585C221AE2C4F0044609E /* FriendListTableViewCell.swift in Sources */,
 				AB624482217806DA00B3605E /* Constants.swift in Sources */,
 				AB33B03B2191042600D5C2C9 /* SearchResultTableCell.swift in Sources */,
 				42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorListTableViewCell: UITableViewCell {
+class FriendListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tutorImage: UIImageView!
     @IBOutlet weak var tutorName: UILabel!
@@ -20,7 +20,8 @@ class TutorListTableViewCell: UITableViewCell {
     
     
     @IBAction func actionAccept(_ sender: UIButton) {
-        
+        //AlertHelper.showAlert(fromController: self, message: "\(tutorName.text)", buttonTitle: "123")
+        print("11102 \(tutorName.text)")
     }
     
     @IBAction func actionDecline(_ sender: UIButton) {

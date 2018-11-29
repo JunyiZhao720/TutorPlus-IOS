@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorListViewController: UIViewController {
+class FriendListViewController: UIViewController {
 
     
     @IBOutlet weak var `switch`: UISegmentedControl!
@@ -48,7 +48,7 @@ class TutorListViewController: UIViewController {
     }
 }
 
-extension TutorListViewController: UITableViewDataSource, UITableViewDelegate{
+extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pics.count
@@ -57,7 +57,7 @@ extension TutorListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let pic = pics[indexPath.row] // indexPath.row is dynamic
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as? TutorListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as? FriendListTableViewCell
         
         cell?.setPic(pic: pic)
         debugHelpPrint(type: .AppDelegate, str: "\(pic)")

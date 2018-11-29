@@ -32,13 +32,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
         super.viewDidLoad()
         
-        resultTableView.dataSource = self
-        resultTableView.delegate = self
-        schoolSearchBar.delegate = self
-        courseSearchBar.delegate = self
-        
-        downloadCollectionInfo()
-        initializeImages()
+//        resultTableView.dataSource = self
+//        resultTableView.delegate = self
+//        schoolSearchBar.delegate = self
+//        courseSearchBar.delegate = self
+//        
+//        downloadCollectionInfo()
+//        initializeImages()
     }
     
     @objc func imageTapped(gesture: UIGestureRecognizer) {
