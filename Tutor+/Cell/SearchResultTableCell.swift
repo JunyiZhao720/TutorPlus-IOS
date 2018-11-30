@@ -14,6 +14,7 @@ class SearchResultTableCell: UITableViewCell{
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var tutorName: UILabel!
     @IBOutlet weak var className: UILabel!
+    @IBOutlet weak var schoolName: UILabel!
     
     
     override func awakeFromNib() {

@@ -470,7 +470,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mju-wV-sai"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="tHc-gS-Jpg"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="tHc-gS-Jpg"/>
                     <navigationItem key="navigationItem" id="MVG-oy-ZW7">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="FYw-jj-t35">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nQa-Yj-hx0">
@@ -1277,7 +1277,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.69758475824433908" green="1" blue="0.66245947590339349" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="tHn-Yz-x5G" firstAttribute="top" secondItem="dQe-5P-7Us" secondAttribute="topMargin" id="1eK-aA-w2d"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mVx-jw-naG" secondAttribute="trailing" constant="27.5" id="B0b-my-N1y"/>
@@ -1294,6 +1294,7 @@
                                         <connections>
                                             <outlet property="className" destination="UxD-bg-LDU" id="E2L-Z2-THG"/>
                                             <outlet property="img" destination="BcX-YK-4t0" id="R8d-ht-gUP"/>
+                                            <outlet property="schoolName" destination="mVx-jw-naG" id="jYB-RF-ljK"/>
                                             <outlet property="tutorName" destination="tHn-Yz-x5G" id="JeX-8Y-rez"/>
                                         </connections>
                                     </tableViewCell>
@@ -1339,7 +1340,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hpu-1m-hxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="1937"/>
+            <point key="canvasLocation" x="193" y="1935"/>
         </scene>
         <!--Tutor Profile-->
         <scene sceneID="rYS-Rb-IMd">
@@ -1934,6 +1935,6 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qgf-94-Osr"/>
+        <segue reference="Azm-Lh-Zc2"/>
     </inferredMetricsTieBreakers>
 </document>

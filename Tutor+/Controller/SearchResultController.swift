@@ -10,14 +10,11 @@ import UIKit
 
 class SearchResultController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var name = ["blue_background", "landscape","ppp","square"]
-    var classes = ["CMPS115", "CMPS121 CMPS122 CMPS123 CMPS124 CMPS125","CMPS126","CMPS127"]
     
     var schoolCourse:[String:String] = [:]
     var tutorArray: [FirebaseUser.ProfileStruct] = []
     var tutorImageDict = [String: UIImage]()
-    
-    @IBOutlet weak var classNameLabel: UILabel!
+
     @IBOutlet weak var tutorListView: UITableView!
     
     override func viewDidLoad() {
@@ -83,7 +80,15 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SearchResultTableCell
         
         cell.tutorName.text = tutorArray[indexPath.row].name
-        cell.className.text = classes[indexPath.row]
+        let courses = tutorArray[indexPath.row].tag
+        var theCourse = ""
+        if let courses = courses{
+            for d in courses{
+                theCourse  = theCourse + d + " "
+            }
+        }
+        cell.className.text = theCourse
+        cell.schoolName.text = tutorArray[indexPath.row].university
         if let url = tutorArray[indexPath.row].imageURL{
             if let image = tutorImageDict[url]{
                 cell.img.image = image
