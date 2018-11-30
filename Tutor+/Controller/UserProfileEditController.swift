@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileEditController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
+class UserProfileEditController: UIViewController,  UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate {
     
 
     @IBOutlet weak var imageButton: UIButton!
@@ -26,6 +26,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var courseSearchTableView: UITableView!
     @IBOutlet weak var schoolSearchTableView: UITableView!
+
+    @IBOutlet weak var addClass: UITextField!
+    @IBOutlet weak var addGradeText: UITextField!
     
     var imagePicker: UIImagePickerController!
     
@@ -54,7 +57,10 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         initializePersonalStatementTextField()
         initializeFirebaseInfo()
         initializeImage()
-       
+        
+        initializeTextField()
+        initializeTableView()
+        
         // Calling gender dropdown
         createGenderPicker()
         createToolbar()
@@ -113,6 +119,11 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         courseTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
+    private func initializeTextField(){
+        addClass.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        universityEditor.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
     private func downloadSchoolColection(){
         
         FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: [FirebaseTrans.SCHOOL_COLLECTION], completion: {(data)in
@@ -157,9 +168,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             return cell
         }
         if tableView == self.schoolSearchTableView{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserSchoolCourseCell", for: indexPath) as! SearchViewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserEditSchoolCell", for: indexPath) as! SearchViewTableViewCell
             
-            cell.suggestionLabel.text = currentEditCourse[indexPath.row]
+            cell.suggestionLabel.text = currentEditSchool[indexPath.row]
             return cell
         }
         
@@ -178,7 +189,49 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             self.courseTableView.reloadData()
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView == courseSearchTableView{
+            let currentCell = tableView.cellForRow(at: indexPath) as! SearchViewTableViewCell
+            addClass.text = currentCell.suggestionLabel.text
+            courseSearchTableView.isHidden = true
+        }
+        
+        if tableView == schoolSearchTableView{
+            let currentCell = tableView.cellForRow(at: indexPath) as! SearchViewTableViewCell
+            universityEditor.text = currentCell.suggestionLabel.text
+            schoolSearchTableView.isHidden = true
+        }
+    }
     
+    @objc func textFieldDidChange(_ textView: UITextView) {
+        guard !textView.text.isEmpty else {
+            if(textView == addClass){
+                courseSearchTableView.isHidden = true
+            }
+            
+            if(textView == universityEditor){
+                schoolSearchTableView.isHidden = true
+            }
+            return
+        }
+        
+        if(textView == addClass){
+            courseSearchTableView.isHidden = false
+            currentEditCourse = EditCourseList.filter({ course -> Bool in
+                course.lowercased().contains(textView.text.lowercased())
+            })
+            courseSearchTableView.reloadData()
+        }
+        
+        if(textView == universityEditor){
+            schoolSearchTableView.isHidden = false
+            currentEditSchool = EditSchoolList.filter({ school -> Bool in
+                school.lowercased().contains(textView.text.lowercased())
+            })
+            schoolSearchTableView.reloadData()
+        }
+    }
     
     // ------------------------------------------------------------------------------------
     // Buttons
@@ -287,8 +340,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     // ------------------------------------------------------------------------------------
     // Course Listview
     
-    @IBOutlet weak var addClass: UITextField!
-    @IBOutlet weak var addGradeText: UITextField!
+
     
     @IBAction func addCell(_ sender: Any) {
         classData.append(addClass.text!)
@@ -386,6 +438,8 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
         dismiss(animated: true, completion: nil)
     }
 }
+
+
 
 
 
