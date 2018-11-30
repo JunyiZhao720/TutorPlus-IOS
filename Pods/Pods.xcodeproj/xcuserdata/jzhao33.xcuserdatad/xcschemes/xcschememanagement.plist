@@ -49,25 +49,35 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>Pods-Tutor+.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
-		</dict>
-		<key>Pods-Tutor+Tests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>19</integer>
-		</dict>
-		<key>Pods-Tutor+UITests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
-		<key>Protobuf.xcscheme</key>
+		<key>Pods-Tutor+Tests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>21</integer>
+		</dict>
+		<key>Pods-Tutor+UITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
+		<key>Protobuf.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
 		</dict>
 		<key>gRPC-C++.xcscheme</key>
 		<dict>
@@ -102,12 +112,12 @@
 		<key>leveldb-library.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>18</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>19</integer>
 		</dict>
 	</dict>
 </dict>

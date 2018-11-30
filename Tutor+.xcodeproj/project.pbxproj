@@ -89,6 +89,7 @@
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
 		AB33B0372191042600D5C2C9 /* SearchResultTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableCell.swift; sourceTree = "<group>"; };
 		AB33B0392191042600D5C2C9 /* SearchResultTutorProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfileController.swift; sourceTree = "<group>"; };
+		AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		AB62447F217806A800B3605E /* DebugHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelper.swift; sourceTree = "<group>"; };
 		AB624481217806DA00B3605E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB62448321780CE900B3605E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 				429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */,
 				42866EAD216EA63400D29698 /* AppDelegate.swift */,
 				42866EB1216EA63400D29698 /* Main.storyboard */,
+				AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */,
 				42866EB4216EA63700D29698 /* Assets.xcassets */,
 				42866EB6216EA63700D29698 /* LaunchScreen.storyboard */,
 				42866EB9216EA63700D29698 /* Info.plist */,
@@ -749,6 +751,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunyiZhao.TutorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -769,6 +772,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunyiZhao.TutorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
