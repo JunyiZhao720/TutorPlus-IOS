@@ -68,12 +68,13 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let pic = pics[indexPath.row] // indexPath.row is dynamic
+        //let pic = pics[indexPath.row] // indexPath.row is dynamic
         let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as? FriendListTableViewCell
         
-        cell?.setPic(pic: pic)
         
+        cell?.tutorName.text = curPics[indexPath.row].title
 //        debugHelpPrint(type: .AppDelegate, str: "\(pic)")
+        
         return cell!
     }
 }

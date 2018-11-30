@@ -28,20 +28,11 @@ class FriendListTableViewCell: UITableViewCell {
         
     }
     
-    func setPic(pic: Pic) {
-        //img.image = pic.image// that label name
-        self.roundedLabel(redSpot)
-        tutorName.text = pic.title
-    }
-    
-    func roundedLabel(_ object: AnyObject) {
-        object.layer?.cornerRadius = object.frame.size.width/2
-        object.layer?.masksToBounds = true
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        redSpot.layer.cornerRadius = redSpot.frame.size.width/2
+        redSpot.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
