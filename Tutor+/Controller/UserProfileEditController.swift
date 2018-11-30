@@ -34,7 +34,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
-    var bottomOffset = CGPoint(x: 0, y: 800)
+    var bottomOffset = CGPoint(x: 0, y: 400)
     
     var currentEditSchool = [String]()
     var currentEditCourse = [String]()

@@ -609,13 +609,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5X-YA-Ymv">
-                                                <rect key="frame" x="102" y="503" width="146" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Change Profile Photo">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-Q9-C9A">
                                                 <rect key="frame" x="27" y="790" width="297" height="180"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -719,9 +712,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                             </textField>
-                                            <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-gv-Ahi">
-                                                <rect key="frame" x="27" y="254" width="372" height="216"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-gv-Ahi">
+                                                <rect key="frame" x="27" y="254" width="353" height="216"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="353" id="E9L-vK-lWu"/>
+                                                    <constraint firstAttribute="height" constant="216" id="eFh-e7-Zw0"/>
+                                                </constraints>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo5-pa-LQI">
                                                 <rect key="frame" x="151" y="569" width="54" height="35"/>
@@ -759,19 +755,7 @@
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IBU-es-zCi" id="Slv-oH-WvD">
                                                             <rect key="frame" x="0.0" y="0.0" width="216" height="52"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ui-IC-unb">
-                                                                    <rect key="frame" x="17" y="13" width="302" height="26"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
                                                         </tableViewCellContentView>
-                                                        <connections>
-                                                            <outlet property="suggestionLabel" destination="8ui-IC-unb" id="3UL-O7-UBw"/>
-                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -1130,9 +1114,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMZ-Ls-AZo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMZ-Ls-AZo">
                                                 <rect key="frame" x="119" y="96" width="150" height="150"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="1n4-7z-dCj"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="2Fe-p2-QHi"/>
                                                     <constraint firstAttribute="height" constant="150" id="5SH-iw-w8u"/>
                                                     <constraint firstAttribute="width" constant="150" id="6Cu-aY-QuK"/>
                                                 </constraints>
@@ -1145,7 +1131,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="388" id="7ex-bX-cL9"/>
+                                            <constraint firstAttribute="trailing" secondItem="Cld-gv-Ahi" secondAttribute="trailing" constant="8" id="L9b-5N-yEr"/>
+                                            <constraint firstItem="ZMZ-Ls-AZo" firstAttribute="leading" secondItem="4Nu-Ay-LcR" secondAttribute="leading" constant="119" id="Sqz-z7-toW"/>
+                                            <constraint firstItem="Cld-gv-Ahi" firstAttribute="top" secondItem="ZMZ-Ls-AZo" secondAttribute="bottom" constant="8" id="TxC-wl-aML"/>
+                                            <constraint firstItem="Cld-gv-Ahi" firstAttribute="leading" secondItem="4Nu-Ay-LcR" secondAttribute="leading" constant="27" id="XP0-pH-vMa"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZMZ-Ls-AZo" secondAttribute="trailing" constant="119" id="dEJ-dy-SYS"/>
                                             <constraint firstAttribute="height" constant="1300" id="duq-ti-hFd"/>
+                                            <constraint firstItem="Cld-gv-Ahi" firstAttribute="top" secondItem="ZMZ-Ls-AZo" secondAttribute="bottom" constant="8" id="dva-e7-Kdo"/>
+                                            <constraint firstItem="ZMZ-Ls-AZo" firstAttribute="top" secondItem="4Nu-Ay-LcR" secondAttribute="top" constant="96" id="iKq-Jg-A27"/>
                                         </constraints>
                                     </view>
                                 </subviews>
