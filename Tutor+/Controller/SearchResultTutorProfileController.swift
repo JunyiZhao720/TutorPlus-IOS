@@ -60,13 +60,12 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Button functions
     @IBAction func requestButtonOnClicked(_ sender: UIButton) {
-        //FirebaseUser.shared.downloadAllTutorList()
-//        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.tutorList.debugDescription)")
-//        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.contactList.debugDescription)")
-        
-        //FirebaseUser.shared.addStudentListListenerAndCache(listenerId: "123", updateDelegate: self)
-//        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.studentList.debugDescription)")
-//        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.contactList.debugDescription)")
+        if let id = dataCache?.id{
+            FirebaseUser.shared.request(tutorId: id)
+            toolbarRequestButton.isEnabled = false
+        }else{
+            debugHelpPrint(type: .SearchResultTutorProfileController, str: "requestButtonOnClicked(): id doesn't exist")
+        }
     }
     
     @IBAction func backButtonOnClicked(_ sender: Any) {

@@ -98,9 +98,9 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
             
         }else{
             cell.id = currentTutorList[indexPath.row].id
-            cell.tutorName.text = currentStudentList[indexPath.row].name
+            cell.tutorName.text = currentTutorList[indexPath.row].name
             cell.tutorImage.image = currentTutorList[indexPath.row].image
-            debugHelpPrint(type: .FriendListViewController, str: "\(currentStudentList[indexPath.row].state)")
+            debugHelpPrint(type: .FriendListViewController, str: "\(currentTutorList[indexPath.row].state)")
             cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].state)
         }
         
