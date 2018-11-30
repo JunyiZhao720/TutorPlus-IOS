@@ -116,9 +116,11 @@ class FirebaseUser{
         }
     }
     
-    var contactList = [ProfileStruct]()
-    var tutorList = [firendNode]()
-    var studentList = [firendNode]()
+    var contactList = [String: ProfileStruct]()
+    var tutorList = [String: firendNode]()
+    var studentList = [String: firendNode]()
+    
+    var contactTableRef = UITableView()
     
     private init(){}
     
@@ -375,6 +377,11 @@ class FirebaseUser{
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
     }
     
+    func setContactTableView(contactTable : inout UITableView){
+        self.contactTableRef = contactTable
+        self.contactTableRef.reloadData()
+    }
+    
     func addStudentListListener(){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() not logged in")
@@ -386,7 +393,37 @@ class FirebaseUser{
         path.append(self.id!)
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
-        FirebaseTrans.shared.addCollectionListener(collections: path)
+        if let theCollection = self.trans.parseCollection(collections: path) {
+           theCollection.addSnapshotListener{ querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "addStudentListListener(): \(error.debugDescription)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    let data = diff.document.data()
+                    let id = diff.document.documentID
+                    
+                    if (diff.type == .added || diff.type == .modified) {
+                        self.studentList[id] = FirebaseUser.firendNode(id: id, status: data["status"] as? String)
+                        self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
+                            if let data = data{
+                                self.contactList[id] = FirebaseUser.parseData(data: data)
+                                // update the new info
+                                self.contactTableRef.reloadData()
+                            }
+                        })
+                    }
+                    if (diff.type == .removed) {
+                        self.studentList[id] = nil
+                        self.contactList[id] = nil
+                        self.contactTableRef.reloadData()
+                    }
+                }
+            }
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "addStudentListListener(): input parameters have problems")
+        }
     }
     
     func downloadAllTutorList(){
@@ -407,10 +444,10 @@ class FirebaseUser{
             if let data = data{
                 for d in data{
                     if let id = d["id"] as? String{
-                        self.tutorList.append(FirebaseUser.firendNode(id: id , status: d["status"] as? String))
+                        self.tutorList[id] = FirebaseUser.firendNode(id: id , status: d["status"] as? String)
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
-                                self.contactList.append(FirebaseUser.parseData(data: data))
+                                self.contactList[id] = FirebaseUser.parseData(data: data)
                             }
                         })
                         debugHelpPrint(type: .FirebaseUser, str: "Successfully downloaded tutor \(id)")

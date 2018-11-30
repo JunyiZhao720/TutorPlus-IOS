@@ -43,7 +43,7 @@ class FirebaseTrans: NSObject {
     // ------------------------------------------------------------------------------------
     // Helper methods
     
-    private func parseCollection(collections:[String])->CollectionReference?{
+    public func parseCollection(collections:[String])->CollectionReference?{
         // check parameters
         if(collections.count <= 0 || collections.count % 3 == 2) {
             
@@ -241,33 +241,7 @@ class FirebaseTrans: NSObject {
     }
     
     
-    // ------------------------------------------------------------------------------------
-    // Listener methods
-    
-    public func addCollectionListener(collections: [String]){
-        if let theCollection = parseCollection(collections: collections) {
-            theCollection.addSnapshotListener{ querySnapshot, error in
-                guard let snapshot = querySnapshot else {
-                    debugHelpPrint(type: .FirebaseTrans, str: "collectionListener(): \(error.debugDescription)")
-                    return
-                }
-                snapshot.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                        print("New city: \(diff.document.data())")
-                    }
-                    if (diff.type == .modified) {
-                        print("Modified city: \(diff.document.data())")
-                    }
-                    if (diff.type == .removed) {
-                        print("Removed city: \(diff.document.data())")
-                    }
-                }
-            }
-            
-        }else{
-            debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): input parameters have problems")
-        }
-    }
+  
     
     // ------------------------------------------------------------------------------------
     // File methods
