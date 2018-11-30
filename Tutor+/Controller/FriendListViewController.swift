@@ -73,7 +73,6 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
         //debugHelpPrint(type: .FriendListViewController, str: "user-stuent: \(FirebaseUser.shared.tutorList.description)")
         contactTableView.reloadData()
     }
-    
 }
 
 extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -91,19 +90,18 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as! FriendListTableViewCell
         
         if isStudentSelected{
-
+            cell.id = currentStudentList[indexPath.row].id
             cell.tutorName.text = currentStudentList[indexPath.row].name
             cell.tutorImage.image = currentStudentList[indexPath.row].image
-            debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
-            cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].status)
+            debugHelpPrint(type: .FriendListViewController, str: "\(currentStudentList[indexPath.row].state)")
+            cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].state)
             
         }else{
-            
+            cell.id = currentTutorList[indexPath.row].id
             cell.tutorName.text = currentStudentList[indexPath.row].name
             cell.tutorImage.image = currentTutorList[indexPath.row].image
-            debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
-            cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].status)
-            
+            debugHelpPrint(type: .FriendListViewController, str: "\(currentStudentList[indexPath.row].state)")
+            cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].state)
         }
         
         return cell

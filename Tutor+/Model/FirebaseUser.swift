@@ -109,14 +109,14 @@ class FirebaseUser{
     // friendlist
     struct firendNode {
         var id: String? = ""
-        var status: String? = ""
+        var state: String? = ""
         var name: String? = ""
         var image: UIImage?
         
         init(){}
-        init(id: String?, status: String?){
+        init(id: String?, state: String?){
             self.id = id
-            self.status = status
+            self.state = state
         }
     }
     
@@ -431,7 +431,7 @@ class FirebaseUser{
                     
                     if (diff.type == .added || diff.type == .modified) {
                         // student list
-                        self.studentList[id] = FirebaseUser.firendNode(id: id, status: data["status"] as? String)
+                        self.studentList[id] = FirebaseUser.firendNode(id: id, state: data["state"] as? String)
                         // download profile
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
@@ -494,7 +494,7 @@ class FirebaseUser{
                     
                     if (diff.type == .added || diff.type == .modified) {
                         // tutor list
-                        self.tutorList[id] = FirebaseUser.firendNode(id: id, status: data["status"] as? String)
+                        self.tutorList[id] = FirebaseUser.firendNode(id: id, state: data["state"] as? String)
                         // download profile
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
@@ -547,7 +547,7 @@ class FirebaseUser{
 //            if let data = data{
 //                for d in data{
 //                    if let id = d["id"] as? String{
-//                        self.tutorList[id] = FirebaseUser.firendNode(id: id , status: d["status"] as? String)
+//                        self.tutorList[id] = FirebaseUser.firendNode(id: id , state: d["state"] as? String)
 //                        self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
 //                            if let data = data{
 //                                // download profile

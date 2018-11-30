@@ -18,14 +18,7 @@ class FriendListTableViewCell: UITableViewCell {
     @IBOutlet weak var outletAccept: UIButton!
     @IBOutlet weak var outletDecline: UIButton!
     
-    
-    @IBAction func actionAccept(_ sender: UIButton) {
-        //AlertHelper.showAlert(fromController: self, message: "\(tutorName.text)", buttonTitle: "123")
-    }
-    
-    @IBAction func actionDecline(_ sender: UIButton) {
-        
-    }
+    var id: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +26,28 @@ class FriendListTableViewCell: UITableViewCell {
         redSpot.layer.cornerRadius = redSpot.frame.size.width/2
         redSpot.clipsToBounds = true
     }
+    
+    @IBAction func actionAccept(_ sender: UIButton) {
+        if let id = id{
+            FirebaseUser.shared.accept(studentId: id)
+        }else{
+            debugHelpPrint(type: .FriendListTableViewCell, str: "actionAccept(): Error \(tutorName.text ?? "") doesn't have an id")
+        }
+        outletAccept.isHidden = true
+        outletDecline.isHidden = true
+    }
+    
+    @IBAction func actionDecline(_ sender: UIButton) {
+        if let id = id{
+            FirebaseUser.shared.reject(studentId: id)
+        }else{
+            debugHelpPrint(type: .FriendListTableViewCell, str: "actionDecline(): Error \(tutorName.text ?? "") doesn't have an id")
+        }
+        outletAccept.isHidden = true
+        outletDecline.isHidden = true
+    }
+    
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

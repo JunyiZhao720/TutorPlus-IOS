@@ -22,6 +22,7 @@ public enum ClassType{
     case FriendListViewController
     
     case SearchViewTableViewCell
+    case FriendListTableViewCell
     
     case FirebaseUser
     case FirebaseTrans

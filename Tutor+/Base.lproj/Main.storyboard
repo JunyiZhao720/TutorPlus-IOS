@@ -1766,7 +1766,7 @@ CMPS 111 A</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PR-Hu-1KY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3256.8000000000002" y="1989.3553223388308"/>
+            <point key="canvasLocation" x="3274" y="1936"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u56-CJ-P8S">
