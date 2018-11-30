@@ -82,6 +82,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         genderTextBox.text = FirebaseUser.shared.gender
         majorEditor.text = FirebaseUser.shared.major
         universityEditor.text = FirebaseUser.shared.university
+        
+        classData = FirebaseUser.shared.classData
+        gradeData = FirebaseUser.shared.gradeData
     }
     
     private func initializePersonalStatementTextField(){
@@ -278,6 +281,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         }
         
         // upload courses and grades
+        FirebaseUser.shared.classData = self.classData
+        FirebaseUser.shared.gradeData = self.gradeData
         FirebaseUser.shared.uploadTutorCourses(courseList: classData, gradeList: gradeData)
         
         // Go back to previous page

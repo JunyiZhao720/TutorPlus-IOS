@@ -187,6 +187,29 @@ class FirebaseTrans: NSObject {
         }
     }
     
+    public func downloadAllDocumentsByCollection(collections:[String], completion:@escaping([[String: Any]]?)->Void){
+        if let theCollection = parseCollection(collections: collections) {
+            // download data
+            theCollection.getDocuments{(querySnapshot, err)in
+                if let err = err{
+                    debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
+                    completion(nil)
+                } else {
+                    var back = [[String: Any]]()
+                    for document in querySnapshot!.documents{
+                        var data = document.data()
+                        data["id"] = document.documentID
+                        back.append(data)
+                    }
+                    debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): done downloading collection documents")
+                    completion(back)
+                }
+            }
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsByCollection(): input parameters have problems")
+        }
+    }
+    
     public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
         
         let query = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)

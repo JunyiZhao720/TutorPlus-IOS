@@ -226,9 +226,17 @@ class FirebaseUser{
                 if let data=data{
                     // replace all current data with a brand new ProfileStruct
                     self.data = FirebaseUser.parseData(data: data)
-                    completion(true)
+                    self.downloadTutorCourses(completion: {done in
+                        if done{
+                            completion(true)
+                        }else{
+                            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to download tutor grades with errors!", id:self.id)
+                            completion(false)
+                        }
+                    })
+                    
                 }else{
-                    debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to download document with errors!", id:self.id)
+                    debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to download profile with errors!", id:self.id)
                     completion(false)
                 }
             })
@@ -247,6 +255,7 @@ class FirebaseUser{
                 let currentName = self.university! + "-" + courseList[i]
                 
                 FirebaseTrans.shared.createDoc(collection: path, id: currentName, dict: [
+                    "course" : courseList[i],
                     "grade":gradeList[i]
                     ])
             }
@@ -256,15 +265,31 @@ class FirebaseUser{
         
     }
     
-    func downloadTutorCourses(){
+    func downloadTutorCourses(completion:@escaping(Bool)->Void){
         if isLoggedIn(){
             var path = [FirebaseTrans.USER_COLLECTION]
             path.append(self.id!)
             path.append(FirebaseTrans.COURSE_COLLECTION)
             
-
+            FirebaseTrans.shared.downloadAllDocumentsByCollection(collections: path, completion: {(data) in
+                if let data = data{
+                    var courseData = [String]()
+                    var gradeData = [String]()
+                    
+                    for d in data{
+                        if let course = d["course"] as? String {courseData.append(course)}
+                        if let grade = d["grade"] as? String {gradeData.append(grade)}
+                    }
+                    
+                    self.classData = courseData
+                    self.gradeData = gradeData
+                }
+                debugHelpPrint(type: .FirebaseUser, str: "class:\(self.classData.debugDescription)\n grade:\(self.gradeData.debugDescription)")
+                completion(true)
+            })
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to downloadTutorCourses() while user is not logged in")
+            completion(false)
         }
     }
     
