@@ -60,7 +60,9 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Button functions
     @IBAction func requestButtonOnClicked(_ sender: UIButton) {
-
+        FirebaseUser.shared.downloadAllTutorList()
+        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.tutorList.debugDescription)")
+        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.contactList.debugDescription)")
     }
     
     @IBAction func backButtonOnClicked(_ sender: Any) {

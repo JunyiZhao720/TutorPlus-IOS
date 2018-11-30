@@ -116,23 +116,28 @@ class FirebaseTrans: NSObject {
         //        }
         //    })
     
-    func downloadDoc(collection:String, id:String, completion:@escaping(Dictionary<String, Any>?)->Void){
-        let theDoc = db.collection(collection).document(id)
-        theDoc.getDocument{(document, error) in
-            if let err = error{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: err.localizedDescription, id:id)
-                completion(nil)
+    func downloadDoc(collections:[String], id:String, completion:@escaping(Dictionary<String, Any>?)->Void){
+        
+        if let theCollection = parseCollection(collections: collections) {
+            let theDoc = theCollection.document(id)
+            theDoc.getDocument{(document, error) in
+                if let err = error{
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: err.localizedDescription, id:id)
+                    completion(nil)
+                }
+                
+                if let document = document, document.exists{
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "Successfully download the document!", id:id);
+                    var data = document.data()
+                    data?["id"] = document.documentID
+                    completion(data)
+                }else{
+                    debugHelpPrint(type: ClassType.FirebaseTrans, str: "Trying to download a nonexistent document", id:id)
+                    completion(nil)
+                }
             }
-            
-            if let document = document, document.exists{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Successfully download the document!", id:id);
-                var data = document.data()
-                data?["id"] = document.documentID
-                completion(data)
-            }else{
-                debugHelpPrint(type: ClassType.FirebaseTrans, str: "Trying to download a nonexistent document", id:id)
-                completion(nil)
-            }
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadDoc(): input parameters have problems")
         }
     }
     

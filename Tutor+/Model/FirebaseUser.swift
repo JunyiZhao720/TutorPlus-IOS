@@ -116,7 +116,7 @@ class FirebaseUser{
         }
     }
     
-    var friendlist = [ProfileStruct]()
+    var contactList = [ProfileStruct]()
     var tutorList = [firendNode]()
     var studentList = [firendNode]()
     
@@ -239,7 +239,7 @@ class FirebaseUser{
     // download an existing doc
     func downloadProfile(completion:@escaping(Bool)->Void){
         if isLoggedIn(){
-            trans.downloadDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.id!, completion: {(data) in
+            trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: self.id!, completion: {(data) in
                 if let data=data{
                     // replace all current data with a brand new ProfileStruct
                     self.data = FirebaseUser.parseData(data: data)
@@ -396,8 +396,6 @@ class FirebaseUser{
         }
         
         var path = [String]()
-        path.append(FirebaseTrans.USER_COLLECTION)
-        path.append(self.id!)
         
         // download
         path.append(FirebaseTrans.USER_COLLECTION)
@@ -405,8 +403,19 @@ class FirebaseUser{
         path.append(FirebaseTrans.TUTOR_COLLECTION)
         
         trans.downloadAllDocumentsByCollection(collections: path, completion: {(data) in
+            
             if let data = data{
-                
+                for d in data{
+                    if let id = d["id"] as? String{
+                        self.tutorList.append(FirebaseUser.firendNode(id: id , status: d["status"] as? String))
+                        self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
+                            if let data = data{
+                                self.contactList.append(FirebaseUser.parseData(data: data))
+                            }
+                        })
+                        debugHelpPrint(type: .FirebaseUser, str: "Successfully downloaded tutor \(id)")
+                    }
+                }
             }
         })
     }
