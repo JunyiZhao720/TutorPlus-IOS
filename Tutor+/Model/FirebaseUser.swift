@@ -389,13 +389,26 @@ class FirebaseUser{
         FirebaseTrans.shared.addCollectionListener(collections: path)
     }
     
-    func downloadAllContactList(){
+    func downloadAllTutorList(){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "downloadAllContactList() not logged in")
             return
         }
         
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(self.id!)
         
+        // download
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(self.id!)
+        path.append(FirebaseTrans.TUTOR_COLLECTION)
+        
+        trans.downloadAllDocumentsByCollection(collections: path, completion: {(data) in
+            if let data = data{
+                
+            }
+        })
     }
     
     // ------------------------------------------------------------------------------------
