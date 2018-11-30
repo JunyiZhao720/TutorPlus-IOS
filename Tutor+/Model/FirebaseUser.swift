@@ -97,10 +97,28 @@ class FirebaseUser{
     
     
     //Extra fields
-    var imageProfile: UIImage?
     
+    var imageProfile: UIImage?
+    // user edit course grade
     var classData = [String]()
     var gradeData = [String]()
+    // friendlist
+    struct firendNode {
+        var id: String? = ""
+        var status: String? = ""
+        
+        //var image
+        
+        init(){}
+        init(id: String?, status: String?){
+            self.id = id
+            self.status = status
+        }
+    }
+    
+    var friendlist = [ProfileStruct]()
+    var tutorList = [firendNode]()
+    var studentList = [firendNode]()
     
     private init(){}
     
@@ -141,7 +159,6 @@ class FirebaseUser{
                         }
                     })
                 })
-                
             }
         }
     }
@@ -370,6 +387,15 @@ class FirebaseUser{
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         FirebaseTrans.shared.addCollectionListener(collections: path)
+    }
+    
+    func downloadAllContactList(){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "downloadAllContactList() not logged in")
+            return
+        }
+        
+        
     }
     
     // ------------------------------------------------------------------------------------
