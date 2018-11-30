@@ -10,6 +10,10 @@ import Foundation
 import Firebase
 import GoogleSignIn
 
+protocol listenerUpdate: class {
+    func listenerUpdate()
+}
+
 class FirebaseUser{
     
     // ------------------------------------------------------------------------------------
@@ -106,8 +110,7 @@ class FirebaseUser{
     struct firendNode {
         var id: String? = ""
         var status: String? = ""
-        
-        //var image
+        var image: UIImage?
         
         init(){}
         init(id: String?, status: String?){
@@ -120,8 +123,9 @@ class FirebaseUser{
     var tutorList = [String: firendNode]()
     var studentList = [String: firendNode]()
     
-    var contactTableRef = UITableView()
-
+    
+    var cachedListener = [String: ListenerRegistration]()
+    
     private init(){}
     
     // ------------------------------------------------------------------------------------
@@ -377,14 +381,15 @@ class FirebaseUser{
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
     }
     
-    func setContactTableView(contactTable : inout UITableView){
-        self.contactTableRef = contactTable
-        self.contactTableRef.reloadData()
-    }
     
-    func addStudentListListener(){
+    func addStudentListListenerAndCache(listenerId:String, updateDelegate: listenerUpdate){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() not logged in")
+            return
+        }
+        
+        if self.cachedListener[listenerId] != nil{
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() the listener has already been added!")
             return
         }
         
@@ -393,8 +398,9 @@ class FirebaseUser{
         path.append(self.id!)
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
+        // get the listener
         if let theCollection = self.trans.parseCollection(collections: path) {
-           theCollection.addSnapshotListener{ querySnapshot, error in
+           let theListener = theCollection.addSnapshotListener{ querySnapshot, error in
                 guard let snapshot = querySnapshot else {
                     debugHelpPrint(type: .FirebaseTrans, str: "addStudentListListener(): \(error.debugDescription)")
                     return
@@ -404,22 +410,35 @@ class FirebaseUser{
                     let id = diff.document.documentID
                     
                     if (diff.type == .added || diff.type == .modified) {
+                        // student list
                         self.studentList[id] = FirebaseUser.firendNode(id: id, status: data["status"] as? String)
+                        // download profile
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
-                                // update the new info
-                                self.contactTableRef.reloadData()
+                                // download image
+                                if let url = self.contactList[id]?.imageURL{
+                                    self.trans.downloadImageAndCache(url: url, completion: {(image) in
+                                        self.studentList[id]?.image = image
+                                        updateDelegate.listenerUpdate()
+                                    })
+                                }else{
+                                    updateDelegate.listenerUpdate()
+                                }
                             }
                         })
                     }
                     if (diff.type == .removed) {
                         self.studentList[id] = nil
                         self.contactList[id] = nil
-                        self.contactTableRef.reloadData()
+                        updateDelegate.listenerUpdate()
                     }
                 }
             }
+            
+            // cache the listener
+            self.cachedListener[listenerId] = theListener
+
             
         }else{
             debugHelpPrint(type: .FirebaseTrans, str: "addStudentListListener(): input parameters have problems")
@@ -447,7 +466,14 @@ class FirebaseUser{
                         self.tutorList[id] = FirebaseUser.firendNode(id: id , status: d["status"] as? String)
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
+                                // download profile
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
+                                // download image
+                                if let url = self.contactList[id]?.imageURL{
+                                    self.trans.downloadImageAndCache(url: url, completion: {(image) in
+                                        self.tutorList[id]?.image = image
+                                    })
+                                }
                             }
                         })
                         debugHelpPrint(type: .FirebaseUser, str: "Successfully downloaded tutor \(id)")
