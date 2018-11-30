@@ -10,13 +10,16 @@ import UIKit
 
 class FriendListViewController: UIViewController {
 
-    
     @IBOutlet weak var `switch`: UISegmentedControl!
     @IBOutlet weak var friendListScrollView: UIScrollView!
     
+    @IBOutlet weak var friendListSearchBar: UISearchBar!
     @IBOutlet weak var tutorTableView: UITableView!
+    
     var pics: [Pic] = []
-
+    var curPics: [Pic] = []
+//    var searching = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,14 +27,13 @@ class FriendListViewController: UIViewController {
         
         tutorTableView.delegate = self
         tutorTableView.dataSource = self
-        pics = createArray()
+        createArray()
         
         tutorTableView.reloadData()
         tutorTableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        //self.roundedLabel(newMess)
     }
-    func createArray() -> [Pic] {
+    func createArray(){
         var tempPics: [Pic] = []
         
         //        let pic1 = Pic(image: landscape, title: "vash wang")
@@ -48,19 +50,20 @@ class FriendListViewController: UIViewController {
         tempPics.append(pic3)
         tempPics.append(pic4)
         
-        return tempPics
+        curPics = tempPics
+        pics = tempPics
+        
     }
     
-    func roundedLabel(_ object: AnyObject) {
-        object.layer?.cornerRadius = object.frame.size.width/2
-        object.layer?.masksToBounds = true
+    func setUpSearchbar() {
+        friendListSearchBar.delegate = self
     }
 }
 
 extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pics.count
+        return curPics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +72,28 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as? FriendListTableViewCell
         
         cell?.setPic(pic: pic)
-        debugHelpPrint(type: .AppDelegate, str: "\(pic)")
+        
+//        debugHelpPrint(type: .AppDelegate, str: "\(pic)")
         return cell!
     }
+}
+
+extension FriendListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            curPics = pics
+            tutorTableView.reloadData()
+            return
+        }
+        curPics = pics.filter({element -> Bool in element.title.lowercased().contains(searchText.lowercased())})
+        tutorTableView.reloadData()
+        print("searched")
+    }
+
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searching = false
+//        searchBar.text = ""
+//        tutorTableView.reloadData()
+//
+//    }
 }

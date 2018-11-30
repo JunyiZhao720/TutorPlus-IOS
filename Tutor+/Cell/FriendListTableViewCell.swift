@@ -21,7 +21,7 @@ class FriendListTableViewCell: UITableViewCell {
     
     @IBAction func actionAccept(_ sender: UIButton) {
         //AlertHelper.showAlert(fromController: self, message: "\(tutorName.text)", buttonTitle: "123")
-        print("11102 \(tutorName.text)")
+        print("\(tutorName.text)")
     }
     
     @IBAction func actionDecline(_ sender: UIButton) {
