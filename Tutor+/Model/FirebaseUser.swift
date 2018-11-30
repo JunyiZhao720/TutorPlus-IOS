@@ -16,6 +16,7 @@ class FirebaseUser{
     // Basic data model
     
     struct ProfileStruct{
+        var id: String? = ""
         var name: String? = ""
         var gender: String? = ""
         var major: String? = ""
@@ -27,7 +28,8 @@ class FirebaseUser{
         //var image
         
         init(){}
-        init(name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
+        init(id: String?, name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
+            self.id = id
             self.name = name
             self.gender = gender
             self.major = major
@@ -45,7 +47,7 @@ class FirebaseUser{
     static let shared = FirebaseUser()
     
     var currentUser: User?
-    var userId: String? = ""
+
     var userProvider: String? = ""
     var data: ProfileStruct? = ProfileStruct()
     
@@ -55,6 +57,11 @@ class FirebaseUser{
     
 
     //Profile Fields
+    var id: String?{
+        get{ return data?.id }
+        set(value){ data?.id = value }
+    }
+    
     var name: String?{
         get{ return data?.name }
         set(value){ data?.name = value}
@@ -107,7 +114,7 @@ class FirebaseUser{
                 // This means we are logged out
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged Out")
                 self.currentUser = nil
-                self.userId = ""
+                self.id = ""
                 self.data = nil
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn{
@@ -119,9 +126,9 @@ class FirebaseUser{
                 
                 self.userProvider = user!.providerData[0].providerID
                 self.currentUser = user
-                self.userId = (user?.uid)
+                self.id = (user?.uid)
                 
-                debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged in", id: self.userId)
+                debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged in", id: self.id)
                 
                 self.downloadProfile(completion: {(success) in
                     // download image
@@ -151,7 +158,7 @@ class FirebaseUser{
         if self.userProvider == ProviderType.password.description{
             if !self.currentUser!.isEmailVerified{
                 // the email has not been verified!
-                debugHelpPrint(type: ClassType.FirebaseUser, str: "Email is not verified!", id: self.userId)
+                debugHelpPrint(type: ClassType.FirebaseUser, str: "Email is not verified!", id: self.id)
                 return false
             }
         }
@@ -170,6 +177,7 @@ class FirebaseUser{
     private func makeDict()->[String: Any]{
         let dictionary: [String: Any] = [
             // use as Any to avoid warning
+            "id" : self.id as Any,
             "name" :self.name as Any,
             "gender" : self.gender as Any,
             "major" : self.major as Any,
@@ -186,6 +194,7 @@ class FirebaseUser{
     static func parseData(data:[String:Any?])->ProfileStruct{
         let schedule = data["schedule"] == nil ? "0000000000000000000000000000" : data["schedule"] as? String
         let back = ProfileStruct(
+            id: data["id"] as? String,
             name: data["name"] as? String,
             gender: data["gender"] as? String,
             major: data["major"] as? String,
@@ -204,7 +213,7 @@ class FirebaseUser{
     // create or override an existing doc
     func uploadProfile(){
         if isLoggedIn(){
-            trans.createDoc(collection: [FirebaseTrans.USER_COLLECTION], id: self.userId!, dict: self.makeDict())
+            trans.createDoc(collection: [FirebaseTrans.USER_COLLECTION], id: self.id!, dict: self.makeDict())
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to uploadDoc() while user is not logged in")
         }
@@ -213,13 +222,13 @@ class FirebaseUser{
     // download an existing doc
     func downloadProfile(completion:@escaping(Bool)->Void){
         if isLoggedIn(){
-            trans.downloadDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.userId!, completion: {(data) in
+            trans.downloadDoc(collection: FirebaseTrans.USER_COLLECTION, id: self.id!, completion: {(data) in
                 if let data=data{
                     // replace all current data with a brand new ProfileStruct
                     self.data = FirebaseUser.parseData(data: data)
                     completion(true)
                 }else{
-                    debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to download document with errors!", id:self.userId)
+                    debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to download document with errors!", id:self.id)
                     completion(false)
                 }
             })
@@ -231,7 +240,7 @@ class FirebaseUser{
     func uploadTutorCourses(courseList: [String], gradeList: [String]){
         if isLoggedIn() || self.university == nil{
             var path = [FirebaseTrans.USER_COLLECTION]
-            path.append(self.userId!)
+            path.append(self.id!)
             path.append(FirebaseTrans.COURSE_COLLECTION)
             
             for i in 0..<courseList.count{
@@ -250,7 +259,7 @@ class FirebaseUser{
     func downloadTutorCourses(){
         if isLoggedIn(){
             var path = [FirebaseTrans.USER_COLLECTION]
-            path.append(self.userId!)
+            path.append(self.id!)
             path.append(FirebaseTrans.COURSE_COLLECTION)
             
 
@@ -286,7 +295,7 @@ class FirebaseUser{
         path.append(tutorId)
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
-        trans.createDoc(collection: path, id: self.userId!, dict: friendDictGenerator(state: .pending))
+        trans.createDoc(collection: path, id: self.id!, dict: friendDictGenerator(state: .pending))
     }
     
     func reject(studentId: String){
@@ -296,7 +305,7 @@ class FirebaseUser{
         //users->myId->student->delete
         var path = [String]()
         path.append(FirebaseTrans.USER_COLLECTION)
-        path.append(userId!)
+        path.append(id!)
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         trans.deleteDoc(collection: path, id: studentId)
@@ -313,12 +322,12 @@ class FirebaseUser{
         path.append(studentId)
         path.append(FirebaseTrans.TUTOR_COLLECTION)
         
-        trans.createDoc(collection: path, id: self.userId!, dict: friendDictGenerator(state: .accept))
+        trans.createDoc(collection: path, id: self.id!, dict: friendDictGenerator(state: .accept))
         
         // change my document under student's to accept
         path.removeAll()
         path.append(FirebaseTrans.USER_COLLECTION)
-        path.append(userId!)
+        path.append(id!)
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
@@ -332,7 +341,7 @@ class FirebaseUser{
         
         var path = [String]()
         path.append(FirebaseTrans.USER_COLLECTION)
-        path.append(self.userId!)
+        path.append(self.id!)
         path.append(FirebaseTrans.STUDENT_COLLECTION)
         
         FirebaseTrans.shared.addCollectionListener(collections: path)
@@ -346,7 +355,7 @@ class FirebaseUser{
             completion(false)
         }
         
-        trans.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: userId!, fileExtension: FirebaseTrans.IMAGE_EXTENSION, data: data, completion: {(url) in
+        trans.uploadFile(folder: FirebaseTrans.IMAGE_FOLDER, id: id!, fileExtension: FirebaseTrans.IMAGE_EXTENSION, data: data, completion: {(url) in
             if let url = url{
                 debugHelpPrint(type: .FirebaseUser, str: "uploadImage(): url: \(url)")
                 self.imageURL = url
@@ -368,7 +377,7 @@ class FirebaseUser{
                 completion()
             })
         }else{
-            debugHelpPrint(type: .FirebaseUser, str: "downloadImage(): \(self.userId!) doesn't have an uploaded image")
+            debugHelpPrint(type: .FirebaseUser, str: "downloadImage(): \(self.id!) doesn't have an uploaded image")
             completion()
         }
     }

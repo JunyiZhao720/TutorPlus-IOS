@@ -126,7 +126,9 @@ class FirebaseTrans: NSObject {
             
             if let document = document, document.exists{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: "Successfully download the document!", id:id);
-                completion(document.data())
+                var data = document.data()
+                data?["id"] = document.documentID
+                completion(data)
             }else{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: "Trying to download a nonexistent document", id:id)
                 completion(nil)
@@ -144,7 +146,9 @@ class FirebaseTrans: NSObject {
             
             if let document = document, document.exists{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: "Successfully download the document!");
-                completion(document.data())
+                var data = document.data()
+                data?["id"] = document.documentID
+                completion(data)
             }else{
                 debugHelpPrint(type: ClassType.FirebaseTrans, str: "Trying to download a nonexistent document")
                 completion(nil)
@@ -197,8 +201,9 @@ class FirebaseTrans: NSObject {
                 var back = [FirebaseUser.ProfileStruct]()
                 
                 for document in querySnapshot!.documents{
-                    let data = document.data()
+                    var data = document.data()
                     debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")
+                    data["id"] = document.documentID
                     back.append(FirebaseUser.parseData(data: data))
                 }
                 debugHelpPrint(type: .FirebaseTrans, str: "downloadAllDocumentsBySchoolAndCourse: done downloading selected user documents")
