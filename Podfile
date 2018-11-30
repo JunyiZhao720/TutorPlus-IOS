@@ -12,7 +12,7 @@ target 'Tutor+' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'GoogleSignIn'
-  
+  pod 'JSQMessagesViewController'
   
   target 'Tutor+Tests' do
     inherit! :search_paths

@@ -1931,6 +1931,40 @@ CMPS 111 A</string>
             </objects>
             <point key="canvasLocation" x="-631.20000000000005" y="2744.9775112443781"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="ohf-gR-NBx">
+            <objects>
+                <viewController id="jtY-aT-L49" customClass="ChatViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cKd-op-Rdw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="No2-eg-2RL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eIG-zV-dyu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOf-NS-lqq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="2744"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="961-03-ps1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eIV-6C-kpj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hmi-Lc-Wc5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jtY-aT-L49" kind="relationship" relationship="rootViewController" id="Fle-W1-Mmj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aE6-1B-Ym5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="2745"/>
+        </scene>
     </scenes>
     <resources>
         <image name="landscape" width="1200" height="630"/>

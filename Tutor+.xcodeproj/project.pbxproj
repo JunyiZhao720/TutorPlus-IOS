@@ -33,6 +33,7 @@
 		AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62448321780CE900B3605E /* SignUpViewController.swift */; };
 		AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB92C154217668CB0030B5F7 /* SearchViewController.swift */; };
 		ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6AA4A217930980073C03D /* AlertHelper.swift */; };
+		ABAF47AB21B1F88F00E007D2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF47AA21B1F88E00E007D2 /* ChatViewController.swift */; };
 		ABE87891218BC866000C83F1 /* SearchViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */; };
 		ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFADC1A219935E500097922 /* SearchResultController.swift */; };
 		C82C1C1A217BDDBA00EE4660 /* TutorProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEditController.swift */; };
@@ -93,6 +94,7 @@
 		AB62448321780CE900B3605E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AB92C154217668CB0030B5F7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ABA6AA4A217930980073C03D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		ABAF47AA21B1F88E00E007D2 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewTableViewCell.swift; sourceTree = "<group>"; };
 		ABFADC1A219935E500097922 /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 		AB26A46C21768D8E00FEE377 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ABAF47AA21B1F88E00E007D2 /* ChatViewController.swift */,
 				AB33B0392191042600D5C2C9 /* SearchResultTutorProfileController.swift */,
 				ABFADC1A219935E500097922 /* SearchResultController.swift */,
 				9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */,
@@ -537,6 +540,7 @@
 			files = (
 				9C6585C021AE2C2A0044609E /* Pic.swift in Sources */,
 				ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */,
+				ABAF47AB21B1F88F00E007D2 /* ChatViewController.swift in Sources */,
 				C8BE92A22176D9D000A0E896 /* UserProfileViewController.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
 				9C6585C421AE2E750044609E /* FriendListViewController.swift in Sources */,
