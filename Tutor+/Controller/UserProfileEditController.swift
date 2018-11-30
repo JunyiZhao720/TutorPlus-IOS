@@ -33,6 +33,12 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     var selectedGender: String?
     var bottomOffset = CGPoint(x: 0, y: 800)
     
+    var currentEditSchool = [String]()
+    var currentEditCourse = [String]()
+    
+    var EditSchoolList = [String]()
+    var EditCourseList = [String]()
+    
     var classData = ["CMPS115", "CMPS101", "CMPE110"]
     var gradeData = ["A", "A", "B"]
     
@@ -54,6 +60,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         createToolbar()
 
         // Reload courseTableView
+        downloadSchoolColection()
+        downloadCourseColection()
         courseTableView.reloadData()
         courseTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
@@ -93,26 +101,29 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         imageButton.setImage(FirebaseUser.shared.imageProfile, for: .normal)
     }
     
-//    func downloadCollectionInfo(collectionId: String?  = nil){
-//        var theId = [FirebaseTrans.SCHOOL_COLLECTION]
-//        
-//        // if it is to download course collection
-//        if let id = collectionId{
-//            theId.append(id)
-//            theId.append(FirebaseTrans.COURSE_COLLECTION)
-//        }
-//        
-//        // clean current array
-//        suggestionTableArray = [FirebaseTrans.node]()
-//        updateSuggestionArray()
-//        
-//        FirebaseTrans.shared.downloadAllDocumentsByCollection(collections: theId, completion: {(data)in
-//            if let data = data{
-//                self.suggestionTableArray = data
-//                self.updateSuggestionArray()
-//            }
-//        })
-//    }
+    private func downloadSchoolColection(){
+        
+        FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: [FirebaseTrans.SCHOOL_COLLECTION], completion: {(data)in
+            if let data = data{
+                self.EditSchoolList = data
+                self.currentEditSchool = data
+            }
+        })
+    }
+    
+    private func downloadCourseColection(){
+        
+        var theCollection = [FirebaseTrans.SCHOOL_COLLECTION]
+        theCollection.append(FirebaseUser.shared.university!)
+        theCollection.append(FirebaseTrans.COURSE_COLLECTION)
+        
+        FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: theCollection, completion: {(data)in
+            if let data = data{
+                self.EditCourseList = data
+                self.currentEditCourse = data
+            }
+        })
+    }
     
     
     
