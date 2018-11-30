@@ -403,12 +403,12 @@ class FirebaseUser{
     
     func addStudentListListenerAndCache(listenerId:String, updateDelegate: listenerUpdateProtocol){
         if !isLoggedIn(){
-            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() not logged in")
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListenerAndCache() not logged in")
             return
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() the listener has already been added!")
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListenerAndCache) the listener has already been added!")
             return
         }
         
@@ -421,7 +421,7 @@ class FirebaseUser{
         if let theCollection = self.trans.parseCollection(collections: path) {
            let theListener = theCollection.addSnapshotListener{ querySnapshot, error in
                 guard let snapshot = querySnapshot else {
-                    debugHelpPrint(type: .FirebaseTrans, str: "addStudentListListener(): \(error.debugDescription)")
+                    debugHelpPrint(type: .FirebaseTrans, str: "addStudentListListenerAndCache(): \(error.debugDescription)")
                     return
                 }
                 snapshot.documentChanges.forEach { diff in
@@ -446,8 +446,7 @@ class FirebaseUser{
                                 }
                             }
                         })
-                    }
-                    if (diff.type == .removed) {
+                    }else{
                         self.studentList[id] = nil
                         self.contactList[id] = nil
                         updateDelegate.listenerUpdate()

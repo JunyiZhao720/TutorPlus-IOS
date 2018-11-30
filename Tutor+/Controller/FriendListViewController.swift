@@ -52,7 +52,7 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
     
     func initializeListeners(){
         FirebaseUser.shared.addStudentListListenerAndCache(listenerId: studentListListenerName, updateDelegate: self)
-        FirebaseUser.shared.addStudentListListenerAndCache(listenerId: tutorListListenerName, updateDelegate: self)
+        FirebaseUser.shared.addTutorListListenerAndCache(listenerId: tutorListListenerName, updateDelegate: self)
     }
     
     func listenerUpdate() {
@@ -94,12 +94,14 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
             if let id = currentStudentList[indexPath.row].id{
                 cell.tutorName.text = FirebaseUser.shared.contactList[id]?.name
                 cell.tutorImage.image = currentStudentList[indexPath.row].image
+                debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
                 cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].status)
             }
         }else{
             if let id = currentTutorList[indexPath.row].id{
                 cell.tutorName.text = FirebaseUser.shared.contactList[id]?.name
                 cell.tutorImage.image = currentTutorList[indexPath.row].image
+                debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
                 cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].status)
             }
         }

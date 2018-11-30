@@ -42,11 +42,11 @@ class FriendListTableViewCell: UITableViewCell {
     
     public func showbuttonsByPending(pending: String?){
         if pending == "pending"{
-            outletAccept.isHidden = true
-            outletDecline.isHidden = true
-        }else{
             outletAccept.isHidden = false
             outletDecline.isHidden = false
+        }else{
+            outletAccept.isHidden = true
+            outletDecline.isHidden = true
         }
         
     }
