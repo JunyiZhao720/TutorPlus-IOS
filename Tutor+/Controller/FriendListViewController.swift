@@ -8,93 +8,116 @@
 
 import UIKit
 
-class FriendListViewController: UIViewController {
+class FriendListViewController: UIViewController, listenerUpdateProtocol {
 
-    @IBOutlet weak var `switch`: UISegmentedControl!
-    @IBOutlet weak var friendListScrollView: UIScrollView!
     
-    @IBOutlet weak var friendListSearchBar: UISearchBar!
-    @IBOutlet weak var tutorTableView: UITableView!
+
+    @IBOutlet weak var selector: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var contactTableView: UITableView!
     
-    var pics: [Pic] = []
-    var curPics: [Pic] = []
-//    var searching = false
+    var isStudentSelected = true
+    
+    var tutorList : [FirebaseUser.firendNode] = []
+    var studentList : [FirebaseUser.firendNode] = []
+    
+    var currentTutorList : [FirebaseUser.firendNode] = []
+    var currentStudentList : [FirebaseUser.firendNode] = []
+    
+    let studentListListenerName = "studentList"
+    let tutorListListenerName = "tutorList"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        contactTableView.delegate = self
+        contactTableView.dataSource = self
+        searchBar.delegate = self
         
-        tutorTableView.delegate = self
-        tutorTableView.dataSource = self
-        createArray()
+        initializeListeners()
+        listenerUpdate()
         
-        tutorTableView.reloadData()
-        tutorTableView.tableFooterView = UIView(frame: CGRect.zero)
-        
-    }
-    func createArray(){
-        var tempPics: [Pic] = []
-        
-        //        let pic1 = Pic(image: landscape, title: "vash wang")
-        //        let pic2 = Pic(image:    , title: "aaron ge")
-        //        let pic3 = Pic(image: , title: "Gua", )
-        
-        let pic1 = Pic(title: "Vash Wang")
-        let pic2 = Pic(title: "Aaron Ge")
-        let pic3 = Pic(title: "Gua Zhao")
-        let pic4 = Pic(title: "Veronica Wuuuu")
-        
-        tempPics.append(pic1)
-        tempPics.append(pic2)
-        tempPics.append(pic3)
-        tempPics.append(pic4)
-        
-        curPics = tempPics
-        pics = tempPics
-        
+        contactTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
-    func setUpSearchbar() {
-        friendListSearchBar.delegate = self
+    
+    @IBAction func switchBarValueChanged(_ sender: Any) {
+        if selector.selectedSegmentIndex == 0{
+            isStudentSelected = true
+        }else{
+            isStudentSelected = false
+        }
+        contactTableView.reloadData()
     }
+    
+    func initializeListeners(){
+        FirebaseUser.shared.addStudentListListenerAndCache(listenerId: studentListListenerName, updateDelegate: self)
+        FirebaseUser.shared.addStudentListListenerAndCache(listenerId: tutorListListenerName, updateDelegate: self)
+    }
+    
+    func listenerUpdate() {
+        
+        // incase the user is doing searching
+        searchBar.text = ""
+        
+        // update data
+        tutorList = FirebaseUser.dictToList(theDict: FirebaseUser.shared.tutorList) as! [FirebaseUser.firendNode]
+        studentList = FirebaseUser.dictToList(theDict: FirebaseUser.shared.studentList) as! [FirebaseUser.firendNode]
+        currentTutorList = tutorList
+        currentStudentList = studentList
+        
+        //debugHelpPrint(type: .FriendListViewController, str: "tutor: \(currentTutorList.description)")
+        //debugHelpPrint(type: .FriendListViewController, str: "student: \(currentStudentList)")
+        //debugHelpPrint(type: .FriendListViewController, str: "user-all: \(FirebaseUser.shared.contactList.description)")
+        //debugHelpPrint(type: .FriendListViewController, str: "user-tutor: \(FirebaseUser.shared.studentList.description)")
+        //debugHelpPrint(type: .FriendListViewController, str: "user-stuent: \(FirebaseUser.shared.tutorList.description)")
+        contactTableView.reloadData()
+    }
+    
 }
 
 extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return curPics.count
+        if isStudentSelected{
+            return currentStudentList.count
+        }else{
+            return currentTutorList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //let pic = pics[indexPath.row] // indexPath.row is dynamic
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as? FriendListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as! FriendListTableViewCell
         
+        if isStudentSelected{
+            if let id = currentStudentList[indexPath.row].id{
+                cell.tutorName.text = FirebaseUser.shared.contactList[id]?.name
+                cell.tutorImage.image = currentStudentList[indexPath.row].image
+                cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].status)
+            }
+        }else{
+            if let id = currentTutorList[indexPath.row].id{
+                cell.tutorName.text = FirebaseUser.shared.contactList[id]?.name
+                cell.tutorImage.image = currentTutorList[indexPath.row].image
+                cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].status)
+            }
+        }
         
-        cell?.tutorName.text = curPics[indexPath.row].title
-//        debugHelpPrint(type: .AppDelegate, str: "\(pic)")
-        
-        return cell!
+        return cell
     }
 }
 
 extension FriendListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {
-            curPics = pics
-            tutorTableView.reloadData()
-            return
-        }
-        curPics = pics.filter({element -> Bool in element.title.lowercased().contains(searchText.lowercased())})
-        tutorTableView.reloadData()
-        print("searched")
-    }
-
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searching = false
-//        searchBar.text = ""
-//        tutorTableView.reloadData()
-//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        guard !searchText.isEmpty else {
+//            curPics = pics
+//            contactTableView.reloadData()
+//            return
+//        }
+//        curPics = pics.filter({element -> Bool in element.title.lowercased().contains(searchText.lowercased())})
+//        contactTableView.reloadData()
+//        print("searched")
 //    }
+
 }

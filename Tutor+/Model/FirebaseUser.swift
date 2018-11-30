@@ -125,6 +125,7 @@ class FirebaseUser{
     
     
     var cachedListener = [String: ListenerRegistration]()
+
     
     private init(){}
     
@@ -187,6 +188,13 @@ class FirebaseUser{
         return true
     }
     
+    private func cleanCachedListener(){
+        for data in cachedListener{
+            data.value.remove()
+        }
+        cachedListener = [String: ListenerRegistration]()
+    }
+    
     func isLoggedIn() -> Bool {
         return(currentUser != nil)
     }
@@ -194,6 +202,10 @@ class FirebaseUser{
     func logOut(){
         try! Auth.auth().signOut()
         GIDSignIn.sharedInstance()?.signOut()
+        self.contactList = [String: ProfileStruct]()
+        self.studentList = [String: FirebaseUser.firendNode]()
+        self.tutorList = [String: FirebaseUser.firendNode]()
+        cleanCachedListener()
     }
     
     private func makeDict()->[String: Any]{
@@ -332,6 +344,14 @@ class FirebaseUser{
         }
     }
     
+    static func dictToList(theDict: [String:Any]) -> [Any]{
+        var theList = [Any]()
+        for data in theDict{
+            theList.append(data.value)
+        }
+        return theList
+    }
+    
     func request(tutorId: String){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "request() not logged in")
@@ -444,43 +464,106 @@ class FirebaseUser{
         }
     }
     
-    func downloadAllTutorList(){
+    func addTutorListListenerAndCache(listenerId:String, updateDelegate: listenerUpdateProtocol){
         if !isLoggedIn(){
-            debugHelpPrint(type: .FirebaseUser, str: "downloadAllContactList() not logged in")
+            debugHelpPrint(type: .FirebaseUser, str: "addTutorListListenerAndCache() not logged in")
+            return
+        }
+        
+        if self.cachedListener[listenerId] != nil{
+            debugHelpPrint(type: .FirebaseUser, str: "addTutorListListenerAndCache() the listener has already been added!")
             return
         }
         
         var path = [String]()
-        
-        // download
         path.append(FirebaseTrans.USER_COLLECTION)
         path.append(self.id!)
         path.append(FirebaseTrans.TUTOR_COLLECTION)
         
-        trans.downloadAllDocumentsByCollection(collections: path, completion: {(data) in
-            
-            if let data = data{
-                for d in data{
-                    if let id = d["id"] as? String{
-                        self.tutorList[id] = FirebaseUser.firendNode(id: id , status: d["status"] as? String)
+        // get the listener
+        if let theCollection = self.trans.parseCollection(collections: path) {
+            let theListener = theCollection.addSnapshotListener{ querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "addTutorListListenerAndCache(): \(error.debugDescription)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    let data = diff.document.data()
+                    let id = diff.document.documentID
+                    
+                    if (diff.type == .added || diff.type == .modified) {
+                        // tutor list
+                        self.tutorList[id] = FirebaseUser.firendNode(id: id, status: data["status"] as? String)
+                        // download profile
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
-                                // download profile
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
                                 // download image
                                 if let url = self.contactList[id]?.imageURL{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
                                         self.tutorList[id]?.image = image
+                                        debugHelpPrint(type: .FirebaseUser, str: "\(id) download tutor image complete")
+                                        updateDelegate.listenerUpdate()
                                     })
+                                }else{
+                                    debugHelpPrint(type: .FirebaseUser, str: "\(id) doesn't have an image")
+                                    updateDelegate.listenerUpdate()
                                 }
                             }
                         })
-                        debugHelpPrint(type: .FirebaseUser, str: "Successfully downloaded tutor \(id)")
+                    }else{
+                        self.tutorList[id] = nil
+                        self.contactList[id] = nil
+                        updateDelegate.listenerUpdate()
                     }
                 }
             }
-        })
+            
+            // cache the listener
+            self.cachedListener[listenerId] = theListener
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "addTutorListListenerAndCache(): input parameters have problems")
+        }
     }
+    
+//    func downloadAllTutorList(){
+//        if !isLoggedIn(){
+//            debugHelpPrint(type: .FirebaseUser, str: "downloadAllContactList() not logged in")
+//            return
+//        }
+//
+//        var path = [String]()
+//
+//        // download
+//        path.append(FirebaseTrans.USER_COLLECTION)
+//        path.append(self.id!)
+//        path.append(FirebaseTrans.TUTOR_COLLECTION)
+//
+//        trans.downloadAllDocumentsByCollection(collections: path, completion: {(data) in
+//
+//            if let data = data{
+//                for d in data{
+//                    if let id = d["id"] as? String{
+//                        self.tutorList[id] = FirebaseUser.firendNode(id: id , status: d["status"] as? String)
+//                        self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
+//                            if let data = data{
+//                                // download profile
+//                                self.contactList[id] = FirebaseUser.parseData(data: data)
+//                                // download image
+//                                if let url = self.contactList[id]?.imageURL{
+//                                    self.trans.downloadImageAndCache(url: url, completion: {(image) in
+//                                        self.tutorList[id]?.image = image
+//                                    })
+//                                }
+//                            }
+//                        })
+//                        debugHelpPrint(type: .FirebaseUser, str: "Successfully downloaded tutor \(id)")
+//                    }
+//                }
+//            }
+//        })
+//    }
     
     // ------------------------------------------------------------------------------------
     // Image methods

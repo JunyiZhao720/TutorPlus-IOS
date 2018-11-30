@@ -21,7 +21,6 @@ class FriendListTableViewCell: UITableViewCell {
     
     @IBAction func actionAccept(_ sender: UIButton) {
         //AlertHelper.showAlert(fromController: self, message: "\(tutorName.text)", buttonTitle: "123")
-        print("\(tutorName.text)")
     }
     
     @IBAction func actionDecline(_ sender: UIButton) {
@@ -41,9 +40,15 @@ class FriendListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func showbuttons(show: Bool){
-        outletAccept.isHidden = show
-        outletDecline.isHidden = show
+    public func showbuttonsByPending(pending: String?){
+        if pending == "pending"{
+            outletAccept.isHidden = true
+            outletDecline.isHidden = true
+        }else{
+            outletAccept.isHidden = false
+            outletDecline.isHidden = false
+        }
+        
     }
     
     public func showRedDot(show: Bool){

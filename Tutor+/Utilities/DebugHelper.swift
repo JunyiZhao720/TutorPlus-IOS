@@ -11,5 +11,5 @@ import Foundation
 // debug print function
 // parameters: ClassType, string for the messages, id for the user
 func debugHelpPrint(type: ClassType, str: String, id: String? = ""){
-    print("DebugInfo-\(Date())- \(type)-\(id ?? ""): \(str)")
+    print("DebugInfo-\(type)-\(id ?? ""): \(str)")
 }

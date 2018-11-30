@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1808,6 +1808,9 @@ CMPS 111 A</string>
                                             <segment title="Students" width="94"/>
                                             <segment title="Tutors"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="switchBarValueChanged:" destination="YTr-jh-PjU" eventType="valueChanged" id="eed-gK-wgS"/>
+                                        </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0n2-yT-7Jb">
                                         <rect key="frame" x="0.0" y="79" width="375" height="532"/>
@@ -1919,10 +1922,9 @@ CMPS 111 A</string>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="kYq-HW-gql"/>
                     <connections>
-                        <outlet property="friendListScrollView" destination="jId-hU-6md" id="NDa-D9-cN8"/>
-                        <outlet property="friendListSearchBar" destination="DFH-jb-9Qx" id="wc0-B6-LhH"/>
-                        <outlet property="switch" destination="cK8-9R-Pij" id="JfJ-0Q-CN5"/>
-                        <outlet property="tutorTableView" destination="LaQ-GJ-uVU" id="UKx-7Z-v4Q"/>
+                        <outlet property="contactTableView" destination="LaQ-GJ-uVU" id="UKx-7Z-v4Q"/>
+                        <outlet property="searchBar" destination="DFH-jb-9Qx" id="wc0-B6-LhH"/>
+                        <outlet property="selector" destination="cK8-9R-Pij" id="5Ga-O3-0mm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkP-13-lnz" userLabel="First Responder" sceneMemberID="firstResponder"/>

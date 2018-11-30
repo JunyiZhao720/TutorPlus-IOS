@@ -8,11 +8,7 @@
 
 import UIKit
 
-class SearchResultTutorProfileController: UIViewController,listenerUpdateProtocol {
-    func listenerUpdate() {
-        debugHelpPrint(type: .SearchResultTutorProfileController, str: "\(FirebaseUser.shared.studentList.description)")
-    }
-    
+class SearchResultTutorProfileController: UIViewController {
 
 
     @IBOutlet weak var tutorName: UILabel!
@@ -68,7 +64,7 @@ class SearchResultTutorProfileController: UIViewController,listenerUpdateProtoco
 //        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.tutorList.debugDescription)")
 //        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.contactList.debugDescription)")
         
-        FirebaseUser.shared.addStudentListListenerAndCache(listenerId: "123", updateDelegate: self)
+        //FirebaseUser.shared.addStudentListListenerAndCache(listenerId: "123", updateDelegate: self)
 //        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.studentList.debugDescription)")
 //        debugHelpPrint(type: .SearchResultController, str: "\(FirebaseUser.shared.contactList.debugDescription)")
     }

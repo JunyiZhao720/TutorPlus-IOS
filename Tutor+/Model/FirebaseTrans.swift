@@ -282,7 +282,7 @@ class FirebaseTrans: NSObject {
             let httpsReference = Storage.storage().reference(forURL: url)
             
             // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            httpsReference.getData(maxSize: 15 * 1024 * 1024) { data, error in
                 if let error = error {
                     debugHelpPrint(type: .FirebaseTrans, str: "downloadFileAndCach():\(error)")
                     completion(nil)
