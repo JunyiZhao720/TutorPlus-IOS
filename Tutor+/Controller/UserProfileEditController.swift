@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileEditController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
+class UserProfileEditController: UIViewController,  UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate {
     
 
     @IBOutlet weak var imageButton: UIButton!
@@ -26,12 +26,21 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     @IBOutlet weak var courseTableView: UITableView!
     @IBOutlet weak var courseSearchTableView: UITableView!
     @IBOutlet weak var schoolSearchTableView: UITableView!
+
+    @IBOutlet weak var addClass: UITextField!
+    @IBOutlet weak var addGradeText: UITextField!
     
     var imagePicker: UIImagePickerController!
     
     let genderList = ["Male","Female","Rather not to say"]
     var selectedGender: String?
     var bottomOffset = CGPoint(x: 0, y: 800)
+    
+    var currentEditSchool = [String]()
+    var currentEditCourse = [String]()
+    
+    var EditSchoolList = [String]()
+    var EditCourseList = [String]()
     
     var classData = ["CMPS115", "CMPS101", "CMPE110"]
     var gradeData = ["A", "A", "B"]
@@ -48,14 +57,18 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         initializePersonalStatementTextField()
         initializeFirebaseInfo()
         initializeImage()
-       
+        
+        initializeTextField()
+        initializeTableView()
+        
         // Calling gender dropdown
         createGenderPicker()
         createToolbar()
 
         // Reload courseTableView
-        courseTableView.reloadData()
-        courseTableView.tableFooterView = UIView(frame: CGRect.zero)
+        downloadSchoolColection()
+        downloadCourseColection()
+        
     }
     
     // ------------------------------------------------------------------------------------
@@ -93,28 +106,132 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         imageButton.setImage(FirebaseUser.shared.imageProfile, for: .normal)
     }
     
-//    func downloadCollectionInfo(collectionId: String?  = nil){
-//        var theId = [FirebaseTrans.SCHOOL_COLLECTION]
-//        
-//        // if it is to download course collection
-//        if let id = collectionId{
-//            theId.append(id)
-//            theId.append(FirebaseTrans.COURSE_COLLECTION)
-//        }
-//        
-//        // clean current array
-//        suggestionTableArray = [FirebaseTrans.node]()
-//        updateSuggestionArray()
-//        
-//        FirebaseTrans.shared.downloadAllDocumentsByCollection(collections: theId, completion: {(data)in
-//            if let data = data{
-//                self.suggestionTableArray = data
-//                self.updateSuggestionArray()
-//            }
-//        })
-//    }
+    private func initializeTableView(){
+        courseTableView.delegate = self
+        courseSearchTableView.delegate = self
+        schoolSearchTableView.delegate = self
+        
+        courseTableView.dataSource = self
+        courseSearchTableView.dataSource = self
+        schoolSearchTableView.dataSource = self
+        
+        courseTableView.reloadData()
+        courseTableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
     
+    private func initializeTextField(){
+        addClass.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        universityEditor.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
     
+    private func downloadSchoolColection(){
+        
+        FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: [FirebaseTrans.SCHOOL_COLLECTION], completion: {(data)in
+            if let data = data{
+                self.EditSchoolList = data
+                self.currentEditSchool = data
+            }
+        })
+    }
+    
+    private func downloadCourseColection(){
+        
+        var theCollection = [FirebaseTrans.SCHOOL_COLLECTION]
+        theCollection.append(FirebaseUser.shared.university!)
+        theCollection.append(FirebaseTrans.COURSE_COLLECTION)
+        
+        FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: theCollection, completion: {(data)in
+            if let data = data{
+                self.EditCourseList = data
+                self.currentEditCourse = data
+            }
+        })
+    }
+    // ------------------------------------------------------------------------------------
+    // TableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.courseSearchTableView{
+            return currentEditCourse.count
+        }
+        if tableView == self.schoolSearchTableView{
+            return currentEditSchool.count
+        }
+        return classData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == self.courseSearchTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserEditCourseCell", for: indexPath) as! SearchViewTableViewCell
+            cell.suggestionLabel.text = currentEditCourse[indexPath.row]
+            return cell
+        }
+        if tableView == self.schoolSearchTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserEditSchoolCell", for: indexPath) as! SearchViewTableViewCell
+            
+            cell.suggestionLabel.text = currentEditSchool[indexPath.row]
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as! UserProfileEditCourseCell
+        cell.classLabel.text = classData[indexPath.row]
+        cell.gradeLabel.text = gradeData[indexPath.row]
+        cell.index = indexPath
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == self.courseTableView && editingStyle == .delete {
+            print("delete")
+            self.classData.remove(at: indexPath.row)
+            self.gradeData.remove(at: indexPath.row)
+            self.courseTableView.reloadData()
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView == courseSearchTableView{
+            let currentCell = tableView.cellForRow(at: indexPath) as! SearchViewTableViewCell
+            addClass.text = currentCell.suggestionLabel.text
+            courseSearchTableView.isHidden = true
+        }
+        
+        if tableView == schoolSearchTableView{
+            let currentCell = tableView.cellForRow(at: indexPath) as! SearchViewTableViewCell
+            universityEditor.text = currentCell.suggestionLabel.text
+            schoolSearchTableView.isHidden = true
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textView: UITextView) {
+        guard !textView.text.isEmpty else {
+            if(textView == addClass){
+                courseSearchTableView.isHidden = true
+            }
+            
+            if(textView == universityEditor){
+                schoolSearchTableView.isHidden = true
+            }
+            return
+        }
+        
+        if(textView == addClass){
+            courseSearchTableView.isHidden = false
+            currentEditCourse = EditCourseList.filter({ course -> Bool in
+                course.lowercased().contains(textView.text.lowercased())
+            })
+            courseSearchTableView.reloadData()
+        }
+        
+        if(textView == universityEditor){
+            schoolSearchTableView.isHidden = false
+            currentEditSchool = EditSchoolList.filter({ school -> Bool in
+                school.lowercased().contains(textView.text.lowercased())
+            })
+            schoolSearchTableView.reloadData()
+        }
+    }
     
     // ------------------------------------------------------------------------------------
     // Buttons
@@ -223,8 +340,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     // ------------------------------------------------------------------------------------
     // Course Listview
     
-    @IBOutlet weak var addClass: UITextField!
-    @IBOutlet weak var addGradeText: UITextField!
+
     
     @IBAction func addCell(_ sender: Any) {
         classData.append(addClass.text!)
@@ -275,30 +391,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         return stringDate
     }
     
-    // ------------------------------------------------------------------------------------
-    // TableView
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? UserProfileEditCourseCell
-        cell?.classLabel.text = classData[indexPath.row]
-        cell?.gradeLabel.text = gradeData[indexPath.row]
-        cell?.index = indexPath
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("delete")
-            self.classData.remove(at: indexPath.row)
-            self.gradeData.remove(at: indexPath.row)
-            self.courseTableView.reloadData()
-        }
-    }
+
 }
 
 // ------------------------------------------------------------------------------------
@@ -345,6 +438,8 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
         dismiss(animated: true, completion: nil)
     }
 }
+
+
 
 
 

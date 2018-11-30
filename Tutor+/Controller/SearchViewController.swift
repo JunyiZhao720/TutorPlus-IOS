@@ -20,8 +20,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var resultTableView: UITableView!
     
     // Main data source for search Table
-    var suggestionTableArray = [FirebaseTrans.node]()
-    var currentSuggestionTableArray = [FirebaseTrans.node]()
+    var suggestionTableArray = [String]()
+    var currentSuggestionTableArray = [String]()
     var isLastEditedBoxSchool = false
     
     // school and course stores
@@ -32,13 +32,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
         super.viewDidLoad()
         
-//        resultTableView.dataSource = self
-//        resultTableView.delegate = self
-//        schoolSearchBar.delegate = self
-//        courseSearchBar.delegate = self
-//        
-//        downloadCollectionInfo()
-//        initializeImages()
+        resultTableView.dataSource = self
+        resultTableView.delegate = self
+        schoolSearchBar.delegate = self
+        courseSearchBar.delegate = self
+        
+        downloadCollectionInfo()
+        initializeImages()
     }
     
     @objc func imageTapped(gesture: UIGestureRecognizer) {
@@ -110,10 +110,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         // clean current array
-        suggestionTableArray = [FirebaseTrans.node]()
+        suggestionTableArray = [String]()
         updateSuggestionArray()
         
-        FirebaseTrans.shared.downloadAllDocumentsByCollection(collections: theId, completion: {(data)in
+        FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: theId, completion: {(data)in
             if let data = data{
                 self.suggestionTableArray = data
                 self.updateSuggestionArray()
@@ -140,7 +140,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             debugHelpPrint(type: .SearchViewController, str: "Empty")
             return UITableViewCell()
         }
-        cell.suggestionLabel.text = currentSuggestionTableArray[indexPath.row].name
+        cell.suggestionLabel.text = currentSuggestionTableArray[indexPath.row]
         debugHelpPrint(type: .SearchViewController, str: "\(String(describing: cell.suggestionLabel.text))")
         return cell
     }
@@ -159,7 +159,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             // setup datastore
             currentSchoolName = currentCell?.suggestionLabel.text
             currentCourseName = nil
-            downloadCollectionInfo(collectionId: String(currentSuggestionTableArray[indexPath.row].id))
+            downloadCollectionInfo(collectionId: String(currentSuggestionTableArray[indexPath.row]))
             debugHelpPrint(type: .SearchViewController, str: "Selected school:\(currentSchoolName ?? "null")")
             
         } else {
@@ -198,7 +198,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         resultTableView.isHidden = false
         currentSuggestionTableArray = suggestionTableArray.filter({ suggestion -> Bool in
-            suggestion.name.lowercased().contains(searchText.lowercased())
+            suggestion.lowercased().contains(searchText.lowercased())
         })
         resultTableView.reloadData()
     }
