@@ -40,5 +40,13 @@ class FriendListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    public func showbuttons(show: Bool){
+        outletAccept.isHidden = show
+        outletDecline.isHidden = show
+    }
+    
+    public func showRedDot(show: Bool){
+        redSpot.isHidden = show
+    }
 }
