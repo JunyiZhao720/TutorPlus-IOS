@@ -261,8 +261,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         FirebaseUser.shared.university = universityEditor.text
         FirebaseUser.shared.ps = personalState.text
         FirebaseUser.shared.schedule = scheduleToString()
+        FirebaseUser.shared.tag = classData
         
-        
+        // upload image
         if let _chosenImage = chosenImage{
             //It has a new image
             FirebaseUser.shared.uploadImage(data: _chosenImage.pngData()!, completion: {(success) in
@@ -275,6 +276,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             // It doesn't have a new image
             FirebaseUser.shared.uploadProfile()
         }
+        
+        // upload courses and grades
+        FirebaseUser.shared.uploadTutorCourses(courseList: classData, gradeList: gradeData)
         
         // Go back to previous page
         self.performSegue(withIdentifier: "ProfileEditToTabBar", sender: self)

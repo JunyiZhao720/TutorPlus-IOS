@@ -92,6 +92,9 @@ class FirebaseUser{
     //Extra fields
     var imageProfile: UIImage?
     
+    var classData = [String]()
+    var gradeData = [String]()
+    
     private init(){}
     
     // ------------------------------------------------------------------------------------
@@ -222,6 +225,37 @@ class FirebaseUser{
             })
         }else{
             debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to downloadDoc() while user is not logged in")
+        }
+    }
+    
+    func uploadTutorCourses(courseList: [String], gradeList: [String]){
+        if isLoggedIn() || self.university == nil{
+            var path = [FirebaseTrans.USER_COLLECTION]
+            path.append(self.userId!)
+            path.append(FirebaseTrans.COURSE_COLLECTION)
+            
+            for i in 0..<courseList.count{
+                let currentName = self.university! + "-" + courseList[i]
+                
+                FirebaseTrans.shared.createDoc(collection: path, id: currentName, dict: [
+                    "grade":gradeList[i]
+                    ])
+            }
+        }else{
+            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to uploadTutorCourses() while user is not logged in")
+        }
+        
+    }
+    
+    func downloadTutorCourses(){
+        if isLoggedIn(){
+            var path = [FirebaseTrans.USER_COLLECTION]
+            path.append(self.userId!)
+            path.append(FirebaseTrans.COURSE_COLLECTION)
+            
+
+        }else{
+            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to downloadTutorCourses() while user is not logged in")
         }
     }
     
