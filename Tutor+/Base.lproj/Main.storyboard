@@ -768,7 +768,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserEditUniveristyCell" rowHeight="52" id="IBU-es-zCi" customClass="SearchViewTableViewCell" customModule="Tutor_" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserEditSchoolCell" rowHeight="52" id="IBU-es-zCi" customClass="SearchViewTableViewCell" customModule="Tutor_" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="216" height="52"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IBU-es-zCi" id="Slv-oH-WvD">
@@ -1938,7 +1938,6 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WpY-Yw-XmU"/>
         <segue reference="Qgf-94-Osr"/>
     </inferredMetricsTieBreakers>
 </document>

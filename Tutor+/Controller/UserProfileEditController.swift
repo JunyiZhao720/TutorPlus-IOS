@@ -62,8 +62,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         // Reload courseTableView
         downloadSchoolColection()
         downloadCourseColection()
-        courseTableView.reloadData()
-        courseTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
     }
     
     // ------------------------------------------------------------------------------------
@@ -101,6 +100,19 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         imageButton.setImage(FirebaseUser.shared.imageProfile, for: .normal)
     }
     
+    private func initializeTableView(){
+        courseTableView.delegate = self
+        courseSearchTableView.delegate = self
+        schoolSearchTableView.delegate = self
+        
+        courseTableView.dataSource = self
+        courseSearchTableView.dataSource = self
+        schoolSearchTableView.dataSource = self
+        
+        courseTableView.reloadData()
+        courseTableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
+    
     private func downloadSchoolColection(){
         
         FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: [FirebaseTrans.SCHOOL_COLLECTION], completion: {(data)in
@@ -124,7 +136,48 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             }
         })
     }
+    // ------------------------------------------------------------------------------------
+    // TableView
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.courseSearchTableView{
+            return currentEditCourse.count
+        }
+        if tableView == self.schoolSearchTableView{
+            return currentEditSchool.count
+        }
+        return classData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == self.courseSearchTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserEditCourseCell", for: indexPath) as! SearchViewTableViewCell
+            cell.suggestionLabel.text = currentEditCourse[indexPath.row]
+            return cell
+        }
+        if tableView == self.schoolSearchTableView{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserSchoolCourseCell", for: indexPath) as! SearchViewTableViewCell
+            
+            cell.suggestionLabel.text = currentEditCourse[indexPath.row]
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as! UserProfileEditCourseCell
+        cell.classLabel.text = classData[indexPath.row]
+        cell.gradeLabel.text = gradeData[indexPath.row]
+        cell.index = indexPath
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == self.courseTableView && editingStyle == .delete {
+            print("delete")
+            self.classData.remove(at: indexPath.row)
+            self.gradeData.remove(at: indexPath.row)
+            self.courseTableView.reloadData()
+        }
+    }
     
     
     // ------------------------------------------------------------------------------------
@@ -286,30 +339,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         return stringDate
     }
     
-    // ------------------------------------------------------------------------------------
-    // TableView
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell", for: indexPath) as? UserProfileEditCourseCell
-        cell?.classLabel.text = classData[indexPath.row]
-        cell?.gradeLabel.text = gradeData[indexPath.row]
-        cell?.index = indexPath
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("delete")
-            self.classData.remove(at: indexPath.row)
-            self.gradeData.remove(at: indexPath.row)
-            self.courseTableView.reloadData()
-        }
-    }
+
 }
 
 // ------------------------------------------------------------------------------------
