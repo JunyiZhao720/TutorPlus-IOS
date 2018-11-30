@@ -18,6 +18,7 @@ public enum ClassType{
     case SignUpViewController
     case UserProfileEditController
     case SearchResultController
+    case SearchResultTutorProfileController
     
     case SearchViewTableViewCell
     

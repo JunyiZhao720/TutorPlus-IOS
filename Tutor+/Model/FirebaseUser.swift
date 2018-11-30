@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import GoogleSignIn
 
-protocol listenerUpdate: class {
+protocol listenerUpdateProtocol: class {
     func listenerUpdate()
 }
 
@@ -53,7 +53,7 @@ class FirebaseUser{
     var currentUser: User?
 
     var userProvider: String? = ""
-    var data: ProfileStruct? = ProfileStruct()
+    var data: ProfileStruct = ProfileStruct()
     
     private var listenHandler: AuthStateDidChangeListenerHandle?
     private let trans = FirebaseTrans.shared
@@ -62,41 +62,41 @@ class FirebaseUser{
 
     //Profile Fields
     var id: String?{
-        get{ return data?.id }
-        set(value){ data?.id = value }
+        get{ return data.id }
+        set(value){ data.id = value }
     }
     
     var name: String?{
-        get{ return data?.name }
-        set(value){ data?.name = value}
+        get{ return data.name }
+        set(value){ data.name = value}
     }
     var gender: String? {
-        get{ return data?.gender }
-        set(value){ data?.gender = value}
+        get{ return data.gender }
+        set(value){ data.gender = value}
     }
     var major: String? {
-        get{ return data?.major }
-        set(value){ data?.major = value}
+        get{ return data.major }
+        set(value){ data.major = value}
     }
     var university: String? {
-        get{ return data?.university }
-        set(value){ data?.university = value}
+        get{ return data.university }
+        set(value){ data.university = value}
     }
     var imageURL: String?{
-        get{ return data?.imageURL}
-        set(value){ data?.imageURL = value}
+        get{ return data.imageURL}
+        set(value){ data.imageURL = value}
     }
     var tag: [String]?{
-        get{ return data?.tag}
-        set(value){ data?.tag = value}
+        get{ return data.tag}
+        set(value){ data.tag = value}
     }
     var schedule: String?{
-        get{ return data?.schedule}
-        set(value){ data?.schedule = value}
+        get{ return data.schedule}
+        set(value){ data.schedule = value}
     }
     var ps: String?{
-        get{ return data?.ps}
-        set(value){ data?.ps = value}
+        get{ return data.ps}
+        set(value){ data.ps = value}
     }
     
     
@@ -138,8 +138,7 @@ class FirebaseUser{
                 // This means we are logged out
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged Out")
                 self.currentUser = nil
-                self.id = ""
-                self.data = nil
+                self.data = ProfileStruct()
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn{
                     } else {
@@ -382,7 +381,7 @@ class FirebaseUser{
     }
     
     
-    func addStudentListListenerAndCache(listenerId:String, updateDelegate: listenerUpdate){
+    func addStudentListListenerAndCache(listenerId:String, updateDelegate: listenerUpdateProtocol){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "addStudentListListener() not logged in")
             return
