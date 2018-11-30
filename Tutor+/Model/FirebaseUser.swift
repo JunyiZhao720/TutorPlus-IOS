@@ -121,7 +121,7 @@ class FirebaseUser{
     var studentList = [String: firendNode]()
     
     var contactTableRef = UITableView()
-    
+
     private init(){}
     
     // ------------------------------------------------------------------------------------
