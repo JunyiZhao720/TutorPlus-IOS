@@ -215,7 +215,7 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
+    public func downloadAllDocumentsBySchoolAndCourse(school:String, course:String, avoid:String, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
         
         let query = db.collection(FirebaseTrans.USER_COLLECTION).whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: school).whereField(FirebaseTrans.TAG_FIELD, arrayContains: course)
         
@@ -231,6 +231,7 @@ class FirebaseTrans: NSObject {
                 for document in querySnapshot!.documents{
                     var data = document.data()
                     debugHelpPrint(type: .FirebaseTrans, str: "\(data.description)")
+                    if document.documentID == avoid { continue }
                     data["id"] = document.documentID
                     back.append(FirebaseUser.parseData(data: data))
                 }

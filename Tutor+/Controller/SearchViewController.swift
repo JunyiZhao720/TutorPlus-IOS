@@ -121,7 +121,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    
     private func updateSuggestionArray(){
         currentSuggestionTableArray = suggestionTableArray
         resultTableView.reloadData()

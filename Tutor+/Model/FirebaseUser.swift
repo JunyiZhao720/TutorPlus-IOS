@@ -401,6 +401,9 @@ class FirebaseUser{
         trans.createDoc(collection: path, id: studentId, dict: friendDictGenerator(state: .accept))
     }
     
+    func isMyTutor(tutorId: String)->Bool{
+        return FirebaseUser.shared.tutorList[tutorId] != nil
+    }
     
     func addStudentListListenerAndCache(listenerId:String, updateDelegate: listenerUpdateProtocol){
         if !isLoggedIn(){

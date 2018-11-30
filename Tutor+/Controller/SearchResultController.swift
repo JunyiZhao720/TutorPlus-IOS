@@ -49,7 +49,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     private func downloadTutorData(){
         if let school = schoolCourse["school"], let course = schoolCourse["course"]{
-            FirebaseTrans.shared.downloadAllDocumentsBySchoolAndCourse(school: school, course: course, completion: {(data) in
+            FirebaseTrans.shared.downloadAllDocumentsBySchoolAndCourse(school: school, course: course, avoid: FirebaseUser.shared.id!, completion: {(data) in
                 if let data = data{
                     self.tutorArray = data
                     self.tutorListView.reloadData()

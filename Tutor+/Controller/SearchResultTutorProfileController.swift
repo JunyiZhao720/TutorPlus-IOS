@@ -60,11 +60,11 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Button functions
     @IBAction func requestButtonOnClicked(_ sender: UIButton) {
-        if let id = dataCache?.id{
+        if let id = dataCache?.id, !FirebaseUser.shared.isMyTutor(tutorId: (dataCache?.id)!){
             FirebaseUser.shared.request(tutorId: id)
             toolbarRequestButton.isEnabled = false
         }else{
-            debugHelpPrint(type: .SearchResultTutorProfileController, str: "requestButtonOnClicked(): id doesn't exist")
+            debugHelpPrint(type: .SearchResultTutorProfileController, str: "requestButtonOnClicked(): id doesn't exist or has alreayd been my tutor")
         }
     }
     
