@@ -42,8 +42,11 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     var EditSchoolList = [String]()
     var EditCourseList = [String]()
     
-    var classData = ["CMPS115", "CMPS101", "CMPE110"]
-    var gradeData = ["A", "A", "B"]
+    var classData = [String]()
+    var gradeData = [String]()
+    
+    var isSchoolChosen = true
+    var isCourseChosen = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,12 +197,14 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         if tableView == courseSearchTableView{
             let currentCell = tableView.cellForRow(at: indexPath) as! SearchViewTableViewCell
             addClass.text = currentCell.suggestionLabel.text
+            isCourseChosen = true
             courseSearchTableView.isHidden = true
         }
         
         if tableView == schoolSearchTableView{
             let currentCell = tableView.cellForRow(at: indexPath) as! SearchViewTableViewCell
             universityEditor.text = currentCell.suggestionLabel.text
+            isSchoolChosen = true
             schoolSearchTableView.isHidden = true
         }
     }
@@ -207,16 +212,19 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     @objc func textFieldDidChange(_ textView: UITextView) {
         guard !textView.text.isEmpty else {
             if(textView == addClass){
+                isCourseChosen = false
                 courseSearchTableView.isHidden = true
             }
             
             if(textView == universityEditor){
+                isSchoolChosen = false
                 schoolSearchTableView.isHidden = true
             }
             return
         }
         
         if(textView == addClass){
+            isCourseChosen = false
             courseSearchTableView.isHidden = false
             currentEditCourse = EditCourseList.filter({ course -> Bool in
                 course.lowercased().contains(textView.text.lowercased())
@@ -225,6 +233,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         }
         
         if(textView == universityEditor){
+            isSchoolChosen = false
             schoolSearchTableView.isHidden = false
             currentEditSchool = EditSchoolList.filter({ school -> Bool in
                 school.lowercased().contains(textView.text.lowercased())
@@ -238,6 +247,12 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     // save button
     @IBAction func saveProfile(_ sender: Any) {
+        
+        // Check
+        if !isSchoolChosen{
+            AlertHelper.showAlert(fromController: self, message: "You have to choose course from the list we gave you.", buttonTitle: "Error")
+            return
+        }
         
         //Profile
         FirebaseUser.shared.name = nameEditor.text
@@ -260,15 +275,6 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             // It doesn't have a new image
             FirebaseUser.shared.uploadProfile()
         }
-        
-        
-        
-        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.name!)
-        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.gender!)
-        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.major!)
-        debugHelpPrint(type: ClassType.UserProfileEditController, str: FirebaseUser.shared.university!)
-        
-        
         
         // Go back to previous page
         self.performSegue(withIdentifier: "ProfileEditToTabBar", sender: self)
@@ -337,12 +343,12 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     }
     
     
-    // ------------------------------------------------------------------------------------
-    // Course Listview
-    
-
     
     @IBAction func addCell(_ sender: Any) {
+        if !isCourseChosen{
+            AlertHelper.showAlert(fromController: self, message: "You have to chose the courses from the list!", buttonTitle: "Error")
+            return
+        }
         classData.append(addClass.text!)
         gradeData.append(addGradeText.text!)
         
@@ -377,7 +383,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     func updateSchedule (schedule: String?){
         if let schedule = schedule{
-            let scheduleData = Array(schedule)
+            scheduleData = Array(schedule)
             for i in 0...27{
                 if scheduleData[i] == "1"{scheduleBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
                 else{scheduleBtn[i].backgroundColor = UIColor.gray}
@@ -390,8 +396,6 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         let stringDate = String(scheduleData)
         return stringDate
     }
-    
-
 }
 
 // ------------------------------------------------------------------------------------
