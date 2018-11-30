@@ -541,14 +541,14 @@
             <objects>
                 <viewController storyboardIdentifier="UserProfileEdit" id="sTV-CK-1Tm" customClass="UserProfileEditController" customModule="Tutor_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUC-Vi-a4t">
-                        <rect key="frame" x="0.0" y="0.0" width="388" height="1215"/>
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-pf-4aW">
-                                <rect key="frame" x="0.0" y="0.0" width="388" height="1215"/>
+                                <rect key="frame" x="0.0" y="0.0" width="388" height="1300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Nu-Ay-LcR" userLabel="ProfileEditContentView">
-                                        <rect key="frame" x="0.0" y="-64" width="388" height="1223"/>
+                                        <rect key="frame" x="0.0" y="-64" width="388" height="1300"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tux-oO-hDO">
                                                 <rect key="frame" x="39" y="280" width="120" height="24"/>
@@ -617,7 +617,7 @@
                                                 </state>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rzO-Q9-C9A">
-                                                <rect key="frame" x="27" y="700" width="297" height="180"/>
+                                                <rect key="frame" x="27" y="790" width="297" height="180"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
@@ -679,7 +679,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-sy-xhi">
-                                                <rect key="frame" x="28" y="680" width="171" height="189"/>
+                                                <rect key="frame" x="28" y="770" width="171" height="189"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
@@ -706,14 +706,14 @@
                                                 </prototypes>
                                             </tableView>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="course" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qqe-v5-Obe">
-                                                <rect key="frame" x="39" y="646" width="146" height="30"/>
+                                                <rect key="frame" x="39" y="736" width="146" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gg2-pr-7k2">
-                                                <rect key="frame" x="213" y="646" width="67" height="30"/>
+                                                <rect key="frame" x="213" y="736" width="67" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -742,7 +742,7 @@
                                                 </connections>
                                             </switch>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwI-oW-qXJ">
-                                                <rect key="frame" x="300" y="650" width="22" height="22"/>
+                                                <rect key="frame" x="300" y="740" width="22" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="addCell:" destination="sTV-CK-1Tm" eventType="touchUpInside" id="FoU-HU-EUO"/>
@@ -776,7 +776,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="a22-CQ-0Hr">
-                                                <rect key="frame" x="15" y="1048" width="358.5" height="142"/>
+                                                <rect key="frame" x="15" y="1138" width="358.5" height="142"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="YWb-e5-jdf">
@@ -1124,7 +1124,7 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write something about you......" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZXN-Pi-DpF">
-                                                <rect key="frame" x="28" y="888" width="297" height="149"/>
+                                                <rect key="frame" x="28" y="978" width="297" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1144,28 +1144,28 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1223" id="0Ct-8X-1TM"/>
-                                            <constraint firstAttribute="width" constant="388" id="hFO-NW-Bpb"/>
+                                            <constraint firstAttribute="width" constant="388" id="7ex-bX-cL9"/>
+                                            <constraint firstAttribute="height" constant="1300" id="duq-ti-hFd"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="4Nu-Ay-LcR" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" constant="-64" id="8Zn-GS-Fr1"/>
-                                    <constraint firstAttribute="height" constant="1215" id="TPq-Ye-1i0"/>
-                                    <constraint firstAttribute="width" constant="388" id="hA3-ZM-YGN"/>
-                                    <constraint firstAttribute="bottom" secondItem="4Nu-Ay-LcR" secondAttribute="bottom" constant="-8" id="nYQ-LT-lmg"/>
-                                    <constraint firstItem="4Nu-Ay-LcR" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="tQh-nb-yzD"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Nu-Ay-LcR" secondAttribute="trailing" id="zkI-bl-cd1"/>
+                                    <constraint firstAttribute="width" constant="388" id="1QD-jx-0s1"/>
+                                    <constraint firstItem="4Nu-Ay-LcR" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="E03-gf-MHk"/>
+                                    <constraint firstAttribute="height" constant="1300" id="Ndb-KD-mNz"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Nu-Ay-LcR" secondAttribute="trailing" id="cFk-fb-xQg"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Nu-Ay-LcR" secondAttribute="bottom" id="jnW-nn-rZg"/>
+                                    <constraint firstItem="4Nu-Ay-LcR" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" constant="-64" id="nKj-Y2-u9h"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="bottom" secondItem="IDw-6I-EzB" secondAttribute="bottom" id="0D6-nM-LSs"/>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="trailing" secondItem="IDw-6I-EzB" secondAttribute="trailing" id="HuH-sj-Th3"/>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="top" secondItem="BUC-Vi-a4t" secondAttribute="top" id="JGk-Wd-W1X"/>
-                            <constraint firstItem="EhN-pf-4aW" firstAttribute="leading" secondItem="IDw-6I-EzB" secondAttribute="leading" id="YAm-4w-T5p"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="leading" secondItem="IDw-6I-EzB" secondAttribute="leading" id="3Wf-cA-dV3"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="top" secondItem="BUC-Vi-a4t" secondAttribute="top" id="GSR-g8-s3N"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="bottom" secondItem="IDw-6I-EzB" secondAttribute="bottom" id="XGU-RT-zA2"/>
+                            <constraint firstItem="EhN-pf-4aW" firstAttribute="trailing" secondItem="IDw-6I-EzB" secondAttribute="trailing" id="vPg-gJ-i7O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IDw-6I-EzB"/>
                     </view>
@@ -1177,7 +1177,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="388" height="1215"/>
+                    <size key="freeformSize" width="388" height="1300"/>
                     <connections>
                         <outlet property="addClass" destination="qqe-v5-Obe" id="Wt7-L4-ULh"/>
                         <outlet property="addGradeText" destination="gg2-pr-7k2" id="sGb-Ja-ALa"/>
@@ -1227,7 +1227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sz7-Ng-84Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292.8" y="917.99100449775119"/>
+            <point key="canvasLocation" x="1292.8" y="916.64167916041981"/>
         </scene>
         <!--TutorResultListView-->
         <scene sceneID="NQa-xc-MrE">
