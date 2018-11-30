@@ -91,19 +91,19 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as! FriendListTableViewCell
         
         if isStudentSelected{
-            if let id = currentStudentList[indexPath.row].id{
-                cell.tutorName.text = FirebaseUser.shared.contactList[id]?.name
-                cell.tutorImage.image = currentStudentList[indexPath.row].image
-                debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
-                cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].status)
-            }
+
+            cell.tutorName.text = currentStudentList[indexPath.row].name
+            cell.tutorImage.image = currentStudentList[indexPath.row].image
+            debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
+            cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].status)
+            
         }else{
-            if let id = currentTutorList[indexPath.row].id{
-                cell.tutorName.text = FirebaseUser.shared.contactList[id]?.name
-                cell.tutorImage.image = currentTutorList[indexPath.row].image
-                debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
-                cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].status)
-            }
+            
+            cell.tutorName.text = currentStudentList[indexPath.row].name
+            cell.tutorImage.image = currentTutorList[indexPath.row].image
+            debugHelpPrint(type: .FriendListViewController, str: "currentStudentList[indexPath.row].status")
+            cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].status)
+            
         }
         
         return cell
@@ -111,15 +111,20 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FriendListViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        guard !searchText.isEmpty else {
-//            curPics = pics
-//            contactTableView.reloadData()
-//            return
-//        }
-//        curPics = pics.filter({element -> Bool in element.title.lowercased().contains(searchText.lowercased())})
-//        contactTableView.reloadData()
-//        print("searched")
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            currentStudentList = studentList
+            currentTutorList = tutorList
+            contactTableView.reloadData()
+            return
+        }
+        if isStudentSelected{
+            currentStudentList = studentList.filter({element -> Bool in element.name?.lowercased().contains(searchText.lowercased()) ?? false})
+        }else{
+            currentTutorList = tutorList.filter({element -> Bool in element.name?.lowercased().contains(searchText.lowercased()) ?? false})
+        }
+        contactTableView.reloadData()
+        print("searched")
+    }
 
 }

@@ -110,6 +110,7 @@ class FirebaseUser{
     struct firendNode {
         var id: String? = ""
         var status: String? = ""
+        var name: String? = ""
         var image: UIImage?
         
         init(){}
@@ -435,6 +436,7 @@ class FirebaseUser{
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
+                                self.studentList[id]?.name = self.contactList[id]?.name
                                 // download image
                                 if let url = self.contactList[id]?.imageURL{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
@@ -497,6 +499,7 @@ class FirebaseUser{
                         self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
                             if let data = data{
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
+                                self.tutorList[id]?.name = self.tutorList[id]?.name
                                 // download image
                                 if let url = self.contactList[id]?.imageURL{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
