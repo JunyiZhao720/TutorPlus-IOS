@@ -377,7 +377,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     @IBOutlet var scheduleBtn: [UIButton]!
     
-    @IBAction func dataClicked(_ sender: UIButton) {
+    @IBAction func dataClicked(_ sender: UIButton){
         if scheduleBtn[sender.tag].backgroundColor == UIColor.gray{
             scheduleBtn[sender.tag].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)
             scheduleData[sender.tag] = "1"
