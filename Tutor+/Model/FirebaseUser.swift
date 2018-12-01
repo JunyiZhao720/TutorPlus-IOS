@@ -436,8 +436,8 @@ class FirebaseUser{
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListenerAndCache) the listener has already been added!")
-            return
+            self.cachedListener[listenerId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListenerAndCache() has been updated!")
         }
         
         var path = [String]()
@@ -499,8 +499,8 @@ class FirebaseUser{
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addTutorListListenerAndCache() the listener has already been added!")
-            return
+            self.cachedListener[listenerId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addTutorListListenerAndCache() has been updated!")
         }
         
         var path = [String]()
@@ -573,8 +573,8 @@ class FirebaseUser{
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addUnreadMessageListenerAndCache() the listener has already been added!")
-            return
+            self.cachedListener[listenerId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addUnreadMessageListenerAndCache() has been updated!")
         }
         
         var path = [String]()
@@ -594,8 +594,10 @@ class FirebaseUser{
                     
                     if (diff.type == .added || diff.type == .modified) {
                         self.changeRedDotState(id: id, state: true)
+                        debugHelpPrint(type: .FirebaseTrans, str: "addUnreadMessageListenerAndCache(): a new unread message")
                     }else{
                         self.changeRedDotState(id: id, state: false)
+                        debugHelpPrint(type: .FirebaseTrans, str: "addUnreadMessageListenerAndCache(): a deleted unread message")
                     }
                     updateDelegate.contentUpdate()
                 }
@@ -613,13 +615,22 @@ class FirebaseUser{
     // Chatting methods
     
     
-    func tryToDeleteUnreadMessage(id: String){
+    func tryToDeleteUnreadMessage(targetId: String){
         var path = [String]()
         path.append(FirebaseTrans.USER_COLLECTION)
         path.append(self.id!)
         path.append(FirebaseTrans.UNREAD_COLLECTION)
         
-        self.trans.deleteDoc(collection: path, id: id)
+        self.trans.deleteDoc(collection: path, id: targetId)
+    }
+    
+    private func addUnreadMessage(targetId: String){
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(targetId)
+        path.append(FirebaseTrans.UNREAD_COLLECTION)
+        
+        self.trans.createDoc(collection: path, id: self.id!, dict: ["info": "You have an unread message"])
     }
     
     private func mergeIds(targeId: String)->String{
@@ -636,6 +647,10 @@ class FirebaseUser{
             debugHelpPrint(type: .FirebaseUser, str: "sendMessage() not logged in")
             return
         }
+        // create unread message notification
+        addUnreadMessage(targetId: targetId)
+        
+        // create a new message
         let roomId = mergeIds(targeId: targetId)
         var path = [String]()
         path.append(FirebaseTrans.CHAT_COLLECTION)
@@ -659,9 +674,10 @@ class FirebaseUser{
         
         
         if self.cachedListener[channelId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() the listener has already been added!")
-            return
+            self.cachedListener[channelId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() has been updated!")
         }
+        
         messageList[channelId] = [JSQMessage]()
         
         
