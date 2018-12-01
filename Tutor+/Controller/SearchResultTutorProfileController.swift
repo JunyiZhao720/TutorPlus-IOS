@@ -30,13 +30,14 @@ class SearchResultTutorProfileController: UIViewController {
     // ------------------------------------------------------------------------------------
     // Initialize functions
     
+    
     private func initializeItems(){
         tutorIcon.layer.cornerRadius = 5.0
         tutorIcon.layer.masksToBounds = true
         toolbarRequestButton.layer.cornerRadius = 5.0
         toolbarRequestButton.layer.masksToBounds = true
         
-        if let dataCache = self.dataCache{
+        if var dataCache = self.dataCache{
             tutorName.text = dataCache.name
             tutorPs.text = dataCache.ps
             tutorMajor.text = dataCache.major
@@ -51,6 +52,10 @@ class SearchResultTutorProfileController: UIViewController {
             tutorCourse.text = courses
             
             updateSchedule(schedule: dataCache.schedule)
+            
+            // update count
+            dataCache.count? += 1
+            FirebaseTrans.shared.createDoc(collection: [FirebaseTrans.USER_COLLECTION], id: dataCache.id, dict: dataCache.toDict())
         }else{
             AlertHelper.showAlert(fromController: self, message: "Initialize tutor profile encounters unknown problems. Please go back and try again!", buttonTitle: "Error")
         }

@@ -45,6 +45,22 @@ class FirebaseUser{
             self.ps = ps
             self.count = count
         }
+        func toDict()->[String:Any]{
+            let dictionary: [String: Any] = [
+                // use as Any to avoid warning
+                "id" : self.id as Any,
+                "name" :self.name as Any,
+                "gender" : self.gender as Any,
+                "major" : self.major as Any,
+                "university" : self.university as Any,
+                "imageURL" : self.imageURL as Any,
+                "tag" : self.tag as Any,
+                "schedule" : self.schedule as Any,
+                "ps" : self.ps as Any,
+                "count" : self.count as Any
+            ]
+            return dictionary
+        }
     }
     
     // ------------------------------------------------------------------------------------
@@ -245,7 +261,7 @@ class FirebaseUser{
             tag: data["tag"] as? [String],
             schedule: schedule,
             ps: data["ps"] as? String,
-            count: Int(data["count"] as? String ?? "0")
+            count: data["count"] as? Int ?? 0
         )
         return back
     }
