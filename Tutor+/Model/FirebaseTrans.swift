@@ -18,6 +18,7 @@ class FirebaseTrans: NSObject {
     static let COURSE_COLLECTION = "courses"
     static let STUDENT_COLLECTION = "students"
     static let TUTOR_COLLECTION = "tutors"
+    static let UNREAD_COLLECTION = "unread"
     
     static let IMAGE_FOLDER = "images/"
     

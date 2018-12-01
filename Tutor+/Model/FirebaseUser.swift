@@ -11,7 +11,7 @@ import Firebase
 import GoogleSignIn
 
 protocol listenerUpdateProtocol: class {
-    func listenerUpdate()
+    func contentUpdate()
 }
 
 class FirebaseUser{
@@ -108,13 +108,13 @@ class FirebaseUser{
     var gradeData = [String]()
     // friendlist
     struct firendNode {
-        var id: String? = ""
+        var id: String = ""
         var state: String? = ""
         var name: String? = ""
+        var isRedDotted: Bool = false
         var image: UIImage?
         
-        init(){}
-        init(id: String?, state: String?){
+        init(id: String, state: String?){
             self.id = id
             self.state = state
         }
@@ -123,7 +123,6 @@ class FirebaseUser{
     var contactList = [String: ProfileStruct]()
     var tutorList = [String: firendNode]()
     var studentList = [String: firendNode]()
-    
     
     var cachedListener = [String: ListenerRegistration]()
 
@@ -144,7 +143,7 @@ class FirebaseUser{
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn{
                     } else {
-                        //ViewSwitch.moveToLoginPage()
+                        ViewSwitch.moveToLoginPage()
                     }
                 }
             }else{
@@ -161,7 +160,7 @@ class FirebaseUser{
                         // move to tab page
                         DispatchQueue.main.asyncAfter(deadline: .now()){
                             if self.checkEmailVerified(){
-                                //ViewSwitch.moveToTabPage()
+                                ViewSwitch.moveToTabPage()
                             }
                         }
                     })
@@ -444,17 +443,17 @@ class FirebaseUser{
                                 if let url = self.contactList[id]?.imageURL{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
                                         self.studentList[id]?.image = image
-                                        updateDelegate.listenerUpdate()
+                                        updateDelegate.contentUpdate()
                                     })
                                 }else{
-                                    updateDelegate.listenerUpdate()
+                                    updateDelegate.contentUpdate()
                                 }
                             }
                         })
                     }else{
                         self.studentList[id] = nil
                         self.contactList[id] = nil
-                        updateDelegate.listenerUpdate()
+                        updateDelegate.contentUpdate()
                     }
                 }
             }
@@ -508,18 +507,18 @@ class FirebaseUser{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
                                         self.tutorList[id]?.image = image
                                         debugHelpPrint(type: .FirebaseUser, str: "\(id) download tutor image complete")
-                                        updateDelegate.listenerUpdate()
+                                        updateDelegate.contentUpdate()
                                     })
                                 }else{
                                     debugHelpPrint(type: .FirebaseUser, str: "\(id) doesn't have an image")
-                                    updateDelegate.listenerUpdate()
+                                    updateDelegate.contentUpdate()
                                 }
                             }
                         })
                     }else{
                         self.tutorList[id] = nil
                         self.contactList[id] = nil
-                        updateDelegate.listenerUpdate()
+                        updateDelegate.contentUpdate()
                     }
                 }
             }
@@ -532,43 +531,65 @@ class FirebaseUser{
         }
     }
     
-//    func downloadAllTutorList(){
-//        if !isLoggedIn(){
-//            debugHelpPrint(type: .FirebaseUser, str: "downloadAllContactList() not logged in")
-//            return
-//        }
-//
-//        var path = [String]()
-//
-//        // download
-//        path.append(FirebaseTrans.USER_COLLECTION)
-//        path.append(self.id!)
-//        path.append(FirebaseTrans.TUTOR_COLLECTION)
-//
-//        trans.downloadAllDocumentsByCollection(collections: path, completion: {(data) in
-//
-//            if let data = data{
-//                for d in data{
-//                    if let id = d["id"] as? String{
-//                        self.tutorList[id] = FirebaseUser.firendNode(id: id , state: d["state"] as? String)
-//                        self.trans.downloadDoc(collections: [FirebaseTrans.USER_COLLECTION], id: id, completion: {(data) in
-//                            if let data = data{
-//                                // download profile
-//                                self.contactList[id] = FirebaseUser.parseData(data: data)
-//                                // download image
-//                                if let url = self.contactList[id]?.imageURL{
-//                                    self.trans.downloadImageAndCache(url: url, completion: {(image) in
-//                                        self.tutorList[id]?.image = image
-//                                    })
-//                                }
-//                            }
-//                        })
-//                        debugHelpPrint(type: .FirebaseUser, str: "Successfully downloaded tutor \(id)")
-//                    }
-//                }
-//            }
-//        })
-//    }
+    
+    
+    // ------------------------------------------------------------------------------------
+    // Chatting methods
+    
+    func changeRedDotState(id: String, state: Bool){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "changeRedDotState() not logged in")
+            return
+        }
+        if self.tutorList[id] != nil { self.tutorList[id]?.isRedDotted = state }
+        else if self.studentList[id] != nil { self.studentList[id]?.isRedDotted = state }
+        else { debugHelpPrint(type: .FirebaseUser, str: "changeRedDotState(): \(id) doesn't exist in both student and tutor lists") }
+    }
+    
+    func addUnreadMessageListenerAndCache(listenerId:String, updateDelegate: listenerUpdateProtocol){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "addUnreadMessageListenerAndCache() not logged in")
+            return
+        }
+        
+        if self.cachedListener[listenerId] != nil{
+            debugHelpPrint(type: .FirebaseUser, str: "addUnreadMessageListenerAndCache() the listener has already been added!")
+            return
+        }
+        
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(self.id!)
+        path.append(FirebaseTrans.UNREAD_COLLECTION)
+        
+        // get the listener
+        if let theCollection = self.trans.parseCollection(collections: path) {
+            let theListener = theCollection.addSnapshotListener{ querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "addUnreadMessageListenerAndCache(): \(error.debugDescription)")
+                    return
+                }
+                snapshot.documentChanges.forEach { diff in
+                    let id = diff.document.documentID
+                    
+                    if (diff.type == .added || diff.type == .modified) {
+                        self.changeRedDotState(id: id, state: true)
+                    }else{
+                        self.changeRedDotState(id: id, state: false)
+                    }
+                    updateDelegate.contentUpdate()
+                }
+            }
+            
+            // cache the listener
+            self.cachedListener[listenerId] = theListener
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "addUnreadMessageListenerAndCache(): input parameters have problems")
+        }
+    }
+    
+    
     
     // ------------------------------------------------------------------------------------
     // Image methods

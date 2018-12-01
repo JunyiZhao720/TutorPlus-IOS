@@ -26,6 +26,7 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
     
     let studentListListenerName = "studentList"
     let tutorListListenerName = "tutorList"
+    let unreadMessageListenerName = "unreadMessage"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
         searchBar.delegate = self
         
         initializeListeners()
-        listenerUpdate()
+        contentUpdate()
         
         contactTableView.tableFooterView = UIView(frame: CGRect.zero)
     }
@@ -53,9 +54,10 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
     func initializeListeners(){
         FirebaseUser.shared.addStudentListListenerAndCache(listenerId: studentListListenerName, updateDelegate: self)
         FirebaseUser.shared.addTutorListListenerAndCache(listenerId: tutorListListenerName, updateDelegate: self)
+        FirebaseUser.shared.addUnreadMessageListenerAndCache(listenerId: unreadMessageListenerName, updateDelegate: self)
     }
     
-    func listenerUpdate() {
+    func contentUpdate() {
         
         // incase the user is doing searching
         searchBar.text = ""
@@ -90,18 +92,22 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TutorListTableViewCell", for: indexPath) as! FriendListTableViewCell
         
         if isStudentSelected{
-            cell.id = currentStudentList[indexPath.row].id
-            cell.tutorName.text = currentStudentList[indexPath.row].name
-            cell.tutorImage.image = currentStudentList[indexPath.row].image
-            debugHelpPrint(type: .FriendListViewController, str: "\(currentStudentList[indexPath.row].state)")
-            cell.showbuttonsByPending(pending: currentStudentList[indexPath.row].state)
+            let node = currentStudentList[indexPath.row]
+            cell.id = node.id
+            cell.tutorName.text = node.name
+            cell.tutorImage.image = node.image
+            //debugHelpPrint(type: .FriendListViewController, str: "\(currentStudentList[indexPath.row].state)")
+            cell.showbuttonsByPending(pending: node.state)
+            cell.isRedDotVisible(show: node.isRedDotted)
             
         }else{
-            cell.id = currentTutorList[indexPath.row].id
-            cell.tutorName.text = currentTutorList[indexPath.row].name
-            cell.tutorImage.image = currentTutorList[indexPath.row].image
-            debugHelpPrint(type: .FriendListViewController, str: "\(currentTutorList[indexPath.row].state)")
-            cell.showbuttonsByPending(pending: currentTutorList[indexPath.row].state)
+            let node = currentTutorList[indexPath.row]
+            cell.id = node.id
+            cell.tutorName.text = node.name
+            cell.tutorImage.image = node.image
+            //debugHelpPrint(type: .FriendListViewController, str: "\(currentTutorList[indexPath.row].state)")
+            cell.showbuttonsByPending(pending: node.state)
+            cell.isRedDotVisible(show: node.isRedDotted)
         }
         
         return cell

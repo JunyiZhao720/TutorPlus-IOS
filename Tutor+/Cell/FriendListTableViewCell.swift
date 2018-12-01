@@ -66,7 +66,7 @@ class FriendListTableViewCell: UITableViewCell {
         
     }
     
-    public func showRedDot(show: Bool){
-        redSpot.isHidden = show
+    public func isRedDotVisible(show: Bool){
+        redSpot.isHidden = !show
     }
 }

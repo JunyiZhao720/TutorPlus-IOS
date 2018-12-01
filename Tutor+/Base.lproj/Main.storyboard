@@ -1971,6 +1971,7 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="aW2-RD-evB"/>
         <segue reference="Qgf-94-Osr"/>
     </inferredMetricsTieBreakers>
 </document>
