@@ -22,8 +22,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var schoolTextField: UITextField!
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        signUpButton.layer.cornerRadius = 5.0
+        signUpButton.layer.masksToBounds = true
 
         // Do any additional setup after loading the view.
     }
@@ -60,12 +66,11 @@ class SignUpViewController: UIViewController {
                 }
                 
                 // Intialize sign up information
-                FirebaseUser.shared.email = self.emailTextField.text
                 FirebaseUser.shared.name = self.nameTextField.text
                 FirebaseUser.shared.university = self.schoolTextField.text
                 
                 // create initialized information
-                FirebaseUser.shared.uploadDoc()
+                FirebaseUser.shared.uploadProfile()
                 
                 // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
@@ -79,7 +84,7 @@ class SignUpViewController: UIViewController {
                         FirebaseUser.shared.logOut()
                         
                         // switch back to login
-                        self.performSegue(withIdentifier: "SignUpToSignIn", sender: self)
+                        self.performSegue(withIdentifier: "SignUpToTab", sender: self)
                     
                     }
                     

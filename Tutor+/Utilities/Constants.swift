@@ -17,6 +17,12 @@ public enum ClassType{
     case SearchViewController
     case SignUpViewController
     case UserProfileEditController
+    case SearchResultController
+    case SearchResultTutorProfileController
+    case FriendListViewController
+    
+    case SearchViewTableViewCell
+    case FriendListTableViewCell
     
     case FirebaseUser
     case FirebaseTrans

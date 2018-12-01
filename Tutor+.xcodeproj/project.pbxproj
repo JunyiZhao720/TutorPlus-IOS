@@ -21,15 +21,24 @@
 		42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 42D9CA612174E139005C307A /* Tutor+.xcworkspace */; };
 		74BF8E58423110C7B6CACCD0 /* Pods_Tutor_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */; };
 		9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */; };
+		9C6585C021AE2C2A0044609E /* Pic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585BF21AE2C2A0044609E /* Pic.swift */; };
+		9C6585C221AE2C4F0044609E /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585C121AE2C4F0044609E /* FriendListTableViewCell.swift */; };
+		9C6585C421AE2E750044609E /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6585C321AE2E750044609E /* FriendListViewController.swift */; };
 		AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */; };
 		AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB26A46E21769FE000FEE377 /* ViewSwitch.swift */; };
+		AB33B03B2191042600D5C2C9 /* SearchResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0372191042600D5C2C9 /* SearchResultTableCell.swift */; };
+		AB33B03D2191042600D5C2C9 /* SearchResultTutorProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB33B0392191042600D5C2C9 /* SearchResultTutorProfileController.swift */; };
 		AB624480217806A800B3605E /* DebugHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62447F217806A800B3605E /* DebugHelper.swift */; };
 		AB624482217806DA00B3605E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB624481217806DA00B3605E /* Constants.swift */; };
 		AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB62448321780CE900B3605E /* SignUpViewController.swift */; };
 		AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB92C154217668CB0030B5F7 /* SearchViewController.swift */; };
 		ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6AA4A217930980073C03D /* AlertHelper.swift */; };
-		C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */; };
-		C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */; };
+		ABAF47AB21B1F88F00E007D2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF47AA21B1F88E00E007D2 /* ChatViewController.swift */; };
+		ABE87891218BC866000C83F1 /* SearchViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */; };
+		ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFADC1A219935E500097922 /* SearchResultController.swift */; };
+		C82C1C1A217BDDBA00EE4660 /* TutorProfileEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C1C19217BDDBA00EE4660 /* TutorProfileEditController.swift */; };
+		C8BE92A22176D9D000A0E896 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE92A02176D9D000A0E896 /* UserProfileViewController.swift */; };
+		DE24063F219A791E00120ED0 /* UserProfileEditCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24063E219A791E00120ED0 /* UserProfileEditCourseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,18 +81,28 @@
 		6326285A70DF40A834B7C179 /* Pods-Tutor+UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+UITests/Pods-Tutor+UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AEF0D76E01A2179A88E69D8 /* Pods-Tutor+Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+Tests/Pods-Tutor+Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditController.swift; sourceTree = "<group>"; };
+		9C6585BF21AE2C2A0044609E /* Pic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pic.swift; sourceTree = "<group>"; };
+		9C6585C121AE2C4F0044609E /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
+		9C6585C321AE2E750044609E /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		A6F2D0D71EE790B91B463655 /* Pods-Tutor+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.debug.xcconfig"; sourceTree = "<group>"; };
 		AB26A46A21768CAF00FEE377 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		AB26A46E21769FE000FEE377 /* ViewSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitch.swift; sourceTree = "<group>"; };
+		AB33B0372191042600D5C2C9 /* SearchResultTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableCell.swift; sourceTree = "<group>"; };
+		AB33B0392191042600D5C2C9 /* SearchResultTutorProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTutorProfileController.swift; sourceTree = "<group>"; };
+		AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		AB62447F217806A800B3605E /* DebugHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelper.swift; sourceTree = "<group>"; };
 		AB624481217806DA00B3605E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AB62448321780CE900B3605E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		AB92C154217668CB0030B5F7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ABA6AA4A217930980073C03D /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		ABAF47AA21B1F88E00E007D2 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewTableViewCell.swift; sourceTree = "<group>"; };
+		ABFADC1A219935E500097922 /* SearchResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		AF02DA98643601DA9126B1A7 /* Pods_Tutor_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCEE6AD4F5BFAD5AE740591 /* Pods-Tutor+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tutor+.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tutor+/Pods-Tutor+.release.xcconfig"; sourceTree = "<group>"; };
-		C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileEdit.swift; sourceTree = "<group>"; };
-		C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfilePageViewController.swift; sourceTree = "<group>"; };
+		C82C1C19217BDDBA00EE4660 /* TutorProfileEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileEditController.swift; sourceTree = "<group>"; };
+		C8BE92A02176D9D000A0E896 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		DE24063E219A791E00120ED0 /* UserProfileEditCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEditCourseCell.swift; sourceTree = "<group>"; };
 		F3D4DCE4BE32E7D66DC684DF /* Pods_Tutor_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tutor_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				42D9CA612174E139005C307A /* Tutor+.xcworkspace */,
+				AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */,
 				42866EAC216EA63400D29698 /* Tutor+ */,
 				42866EC1216EA63700D29698 /* Tutor+Tests */,
 				42866ECC216EA63700D29698 /* Tutor+UITests */,
@@ -141,6 +161,7 @@
 		42866EAC216EA63400D29698 /* Tutor+ */ = {
 			isa = PBXGroup;
 			children = (
+				ABE8788D218BC2F9000C83F1 /* Cell */,
 				AB26A46D21769FC300FEE377 /* Utilities */,
 				AB26A46C21768D8E00FEE377 /* Controller */,
 				AB26A46921768C5200FEE377 /* Model */,
@@ -207,12 +228,16 @@
 		AB26A46C21768D8E00FEE377 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ABAF47AA21B1F88E00E007D2 /* ChatViewController.swift */,
+				AB33B0392191042600D5C2C9 /* SearchResultTutorProfileController.swift */,
+				ABFADC1A219935E500097922 /* SearchResultController.swift */,
 				9C419A11217D0E0F0075CE9D /* UserProfileEditController.swift */,
-				C82C1C19217BDDBA00EE4660 /* TutorProfileEdit.swift */,
-				C8BE92A02176D9D000A0E896 /* UserProfilePageViewController.swift */,
+				C82C1C19217BDDBA00EE4660 /* TutorProfileEditController.swift */,
+				C8BE92A02176D9D000A0E896 /* UserProfileViewController.swift */,
 				AB92C154217668CB0030B5F7 /* SearchViewController.swift */,
 				426098222175B30E00A2C1B8 /* LoginViewController.swift */,
 				AB62448321780CE900B3605E /* SignUpViewController.swift */,
+				9C6585C321AE2E750044609E /* FriendListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,8 +249,20 @@
 				AB62447F217806A800B3605E /* DebugHelper.swift */,
 				AB624481217806DA00B3605E /* Constants.swift */,
 				ABA6AA4A217930980073C03D /* AlertHelper.swift */,
+				9C6585BF21AE2C2A0044609E /* Pic.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		ABE8788D218BC2F9000C83F1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DE24063E219A791E00120ED0 /* UserProfileEditCourseCell.swift */,
+				ABE87890218BC866000C83F1 /* SearchViewTableViewCell.swift */,
+				AB33B0372191042600D5C2C9 /* SearchResultTableCell.swift */,
+				9C6585C121AE2C4F0044609E /* FriendListTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +501,8 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -482,6 +521,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -503,19 +544,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8BE92A22176D9D000A0E896 /* UserProfilePageViewController.swift in Sources */,
+				9C6585C021AE2C2A0044609E /* Pic.swift in Sources */,
+				ABFADC1B219935E500097922 /* SearchResultController.swift in Sources */,
+				ABAF47AB21B1F88F00E007D2 /* ChatViewController.swift in Sources */,
+				C8BE92A22176D9D000A0E896 /* UserProfileViewController.swift in Sources */,
 				ABA6AA4B217930980073C03D /* AlertHelper.swift in Sources */,
+				9C6585C421AE2E750044609E /* FriendListViewController.swift in Sources */,
 				42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */,
 				AB92C155217668CB0030B5F7 /* SearchViewController.swift in Sources */,
 				AB26A46B21768CAF00FEE377 /* FirebaseUser.swift in Sources */,
 				AB62448421780CE900B3605E /* SignUpViewController.swift in Sources */,
+				ABE87891218BC866000C83F1 /* SearchViewTableViewCell.swift in Sources */,
 				AB26A46F21769FE000FEE377 /* ViewSwitch.swift in Sources */,
 				9C419A12217D0E0F0075CE9D /* UserProfileEditController.swift in Sources */,
 				426098232175B30E00A2C1B8 /* LoginViewController.swift in Sources */,
-				C82C1C1A217BDDBA00EE4660 /* TutorProfileEdit.swift in Sources */,
+				C82C1C1A217BDDBA00EE4660 /* TutorProfileEditController.swift in Sources */,
+				9C6585C221AE2C4F0044609E /* FriendListTableViewCell.swift in Sources */,
 				AB624482217806DA00B3605E /* Constants.swift in Sources */,
+				AB33B03B2191042600D5C2C9 /* SearchResultTableCell.swift in Sources */,
 				42866EAE216EA63400D29698 /* AppDelegate.swift in Sources */,
+				DE24063F219A791E00120ED0 /* UserProfileEditCourseCell.swift in Sources */,
 				AB624480217806A800B3605E /* DebugHelper.swift in Sources */,
+				AB33B03D2191042600D5C2C9 /* SearchResultTutorProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,7 +742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB73V9RVAY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tutor+/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -700,6 +750,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunyiZhao.TutorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -711,7 +763,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB73V9RVAY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tutor+/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,6 +771,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JunyiZhao.TutorPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

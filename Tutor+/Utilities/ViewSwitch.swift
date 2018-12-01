@@ -9,10 +9,10 @@
 import UIKit
 
 public class ViewSwitch{
-    static func moveToSearchPage(){
+    static func moveToTabPage(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        appDelegate.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController")
+        appDelegate.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
     }
     
     static func moveToLoginPage(){

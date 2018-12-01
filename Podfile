@@ -6,10 +6,13 @@ target 'Tutor+' do
   use_frameworks!
 
   # Pods for Tutor+
+  pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'GoogleSignIn'
+  pod 'JSQMessagesViewController'
   
   target 'Tutor+Tests' do
     inherit! :search_paths
