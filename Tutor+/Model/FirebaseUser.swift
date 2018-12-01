@@ -29,10 +29,10 @@ class FirebaseUser{
         var tag: [String]? = []
         var schedule: String? = ""
         var ps: String? = ""
-        //var image
+        var count: Int? = 0
         
         init(){}
-        init(id: String?, name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
+        init(id: String?, name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?, count: Int?){
             self.id = id
             self.name = name
             self.gender = gender
@@ -42,6 +42,7 @@ class FirebaseUser{
             self.tag = tag
             self.schedule = schedule
             self.ps = ps
+            self.count = count
         }
     }
     
@@ -97,6 +98,10 @@ class FirebaseUser{
     var ps: String?{
         get{ return data.ps}
         set(value){ data.ps = value}
+    }
+    var count: Int?{
+        get{ return data.count }
+        set(value){ data.count = value }
     }
     
     
@@ -220,6 +225,7 @@ class FirebaseUser{
             "tag" : self.tag as Any,
             "schedule" : self.schedule as Any,
             "ps" : self.ps as Any,
+            "count" : self.count as Any
         ]
         return dictionary
     }
@@ -236,7 +242,8 @@ class FirebaseUser{
             imageURL: data["imageURL"] as? String,
             tag: data["tag"] as? [String],
             schedule: schedule,
-            ps: data["ps"] as? String
+            ps: data["ps"] as? String,
+            count: Int(data["count"] as? String ?? "0")
         )
         return back
     }
