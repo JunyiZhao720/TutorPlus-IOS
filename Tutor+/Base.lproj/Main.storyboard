@@ -1983,7 +1983,6 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zhk-n3-QNG"/>
         <segue reference="Zak-3F-4Hb"/>
     </inferredMetricsTieBreakers>
 </document>

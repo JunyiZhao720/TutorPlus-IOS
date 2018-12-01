@@ -30,6 +30,7 @@ class FirebaseTrans: NSObject {
     static let COURSE_FIELD = "course"
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
+    static let COUNT_FIELD = "count"
     
     public let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
@@ -258,7 +259,40 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    
+    public func downloadWholeProfileByLimitAndOrder(collections:[String], field:String, limit:Int, descend:Bool, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
+        
+        if let theCollection = parseCollection(collections: collections) {
+            // download data
+            theCollection.order(by: field, descending: descend).limit(to: limit).getDocuments{(querySnapshot, err)in
+                if let err = err{
+                    debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
+                    completion(nil)
+                } else {
+                    var back = [FirebaseUser.ProfileStruct]()
+                    // download normal profile
+                    for document in querySnapshot!.documents{
+                        var data = document.data()
+                        data["id"] = document.documentID
+                        let processed = FirebaseUser.parseData(data: data)
+                        back.append(processed)
+                    }
+                    // download image file
+                    for i in 0..<back.count{
+                        let profile = back[i]
+                        if let url = profile.imageURL{
+                            self.downloadImageAndCache(url: url, completion: {(image) in
+                                back[i].image = image
+                            })
+                        }
+                    }
+                    debugHelpPrint(type: .FirebaseTrans, str: "downloadWholeProfileByLimitAndOrder(): done downloading collection documents")
+                    completion(back)
+                }
+            }
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "downloadWholeProfileByLimitAndOrder(): input parameters have problems")
+        }
+    }
   
     
     // ------------------------------------------------------------------------------------
@@ -312,4 +346,5 @@ class FirebaseTrans: NSObject {
             }
         }
     }
+    
 }

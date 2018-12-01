@@ -30,6 +30,7 @@ class FirebaseUser{
         var schedule: String? = ""
         var ps: String? = ""
         var count: Int? = 0
+        var image: UIImage?
         
         init(){}
         init(id: String?, name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?, count: Int?){
@@ -103,11 +104,12 @@ class FirebaseUser{
         get{ return data.count }
         set(value){ data.count = value }
     }
+    var image: UIImage?{
+        get{ return data.image }
+        set(value){ data.image = value }
+    }
     
     
-    //Extra fields
-    
-    var imageProfile: UIImage?
     // user edit course grade
     var classData = [String]()
     var gradeData = [String]()
@@ -705,7 +707,7 @@ class FirebaseUser{
         }
         if let url = imageURL{
             trans.downloadImageAndCache(url: url, completion: {(theUIImage) in
-                self.imageProfile = theUIImage
+                self.image = theUIImage
                 completion()
             })
         }else{

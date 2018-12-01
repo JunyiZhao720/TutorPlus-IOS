@@ -42,7 +42,7 @@ class UserProfileViewController: UIViewController {
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true
         theImage.layer.borderColor = UIColor.white.cgColor
-        theImage.image = FirebaseUser.shared.imageProfile
+        theImage.image = FirebaseUser.shared.image
     }
     
     private func initializeNav(){

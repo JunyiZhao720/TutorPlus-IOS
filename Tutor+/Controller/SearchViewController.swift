@@ -50,8 +50,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func initializeImages(){
-        //add gradient tutor name and tutor info on the image, reconize if the image tapped
-        for i in 0...3{
+        FirebaseTrans.shared.downloadWholeProfileByLimitAndOrder(collections: [FirebaseTrans.USER_COLLECTION], field: FirebaseTrans.COUNT_FIELD, limit: 4, descend: true, completion: {data in
+            if let data = data{
+                let bound = data.count > 4 ? 4 : data.count
+                for i in 0..<bound{
+                    self.setRecommendationView(i: i, data: data[i])
+                }
+            }
+        })
+    }
+    
+    // set recommendation view
+    
+    func setRecommendationView(i: Int, data: FirebaseUser.ProfileStruct?){
+        if let data = data{
             self.suggestionImageView[i].layer.sublayers?.forEach { $0.removeFromSuperlayer() }
             let width = self.suggestionImageView[i].bounds.width
             let height = self.suggestionImageView[i].bounds.height
@@ -68,14 +80,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             name.textAlignment = NSTextAlignment.center;
             name.textColor = UIColor.white
             name.isUserInteractionEnabled = true
-            name.text = setName()
+            name.text = data.name
             self.suggestionImageView[i].addSubview(name)
             
             let discription = UILabel(frame: CGRect(x: 0, y: 0, width: self.suggestionImageView[i].frame.width - 0, height: 300))
             discription.textAlignment = NSTextAlignment.center;
             discription.textColor = UIColor.white
             discription.isUserInteractionEnabled = true
-            discription.text = setTutorInfo()
+            let school = data.university ?? "", major = data.major ?? ""
+            discription.text =  school + " " + major
             self.suggestionImageView[i].addSubview(discription)
             
             //image tapped
@@ -83,17 +96,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             suggestionImageView[i].addGestureRecognizer(tapGesture)
             suggestionImageView[i].isUserInteractionEnabled = true
         }
-    }
-    
-    //getter
-    func setName()->String{
-        let tutorName = "Vash Wang" + "🏅"
-        return tutorName
-    }
-    
-    func setTutorInfo()->String{
-        let tutorInfo = " UCSC Computer Science"
-        return tutorInfo
     }
     
     
