@@ -10,7 +10,6 @@ import UIKit
 import JSQMessagesViewController
 class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
     
-    
 
     var messages = [JSQMessage]()
     
@@ -33,6 +32,7 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
         inputToolbar.contentView.leftBarButtonItem = nil
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        
 
     }
     
@@ -94,5 +94,6 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
     {
         FirebaseUser.shared.sendMessage(targetId: chatterId, message: text)
     }
+  
 }
 
