@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIV-6C-kpj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1945,11 +1945,11 @@ CMPS 111 A</string>
                     <navigationItem key="navigationItem" id="eIG-zV-dyu">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="EEO-Be-7cI">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nmY-xQ-Gf7">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="Y38-Pq-K1H" kind="presentation" id="AfP-4M-W6h"/>
+                                    <segue destination="Y38-Pq-K1H" kind="presentation" identifier="ChattingToTab" id="AfP-4M-W6h"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -1975,7 +1975,7 @@ CMPS 111 A</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aE6-1B-Ym5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="2745"/>
+            <point key="canvasLocation" x="193" y="2743"/>
         </scene>
     </scenes>
     <resources>
@@ -1983,7 +1983,7 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aW2-RD-evB"/>
-        <segue reference="Qgf-94-Osr"/>
+        <segue reference="zhk-n3-QNG"/>
+        <segue reference="Zak-3F-4Hb"/>
     </inferredMetricsTieBreakers>
 </document>

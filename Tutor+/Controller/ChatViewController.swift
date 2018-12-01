@@ -11,7 +11,10 @@ import JSQMessagesViewController
 class ChatViewController: JSQMessagesViewController {
 
     var messages = [JSQMessage]()
+    
     var chatterId = ""
+    var chatterInfo = FirebaseUser.ProfileStruct()
+    
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
         return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }()
@@ -25,25 +28,26 @@ class ChatViewController: JSQMessagesViewController {
         //senderId = "1234"
         //senderDisplayName = "Biaodiao Lan"
         let defaults = UserDefaults.standard
+        initializeInfo()
         
-        if  let id = defaults.string(forKey: "jsq_id"),
-            let name = defaults.string(forKey: "jsq_name")
-        {
-            senderId = id
-            senderDisplayName = name
-        }
-        else
-        {
-            senderId = String(arc4random_uniform(999999))
-            senderDisplayName = ""
-            
-            defaults.set(senderId, forKey: "jsq_id")
-            defaults.synchronize()
-            
-            showDisplayNameDialog()
-        }
-        
-        title = "Chat: \(senderDisplayName!)"
+//        if  let id = defaults.string(forKey: "jsq_id"),
+//            let name = defaults.string(forKey: "jsq_name")
+//        {
+//            senderId = id
+//            senderDisplayName = name
+//        }
+//        else
+//        {
+//            senderId = String(arc4random_uniform(999999))
+//            senderDisplayName = ""
+//
+//            defaults.set(senderId, forKey: "jsq_id")
+//            defaults.synchronize()
+//
+//            showDisplayNameDialog()
+//        }
+//
+//        title = "Chat: \(senderDisplayName!)"
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDisplayNameDialog))
         tapGesture.numberOfTapsRequired = 1
@@ -72,6 +76,19 @@ class ChatViewController: JSQMessagesViewController {
 //                }
 //            }
 //        })
+    }
+    
+    private func initializeInfo(){
+        if let info = FirebaseUser.shared.contactList[chatterId]{
+            senderId = FirebaseUser.shared.id
+            senderDisplayName = FirebaseUser.shared.name
+            self.chatterInfo = info
+            title = "Chat with \(info.name ?? "")"
+        }else{
+            AlertHelper.showAlert(fromController: self, message: "Detect an error with your chatter's identity. Please try again", buttonTitle: "Error")
+            self.performSegue(withIdentifier: "ChattingToTab", sender: self)
+        }
+        
     }
     
     @objc func showDisplayNameDialog()
@@ -143,11 +160,15 @@ class ChatViewController: JSQMessagesViewController {
     {
 //        let ref = Constants.refs.databaseChats.childByAutoId()
 //
-//        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
+ //       let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
 //
 //        ref.setValue(message)
-        
-        finishSendingMessage()
+        if let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text){
+            self.messages.append(message)
+            self.finishReceivingMessage()
+        }
+        //collectionView.reloadData()
+        //finishSendingMessage()
     }
 }
 
