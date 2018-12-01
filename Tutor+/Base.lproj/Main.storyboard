@@ -1925,11 +1925,12 @@ CMPS 111 A</string>
                         <outlet property="contactTableView" destination="LaQ-GJ-uVU" id="UKx-7Z-v4Q"/>
                         <outlet property="searchBar" destination="DFH-jb-9Qx" id="wc0-B6-LhH"/>
                         <outlet property="selector" destination="cK8-9R-Pij" id="5Ga-O3-0mm"/>
+                        <segue destination="eIV-6C-kpj" kind="presentation" identifier="FriendListToChatting" id="LYr-z5-g2z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkP-13-lnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-631.20000000000005" y="2744.9775112443781"/>
+            <point key="canvasLocation" x="-631" y="2770"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="ohf-gR-NBx">
@@ -1941,7 +1942,18 @@ CMPS 111 A</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="No2-eg-2RL"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eIG-zV-dyu"/>
+                    <navigationItem key="navigationItem" id="eIG-zV-dyu">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="EEO-Be-7cI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nmY-xQ-Gf7">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="Y38-Pq-K1H" kind="presentation" id="AfP-4M-W6h"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOf-NS-lqq" sceneMemberID="firstResponder"/>
             </objects>

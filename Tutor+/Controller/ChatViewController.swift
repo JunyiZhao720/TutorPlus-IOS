@@ -11,6 +11,7 @@ import JSQMessagesViewController
 class ChatViewController: JSQMessagesViewController {
 
     var messages = [JSQMessage]()
+    var chatterId = ""
     lazy var outgoingBubble: JSQMessagesBubbleImage = {
         return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }()
@@ -141,9 +142,9 @@ class ChatViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
 //        let ref = Constants.refs.databaseChats.childByAutoId()
-//        
+//
 //        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
-//        
+//
 //        ref.setValue(message)
         
         finishSendingMessage()

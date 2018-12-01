@@ -589,6 +589,15 @@ class FirebaseUser{
         }
     }
     
+    func tryToDeleteUnreadMessage(id: String){
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(self.id!)
+        path.append(FirebaseTrans.UNREAD_COLLECTION)
+        
+        self.trans.deleteDoc(collection: path, id: id)
+    }
+    
     
     
     // ------------------------------------------------------------------------------------

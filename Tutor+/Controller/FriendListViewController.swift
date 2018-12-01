@@ -112,6 +112,34 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let currentCell = tableView.cellForRow(at: indexPath) as? FriendListTableViewCell
+        debugHelpPrint(type: .FriendListViewController , str: "\(String(describing: currentCell?.tutorName))")
+        
+        var data: String
+        if isStudentSelected{
+            data = currentStudentList[indexPath.row].id
+            self.performSegue(withIdentifier: "FriendListToChatting", sender: data)
+        } else {
+            data = currentTutorList[indexPath.row].id
+            self.performSegue(withIdentifier: "FriendListToChatting", sender: data)
+        }
+        
+    }
+    // ------------------------------------------------------------------------------------
+    // Other
+    
+    // override segue to pass data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "FriendListToChatting"){
+            let nav = segue.destination as! UINavigationController
+            let dest = nav.viewControllers.first as! ChatViewController
+            let chatterId = sender as! String
+            dest.chatterId = chatterId
+        }
+    }
 }
 
 extension FriendListViewController: UISearchBarDelegate {
