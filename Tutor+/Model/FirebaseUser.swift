@@ -126,7 +126,7 @@ class FirebaseUser{
     
     var cachedListener = [String: ListenerRegistration]()
 
-    
+    var messageList = [String: [JSQMessage]]()
     private init(){}
     
     // ------------------------------------------------------------------------------------
@@ -602,6 +602,10 @@ class FirebaseUser{
         else { return targeId + "-" + id! }
     }
     
+    func getMessageList(targetId:String)->[JSQMessage]?{
+        return messageList[mergeIds(targeId: targetId)]
+    }
+    
     func sendMessage(targetId: String, message: String){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "sendMessage() not logged in")
@@ -614,11 +618,56 @@ class FirebaseUser{
         path.append(FirebaseTrans.CHANNEL_COLLECTION)
         
         trans.createDoc(collection: path, id: nil, dict: [
+            "senderId": id ?? "",
+            "displayName": name ?? "",
             "message": message,
             "time": NSDate().timeIntervalSince1970
             ])
     }
-    
+    func addChannelListenerAndCache(targetId:String, targetName:String, updateDelegate: listenerUpdateProtocol){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() not logged in")
+            return
+        }
+        
+        let channelId = mergeIds(targeId: targetId)
+        messageList[channelId] = [JSQMessage]()
+        
+        if self.cachedListener[channelId] != nil{
+            debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() the listener has already been added!")
+            return
+        }
+        
+        var path = [String]()
+        path.append(FirebaseTrans.CHAT_COLLECTION)
+        path.append(channelId)
+        path.append(FirebaseTrans.CHANNEL_COLLECTION)
+        
+        // get the listener
+        if let theCollection = self.trans.parseCollection(collections: path) {
+            let theListener = theCollection.order(by: "time", descending: false).limit(to: 50).addSnapshotListener{ querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    debugHelpPrint(type: .FirebaseTrans, str: "addChannelListenerAndCache(): \(error.debugDescription)")
+                    return
+                }
+                
+                snapshot.documentChanges.forEach { diff in
+                    let data = diff.document.data()
+                    
+                    if (diff.type == .added || diff.type == .modified) {
+                        self.messageList[channelId]?.append(JSQMessage(senderId: data["senderId"] as? String, displayName: data["displayName"] as? String, text: data["message"] as? String))
+                    }
+                    updateDelegate.contentUpdate()
+                }
+            }
+            
+            // cache the listener
+            self.cachedListener[channelId] = theListener
+            
+        }else{
+            debugHelpPrint(type: .FirebaseTrans, str: "addChannelListenerAndCache(): input parameters have problems")
+        }
+    }
     
     
     // ------------------------------------------------------------------------------------

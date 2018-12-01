@@ -8,7 +8,9 @@
 
 import UIKit
 import JSQMessagesViewController
-class ChatViewController: JSQMessagesViewController {
+class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
+    
+    
 
     var messages = [JSQMessage]()
     
@@ -27,7 +29,6 @@ class ChatViewController: JSQMessagesViewController {
         super.viewDidLoad()
         //senderId = "1234"
         //senderDisplayName = "Biaodiao Lan"
-        let defaults = UserDefaults.standard
         initializeInfo()
         if let message = JSQMessage(senderId: "123", displayName: "123", text: "ok"){
             self.messages.append(message)
@@ -82,11 +83,19 @@ class ChatViewController: JSQMessagesViewController {
 //        })
     }
     
+    func contentUpdate() {
+        if let messageList = FirebaseUser.shared.getMessageList(targetId: chatterId){
+            messages = messageList
+            collectionView.reloadData()
+        }
+    }
+    
     private func initializeInfo(){
         if let info = FirebaseUser.shared.contactList[chatterId]{
             senderId = FirebaseUser.shared.id
             senderDisplayName = FirebaseUser.shared.name
-            self.chatterInfo = info
+            chatterInfo = info
+            FirebaseUser.shared.addChannelListenerAndCache(targetId: chatterId, targetName: info.name ?? "anonymous", updateDelegate: self)
             title = "Chat with \(info.name ?? "")"
         }else{
             AlertHelper.showAlert(fromController: self, message: "Detect an error with your chatter's identity. Please try again", buttonTitle: "Error")
@@ -168,8 +177,8 @@ class ChatViewController: JSQMessagesViewController {
 //
 //        ref.setValue(message)
         if let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text){
-            self.messages.append(message)
-            self.finishReceivingMessage()
+            //self.messages.append(message)
+            //self.finishReceivingMessage()
         }
         FirebaseUser.shared.sendMessage(targetId: chatterId, message: text)
     }
