@@ -19,6 +19,8 @@ class FirebaseTrans: NSObject {
     static let STUDENT_COLLECTION = "students"
     static let TUTOR_COLLECTION = "tutors"
     static let UNREAD_COLLECTION = "unread"
+    static let CHAT_COLLECTION = "chats"
+    static let CHANNEL_COLLECTION = "channel"
     
     static let IMAGE_FOLDER = "images/"
     
@@ -62,6 +64,7 @@ class FirebaseTrans: NSObject {
         return theCollection
     }
     
+    
     // ------------------------------------------------------------------------------------
     // Single document downloading methods
     
@@ -73,9 +76,14 @@ class FirebaseTrans: NSObject {
     // para2: document id
     // para3: data
     
-    func createDoc(collection: [String], id: String, dict: Dictionary<String, Any>){
+    func createDoc(collection: [String], id: String?, dict: Dictionary<String, Any>){
         if let collection = parseCollection(collections: collection) {
-            collection.document(id).setData(dict){ err in
+            var docRef: DocumentReference
+            
+            if let id=id { docRef = collection.document(id) }
+            else { docRef = collection.document() }
+            
+            docRef.setData(dict){ err in
                 if let error = err{
                     debugHelpPrint(type: ClassType.FirebaseTrans, str: error.localizedDescription, id: id)
                 } else {
@@ -103,6 +111,14 @@ class FirebaseTrans: NSObject {
             debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
     }
+//    func isDocExists(collection: [String], id: String)->Bool?{
+//        if let collection = parseCollection(collections: collection) {
+//            return collection.document(id)
+//        }else{
+//            debugHelpPrint(type: .FirebaseTrans, str: "isDocExists(): input parameters have problems")
+//            return nil
+//        }
+//    }
     
     
     

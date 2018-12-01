@@ -29,6 +29,10 @@ class ChatViewController: JSQMessagesViewController {
         //senderDisplayName = "Biaodiao Lan"
         let defaults = UserDefaults.standard
         initializeInfo()
+        if let message = JSQMessage(senderId: "123", displayName: "123", text: "ok"){
+            self.messages.append(message)
+            self.finishReceivingMessage()
+        }
         
 //        if  let id = defaults.string(forKey: "jsq_id"),
 //            let name = defaults.string(forKey: "jsq_name")
@@ -167,8 +171,7 @@ class ChatViewController: JSQMessagesViewController {
             self.messages.append(message)
             self.finishReceivingMessage()
         }
-        //collectionView.reloadData()
-        //finishSendingMessage()
+        FirebaseUser.shared.sendMessage(targetId: chatterId, message: text)
     }
 }
 

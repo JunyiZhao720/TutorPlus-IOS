@@ -531,11 +531,6 @@ class FirebaseUser{
         }
     }
     
-    
-    
-    // ------------------------------------------------------------------------------------
-    // Chatting methods
-    
     func changeRedDotState(id: String, state: Bool){
         if !isLoggedIn(){
             debugHelpPrint(type: .FirebaseUser, str: "changeRedDotState() not logged in")
@@ -589,6 +584,10 @@ class FirebaseUser{
         }
     }
     
+    // ------------------------------------------------------------------------------------
+    // Chatting methods
+    
+    
     func tryToDeleteUnreadMessage(id: String){
         var path = [String]()
         path.append(FirebaseTrans.USER_COLLECTION)
@@ -596,6 +595,28 @@ class FirebaseUser{
         path.append(FirebaseTrans.UNREAD_COLLECTION)
         
         self.trans.deleteDoc(collection: path, id: id)
+    }
+    
+    private func mergeIds(targeId: String)->String{
+        if id! > targeId{ return id! + "-" + targeId }
+        else { return targeId + "-" + id! }
+    }
+    
+    func sendMessage(targetId: String, message: String){
+        if !isLoggedIn(){
+            debugHelpPrint(type: .FirebaseUser, str: "sendMessage() not logged in")
+            return
+        }
+        let roomId = mergeIds(targeId: targetId)
+        var path = [String]()
+        path.append(FirebaseTrans.CHAT_COLLECTION)
+        path.append(roomId)
+        path.append(FirebaseTrans.CHANNEL_COLLECTION)
+        
+        trans.createDoc(collection: path, id: nil, dict: [
+            "message": message,
+            "time": NSDate().timeIntervalSince1970
+            ])
     }
     
     
