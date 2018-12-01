@@ -276,15 +276,6 @@ class FirebaseTrans: NSObject {
                         let processed = FirebaseUser.parseData(data: data)
                         back.append(processed)
                     }
-                    // download image file
-                    for i in 0..<back.count{
-                        let profile = back[i]
-                        if let url = profile.imageURL{
-                            self.downloadImageAndCache(url: url, completion: {(image) in
-                                back[i].image = image
-                            })
-                        }
-                    }
                     debugHelpPrint(type: .FirebaseTrans, str: "downloadWholeProfileByLimitAndOrder(): done downloading collection documents")
                     completion(back)
                 }

@@ -51,10 +51,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     private func initializeImages(){
         FirebaseTrans.shared.downloadWholeProfileByLimitAndOrder(collections: [FirebaseTrans.USER_COLLECTION], field: FirebaseTrans.COUNT_FIELD, limit: 4, descend: true, completion: {data in
-            if let data = data{
+            if var data = data{
                 let bound = data.count > 4 ? 4 : data.count
                 for i in 0..<bound{
-                    self.setRecommendationView(i: i, data: data[i])
+                    if let url = data[i].imageURL{
+                        FirebaseTrans.shared.downloadImageAndCache(url: url, completion: {image in
+                            data[i].image = image
+                            self.setRecommendationView(i: i, data: data[i])
+                        })
+                    }
                 }
             }
         })
@@ -87,9 +92,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             discription.textAlignment = NSTextAlignment.center;
             discription.textColor = UIColor.white
             discription.isUserInteractionEnabled = true
-            let school = data.university ?? "", major = data.major ?? ""
-            discription.text =  school + " " + major
+            let major = data.major ?? ""
+            discription.text = major
             self.suggestionImageView[i].addSubview(discription)
+            
+            self.suggestionImageView[i].image = data.image
             
             //image tapped
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.imageTapped(gesture:)))
