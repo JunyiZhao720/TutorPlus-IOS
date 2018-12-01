@@ -138,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				42D9CA612174E139005C307A /* Tutor+.xcworkspace */,
+				AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */,
 				42866EAC216EA63400D29698 /* Tutor+ */,
 				42866EC1216EA63700D29698 /* Tutor+Tests */,
 				42866ECC216EA63700D29698 /* Tutor+UITests */,
@@ -167,7 +168,6 @@
 				429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */,
 				42866EAD216EA63400D29698 /* AppDelegate.swift */,
 				42866EB1216EA63400D29698 /* Main.storyboard */,
-				AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */,
 				42866EB4216EA63700D29698 /* Assets.xcassets */,
 				42866EB6216EA63700D29698 /* LaunchScreen.storyboard */,
 				42866EB9216EA63700D29698 /* Info.plist */,

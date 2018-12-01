@@ -144,7 +144,7 @@ class FirebaseUser{
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     if loggedIn{
                     } else {
-                        ViewSwitch.moveToLoginPage()
+                        //ViewSwitch.moveToLoginPage()
                     }
                 }
             }else{
@@ -161,7 +161,7 @@ class FirebaseUser{
                         // move to tab page
                         DispatchQueue.main.asyncAfter(deadline: .now()){
                             if self.checkEmailVerified(){
-                                ViewSwitch.moveToTabPage()
+                                //ViewSwitch.moveToTabPage()
                             }
                         }
                     })

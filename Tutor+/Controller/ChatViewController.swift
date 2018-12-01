@@ -53,24 +53,24 @@ class ChatViewController: JSQMessagesViewController {
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         // Do any additional setup after loading the view, typically from a nib.
         
-        let query = Constants.refs.databaseChats.queryLimited(toLast: 10)
-        
-        _ = query.observe(.childAdded, with: { [weak self] snapshot in
-            
-            if  let data        = snapshot.value as? [String: String],
-                let id          = data["sender_id"],
-                let name        = data["name"],
-                let text        = data["text"],
-                !text.isEmpty
-            {
-                if let message = JSQMessage(senderId: id, displayName: name, text: text)
-                {
-                    self?.messages.append(message)
-                    
-                    self?.finishReceivingMessage()
-                }
-            }
-        })
+//        let query = Constants.refs.databaseChats.queryLimited(toLast: 10)
+//
+//        _ = query.observe(.childAdded, with: { [weak self] snapshot in
+//
+//            if  let data        = snapshot.value as? [String: String],
+//                let id          = data["sender_id"],
+//                let name        = data["name"],
+//                let text        = data["text"],
+//                !text.isEmpty
+//            {
+//                if let message = JSQMessage(senderId: id, displayName: name, text: text)
+//                {
+//                    self?.messages.append(message)
+//
+//                    self?.finishReceivingMessage()
+//                }
+//            }
+//        })
     }
     
     @objc func showDisplayNameDialog()
@@ -140,15 +140,13 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
-        let ref = Constants.refs.databaseChats.childByAutoId()
-        
-        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
-        
-        ref.setValue(message)
+//        let ref = Constants.refs.databaseChats.childByAutoId()
+//        
+//        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
+//        
+//        ref.setValue(message)
         
         finishSendingMessage()
     }
-
-
 }
 
