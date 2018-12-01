@@ -92,15 +92,6 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
-//        let ref = Constants.refs.databaseChats.childByAutoId()
-//
- //       let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
-//
-//        ref.setValue(message)
-        if let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text){
-            //self.messages.append(message)
-            //self.finishReceivingMessage()
-        }
         FirebaseUser.shared.sendMessage(targetId: chatterId, message: text)
     }
 }
