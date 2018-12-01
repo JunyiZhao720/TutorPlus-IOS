@@ -109,7 +109,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         imageButton.layer.cornerRadius = imageButton.frame.size.width/2
         imageButton.clipsToBounds = true
         imageButton.layer.borderColor = UIColor.white.cgColor
-        imageButton.setImage(FirebaseUser.shared.imageProfile, for: .normal)
+        imageButton.setImage(FirebaseUser.shared.image, for: .normal)
     }
     
     private func initializeTableView(){
@@ -271,7 +271,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             //It has a new image
             FirebaseUser.shared.uploadImage(data: _chosenImage.pngData()!, completion: {(success) in
                 if success{
-                    FirebaseUser.shared.imageProfile = _chosenImage
+                    FirebaseUser.shared.image = _chosenImage
                     FirebaseUser.shared.uploadProfile()
                 }
             })

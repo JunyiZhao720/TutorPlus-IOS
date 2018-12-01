@@ -29,10 +29,11 @@ class FirebaseUser{
         var tag: [String]? = []
         var schedule: String? = ""
         var ps: String? = ""
-        //var image
+        var count: Int? = 0
+        var image: UIImage?
         
         init(){}
-        init(id: String?, name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?){
+        init(id: String?, name:String?, gender:String?, major:String?, university:String?, imageURL:String?, tag:[String]?, schedule: String?, ps: String?, count: Int?){
             self.id = id
             self.name = name
             self.gender = gender
@@ -42,6 +43,23 @@ class FirebaseUser{
             self.tag = tag
             self.schedule = schedule
             self.ps = ps
+            self.count = count
+        }
+        func toDict()->[String:Any]{
+            let dictionary: [String: Any] = [
+                // use as Any to avoid warning
+                "id" : self.id as Any,
+                "name" :self.name as Any,
+                "gender" : self.gender as Any,
+                "major" : self.major as Any,
+                "university" : self.university as Any,
+                "imageURL" : self.imageURL as Any,
+                "tag" : self.tag as Any,
+                "schedule" : self.schedule as Any,
+                "ps" : self.ps as Any,
+                "count" : self.count as Any
+            ]
+            return dictionary
         }
     }
     
@@ -98,11 +116,16 @@ class FirebaseUser{
         get{ return data.ps}
         set(value){ data.ps = value}
     }
+    var count: Int?{
+        get{ return data.count }
+        set(value){ data.count = value }
+    }
+    var image: UIImage?{
+        get{ return data.image }
+        set(value){ data.image = value }
+    }
     
     
-    //Extra fields
-    
-    var imageProfile: UIImage?
     // user edit course grade
     var classData = [String]()
     var gradeData = [String]()
@@ -220,6 +243,7 @@ class FirebaseUser{
             "tag" : self.tag as Any,
             "schedule" : self.schedule as Any,
             "ps" : self.ps as Any,
+            "count" : self.count as Any
         ]
         return dictionary
     }
@@ -236,7 +260,8 @@ class FirebaseUser{
             imageURL: data["imageURL"] as? String,
             tag: data["tag"] as? [String],
             schedule: schedule,
-            ps: data["ps"] as? String
+            ps: data["ps"] as? String,
+            count: data["count"] as? Int ?? 0
         )
         return back
     }
@@ -411,8 +436,8 @@ class FirebaseUser{
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListenerAndCache) the listener has already been added!")
-            return
+            self.cachedListener[listenerId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addStudentListListenerAndCache() has been updated!")
         }
         
         var path = [String]()
@@ -474,8 +499,8 @@ class FirebaseUser{
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addTutorListListenerAndCache() the listener has already been added!")
-            return
+            self.cachedListener[listenerId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addTutorListListenerAndCache() has been updated!")
         }
         
         var path = [String]()
@@ -548,8 +573,8 @@ class FirebaseUser{
         }
         
         if self.cachedListener[listenerId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addUnreadMessageListenerAndCache() the listener has already been added!")
-            return
+            self.cachedListener[listenerId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addUnreadMessageListenerAndCache() has been updated!")
         }
         
         var path = [String]()
@@ -569,8 +594,10 @@ class FirebaseUser{
                     
                     if (diff.type == .added || diff.type == .modified) {
                         self.changeRedDotState(id: id, state: true)
+                        debugHelpPrint(type: .FirebaseTrans, str: "addUnreadMessageListenerAndCache(): a new unread message")
                     }else{
                         self.changeRedDotState(id: id, state: false)
+                        debugHelpPrint(type: .FirebaseTrans, str: "addUnreadMessageListenerAndCache(): a deleted unread message")
                     }
                     updateDelegate.contentUpdate()
                 }
@@ -588,13 +615,22 @@ class FirebaseUser{
     // Chatting methods
     
     
-    func tryToDeleteUnreadMessage(id: String){
+    func tryToDeleteUnreadMessage(targetId: String){
         var path = [String]()
         path.append(FirebaseTrans.USER_COLLECTION)
         path.append(self.id!)
         path.append(FirebaseTrans.UNREAD_COLLECTION)
         
-        self.trans.deleteDoc(collection: path, id: id)
+        self.trans.deleteDoc(collection: path, id: targetId)
+    }
+    
+    private func addUnreadMessage(targetId: String){
+        var path = [String]()
+        path.append(FirebaseTrans.USER_COLLECTION)
+        path.append(targetId)
+        path.append(FirebaseTrans.UNREAD_COLLECTION)
+        
+        self.trans.createDoc(collection: path, id: self.id!, dict: ["info": "You have an unread message"])
     }
     
     private func mergeIds(targeId: String)->String{
@@ -611,6 +647,10 @@ class FirebaseUser{
             debugHelpPrint(type: .FirebaseUser, str: "sendMessage() not logged in")
             return
         }
+        // create unread message notification
+        addUnreadMessage(targetId: targetId)
+        
+        // create a new message
         let roomId = mergeIds(targeId: targetId)
         var path = [String]()
         path.append(FirebaseTrans.CHAT_COLLECTION)
@@ -634,9 +674,10 @@ class FirebaseUser{
         
         
         if self.cachedListener[channelId] != nil{
-            debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() the listener has already been added!")
-            return
+            self.cachedListener[channelId]?.remove()
+            debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() has been updated!")
         }
+        
         messageList[channelId] = [JSQMessage]()
         
         
@@ -698,7 +739,7 @@ class FirebaseUser{
         }
         if let url = imageURL{
             trans.downloadImageAndCache(url: url, completion: {(theUIImage) in
-                self.imageProfile = theUIImage
+                self.image = theUIImage
                 completion()
             })
         }else{

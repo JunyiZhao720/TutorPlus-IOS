@@ -68,8 +68,7 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
         currentTutorList = tutorList
         currentStudentList = studentList
         
-        //debugHelpPrint(type: .FriendListViewController, str: "tutor: \(currentTutorList.description)")
-        //debugHelpPrint(type: .FriendListViewController, str: "student: \(currentStudentList)")
+        
         //debugHelpPrint(type: .FriendListViewController, str: "user-all: \(FirebaseUser.shared.contactList.description)")
         //debugHelpPrint(type: .FriendListViewController, str: "user-tutor: \(FirebaseUser.shared.studentList.description)")
         //debugHelpPrint(type: .FriendListViewController, str: "user-stuent: \(FirebaseUser.shared.tutorList.description)")
@@ -99,6 +98,9 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
             //debugHelpPrint(type: .FriendListViewController, str: "\(currentStudentList[indexPath.row].state)")
             cell.showbuttonsByPending(pending: node.state)
             cell.isRedDotVisible(show: node.isRedDotted)
+            debugHelpPrint(type: .FriendListViewController, str: "cell dotted: \(node.isRedDotted)")
+            debugHelpPrint(type: .FriendListViewController, str: "tutor: \(currentTutorList.description)")
+            debugHelpPrint(type: .FriendListViewController, str: "student: \(currentStudentList)")
             
         }else{
             let node = currentTutorList[indexPath.row]
@@ -108,6 +110,9 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
             //debugHelpPrint(type: .FriendListViewController, str: "\(currentTutorList[indexPath.row].state)")
             cell.showbuttonsByPending(pending: node.state)
             cell.isRedDotVisible(show: node.isRedDotted)
+            debugHelpPrint(type: .FriendListViewController, str: "cell dotted: \(node.isRedDotted)")
+            debugHelpPrint(type: .FriendListViewController, str: "tutor: \(currentTutorList.description)")
+            debugHelpPrint(type: .FriendListViewController, str: "student: \(currentStudentList)")
         }
         
         return cell

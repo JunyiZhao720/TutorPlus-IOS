@@ -48,7 +48,10 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
             senderId = FirebaseUser.shared.id
             senderDisplayName = FirebaseUser.shared.name
             chatterInfo = info
+            // add a listener for this channel
             FirebaseUser.shared.addChannelListenerAndCache(targetId: chatterId, targetName: info.name ?? "anonymous", updateDelegate: self)
+            // try to delete unread message notification
+            FirebaseUser.shared.tryToDeleteUnreadMessage(targetId: chatterId)
             contentUpdate()
             
             title = "Chat with \(info.name ?? "")"
