@@ -631,12 +631,14 @@ class FirebaseUser{
         }
         
         let channelId = mergeIds(targeId: targetId)
-        messageList[channelId] = [JSQMessage]()
+        
         
         if self.cachedListener[channelId] != nil{
             debugHelpPrint(type: .FirebaseUser, str: "addChannelListenerAndCache() the listener has already been added!")
             return
         }
+        messageList[channelId] = [JSQMessage]()
+        
         
         var path = [String]()
         path.append(FirebaseTrans.CHAT_COLLECTION)
