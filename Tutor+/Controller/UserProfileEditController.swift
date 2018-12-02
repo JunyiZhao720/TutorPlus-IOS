@@ -138,12 +138,18 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: [FirebaseTrans.SCHOOL_COLLECTION], completion: {(data)in
             if let data = data{
                 self.EditSchoolList = data
-                self.currentEditSchool = data
+                self.currentEditSchool = self.EditSchoolList.filter({ school -> Bool in
+                    school.lowercased().contains((self.universityEditor.text ?? "") .lowercased())
+                })
+                self.schoolSearchTableView.reloadData()
+                debugHelpPrint(type: .UserProfileEditController, str: "\(self.currentEditSchool)")
             }
         })
     }
     
     private func downloadCourseColection(){
+        
+        if FirebaseUser.shared.university == nil { return }
         
         var theCollection = [FirebaseTrans.SCHOOL_COLLECTION]
         theCollection.append(FirebaseUser.shared.university!)
@@ -153,6 +159,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             if let data = data{
                 self.EditCourseList = data
                 self.currentEditCourse = data
+                self.courseSearchTableView.reloadData()
+                debugHelpPrint(type: .UserProfileEditController, str: "\(self.currentEditCourse)")
             }
         })
     }
@@ -178,7 +186,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         }
         if tableView == self.schoolSearchTableView{
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserEditSchoolCell", for: indexPath) as! SearchViewTableViewCell
-            
+            //debugHelpPrint(type: .UserProfileEditController, str: "current school: \(currentEditSchool)\n")
+            //debugHelpPrint(type: .UserProfileEditController, str: "index:\(indexPath.row) count:\(currentEditSchool.count)")
             cell.suggestionLabel.text = currentEditSchool[indexPath.row]
             return cell
         }
