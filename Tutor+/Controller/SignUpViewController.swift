@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var schoolTextField: UITextField!
+    @IBOutlet weak var majorTextField: UITextField!
     
     @IBOutlet weak var signUpButton: UIButton!
     
@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController {
                 
                 // Intialize sign up information
                 FirebaseUser.shared.name = self.nameTextField.text
-                FirebaseUser.shared.university = self.schoolTextField.text
+                FirebaseUser.shared.major = self.majorTextField.text
                 
                 // create initialized information
                 FirebaseUser.shared.uploadProfile()

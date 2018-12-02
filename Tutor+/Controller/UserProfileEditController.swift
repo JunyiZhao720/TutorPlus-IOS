@@ -161,7 +161,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     private func downloadCourseColection(){
         
-        if FirebaseUser.shared.university == nil { return }
+        if FirebaseUser.shared.university == nil || FirebaseUser.shared.university == "" { return }
         
         var theCollection = [FirebaseTrans.SCHOOL_COLLECTION]
         theCollection.append(FirebaseUser.shared.university!)

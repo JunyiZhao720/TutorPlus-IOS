@@ -260,11 +260,11 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    public func downloadWholeProfileByLimitAndOrder(collections:[String], field:String, limit:Int, descend:Bool, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
+    public func downloadWholeProfileByLimitAndOrder(collections:[String], baseField: String, targetField:String, limit:Int, descend:Bool, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
         
         if let theCollection = parseCollection(collections: collections) {
             // download data
-            theCollection.order(by: field, descending: descend).limit(to: limit).getDocuments{(querySnapshot, err)in
+            theCollection.whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: baseField).order(by: targetField, descending: descend).limit(to: limit).getDocuments{(querySnapshot, err)in
                 if let err = err{
                     debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                     completion(nil)
