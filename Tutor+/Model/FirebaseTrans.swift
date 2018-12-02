@@ -31,6 +31,7 @@ class FirebaseTrans: NSObject {
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
     static let COUNT_FIELD = "count"
+
     
     public let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
@@ -49,7 +50,7 @@ class FirebaseTrans: NSObject {
     
     public func parseCollection(collections:[String])->CollectionReference?{
         // check parameters
-        if(collections.count <= 0 || collections.count % 3 == 2) {
+        if(collections.count <= 0 || collections.count % 2 == 0) {
             
             return nil
         }

@@ -1144,9 +1144,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="388" id="1QD-jx-0s1"/>
                                     <constraint firstItem="4Nu-Ay-LcR" firstAttribute="leading" secondItem="EhN-pf-4aW" secondAttribute="leading" id="E03-gf-MHk"/>
-                                    <constraint firstAttribute="height" constant="1300" id="Ndb-KD-mNz"/>
                                     <constraint firstAttribute="trailing" secondItem="4Nu-Ay-LcR" secondAttribute="trailing" id="cFk-fb-xQg"/>
                                     <constraint firstAttribute="bottom" secondItem="4Nu-Ay-LcR" secondAttribute="bottom" id="jnW-nn-rZg"/>
                                     <constraint firstItem="4Nu-Ay-LcR" firstAttribute="top" secondItem="EhN-pf-4aW" secondAttribute="top" constant="-64" id="nKj-Y2-u9h"/>
@@ -1983,6 +1981,6 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zak-3F-4Hb"/>
+        <segue reference="Qgf-94-Osr"/>
     </inferredMetricsTieBreakers>
 </document>

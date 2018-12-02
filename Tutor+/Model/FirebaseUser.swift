@@ -304,18 +304,62 @@ class FirebaseUser{
         }
     }
     
+    func deleteTutorCourses(courseList: [String]){
+        if isLoggedIn() || self.university == nil{
+            var path = [FirebaseTrans.USER_COLLECTION]
+            path.append(self.id!)
+            path.append(FirebaseTrans.COURSE_COLLECTION)
+            
+            var path_school = [FirebaseTrans.SCHOOL_COLLECTION]
+            path_school.append(self.university!)
+            path_school.append(FirebaseTrans.COURSE_COLLECTION)
+            
+            let school = self.university ?? ""
+            
+            for i in 0..<courseList.count{
+                let mergedId = school + "-" + courseList[i]
+                debugHelpPrint(type: .FirebaseTrans, str: "deleteTutorCourses(): mergedId:\(mergedId)")
+                
+                FirebaseTrans.shared.deleteDoc(collection: path, id: mergedId)
+                
+                var path_course = path_school
+                path_course.append(courseList[i])
+                path_course.append(FirebaseTrans.TUTOR_COLLECTION)
+                FirebaseTrans.shared.deleteDoc(collection: path_course, id: self.id!)
+            }
+        }else{
+            debugHelpPrint(type: ClassType.FirebaseUser, str: "Trying to deleteTutorCourses() while user is not logged in")
+        }
+        
+    }
+    
     func uploadTutorCourses(courseList: [String], gradeList: [String]){
         if isLoggedIn() || self.university == nil{
             var path = [FirebaseTrans.USER_COLLECTION]
             path.append(self.id!)
             path.append(FirebaseTrans.COURSE_COLLECTION)
             
+            let school = self.university ?? ""
+            
+            var path_school = [FirebaseTrans.SCHOOL_COLLECTION]
+            path_school.append(school)
+            path_school.append(FirebaseTrans.COURSE_COLLECTION)
+            
+            
             for i in 0..<courseList.count{
-                let currentName = self.university! + "-" + courseList[i]
+                let currentName = school + "-" + courseList[i]
                 
                 FirebaseTrans.shared.createDoc(collection: path, id: currentName, dict: [
                     "course" : courseList[i],
                     "grade":gradeList[i]
+                    ])
+                var course_path = path_school
+                course_path.append(courseList[i])
+                course_path.append(FirebaseTrans.TUTOR_COLLECTION)
+                debugHelpPrint(type: .FirebaseUser, str: "uploadTutorCourses(): path: \(course_path) \(self.id)")
+                
+                FirebaseTrans.shared.createDoc(collection: course_path, id: self.id!, dict: [
+                    "id": self.id as Any
                     ])
             }
         }else{

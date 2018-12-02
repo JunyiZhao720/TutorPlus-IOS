@@ -44,6 +44,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     var classData = [String]()
     var gradeData = [String]()
+    var deletedData = [String]()
     
     var isSchoolChosen = true
     var isCourseChosen = true
@@ -55,6 +56,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         
         // Initialize navigation bar titile
         self.navigationItem.title = "Profile Edit"
+        
+        
         
         // Do initialization
         initializePersonalStatementTextField()
@@ -190,8 +193,11 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView == self.courseTableView && editingStyle == .delete {
             print("delete")
+            
+            self.deletedData.append(self.classData[indexPath.row])
             self.classData.remove(at: indexPath.row)
             self.gradeData.remove(at: indexPath.row)
+            
             self.courseTableView.reloadData()
         }
     }
@@ -280,9 +286,13 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             FirebaseUser.shared.uploadProfile()
         }
         
-        // upload courses and grades
+        // upload and delete courses and grades
         FirebaseUser.shared.classData = self.classData
         FirebaseUser.shared.gradeData = self.gradeData
+        
+        debugHelpPrint(type: .UserProfileEditController, str: "deletedData: \(deletedData)")
+        
+        FirebaseUser.shared.deleteTutorCourses(courseList: deletedData)
         FirebaseUser.shared.uploadTutorCourses(courseList: classData, gradeList: gradeData)
         
         // Go back to previous page
@@ -295,6 +305,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         if (tutorSwitch.isOn == true) {
             scrollView.setContentOffset(bottomOffset, animated: true)
             //saveButton.frame.origin.y += bottomOffset.y
+            
+            // disable scrollview vertical scrolling
+            scrollView.contentSize = CGSize(width: 1.0, height: 1300)
             scrollView.isScrollEnabled = true
             self.tutorStatus.text = "Yes!  I'm a great tutor"
         } else{
