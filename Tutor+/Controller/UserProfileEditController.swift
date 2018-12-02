@@ -75,17 +75,18 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         downloadSchoolColection()
         downloadCourseColection()
         
+        self.hideKeyboardWhenTappedAroundII()
     }
     // ---------------------------------------------------------
     // keyboard issue
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return (true)
-    }
-    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return (true)
+//    }
+//
     // ------------------------------------------------------------------------------------
     // Initialization functions
     
@@ -378,7 +379,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     }
     
     //gender dropdown function
-    @objc func dismissKeyboard(){
+    @objc override func dismissKeyboard(){
         view.endEditing(true)
     }
     
@@ -483,7 +484,17 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
     }
 }
 
-
+extension UIViewController {
+    func hideKeyboardWhenTappedAroundII() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+}
 
 
 

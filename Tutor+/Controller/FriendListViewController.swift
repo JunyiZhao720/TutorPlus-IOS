@@ -40,16 +40,10 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
         
         contactTableView.tableFooterView = UIView(frame: CGRect.zero)
         
+        self.hideKeyboardWhenTappedAround()
     }
     
-    // keyboard issue
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return (true)
-    }
+    
 
     
     @IBAction func switchBarValueChanged(_ sender: Any) {
@@ -142,7 +136,10 @@ extension FriendListViewController: UITableViewDataSource, UITableViewDelegate{
             self.performSegue(withIdentifier: "FriendListToChatting", sender: data)
         }
         
+        
+        
     }
+    
     // ------------------------------------------------------------------------------------
     // Other
     
@@ -173,5 +170,26 @@ extension FriendListViewController: UISearchBarDelegate {
         contactTableView.reloadData()
         print("searched")
     }
+    
+    // keyboard issue
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return (true)
+//    }
+}
 
+// keyboard issue
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
