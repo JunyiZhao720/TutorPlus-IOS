@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Chat
 //
-//  Created by 孙可天  on 11/28/18.
+//  Created by Bo Lan  on 11/28/18.
 //  Copyright © 2018 Bo_Lan_try. All rights reserved.
 //
 
@@ -29,6 +29,11 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
 
         initializeInfo()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(app))
+        tapGesture.numberOfTapsRequired = 1
+        
+        navigationController?.navigationBar.addGestureRecognizer(tapGesture)
+        
         inputToolbar.contentView.leftBarButtonItem = nil
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
@@ -36,6 +41,9 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
 
     }
     
+    @objc func app(){
+        
+    }
     func contentUpdate() {
         if let messageList = FirebaseUser.shared.getMessageList(targetId: chatterId){
             messages = messageList
@@ -96,6 +104,7 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
         FirebaseUser.shared.sendMessage(targetId: chatterId, message: text)
+        finishSendingMessage()
     }
   
 }
