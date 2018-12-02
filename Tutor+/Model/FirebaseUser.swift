@@ -176,15 +176,13 @@ class FirebaseUser{
                 self.id = (user?.uid)
                 
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged in", id: self.id)
-                
+                if !self.checkEmailVerified(){ self.logOut(); return }
                 self.downloadProfile(completion: {(success) in
                     // download image
                     self.downloadImage(completion: {
                         // move to tab page
                         DispatchQueue.main.asyncAfter(deadline: .now()){
-                            if self.checkEmailVerified(){
                                 ViewSwitch.moveToTabPage()
-                            }
                         }
                     })
                 })

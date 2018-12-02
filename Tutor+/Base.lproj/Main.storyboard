@@ -26,7 +26,7 @@
                                     <segue destination="nIf-8v-hcl" kind="presentation" identifier="SignUpToSignIn" id="aW2-RD-evB"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="School " textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8i2-FN-a8y">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Major" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8i2-FN-a8y">
                                 <rect key="frame" x="16" y="454" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,10 +104,10 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="gmE-w7-8R8" id="UAh-3l-xGN"/>
+                        <outlet property="majorTextField" destination="8i2-FN-a8y" id="2Pv-5w-Pmu"/>
                         <outlet property="nameTextField" destination="Tgv-X2-GgV" id="FW0-Z1-rRr"/>
                         <outlet property="passwordConfirmTextField" destination="3nI-PQ-jw9" id="934-jN-I1F"/>
                         <outlet property="passwordTextField" destination="cAQ-7R-CkB" id="saR-zG-fFb"/>
-                        <outlet property="schoolTextField" destination="8i2-FN-a8y" id="2Pv-5w-Pmu"/>
                         <outlet property="signUpButton" destination="tw2-Iq-5hy" id="jJI-rZ-oPZ"/>
                     </connections>
                 </viewController>
