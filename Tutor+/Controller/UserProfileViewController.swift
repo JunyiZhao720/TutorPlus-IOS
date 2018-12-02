@@ -42,7 +42,9 @@ class UserProfileViewController: UIViewController {
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true
         theImage.layer.borderColor = UIColor.white.cgColor
-        theImage.image = FirebaseUser.shared.image
+        if let image = FirebaseUser.shared.image{ theImage.image = image }
+        else { theImage.image = UIImage(named: "landscape") }
+       
     }
     
     private func initializeNav(){

@@ -122,7 +122,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         imageButton.layer.cornerRadius = imageButton.frame.size.width/2
         imageButton.clipsToBounds = true
         imageButton.layer.borderColor = UIColor.white.cgColor
-        imageButton.setImage(FirebaseUser.shared.image, for: .normal)
+        
+        if let image = FirebaseUser.shared.image{ imageButton.setImage(image, for: .normal) }
+        else { imageButton.setImage(UIImage(named: "landscape"), for: .normal) }
     }
     
     private func initializeTableView(){
@@ -423,7 +425,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     
     func updateSchedule (schedule: String?){
-        if let schedule = schedule{
+        if let schedule = schedule, schedule != ""{
             scheduleData = Array(schedule)
             for i in 0...27{
                 if scheduleData[i] == "1"{scheduleBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}

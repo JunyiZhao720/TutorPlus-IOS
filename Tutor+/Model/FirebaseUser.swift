@@ -509,7 +509,7 @@ class FirebaseUser{
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
                                 self.studentList[id]?.name = self.contactList[id]?.name
                                 // download image
-                                if let url = self.contactList[id]?.imageURL{
+                                if let url = self.contactList[id]?.imageURL, url != ""{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
                                         self.studentList[id]?.image = image
                                         updateDelegate.contentUpdate()
@@ -572,7 +572,7 @@ class FirebaseUser{
                                 self.contactList[id] = FirebaseUser.parseData(data: data)
                                 self.tutorList[id]?.name = self.contactList[id]?.name
                                 // download image
-                                if let url = self.contactList[id]?.imageURL{
+                                if let url = self.contactList[id]?.imageURL, url != ""{
                                     self.trans.downloadImageAndCache(url: url, completion: {(image) in
                                         self.tutorList[id]?.image = image
                                         debugHelpPrint(type: .FirebaseUser, str: "\(id) download tutor image complete")
@@ -781,7 +781,7 @@ class FirebaseUser{
             completion()
             return
         }
-        if let url = imageURL{
+        if let url = imageURL, url != ""{
             trans.downloadImageAndCache(url: url, completion: {(theUIImage) in
                 self.image = theUIImage
                 completion()

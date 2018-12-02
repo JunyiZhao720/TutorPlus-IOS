@@ -64,7 +64,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             if var data = data{
                 let bound = data.count > 4 ? 4 : data.count
                 for i in 0..<bound{
-                    if let url = data[i].imageURL{
+                    if let url = data[i].imageURL, url != ""{
                         FirebaseTrans.shared.downloadImageAndCache(url: url, completion: {image in
                             data[i].image = image
                             self.setRecommendationView(i: i, data: data[i])
