@@ -60,7 +60,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         
         
         // Do initialization
-        initializePersonalStatementTextField()
+        self.initializePersonalStatementTextField()
         initializeFirebaseInfo()
         initializeImage()
         
@@ -107,11 +107,15 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         personalState.textColor = UIColor.black
         personalState.font = UIFont.boldSystemFont(ofSize: 20)
         personalState.font = UIFont(name:"Verdana", size: 17)
+        
         personalState.isEditable = true
         personalState.autocapitalizationType = UITextAutocapitalizationType.allCharacters
+        
+        // make web links clickable
         personalState.isSelectable = true
         personalState.isEditable = false
         personalState.dataDetectorTypes = UIDataDetectorTypes.link
+        
         personalState.isEditable = true
         personalState.autocorrectionType = UITextAutocorrectionType.yes
         personalState.spellCheckingType = UITextSpellCheckingType.yes

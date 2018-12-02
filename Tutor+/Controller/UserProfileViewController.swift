@@ -49,7 +49,7 @@ class UserProfileViewController: UIViewController {
     
     private func initializeNav(){
         self.navigationItem.title = "Profile"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonOnClicked))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logoutButtonOnClicked))
     }
     
 
