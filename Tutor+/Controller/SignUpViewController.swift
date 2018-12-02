@@ -34,6 +34,15 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // keyboard issue
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
 
     /*
     // MARK: - Navigation

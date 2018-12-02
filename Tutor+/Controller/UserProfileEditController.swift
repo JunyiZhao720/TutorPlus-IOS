@@ -76,6 +76,15 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         downloadCourseColection()
         
     }
+    // ---------------------------------------------------------
+    // keyboard issue
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
     
     // ------------------------------------------------------------------------------------
     // Initialization functions

@@ -39,8 +39,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         downloadCollectionInfo()
         initializeImages()
+        
     }
     
+    // keyboard issue
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
         if (gesture.view as? UIImageView) != nil {

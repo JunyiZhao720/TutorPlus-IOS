@@ -39,8 +39,18 @@ class FriendListViewController: UIViewController, listenerUpdateProtocol {
         contentUpdate()
         
         contactTableView.tableFooterView = UIView(frame: CGRect.zero)
+        
     }
     
+    // keyboard issue
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
     
     @IBAction func switchBarValueChanged(_ sender: Any) {
         if selector.selectedSegmentIndex == 0{
