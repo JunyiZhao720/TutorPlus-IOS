@@ -42,12 +42,14 @@ class UserProfileViewController: UIViewController {
         theImage.layer.cornerRadius = theImage.frame.size.width/2
         theImage.clipsToBounds = true
         theImage.layer.borderColor = UIColor.white.cgColor
-        theImage.image = FirebaseUser.shared.image
+        if let image = FirebaseUser.shared.image{ theImage.image = image }
+        else { theImage.image = UIImage(named: "landscape") }
+       
     }
     
     private func initializeNav(){
         self.navigationItem.title = "Profile"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonOnClicked))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logoutButtonOnClicked))
     }
     
 

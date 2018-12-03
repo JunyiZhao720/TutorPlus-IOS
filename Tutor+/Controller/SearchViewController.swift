@@ -39,8 +39,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         downloadCollectionInfo()
         initializeImages()
+        
     }
     
+    // keyboard issue
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
         if (gesture.view as? UIImageView) != nil {
@@ -50,15 +60,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func initializeImages(){
-        FirebaseTrans.shared.downloadWholeProfileByLimitAndOrder(collections: [FirebaseTrans.USER_COLLECTION], field: FirebaseTrans.COUNT_FIELD, limit: 4, descend: false, completion: {data in
+        let school = FirebaseUser.shared.university
+        if school == nil || school == "" { return }
+        
+        FirebaseTrans.shared.downloadWholeProfileByLimitAndOrder(collections: [FirebaseTrans.USER_COLLECTION],baseField: school!, targetField: FirebaseTrans.COUNT_FIELD, limit: 4, descend: true, completion: {data in
             if var data = data{
                 let bound = data.count > 4 ? 4 : data.count
                 for i in 0..<bound{
-                    if let url = data[i].imageURL{
+                    if let url = data[i].imageURL, url != ""{
                         FirebaseTrans.shared.downloadImageAndCache(url: url, completion: {image in
                             data[i].image = image
                             self.setRecommendationView(i: i, data: data[i])
                         })
+                    }else{
+                        self.setRecommendationView(i: i, data: data[i])
                     }
                 }
             }

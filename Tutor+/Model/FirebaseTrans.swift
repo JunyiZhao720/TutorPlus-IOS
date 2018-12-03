@@ -31,6 +31,7 @@ class FirebaseTrans: NSObject {
     static let UNIVERSITY_FIELD = "university"
     static let TAG_FIELD = "tag"
     static let COUNT_FIELD = "count"
+
     
     public let db = Firestore.firestore()
     private let storageRef = Storage.storage().reference()
@@ -49,7 +50,7 @@ class FirebaseTrans: NSObject {
     
     public func parseCollection(collections:[String])->CollectionReference?{
         // check parameters
-        if(collections.count <= 0 || collections.count % 3 == 2) {
+        if(collections.count <= 0 || collections.count % 2 == 0) {
             
             return nil
         }
@@ -112,14 +113,6 @@ class FirebaseTrans: NSObject {
             debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
     }
-//    func isDocExists(collection: [String], id: String)->Bool?{
-//        if let collection = parseCollection(collections: collection) {
-//            return collection.document(id)
-//        }else{
-//            debugHelpPrint(type: .FirebaseTrans, str: "isDocExists(): input parameters have problems")
-//            return nil
-//        }
-//    }
     
     
     
@@ -259,11 +252,11 @@ class FirebaseTrans: NSObject {
         }
     }
     
-    public func downloadWholeProfileByLimitAndOrder(collections:[String], field:String, limit:Int, descend:Bool, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
+    public func downloadWholeProfileByLimitAndOrder(collections:[String], baseField: String, targetField:String, limit:Int, descend:Bool, completion:@escaping([FirebaseUser.ProfileStruct]?)->Void){
         
         if let theCollection = parseCollection(collections: collections) {
             // download data
-            theCollection.order(by: field, descending: descend).limit(to: limit).getDocuments{(querySnapshot, err)in
+            theCollection.whereField(FirebaseTrans.UNIVERSITY_FIELD, isEqualTo: baseField).order(by: targetField, descending: descend).limit(to: limit).getDocuments{(querySnapshot, err)in
                 if let err = err{
                     debugHelpPrint(type: .FirebaseTrans, str: "\(err.localizedDescription)")
                     completion(nil)

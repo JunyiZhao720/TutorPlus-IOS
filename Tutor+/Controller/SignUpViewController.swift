@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var schoolTextField: UITextField!
+    @IBOutlet weak var majorTextField: UITextField!
     
     @IBOutlet weak var signUpButton: UIButton!
     
@@ -34,6 +34,15 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // keyboard issue
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
+    }
+
 
     /*
     // MARK: - Navigation
@@ -65,12 +74,7 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
-                // Intialize sign up information
-                FirebaseUser.shared.name = self.nameTextField.text
-                FirebaseUser.shared.university = self.schoolTextField.text
                 
-                // create initialized information
-                FirebaseUser.shared.uploadProfile()
                 
                 // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
@@ -80,12 +84,14 @@ class SignUpViewController: UIViewController {
                         AlertHelper.showAlert(fromController: self, message: error.debugDescription, buttonTitle: "OK")
                     
                     }else{
+                        
+                        // Intialize sign up information
+                        FirebaseUser.shared.name = self.nameTextField.text
+                        FirebaseUser.shared.major = self.majorTextField.text
+                        // create initialized information
+                        FirebaseUser.shared.uploadProfile()
                         // logout before doing anything
                         FirebaseUser.shared.logOut()
-                        
-                        // switch back to login
-                        self.performSegue(withIdentifier: "SignUpToTab", sender: self)
-                    
                     }
                     
                     return

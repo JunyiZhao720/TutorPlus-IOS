@@ -44,6 +44,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     var classData = [String]()
     var gradeData = [String]()
+    var deletedData = [String]()
     
     var isSchoolChosen = true
     var isCourseChosen = true
@@ -56,8 +57,10 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         // Initialize navigation bar titile
         self.navigationItem.title = "Profile Edit"
         
+        
+        
         // Do initialization
-        initializePersonalStatementTextField()
+        self.initializePersonalStatementTextField()
         initializeFirebaseInfo()
         initializeImage()
         
@@ -72,8 +75,18 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         downloadSchoolColection()
         downloadCourseColection()
         
+        self.hideKeyboardWhenTappedAroundII()
     }
-    
+    // ---------------------------------------------------------
+    // keyboard issue
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return (true)
+//    }
+//
     // ------------------------------------------------------------------------------------
     // Initialization functions
     
@@ -94,11 +107,15 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         personalState.textColor = UIColor.black
         personalState.font = UIFont.boldSystemFont(ofSize: 20)
         personalState.font = UIFont(name:"Verdana", size: 17)
+        
         personalState.isEditable = true
         personalState.autocapitalizationType = UITextAutocapitalizationType.allCharacters
+        
+        // make web links clickable
         personalState.isSelectable = true
         personalState.isEditable = false
         personalState.dataDetectorTypes = UIDataDetectorTypes.link
+        
         personalState.isEditable = true
         personalState.autocorrectionType = UITextAutocorrectionType.yes
         personalState.spellCheckingType = UITextSpellCheckingType.yes
@@ -109,7 +126,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         imageButton.layer.cornerRadius = imageButton.frame.size.width/2
         imageButton.clipsToBounds = true
         imageButton.layer.borderColor = UIColor.white.cgColor
-        imageButton.setImage(FirebaseUser.shared.image, for: .normal)
+        
+        if let image = FirebaseUser.shared.image{ imageButton.setImage(image, for: .normal) }
+        else { imageButton.setImage(UIImage(named: "landscape"), for: .normal) }
     }
     
     private func initializeTableView(){
@@ -135,12 +154,18 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         FirebaseTrans.shared.downloadAllDocumentIdByCollection(collections: [FirebaseTrans.SCHOOL_COLLECTION], completion: {(data)in
             if let data = data{
                 self.EditSchoolList = data
-                self.currentEditSchool = data
+                self.currentEditSchool = self.EditSchoolList.filter({ school -> Bool in
+                    school.lowercased().contains((self.universityEditor.text ?? "") .lowercased())
+                })
+                self.schoolSearchTableView.reloadData()
+                debugHelpPrint(type: .UserProfileEditController, str: "\(self.currentEditSchool)")
             }
         })
     }
     
     private func downloadCourseColection(){
+        
+        if FirebaseUser.shared.university == nil || FirebaseUser.shared.university == "" { return }
         
         var theCollection = [FirebaseTrans.SCHOOL_COLLECTION]
         theCollection.append(FirebaseUser.shared.university!)
@@ -150,6 +175,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             if let data = data{
                 self.EditCourseList = data
                 self.currentEditCourse = data
+                self.courseSearchTableView.reloadData()
+                debugHelpPrint(type: .UserProfileEditController, str: "\(self.currentEditCourse)")
             }
         })
     }
@@ -175,7 +202,8 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         }
         if tableView == self.schoolSearchTableView{
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserEditSchoolCell", for: indexPath) as! SearchViewTableViewCell
-            
+            //debugHelpPrint(type: .UserProfileEditController, str: "current school: \(currentEditSchool)\n")
+            //debugHelpPrint(type: .UserProfileEditController, str: "index:\(indexPath.row) count:\(currentEditSchool.count)")
             cell.suggestionLabel.text = currentEditSchool[indexPath.row]
             return cell
         }
@@ -190,8 +218,11 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView == self.courseTableView && editingStyle == .delete {
             print("delete")
+            
+            self.deletedData.append(self.classData[indexPath.row])
             self.classData.remove(at: indexPath.row)
             self.gradeData.remove(at: indexPath.row)
+            
             self.courseTableView.reloadData()
         }
     }
@@ -280,9 +311,13 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
             FirebaseUser.shared.uploadProfile()
         }
         
-        // upload courses and grades
+        // upload and delete courses and grades
         FirebaseUser.shared.classData = self.classData
         FirebaseUser.shared.gradeData = self.gradeData
+        
+        debugHelpPrint(type: .UserProfileEditController, str: "deletedData: \(deletedData)")
+        
+        FirebaseUser.shared.deleteTutorCourses(courseList: deletedData)
         FirebaseUser.shared.uploadTutorCourses(courseList: classData, gradeList: gradeData)
         
         // Go back to previous page
@@ -295,6 +330,9 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
         if (tutorSwitch.isOn == true) {
             scrollView.setContentOffset(bottomOffset, animated: true)
             //saveButton.frame.origin.y += bottomOffset.y
+            
+            // disable scrollview vertical scrolling
+            scrollView.contentSize = CGSize(width: 1.0, height: 1300)
             scrollView.isScrollEnabled = true
             self.tutorStatus.text = "Yes!  I'm a great tutor"
         } else{
@@ -347,7 +385,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     }
     
     //gender dropdown function
-    @objc func dismissKeyboard(){
+    @objc override func dismissKeyboard(){
         view.endEditing(true)
     }
     
@@ -391,7 +429,7 @@ class UserProfileEditController: UIViewController,  UITableViewDataSource, UITab
     
     
     func updateSchedule (schedule: String?){
-        if let schedule = schedule{
+        if let schedule = schedule, schedule != ""{
             scheduleData = Array(schedule)
             for i in 0...27{
                 if scheduleData[i] == "1"{scheduleBtn[i].backgroundColor = UIColor.init(red: 0.20, green: 0.47, blue: 0.96, alpha: 1.0)}
@@ -452,7 +490,17 @@ extension UserProfileEditController: UIImagePickerControllerDelegate, UINavigati
     }
 }
 
-
+extension UIViewController {
+    func hideKeyboardWhenTappedAroundII() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+}
 
 
 
