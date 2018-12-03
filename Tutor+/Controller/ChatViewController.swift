@@ -38,7 +38,8 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-
+        // keyboard
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func app(){
@@ -108,4 +109,3 @@ class ChatViewController: JSQMessagesViewController, listenerUpdateProtocol {
     }
   
 }
-
