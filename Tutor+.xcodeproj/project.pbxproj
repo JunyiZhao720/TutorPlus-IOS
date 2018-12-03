@@ -14,8 +14,6 @@
 		42866EB3216EA63400D29698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42866EB1216EA63400D29698 /* Main.storyboard */; };
 		42866EB5216EA63700D29698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42866EB4216EA63700D29698 /* Assets.xcassets */; };
 		42866EB8216EA63700D29698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42866EB6216EA63700D29698 /* LaunchScreen.storyboard */; };
-		42866EC3216EA63700D29698 /* Tutor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42866EC2216EA63700D29698 /* Tutor_Tests.swift */; };
-		42866ECE216EA63700D29698 /* Tutor_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42866ECD216EA63700D29698 /* Tutor_UITests.swift */; };
 		429D63EB2174D5F6006EC97F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */; };
 		42A63BA0217ABCD4002A6EFE /* FirebaseTrans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A63B9F217ABCD4002A6EFE /* FirebaseTrans.swift */; };
 		42D9CA622174E139005C307A /* Tutor+.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 42D9CA612174E139005C307A /* Tutor+.xcworkspace */; };
@@ -67,11 +65,7 @@
 		42866EB7216EA63700D29698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42866EB9216EA63700D29698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42866EBE216EA63700D29698 /* Tutor+Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tutor+Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		42866EC2216EA63700D29698 /* Tutor_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_Tests.swift; sourceTree = "<group>"; };
-		42866EC4216EA63700D29698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42866EC9216EA63700D29698 /* Tutor+UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tutor+UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		42866ECD216EA63700D29698 /* Tutor_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_UITests.swift; sourceTree = "<group>"; };
-		42866ECF216EA63700D29698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		429D63EA2174D5F6006EC97F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		42A63B9F217ABCD4002A6EFE /* FirebaseTrans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTrans.swift; sourceTree = "<group>"; };
 		42D9CA612174E139005C307A /* Tutor+.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = "Tutor+.xcworkspace"; sourceTree = "<group>"; };
@@ -140,8 +134,6 @@
 				42D9CA612174E139005C307A /* Tutor+.xcworkspace */,
 				AB41E94121B1FC4D00F808A3 /* Bridging-Header.h */,
 				42866EAC216EA63400D29698 /* Tutor+ */,
-				42866EC1216EA63700D29698 /* Tutor+Tests */,
-				42866ECC216EA63700D29698 /* Tutor+UITests */,
 				42866EAB216EA63400D29698 /* Products */,
 				6841033587F5ABC659C97016 /* Pods */,
 				45AA4CDB1D777741460FD9FE /* Frameworks */,
@@ -173,24 +165,6 @@
 				42866EB9216EA63700D29698 /* Info.plist */,
 			);
 			path = "Tutor+";
-			sourceTree = "<group>";
-		};
-		42866EC1216EA63700D29698 /* Tutor+Tests */ = {
-			isa = PBXGroup;
-			children = (
-				42866EC2216EA63700D29698 /* Tutor_Tests.swift */,
-				42866EC4216EA63700D29698 /* Info.plist */,
-			);
-			path = "Tutor+Tests";
-			sourceTree = "<group>";
-		};
-		42866ECC216EA63700D29698 /* Tutor+UITests */ = {
-			isa = PBXGroup;
-			children = (
-				42866ECD216EA63700D29698 /* Tutor_UITests.swift */,
-				42866ECF216EA63700D29698 /* Info.plist */,
-			);
-			path = "Tutor+UITests";
 			sourceTree = "<group>";
 		};
 		45AA4CDB1D777741460FD9FE /* Frameworks */ = {
@@ -573,7 +547,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42866EC3216EA63700D29698 /* Tutor_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,7 +554,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42866ECE216EA63700D29698 /* Tutor_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
