@@ -692,7 +692,7 @@ class FirebaseUser{
         // create unread message notification
         addUnreadMessage(targetId: targetId)
         
-        // create a new message
+        // create a new messagea
         let roomId = mergeIds(targeId: targetId)
         var path = [String]()
         path.append(FirebaseTrans.CHAT_COLLECTION)

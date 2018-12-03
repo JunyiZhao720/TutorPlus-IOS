@@ -113,14 +113,6 @@ class FirebaseTrans: NSObject {
             debugHelpPrint(type: .FirebaseTrans, str: "createDoc(): input parameters have problems")
         }
     }
-//    func isDocExists(collection: [String], id: String)->Bool?{
-//        if let collection = parseCollection(collections: collection) {
-//            return collection.document(id)
-//        }else{
-//            debugHelpPrint(type: .FirebaseTrans, str: "isDocExists(): input parameters have problems")
-//            return nil
-//        }
-//    }
     
     
     
