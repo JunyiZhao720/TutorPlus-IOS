@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIf-8v-hcl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tfh-1m-VaQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -114,6 +114,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yf-dD-9JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3086" y="1748"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ge3-av-0YS">
+            <objects>
+                <viewController id="tfh-1m-VaQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qd6-Fx-U50">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutor+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03h-mO-Pis" userLabel="Tutor+ Icon">
+                                <rect key="frame" x="54" y="257" width="266" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="153" id="9zi-oA-P3d"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="TB4-Rb-Ksk"/>
+                                    <constraint firstAttribute="width" constant="266" id="aak-ph-qvE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="153" id="trv-03-B9I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fL2-xx-cqO" firstAttribute="bottom" secondItem="03h-mO-Pis" secondAttribute="bottom" constant="257" id="KCy-vz-tsv"/>
+                            <constraint firstItem="03h-mO-Pis" firstAttribute="top" secondItem="fL2-xx-cqO" secondAttribute="top" constant="237" id="f0B-mI-t6T"/>
+                            <constraint firstItem="fL2-xx-cqO" firstAttribute="trailing" secondItem="03h-mO-Pis" secondAttribute="trailing" constant="55" id="jsx-RQ-1nQ"/>
+                            <constraint firstItem="03h-mO-Pis" firstAttribute="leading" secondItem="fL2-xx-cqO" secondAttribute="leading" constant="54" id="jxO-Lr-agw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fL2-xx-cqO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDL-fe-0Gb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3615" y="2651"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="oYV-lv-Q5f">
@@ -1994,6 +2029,7 @@ CMPS 111 A</string>
         <image name="square" width="1080" height="1080"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AfP-4M-W6h"/>
+        <segue reference="zhk-n3-QNG"/>
+        <segue reference="Zak-3F-4Hb"/>
     </inferredMetricsTieBreakers>
 </document>
