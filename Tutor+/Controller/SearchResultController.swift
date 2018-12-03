@@ -36,7 +36,7 @@ class SearchResultController: UIViewController, UITableViewDelegate, UITableView
     }
     private func downloadTutorImage(){
         for tutor in tutorArray{
-            if let imageURL = tutor.imageURL{
+            if let imageURL = tutor.imageURL, imageURL != ""{
                 FirebaseTrans.shared.downloadImageAndCache(url: imageURL, completion: {(image) in
                     if let image = image{
                         self.tutorImageDict[imageURL] = image

@@ -176,7 +176,7 @@ class FirebaseUser{
                 self.id = (user?.uid)
                 
                 debugHelpPrint(type:ClassType.FirebaseUser,str:"Logged in", id: self.id)
-                if !self.checkEmailVerified(){ self.logOut(); return }
+                if !self.checkEmailVerified(){ return }
                 self.downloadProfile(completion: {(success) in
                     // download image
                     self.downloadImage(completion: {

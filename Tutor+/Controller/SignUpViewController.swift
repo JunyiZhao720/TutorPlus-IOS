@@ -74,12 +74,7 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
-                // Intialize sign up information
-                FirebaseUser.shared.name = self.nameTextField.text
-                FirebaseUser.shared.major = self.majorTextField.text
                 
-                // create initialized information
-                FirebaseUser.shared.uploadProfile()
                 
                 // Send email verification
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
@@ -89,11 +84,14 @@ class SignUpViewController: UIViewController {
                         AlertHelper.showAlert(fromController: self, message: error.debugDescription, buttonTitle: "OK")
                     
                     }else{
+                        
+                        // Intialize sign up information
+                        FirebaseUser.shared.name = self.nameTextField.text
+                        FirebaseUser.shared.major = self.majorTextField.text
+                        // create initialized information
+                        FirebaseUser.shared.uploadProfile()
                         // logout before doing anything
                         FirebaseUser.shared.logOut()
-                        
-                        // switch back to login
-                        self.performSegue(withIdentifier: "SignUpToSignIn", sender: self)
                     }
                     
                     return
