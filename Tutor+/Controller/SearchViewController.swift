@@ -72,6 +72,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                             data[i].image = image
                             self.setRecommendationView(i: i, data: data[i])
                         })
+                    }else{
+                        self.setRecommendationView(i: i, data: data[i])
                     }
                 }
             }
